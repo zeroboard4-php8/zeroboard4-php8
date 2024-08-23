@@ -1,0 +1,52 @@
+@font-face {font-family:웹폰트명; src:url(font/JUNG0.eot);}
+BODY,TD,SELECT,input,DIV,form,TEXTAREA,center,option,pre,blockquote {font-size:9pt; font-family:정9; color:gray; line-height:160%}
+TD {line-height:140%}
+
+SELECT {font-size:9pt;color:000000;}
+
+body{
+	scrollbar-face-color:#FFFFFF;
+	scrollbar-highlight-color: #aaaaaa;
+	scrollbar-3dlight-color: #FFFFFF;
+	scrollbar-shadow-color: #aaaaaa;
+	scrollbar-darkshadow-color: #FFFFFF;
+	scrollbar-track-color: #FFFFFF;
+	scrollbar-arrow-color: #aaaaaa;
+}
+
+A:link    {color:gray;text-decoration:none;}
+A:visited {color:gray;text-decoration:none;}
+A:active  {color:gray;text-decoration:none;}
+A:hover  {color:silver;position:relative; top:1; left:-1}
+
+.view_title1 {font-family:Arial;font-size:10pt;font-weight:bold;color:#000000}
+.view_title2 {font-family:Arial;font-size:20px;letter-spacing:-1px;font-weight:bold;color=#eeeeee}
+
+.zv3_writeform {border:solid 1;border-color:999999;background-color:dddddd;}
+
+.input {border:solid 1;background-color:white;border-color:#000000}
+.zv3_w_textarea {border:solid 1;border-color:888888;background-color:white;width:100%;}
+
+.zv3_normal {font-size:9pt}
+.zv3_small {{font-family:tahoma;font-size:8pt;}
+.zv3_comment {font-family:tahoma;font-size:6pt;}
+
+.zv3_header {background-color:fefefe}
+.zv3_inbox {border:solid 1;border-color:333333;background-color:666666;width:100%;height:20px;padding:0;spacing:0;}
+
+.zv3_listBox {font-size:9pt;border:solid 0;background-color:white;}
+.zv3_liner {background-color:efefef;}
+.zv3_footer {background-color:666666;}
+
+.zv3_viewform {border:solid 1;border-color:999999;background-color:dddddd}
+.zv3_viewbox {border:0;background-color:white;}
+
+.zv3_search {border:solid 1;border-color:444444;height:17px;width:80px;color:666666;}
+
+.zv3_textarea {border:solid 1;border-color:777777;background-color:white;width:100%;}
+.zv3_submit {border:solid 1;border-color:777777;background-color:white;width:100%;height:100%}
+.pj-comment-textarea {border:solid 1 #000000; background-color:white; overflow:auto}
+.pj_input {font-family:Arial;font-size:10pt; font-weight:bold; color:#000000}
+.pj_small {{font-family:tahoma;font-size:8pt;color:#000000;}
+.pj_nomal {font-size:9pt;color:#000000;}
+.pj_textarea {border:solid 1;border-color:#000000;background-color:white;}

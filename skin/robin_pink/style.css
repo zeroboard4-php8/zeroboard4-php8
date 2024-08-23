@@ -1,0 +1,45 @@
+@font-face {font-family:웹정; src:url(http://joeyw.cafe24.com/font/JUNG0.eot);}
+BODY,TD,input,DIV,form,TEXTAREA,center,option,pre,blockquote {font-size:9pt;color:983430;font-family:웹정}
+
+TD {line-height:140%}
+
+SELECT {font-size:9pt;color:983430;}
+
+body{
+	scrollbar-face-color:#FFFFFF;
+	scrollbar-highlight-color: #DF7373;
+	scrollbar-3dlight-color: #FFFFFF;
+	scrollbar-shadow-color: #DF7373;
+	scrollbar-darkshadow-color: #FFFFFF;
+	scrollbar-track-color: #FFFFFF;
+	scrollbar-arrow-color: #DF7373;
+}
+
+A:link    {color:983430;text-decoration:none;}
+A:visited {color:983430;text-decoration:none;}
+A:active  {color:983430;text-decoration:none;}
+A:hover  {color:983430;text-decoration:none;}
+
+.robin_writeform {border:solid 1;border-color:DF7373;background-color:FFE5E5;}
+
+.robin_input {border:solid 1;border-color:EEA0A0;background-color:FFF8F8;height:17px}
+.input {border:solid 1;border-color:EEA0A0;background-color:FFF8F8;height:17px}
+.robin_w_textarea {border:solid 1;border-color:DF7373;background-color:FFF8F8;width:100%;}
+
+.zv3_normal {font-size:9pt}
+.robin_small {font-size:9pt}
+.zv3_comment {font-family:웹정;font-size:9pt;}
+
+.zv3_header {background-color:fefefe}
+.zv3_inbox {border:solid 1;border-color:333333;background-color:666666;width:100%;height:20px;padding:0;spacing:0;}
+
+.zv3_liner {background-color:efefef;}
+.zv3_footer {background-color:666666;}
+
+.robin_viewform {border:solid 1;border-color:DF7373;background-color:FFE5E5}
+.zv3_viewbox {border:0;background-color:white;}
+
+.robin_search {border:solid 1;border-color:DF7373;height:17px;width:80px;color:DF7373;}
+
+.robin_textarea {border:solid 1;border-color:EEA0A0;background-color:FFF8F8;width:100%;}
+.robin_submit {border:solid 1;border-color:EEA0A0;background-color:FFF8F8;width:100%;height:100%}

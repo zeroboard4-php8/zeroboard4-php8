@@ -1,0 +1,42 @@
+
+BODY,TD,SELECT,input,DIV,form,TEXTAREA,center,option,pre,blockquote {	FONT-FAMILY: 돋움; COLOR: #666666; FONT-SIZE: 9pt;line-height:150%;
+scrollbar-face-color: #f7f7f7; 
+scrollbar-shadow-color: #ffffff; 
+scrollbar-highlight-color: #ffffff; 
+scrollbar-3dlight-color: #ffffff; 
+scrollbar-darkshadow-color: #ffffff; 
+scrollbar-track-color: #ffffff; 
+scrollbar-arrow-color: #cccccc;
+}
+TABLE {	FONT-FAMILY: 돋움; COLOR: #666666; FONT-SIZE: 9pt;line-height:150%;}
+TR {	FONT-FAMILY: 돋움; COLOR: #666666; FONT-SIZE: 9pt;line-height:150%;}
+TD {	FONT-FAMILY: 돋움; COLOR: #666666; FONT-SIZE: 9pt;line-height:150%;}
+INPUT {	FONT-FAMILY: 돋움; COLOR: #666666; FONT-SIZE: 9pt;}
+TEXTAREA {	FONT-FAMILY: 돋움; COLOR: #666666; FONT-SIZE: 9pt;}
+SELECT {	FONT-FAMILY: 돋움; COLOR: #666666; FONT-SIZE: 9pt;}
+A:link {	COLOR: #666666; TEXT-DECORATION: none; cursor:help}
+A:visited {	COLOR: #666666; TEXT-DECORATION: none; cursor:help}
+A:active {	COLOR: #666666; TEXT-DECORATION: none; cursor:help}
+A:hover {	COLOR: #9E7272; TEXT-DECORATION: none; cursor:help}
+
+.input {border:0; background:; line-height:100%}
+.kissofgod-input {border:0; background:url(line_dot.gif) no-repeat center bottom; line-height:100%}
+.kissofgod-input-search {border-width:0 0 1; border-color:#FFB7DB; background:; line-height:100%}
+.kissofgod-submit {border:0; background-color:#FFB7DB; color:white; font-family:Tahoma;font-size:8pt; width:55; height:15; line-height:100%}
+.kissofgod-textarea {border:solid 1 #FFB7DB; background-color:white; overflow-x:hidden; overflow-y:auto}
+.kissofgod-comment-box {margin:10 0 20 0}
+.kissofgod-comment-textarea {border:0; background-color:#FFF0F5; overflow-x:hidden; overflow-y:auto}
+.kissofgod-comment-font {color:}
+
+.kissofgod-tahoma7 {font-family:Tahoma;font-size:7pt}
+.kissofgod-tahoma8 {font-family:Tahoma;font-size:8pt}
+.kissofgod-head-td {background:url(head_bg.gif) repeat-x left bottom; height:12}
+.kissofgod-notice-td {background-color:#FFF0F5}
+.kissofgod-line1 {background:url(line_dot.gif)}
+.kissofgod-line2 {background-color:#FFB7DB}
+.kissofgod-line3 {background-color:#FFF0F5}
+.kissofgod-large-font {font-family:Fixedsys; font-size:12pt; color:#FFB7DB}
+.kissofgod-list-table {background:url(line_table.gif) no-repeat center bottom}
+
+
+

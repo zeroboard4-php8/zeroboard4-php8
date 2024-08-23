@@ -1,0 +1,29 @@
+@font-face { font-family:webfont; src:url(http://joeyw.cafe24.com/font/JUNG0.eot); }
+BODY,TD,input,DIV,form,TEXTAREA,select,option,center,pre,blockquote {font-family:webfont;font-size:9pt;color:#4C4C4C;line-height:145%;}
+body 
+{
+  scrollbar-face-color:#F7F7F7; 
+  scrollbar-shadow-color:#cccccc ;
+  scrollbar-highlight-color: #FFFFFF;
+  scrollbar-3dlight-color: #FFFFFF;
+  scrollbar-darkshadow-color: #FFFFFF;
+  scrollbar-track-color: #FFFFFF;
+  scrollbar-arrow-color: #cccccc
+}
+
+A:link    {color:#4C4C4C;text-decoration:none;}
+A:visited {color:#4C4C4C;text-decoration:none;}
+A:active  {color:#4C4C4C;text-decoration:none;}
+A:hover  {color:#AFAFAF;text-decoration:underline;position:relative;top:1;left:1}
+
+.webfont {font-family:webfont;font-size:9pt;color:#515151;line-height:145%;}
+.tahoma {color:#656565;font-family:Tahoma;font-size:10px}
+.tahoma_title {color:#808080;font-family:Tahoma;font-size:10px;font-weight:bold;}
+.tahoma_b {color:#808080;font-family:Tahoma;font-size:10px;font-weight:bold;}
+.textbox {background-color:#ffffff;font-size:12px;border:1px #A5A5A5 solid;height:20px;filter:chroma(color=#ffffff);}
+.input {background-color:#ffffff;font-size:12px;border:1px #A5A5A5 solid;height:20px;filter:chroma(color=#ffffff);}
+.textarea {background-color:#ffffff;font-size:12px;border:1px #A5A5A5 solid;filter:chroma(color=#ffffff);}
+.checkbox {background-color:#ffffff;border:0px;filter:chroma(color=#ffffff);}
+.write_left {background-color:#F5F5F5;color:#808080;font-family:Tahoma;font-size:10px;font-weight:bold;}
+.normal {color:#646464;font-size:12px}
+.submit {color:white;font-family:Tahoma;font-size:10px;width:100%;height:100%;font-weight:bold;border:0px;background-color:#9A9A9A}

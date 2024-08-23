@@ -1,0 +1,69 @@
+﻿<html>
+<head>
+<title>ZeroBoard 4.1 pl2 매뉴얼</title>
+	<meta http-equiv=Content-Type content=text/html; charset=UTF-8>
+	<link rel=StyleSheet HREF=style.css type=text/css title=style>
+</head>
+<body topmargin='5'  leftmargin='5' marginwidth='0' marginheight='0'>
+<div align=center>
+<br>
+<table border=0 cellspacing=0 cellpadding=3 width=100%>
+<tr valign=top>
+	<td>
+
+	<p><b><u>외부 로그인 사용법</u></b></p>
+	<p>제로보드에서는 다음이나 드림위즈등과 같이 회원가입이나 로그인등을 처리할수 있는 기능을 제공하고 있습니다</p>
+	<p>제로보드에서는 그 기능을 외부로그인이라고 지칭하며 매우 간단한 방법으로 사용할수 있습니다</p>
+	<p>그리고 외부로그인의 경우 별도로 스킨을 이용할수 있도록 제작되어 있어서 많은 사용자들이 스킨을 공유하고 있습니다</p>
+	<p>외부로그인 스킨은 제로보드 설치 디렉토리의 <b>outlogin_skin</b>디렉토리에서 이용합니다</p>
+	<p>마음에 드는 외부로그인 스킨을 <b>outlogin_skin</b> 디렉토리에 업로드 하신후 아래 방법에 따라서 적용하시면 됩니다</p>
+	<p><b>외부로그인을 설치하기 위해서는 제로보드가 설치된 <u>절대경로</u>를 알아야 합니다</b></p>
+	<p>이 절대경로는 제로보드 관리자 페이지를 보면 나타나 있습니다</p>
+	<p><img src=images/4_2_1.gif border=1></p>
+	<p>위의 그림은 관리자 페이지(admin.php)의 초기화면 제일 아래에 있는 내용입니다</p>
+	<p>빨간 글씨로 제로보드가 설치된 디렉토리의 절대경로가 나타나 있습니다</p>
+	<p>그럼 이제 원하는 곳에 제로보드의 로그인을 적용하여 보도록 하겠습니다</p>
+	<p>* 서버에 따라서 *.html 파일에서도 php 명령어가 적용이 되기도 하지만 안되는 경우도 있습니다</p>
+	<p><font color=white>* </font> 혹시 아래의 외부로그인을 지정하였는데 아무런 변화가 없다면 파일명을 .php로 변경해보세요 </p>
+	<p>제로보드 4.1 pl2 부터는 외부로그인의 사용법이 조금 달라졌습니다</p>
+	<p>외부로그인을 적용하고자 하는 페이지 제일 윗 부분에 다음과 같이 입력하세요</p>
+	<pre><b><font color=blue>
+&lt;?
+   $_zb_url = "제로보드가 설치된 url";
+   $_zb_path = "제로보드가 설치된 절대경로";
+   include $_zb_path."outlogin.php";
+?&gt;
+	</font></b></pre>
+	<p>위에서 <b>제로보드가 설치된 url</b>은 http://nzeo.com/bbs/ 처럼 제로보드의 url을 입력하시면 됩니다</p>
+	<p>예) $_zb_url = "http://nzeo.com/bbs/";</p>
+	<p>위 처럼 url 끝에 꼭 <b>/</b> 를 붙이셔야 합니다 </p>
+	<p><b>제로보드가 설치된 절대경로</b>는 관리자 페이지 제일 아래 있는 것을 그대로 갖다 붙이시면 됩니다</p>
+	<p>예) $_zb_url = "/home/zero/NZEO/bbs/"; </p>
+	<p>위와 같이 적으시면 됩니다.</p>
+	<p>제일 아래 있는 <b>include $zb_path."outlogin.php";</b>는 그대로 적으시면 됩니다.</p>
+	<p><font color=red>꼭 이 5줄은 외부로그인을 적용한 파일의 제일 위에 적어야 합니다 (<b>&lt?</b> 가 제일 앞에 와야함)</font></p>
+	<p>이것만 추가하고 나면 아무런 변동이 없을 것입니다</p>
+	<p>이제 원하는 곳에 외부로그인 표시를 해야 합니다.</p>
+	<p>외부로그인 표시란 다음과 같이 회원 로그인 폼 로그인 된 상태를 표시하는 것을 말합니다.</p>
+	<p>우선 사용할 외부로그인 스킨을 결정하세요</p>
+	<p>외부로그인 스킨은 제로보드가 설치된 디렉토리 내에 <b>outlogin_skin</b> 에 있습니다</p>
+	<p>원하는 외부로그인 스킨이 있다면 <b>outlogin_skin</b> 디렉토리에 올리시면 됩니다</p>
+	<p>외부로그인 스킨은 사용할때 디렉토리 이름으로 사용을 합니다.</p>
+	<p>만약 <b>outlogin_skin</b> 디렉토리 안에 <b>default</b>라는 디렉토리가 있다면 스킨 이름은 <b>default</b>가 됩니다.</p>
+	<p>그럼 이제 원하는 곳에 외부로그인을 표시하기 위해서는 다음과 같이 한줄을 넣으세요</p>
+	<p></p>
+	<p><b><font color=blue>&lt;? print_outlogin("스킨이름", 그룹번호, 허용레벨) ?&gt;</font></b></p>
+	<p></p>
+	<p>위에서 스킨이름에는 원하는 스킨이름을, 그룹번호는 적용한 그룹번호, 허용레벨은 페이지 관람이 가능한 레벨을 적어주시면 됩니다</p>
+	<p>예를 들어 <b>default</b>라는 외부로그인 스킨을 이용하고, 그룹은 1번, 모든 사람이 접근가능한 레벨 <b>10</b>을 적용하시려면</p>
+	<p><b>&lt;? print_outlogin("default", 1, 10) ?&gt;</b></p>
+	<p>라고 하시면 됩니다</p>
+	<p>위와 같이 하시면 손쉽게 외부로그인을 이용하실수 있습니다</p>
+	</td>
+</tr>
+</table>
+<br>
+<div align=right><a href=# style=font-size=8pt;font-family:tamoha><u><b>Top</b></u></a>&nbsp;&nbsp;&nbsp;</div>
+<br>
+</body>
+</html>

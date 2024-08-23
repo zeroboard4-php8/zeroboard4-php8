@@ -1,0 +1,25 @@
+body, td, select, input, div, form, textarea, center, option, pre, blockquote {font-size:8pt; font-family:Verdana,Tahoma; color:3f3f3f; line-height:150%;
+
+BODY 
+{scrollbar-face-color: #f5f5f5;scrollbar-highlight-color: #ffffff;
+scrollbar-3dlight-color: #E1E1E1;scrollbar-shadow-color: #f5f5f5;
+scrollbar-darkshadow-color: #E1E1E1;scrollbar-track-color: #ffffff;
+scrollbar-arrow-color: #00bcc7}
+
+A:link    {color:3f3f3f;text-decoration:none;}
+A:visited {color:3f3f3f;text-decoration:none;}
+A:active  {color:3f3f3f;text-decoration:none;}
+A:hover   {color:00bcc7;text-decoration:none;}
+
+.cbg {background: url(cbg.gif) no-repeat fixed left bottom;}
+.textarea {border:1px solid #EFEFEF;font-family:verdana;font-size:8pt;color:3f3f3f;background-color:transparent;}
+.input {border:solid 1 #EFEFEF;font-family:verdana;font-size:8pt;height:16px;background-color:transparent;}
+.input2 {color:#3f3f3f;border-width:0px; border-bottom: dotted FFFFFF 1px; background: url(line2.gif) repeat fixed left bottom; background-color:transparent;}
+.input3 {border:solid 1 #EFEFEF;font-family:verdana;font-size:8pt;background-color:transparent;}
+.submit {border:solid 1 #EFEFEF;font-family:verdana;font-size:7pt;color:3f3f3f;background-color:transparent;}
+
+.n1 {font-family:verdana;font-size:7pt;}
+.n2 {font-family:verdana;font-size:7pt;color:#00bcc7;}
+.n3 {font-family:verdana;font-size:8pt;color:#00bcc7;}
+.n4 {font-family:Tahoma;font-size:7pt;}
+.n5 {font-family:Tahoma;font-size:7pt;color:#00bcc7;}

@@ -1,0 +1,43 @@
+BODY,TD,input,DIV,form,TEXTAREA,center,pre,blockquote {font-size:9pt;font-family:굴림;color:888888}
+
+select,option {font-size:9pt;font-family:tahoma;color:13485D;background-color:B4D2DE}
+
+TD {line-height:140%}
+
+body{
+	scrollbar-face-color:#CCCCCC;
+	scrollbar-highlight-color: #DDDDDD;
+	scrollbar-3dlight-color: #EEEEEE;
+	scrollbar-shadow-color: #CCCCCC;
+	scrollbar-darkshadow-color: #EEEEEE;
+	scrollbar-track-color: #EFEFEF;
+	scrollbar-arrow-color: #DDDDDD;
+}
+
+A:link    {color:888888;text-decoration:none;}
+A:visited {color:888888;text-decoration:none;}
+A:active  {color:888888;text-decoration:none;}
+A:hover  {color:555555;text-decoration:underline}
+
+.textarea {border:solid 1;border-color:347088;font-size:9pt;color:042330;background-color:white;}
+.input {border:solid 1;border-color:739BAB;font-size:9pt;color:042330;background-color:white;height:19px}
+.submit {border:solid 1;border-color:1F556A;font-size:9pt;color:white;background-color:50889F;height:19px}
+.button {border:solid 1;border-color:1F556A;font-size:9pt;color:white;background-color:50889F;height:19px}
+
+.thm7pt {font-family:tahoma;font-size:7pt}
+
+.ment {border:1 solid; border-color:e7e7e7; background-color:fafafa; font-size:9pt; table-layout:fixed}
+.ment_text {color:666666;font-size:9pt;line-height:140%;padding:10px;}
+
+.line1 {background-color:#B4D2DE; padding:0}
+.line2 {background-color:#D7EDF2; padding:0}
+
+.title {background-image: url(list_back.gif); background-repeat-x; height:33px;}
+.list0 {background-color:#EEF3F6; height:28px; font-size:9pt;}
+.list1 {background-color:#F7FAFB; height:28px; font-size:9pt;}
+
+.title_han {color:FFFFFF;font-weight:bold;font-size:9pt}
+.list_han {color:13485D;font-size:9pt;text-decoration:none;text-decoration:none}
+
+.title_eng {font-family:tahoma;color:FFFFFF;font-weight:bold;font-size:8pt;text-decoration:none}
+.list_eng {font-family:tahoma;color:13485D;font-size:8pt;text-decoration:none}

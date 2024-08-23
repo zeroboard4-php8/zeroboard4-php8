@@ -1,0 +1,1 @@
+<a href=http://zangkun.net target=_blank onfocus=blur()><font color=#333333>ZangKun.net</font></a>

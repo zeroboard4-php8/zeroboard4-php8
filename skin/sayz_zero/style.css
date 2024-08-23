@@ -1,0 +1,14 @@
+body,td,select,input,div,form,textarea,center,option,pre,blockquote {font-size:9pt}
+
+a:link     {color:575757;text-decoration:none}
+a:visited  {color:575757;text-decoration:none}
+a:active   {color:575757;text-decoration:none}
+a:hover    {color:575757;text-decoration:none}
+
+.input     {border:solid 1;border-color:c0c0c0}
+.search    {border:solid 1;border-color:a8a8a8;height:19px}
+.submit    {border:solid 1;border-color:a8a8a8;background-color:f8f8f8;font-size:8pt;font-family:tahoma}
+.textarea  {border:solid 1;border-color:c0c0c0;overflow-x:hidden;overflow-y:auto}
+.thm6      {font-family:tahoma;font-size:6pt}
+.thm7      {font-family:tahoma;font-size:7pt}
+.thm8      {font-family:tahoma;font-size:8pt}

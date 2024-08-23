@@ -1,0 +1,60 @@
+@font-face {font-family:앙증체;src:url(http://joeyw.cafe24.com/nontoxic_ang_2.eot);}
+/*********************************************
+* 모든파일에 공통으로  들어간 스타일 시트
+*********************************************/
+@font-face {font-family:앙증체;src:url(http://joeyw.cafe24.com/nontoxic_ang_2.eot);}
+BODY 
+{scrollbar-face-color: #ffffff;
+scrollbar-shadow-color: #ffffff;
+scrollbar-highlight-color: #ffffff;
+scrollbar-3dlight-color: #ffffff;
+scrollbar-darkshadow-color: #ffffff;
+scrollbar-track-color: #ffffff;
+scrollbar-arrow-color: #FF6600;
+button-text-color: #ffffff;}
+@font-face {font-family:앙증체;src:url(http://joeyw.cafe24.com/nontoxic_ang_2.eot);}
+body, td, select, input, div, form, textarea, center, option, pre, blockquote{font-size:9pt; font-family:앙증체; color:#808080}
+
+A:link    {color:#808080;text-decoration:none;}
+A:visited {color:#808080;text-decoration:none;}
+A:active  {color:#808080;text-decoration:none;}
+A:hover   {color:black; border-bottom: dotted #dddddd 1px;text-decoration:none;}
+
+
+.submit {border:solid 1 white;font-family:앙증체;font-size:9px;color:#999999;background-color:white; }
+.textarea {border:1px solid #EFEFEF;font-family:앙증체;font-size:9pt;color:#808080;background-color:#EFEFEF}
+.maker    {font-size:9pt;font-family:앙증체; color:#808080}
+.reg-date {color:#808080;font-size:9pt;font-family:앙증체;}
+.hit {color:#808080;font-size:9pt;font-family:앙증체;}
+.input    {border:1px solid #EFEFEF;background-color:#FFFFFF}
+.line  {background-color:#EBEBEB}
+.number {color:#808080;font-size:9pt;font-family:앙증체;}
+.neotune-textarea {font-family:앙증체;font-size:9pt;color:#999999; border:solid 1 #d4d4d4; background-color:white; overflow-x:hidden; overflow-y:auto}
+.input    {border:1px solid #EFEFEF;background-color:#FFFFFF}
+
+/*********************************************
+* login.php 에 들어간 스타일 시트
+*********************************************/
+.login-h {font-family:앙증체;font-size:9px;color:#999999}
+
+/*********************************************
+* setup.php 에 들어간 스타일 시트
+*********************************************/
+.setup-h {font-family:앙증체;font-size:9px;color:#999999;}
+
+/*********************************************
+* 모든 간단한 답글 관련 php 에 들어간 스타일 시트
+*********************************************/
+.com-h {font-family:앙증체;font-size:9px;color:#999999}
+
+/*********************************************
+* write.php 에 들어간 스타일 시트
+*********************************************/
+.neotune-write {font-family:앙증체;font-size:9pt}
+.neotune-upload {font-family:앙증체;font-size:9pt}
+
+/*********************************************
+* list_foot.php 에 들어간 스타일 시트
+*********************************************/
+.list-foot-h {font-family:앙증체;font-size:9px;color:#999999}
+.input-search  {background-color:#f9f9f9; border-color:#e0e0e0; font-family:앙증체; font-size:9pt; border-width:1px; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid; line-height:100%}

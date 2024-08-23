@@ -1,0 +1,27 @@
+BODY {
+   scrollbar-face-color: #3BB0D6;
+   scrollbar-shadow-color: #53cfea;
+   scrollbar-highlight-color: #53cfea;
+   scrollbar-3dlight-color: #3BB0D6;
+   scrollbar-darkshadow-color: #3BB0D6; scrollbar-track-color: #53cfea;
+   scrollbar-arrow-color: #FFFFFF
+   }
+
+TD,SELECT,input,DIV,form,TEXTAREA,center,option,pre,blockquote {font-size:9pt; font-family:굴림,verdana,tahoma; color:000000;line-height:180%}
+
+
+A:link    {color:#000000;text-decoration:none;}
+A:visited {color:#000000;text-decoration:none;}
+A:active  {color:#000000;text-decoration:none;}
+A:hover  {color:#663300;text-decoration:none;}
+
+.head {border:solid 1 #178bb0;font-family:matchworks,verdana;font-size:9pt;color:666666;background-color:A2DDF0;height:19px}
+.textarea {border:solid 1 #178bb0; font-family:굴림,verdana;font-size:9pt;color:666666;background-color:A2DDF0}
+.input{border:solid 1 #178bb0;font-family:굴림,verdana;font-size:9pt;color:666666;background-color:A2DDF0;height:19px}
+.input2{border:solid 0;font-family:굴림,verdana;font-size:9pt;color:666666;background-color:A2DDF0;height:16px}
+.submit {border:solid 1 #78d4f0;font-family:굴림,verdana;font-size:9pt;color:eeeeee;background-color:178bb0;height:19px}
+
+.blue {font-family:굴림,verdana;font-weight:bold;font-size:9pt;color:178BB0;}
+.blue2 {font-family:tahoma,verdana;font-size:7pt;color:178BB0;}
+.blue3 {font-family:굴림,verdana;font-size:9pt;color:FAFAFA;}
+.view_bg {background-color:#7BD3F0;line-height:160%;}

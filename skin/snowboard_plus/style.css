@@ -1,0 +1,24 @@
+BODY,TD,SELECT,input,DIV,form,TEXTAREA,center,option,pre,blockquote {font-size:9pt; font-family:굴림; color:black;}
+
+A:link    {color:gray;text-decoration:none;}
+A:visited {color:gray;text-decoration:none;}
+A:active  {color:444444;text-decoration:none;}
+A:hover  {color:444444;text-decoration:none;}
+
+.input {border:solid 1 silver;font-family:굴림;font-size:9pt;color:black;background-color:white;height:19px;cursor:hand;}
+.sb_head {border:solid 1 black;font-family:굴림;font-size:9pt;color:black;background-color:white;height:19px}
+.sb_textarea {border:solid 1 silver; font-family:굴림;font-size:9pt;color:black;background-color:white}
+.sb_submit {border:solid 1;border-color:c3c3c3;background-color:white;width:100%;height:100%}
+.sb_input {border:solid 1;border-color:c3c3c3;background-color:f7f7f7;height:17px}
+.sb_form {border:solid 1;border-color:ffffff;background-color:f7f7f7}
+.sb_search {border:solid 1;border-color:c3c3c3;background-color:ffffff;height:17px}
+.sb_contents {border:solid 1;border-color:c3c3c3;background-color:ffffff;width:100%;}
+.sb_comment_contents {border:solid 1;border-color:c3c3c3;background-color:ffffff;width:100%;}
+.sb_comment_input {border:solid 1 silver;font-family:굴림;font-size:9pt;color:black;background-color:white;cursor:hand;}
+.t8_gray {font-family:Tahoma;font-size:8pt;color:gray;}
+.t7_gray {font-family:Tahoma;font-size:7pt;color:gray;}
+.t9b_gray {font-family:Tahoma;font-size:8pt;color:gray;font-weight:bold;}
+.t7_4a4d4a {font-family:Tahoma;font-size:7pt;color:#4a4d4a;}
+.t8_4a4d4a {font-family:Tahoma;font-size:8pt;color:#4a4d4a:font-weight:bold;}
+.t7b_black {font-family:Tahoma;font-size:7pt;color:black;font-weight:bold;}
+.g8_gray {font-family:굴림;font-size:8pt;color:gray;}

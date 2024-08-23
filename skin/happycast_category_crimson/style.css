@@ -1,0 +1,24 @@
+
+BODY,TD,SELECT,input,DIV,form,TEXTAREA,center,option,pre,blockquote {font-family:±¼¸²;font-size:9pt;color:#160F25;}
+
+A:link    {color:black;text-decoration:none;}
+A:visited {color:black;text-decoration:none;}
+A:active  {color:black;text-decoration:none;}
+A:hover  {color:gray;text-decoration:none;}
+
+.input {border:solid 1;background-color:white;border-color:160F25}
+.submit {border:solid 1 white;font-family:±¼¸²;font-size:9pt;color:white;background-color:160F25; height=18px}
+
+
+.comment_submit {font-family:Verdaba; font-size:8pt; color:rgb(102,102,102); background-color:rgb(249,249,249); border-width:1px; border-color:silver; border-style:solid;}
+
+
+.setup {font-family:Tahoma;font-size:6pt;font-weight:bold;color:#481D34;}
+.list_header {font-family:Matchworks,Tahoma;font-size:8pt;color:#481D34}
+.listnum {font-family:Tahoma;font-size:8pt}
+.commentnum {font-family:Tahoma;font-size:6pt;}
+
+
+.view_title1 {font-family:Arial;font-size:8pt;font-weight:bold;color=#333333}
+.view_title2 {font-family:Arial;font-size:15px;letter-spacing:-1px;font-weight:bold;color=#333333}
+.view_left_menu {font-family:Arial;font-size:12px;font-weight:bold;color=#333333}

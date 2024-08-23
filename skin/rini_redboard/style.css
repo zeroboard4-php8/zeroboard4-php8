@@ -1,0 +1,39 @@
+body,td,select,input,div,form,textarea,center,option,pre,blockquote {font-size:8pt;font-family:verdana;color:666666;line-height:160%;letter-spacing:0}
+
+a:link     {color:666666;text-decoration:none}
+a:visited  {color:666666;text-decoration:none}
+a:active   {color:666666;text-decoration:none}
+a:hover   {color:888888;text-decoration:none}
+
+.red a:hover   {color:E41111;text-decoration:none}
+
+
+body {
+scrollbar-3dlight-color:#FFFFFF;
+scrollbar-arrow-color:#BBBBBB;
+scrollbar-track-color:#FFFFFF;
+scrollbar-darkshadow-color:#FFFFFF;
+scrollbar-face-color:#F3F3F3;
+scrollbar-highlight-color:#FFFFFF;
+scrollbar-shadow-color:#CCCCCC
+}
+
+.input {border:1 #F1F1F1 solid;border-top-color:white;border-right-color:white;border-bottom-color:#F1F1F1;border-left-color:white;height:18px;line-height:120%}
+.rini_input {border:1 #F1F1F1 solid;border-top-color:white;border-right-color:white;border-bottom-color:#F1F1F1;border-left-color:white;height:18px;line-height:120%}
+
+.rini_textarea  {border:solid 1;border-color:#F1F1F1;overflow-x:hidden;overflow-y:auto}
+
+.rini_submit {border:0; background-color:#FFFFFF;font-family:verdana;font-size:10px;font-weight:bold;letter-spacing:0;line-height:100%;width:55px;height:18px}
+
+.rini_submit2 {border: solid 1;border-color:#F1F1F1; background-color:#FFFFFF;font-family:verdana;font-size:10px;color:#AAAAAA;font-weight:bold;letter-spacing:0;line-height:100%;width:62px;height:18px}
+
+.rini_submit3 {border:0; background-color:#FFFFFF;font-family:verdana;font-size:10px;letter-spacing:-1;line-height:100%;width:42px;height:18px}
+
+.rini_ver {font-family:verdana;font-size:10px;font-weight:bold;letter-spacing:0}
+.rini_ver1 {font-family:verdana;font-size:10px;color:#a9a9a9;font-weight:bold;letter-spacing:0}
+.rini_ver2 {font-family:verdana;font-size:10px;letter-spacing:0;}
+.rini_ver3 {font-family:verdana;font-size:10px;letter-spacing:-1}
+.rini_ver4 {font-family:verdana;font-size:9px;letter-spacing:-1}
+.rini_ver5 {font-family:verdana;font-size:9px;font-weight:bold;letter-spacing:0}
+
+

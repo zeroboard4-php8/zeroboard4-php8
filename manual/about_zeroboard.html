@@ -1,0 +1,142 @@
+﻿<html>
+<head>
+<title>ZeroBoard 4.1 pl2 매뉴얼</title>
+	<meta http-equiv=Content-Type content=text/html; charset=UTF-8>
+	<link rel=StyleSheet HREF=style.css type=text/css title=style>
+</head>
+<body topmargin='5'  leftmargin='5' marginwidth='0' marginheight='0'>
+<div align=center>
+<br>
+<table border=0 cellspacing=0 cellpadding=2 width=100%>
+<col width=15></col><col width=></col>
+<tr>
+	<td colspan=2><img src=images/1.gif border=0></td>
+</tr>
+<tr>
+	<td width=15><img src=images/t.gif border=0 width=15 height=1></td>
+	<td width=100%>
+		<font color=555555>			
+		제로보드는 <b>PHP</b>와 <b>MySQL</b>이 지원되는 서버에 설치하여 사용하는 게시판입니다.<br>
+		즉, 슈퍼보드나 블루보드등의 게시판처럼 신청을 하고 링크를 하는 게시판이 아니라 <B>자신의 계정에 직접 설치</b>를 하여 <br>
+		사용하는 게시판입니다.<br>
+		<br>
+	</td>
+</tr>
+<tr>
+	<td colspan=2><img src=images/2.gif border=0></td>
+</tr>
+<tr>
+	<td width=15><img src=images/t.gif border=0 width=15 height=1></td>
+	<td width=100%>
+		<font color=555555>		
+		- 깨어지기 쉽고, 관리하기 어려운 File System으로 데이타를 관리하지 않고 안정적이며 우수한 MySQL이라는<br>
+		<font color=white>- </font>Database 시스템을 이용함으로서 <B>자료의 안정성</b>이 보장되며, <b>자료의 추출, 가공, 이식, 보관이 매우 용이</b>합니다.<br>
+		<font color=white>- </font>* 차후 다양한 DB 시스템을 지원할 예정<Br>
+		<br>
+		- 제로보드는 융통성이 있고, 확장이 편한 스킨시스템을 제공함으로서 매우 다양하고 편리한 스킨을 만들수 있습니다.<br>
+		<font color=white>- </font>제로보드의 스킨은 현재까지 국내의 대부분의 게시판 스킨의 디자인과 기능성에 많은 영향을 미쳤습니다.<br>
+		<font color=white>- </font>* 스킨이라는 것은 제로보드의 출력형태를 가공할수 있는 것을 말하며, 현재 제로보드 스킨 자료실에는 수천개의 스킨자료가<br>
+		<font color=white>- * </font>등록이 될정도로 활성화 되어 있습니다.<br>
+		<br>
+		- 종전의 무료 배포 게시판에서는 찾아볼수 없었던 회원관리, 쪽지기능, 게시판마다의 권한 설정등 관리자가 운영하기에<br>
+		<font color=white>- </font>매우 편한 기능등을 제공하고 있습니다.<Br>
+		<font color=white>- </font>(지금은 몇 몇 배포형 게시판에서 지원하고 있지만, 배포형 게시판에서 회원관리의 시발점이 된 것은 제로보드입니다)<br>
+		<br>
+		- 제로보드는 사이트 제작 관련 작업을 계속하면서, 그리고 사용자들의 피드백을 계속해서 받으면서 사이트 제작시에<br>
+		<font color=white>- </font>매우 적합하게 사용될수 있도록 발전되어 왔습니다.<br>
+		<font color=white>- </font>이제 제로보드는 단순히 게시물만 쓰고 지우는 기능이 아닌 사이트와 잘 융화될수 있고 다양한 기능을 제공하는<br>
+		<font color=white>- </font>솔류션의 성격을 가지고 있습니다<br>
+		<br>
+		- 제로보드는 보안에 제일 신경을 쓰고 있습니다<br>
+		<font color=white>- </font>초기에 제로보드에는 php나 아파치 서버에 의한 여러 보안 버그들이 존재하였습니다.<br>
+		<font color=white>- </font>하지만 개발자의 노력과 사용자분들 및 여러 해커님들의 도움으로 계속해서 보안 버그들을 막아왔습니다.<br>
+		<font color=white>- </font>제로보드는 보안에 가장 안전하다는 거짓말을 하지는 못하지만, 발견되어지는 보안 버그들은 최대한 빨리 패치하기 위해서<br>
+		<font color=white>- </font>노력합니다.<br>
+		<font color=white>- </font><br>
+		- 이외 다양한 기능들이 존재하지만 기능에 대한 소개는  매뉴얼과 직접 사용하시면서 편리함을 느끼시기 바랍니다.<br>
+		<br>
+
+	</td>
+</tr>
+<tr>
+	<td colspan=2><img src=images/3.gif border=0></td>
+</tr>
+<tr>
+	<td width=15><img src=images/t.gif border=0 width=15 height=1></td>
+	<td width=100%>
+		<font color=555555>		
+		제로보드의 장점이자 단점이 File System이 아닌 DB를 이용한다는 것입니다.<br>
+		즉, 일반적인 네띠앙, 드림위즈, 라이코스등의 무료계정에서는 MySQL DB를 지원하지 않으므로 설치할수 있는 환경을<br>
+		고르기에 어려움이 있습니다.<br>
+		하지만 홈페이지를 한번 쓰고 버릴 생각으로 만드는 것이 아니라면 깨어지기 쉬운 File System보다는 안전하고 관리가 편한<br>
+		DB를 사용하는 것이 더욱 바람직합니다.<br>
+		이제 인터넷이 대중화 되었고, 홈페이지가 인터넷에서 자신을 가장 잘 표현하는 곳이 된 만큼 최소한의 노력이나 투자를<br>
+		아끼지 않는 것이 좋을것 같습니다.<br>
+		* 제로보드를 설치할수 있는 계정 정보는 <a href=http://nzeo.com/bbs/zboard.php?id=cgi_free target=_blank><u><b>계정정보게시판</u></b></a>에서 확인하실수 있습니다.<br>
+		<br>
+	</td>
+</tr>
+<tr>
+	<td colspan=2><img src=images/4.gif border=0></td>
+</tr>
+<tr>
+	<td width=15><img src=images/t.gif border=0 width=15 height=1></td>
+	<td width=100%>
+		<font color=555555>		
+		제로보드는 위에서 언급한 대로 신청하는 것이 아닌 다운받아서 계정에 올려 설치하는 게시판입니다.<br>
+		초보분들은 설치하기에 어려움이 있을수도 있지만, 매뉴얼과 질답게시판, 그리고 제로보드 팁 게시판등을 참고하시면<br>
+		쉽게 설치하실수 있습니다.<br>
+		<br>
+	</td>
+</tr>
+<tr>
+	<td colspan=2><img src=images/5.gif border=0></td>
+</tr>
+<tr>
+	<td width=15><img src=images/t.gif border=0 width=15 height=1></td>
+	<td width=100%>
+		<font color=555555>		
+		제로보드는 게시판 아래에 일정한 저작권 표시를 하도록 되어 있습니다.<br>
+		저작권 표시를 무단삭제하거나 수정하지 않는다면, 개인뿐만 아니라 기관, 단체, 회사등에서도 무료로 사용하실수 있습니다.<br>
+		제로보드의 저작권을 부득이하게 삭제하기를 원하시는 분께서는 register@nzeo.com 으로 메일로 문의하시면 됩니다.<br>
+		<br>
+	</td>
+</tr>
+<tr>
+	<td colspan=2><img src=images/6.gif border=0></td>
+</tr>
+<tr>
+	<td width=15><img src=images/t.gif border=0 width=15 height=1></td>
+	<td width=100%>
+		<font color=555555>		
+		제로보드는 1999년 말에 처음으로 배포되기 시작했습니다.<br>
+		제로보드는 일반적인 기능 구현은 당연한 것으로 생각하고, 게시판을 단순한 글만 적는 곳이 아닌 사이트에 어울리는,<br>
+		그리고 보기 좋은 모습으로 만드는 것에 중점을 두었습니다.<br>
+		2000년 중순에 발표된 제로보드 3는 당시로는 볼수 없었던 회원 관리 기능을 제공함으로서 프로그래밍 기술이 없는 사용자들에게 
+		매우 도움이 되었습니다.<br>
+		이 제로보드 3 이후로 여타 배포형 게시판에도 회원 관리 기능이 추가되기 시작하였습니다.<br>
+		현재까지 패치레벨업이 되고 있는 제로보드 4는 2001년 초에 더 다양해진 회원 관리 기능과 쪽지기능, 게시판 관리기능,<br>
+		그리고 이미지 박스나 그림이름등의
+		새로운 기능을 선보이며 배포되었습니다.<br>
+		<Br>
+	</td>
+</tr>
+<tr>
+	<td colspan=2><img src=images/7.gif border=0></td>
+</tr>
+<tr>
+	<td width=15><img src=images/t.gif border=0 width=15 height=1></td>
+	<td width=100%>
+		<font color=555555>		
+		제로보드는 현재까지도 무료 배포였으며, 앞으로도 영원히 무료 배포될 예정입니다.<br>
+		늘 새로운 기능과 모습을 보여드렸던 만큼, 다른 게시판에서 하지 못했던, 아니면 아직 구현이 되지 않았던 기능들을 추가하여<br>
+		더 사용하기 쉽고 편리한 제로보드가 되도록 하겠습니다.<br>
+		제로보드를 사용해 주시고 아껴주셔서 늘 감사합니다. 꾸벅~ (__)
+	</td>
+</tr>
+</table>
+<br>
+<div align=right><a href=# style=font-size=8pt;font-family:tamoha><u><b>Top</b></u></a>&nbsp;&nbsp;&nbsp;</div>
+<br>
+</body>
+</html>

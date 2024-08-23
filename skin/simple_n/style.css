@@ -1,0 +1,29 @@
+BODY,TD,SELECT,input,DIV,form,TEXTAREA,center,option,pre,blockquote {font-family:돋움;color:3a3a3a;font-size:9pt}
+td {line-height:160%}
+
+A:link    {color:3a3a3a;text-decoration:none;}
+A:visited {color:3a3a3a;text-decoration:none;}
+A:active  {color:3a3a3a;text-decoration:none;}
+A:hover  {color:999999;text-decoration:none;}
+
+<!--
+BODY {
+scrollbar-face-color:#E0E0E0;
+scrollbar-highlight-color:#FFFFFF;
+scrollbar-3dlight-color:#D0D0D0;
+scrollbar-darkshadow-color:#000000;
+scrollbar-shadow-color:#808080;
+scrollbar-arrow-color:#000000;
+scrollbar-track-color:#f0f0f0;
+}
+-->
+
+.textarea {border:solid 1; font-family:돋움;font-size:9pt;color:black;background-color:fafafa;border-width:1px; border-style:solid; border-color:#E0E0E0; line-height:160%;}
+.input{border:solid 1;font-family:돋움;font-size:9pt;color:black;background-color:fafafa;height:19px;border-width:1px; border-style:solid; border-color:#E0E0E0;}
+.input2{border:solid 1;font-family:돋움;font-size:9pt;color:black;background-color:white;height:19px;border-width:1px; border-style:solid; border-color:#E0E0E0;}
+.yeinsubmit {border:solid 1;font-family:tahoma;font-size:7pt;color:444444;background-color:white;height:25px;width:55px;border-width:1px; border-style:solid; border-color:#E0E0E0;font-weight:bold;}
+.yeinsub {font-family:tahoma;font-size:7pt;color=#F85410;font-weight:bold;}
+.yeinlfont {font-family:tahoma;font-size:8pt;color=444444;font-weight:bold;}
+.yeinsfont {font-family:tahoma;font-size:7pt;}
+.page {font-family:tahoma;color:3a3a3a;font-size:7pt}
+

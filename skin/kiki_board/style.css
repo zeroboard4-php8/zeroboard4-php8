@@ -1,0 +1,23 @@
+@font-face { font-family:웹정;src:url(http://joeyw.cafe24.com/font/JUNG0.eot);}
+BODY,TD,SELECT,input,DIV,form,TEXTAREA,option {font-size:9pt; font-family:웹정;line-height:180%;color:666666}
+
+A:link    {color:gray;text-decoration:none;}
+A:visited {color:gray;text-decoration:none;}
+A:hover  {color:gray;text-decoration:none;}
+
+BODY { scrollbar-3dlight-color:#FFFFFF;
+scrollbar-arrow-color:#CCCCCC;
+scrollbar-track-color:#FFFFFF;
+scrollbar-darkshadow-color:#FFFFFF;
+scrollbar-face-color:#FFFFFF;
+scrollbar-highlight-color:#CCCCCC;
+scrollbar-shadow-color:#CCCCCC}
+
+.head {border:solid 1 #FFFFFF;height:19px}
+.textarea {border:solid 1;border-color=dddddd; background-color:#FFFFFF}
+.input{border:solid 1;border-color=dddddd;background-color:#FFFFFF;height:19px}
+.input2{border:solid 1;border-color=dddddd;background-color:#FFFFFF;height:16px}
+.submit {border:solid 1;border-color=dddddd;background-color:#FFFFFF;height:19px}
+.thm8 {font-family:웹정;font-size:9pt}
+.ver7 {font-family:웹정;font-size:9pt}
+.ver8 {font-family:웹정;font-size:9pt;font-weight:bold}

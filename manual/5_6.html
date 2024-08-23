@@ -1,0 +1,73 @@
+﻿<html>
+<head>
+<title>ZeroBoard 4.1 pl2 매뉴얼</title>
+	<meta http-equiv=Content-Type content=text/html; charset=UTF-8>
+	<link rel=StyleSheet HREF=style.css type=text/css title=style>
+</head>
+<body topmargin='5'  leftmargin='5' marginwidth='0' marginheight='0'>
+<div align=center>
+<br>
+<table border=0 cellspacing=0 cellpadding=3 width=100%>
+<tr valign=top>
+<td>
+
+<b><u>그림 창고 (Image Box) 기능</u></b><br>
+<p><b><font color="#FFFFFF">6. </font></b>제로보드 4.1 부터 추가된 기능입니다.</p>
+<p><b><font color="#FFFFFF">6. </font></b>기존의 게시판등의 CGI에 게시물을 작성할 때 이미지는 다른 계정에 
+  올려서 링크하는 방식을</p>
+<p><b><font color="#FFFFFF">6. </font></b>일반적으로 이용하였습니다.</p>
+<p><b><font color="#FFFFFF">6. </font></b>제로보드에서는 가입된 회원중<b> Image Box 권한이 있는 
+  회원에 대해서는 Image Box 기능</b>이 있습니다.</p>
+<p><b><font color="#FFFFFF">6. </font></b>이 기능은 서버에 게시물에 관련된 이미지를 올려서 게시물 내용중 
+  원하는 곳에 입력 및 편집을</p>
+<p><b><font color="#FFFFFF">6. </font></b>할수 있는 기능입니다.</p>
+<p><b><font color="#FFFFFF">6. </font></b>참고로 이 기능은 글쓰기 할 때만 나타나며 기존 스킨에는 포함되어 
+  있지 않습니다.</p>
+<p><b><font color="#FFFFFF">6. </font></b>기존 스킨에 이 기능을 추가하실때에는 스킨 파일의 write.php 
+  파일에 다음과 같은 문구를 원하는 곳에</p>
+<p><b><font color="#FFFFFF">6. </font></b>입력하세요.</p>
+<p><b><font color="#FFFFFF">6. </font><font color="#FF0000">&lt;?=$a_imagebox?&gt;Image 
+  Box&lt;/a&gt;</font></b></p>
+<p><b><font color="#FFFFFF">6. </font></b>그럼 버튼이 나타날것입니다.</p>
+<p><b><font color="#FFFFFF">6. </font></b>제로보드 4.1의 기본스킨에는 이미 적용되어 있습니다.</p>
+<p><b><font color="#FFFFFF">6. </font></b>다음은 이미지 박스의 모습입니다.</p>
+<p><img src="images/7_13.gif" width="545" height="386" border="1"></p>
+<p><b><font color="#FFFFFF">6. </font></b>새창으로 뜨며 <b>관리자가 허용한 용량내</b>에서 <b>사진 
+  자료(gif, jpg)</b>를 업로드 합니다.</p>
+<p><b><font color="#FFFFFF">6. </font></b>기본 용량은 <b>100Kbyte</b> 이며 해당 게시판에 사용 
+  허가가 되어 있어야 합니다.</p>
+<p><b><font color="#FFFFFF">6. </font>[view]</b> 버튼은 올려진 그림의 원래 크기로 보는 기능이며,</p>
+<p><b><font color="#FFFFFF">6. </font>[del] </b>버튼은 삭제 버튼입니다.</p>
+<p><b><font color="#FFFFFF">6. </font></b><img src="images/7_14.gif" width="68" height="20" border="1" align="absmiddle"> 
+  버튼에 마우스를 올려 놓으면 Image Box에 대한 설명이 나타납니다.</p>
+<p><b><font color="#FFFFFF">6. </font></b>그럼 창고에 올려진 이미지를 게시물에 입력하는 방법에 대해서 알아보겠습니다.</p>
+<p><b><font color="#FFFFFF">6. </font></b>올려진 이미지중 원하는 그림을 클릭하면 다음과 같은 화면이 생깁니다.</p>
+<p><img src="images/7_15.gif" width="490" height="218"></p>
+<p><b><font color="#FFFFFF">6. </font>선택된 그림에 대해서 정렬, 테두리, 크기, 여백을 지정</b>할수 있습니다.</p>
+<p><b><font color="#FFFFFF">6. </font></b>이것을 지정한후 <img src="images/7_16.gif" width="74" height="32" align="absmiddle"> 
+  버튼을 누르면 글쓰기 창에 다음의 형태로 약어가 삽입이 됩니다.</p>
+<p><b><font color="#FFFFFF">6. </font><font color="#FF0000">[img:DCP_1597.JPG,align=,width=640,height=423,vspace=0,hspace=0,border=1]</font></b></p>
+<p><b><font color="#FFFFFF">6. </font></b>제로보드는 이 약어를 통해서 글쓴이의 이미지 창고에서 해당 이미지를 
+  정해진 위치에 삽입을</p>
+<p><b><font color="#FFFFFF">6. </font></b>하는 것입니다.</p>
+<p><b><font color="#FFFFFF">6. </font></b>단 이 약어는 해당 글쓰기 폼의 제일 아래에 추가가 된다는 것을 
+  유의해주세요.</p>
+<p> <b><font color="#FFFFFF">6. </font></b>만약 이미지의 위치를 변경하려면 위의 약어를 복사해서 원하는 위치에 
+  붙이시면 됩니다.</p>
+<p><b><font color="#FFFFFF">6. </font></b>스터디 게시물등을 작성할때 매우 유용하게 사용될수 있으며, 타 계정이 
+  아닌 사이트의 계정에</p>
+<p><b><font color="#FFFFFF">6. </font></b>직접 자료가 있으므로 안전합니다.</p>
+<p><b><font color="#FFFFFF">6. </font></b>다만, 불량회원들이 링크용으로 이미지를 사용할 여지가 많으므로 각별히 
+  관리를 조심하여야 합니다.</p>
+<p><b><font color="#FFFFFF">6. </font></b>회원들은 Image Box 를 사용시 미리 보기에 적용하여 미리 
+  보면 확실히 편집을 할수 있습니다.</p>
+
+
+	</td>
+</tr>
+</table>
+<br>
+<div align=right><a href=# style=font-size=8pt;font-family:tamoha><u><b>Top</b></u></a>&nbsp;&nbsp;&nbsp;</div>
+<br>
+</body>
+</html>

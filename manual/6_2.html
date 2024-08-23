@@ -1,0 +1,110 @@
+﻿<html>
+<head>
+<title>ZeroBoard 4.1 pl2 매뉴얼</title>
+	<meta http-equiv=Content-Type content=text/html; charset=UTF-8>
+	<link rel=StyleSheet HREF=style.css type=text/css title=style>
+</head>
+<body topmargin='5'  leftmargin='5' marginwidth='0' marginheight='0'>
+<div align=center>
+<br>
+<table border=0 cellspacing=0 cellpadding=3 width=100%>
+<tr valign=top>
+	<td>
+
+<p><b><u>외부로그인 스킨의 제작</u></b></p>
+<p><b><font color="#FFFFFF">2. </font></b>외부로그인 스킨은 제로보드 디렉토리에 <b>outlogin_skin</b> 
+  디렉토리에 위치하고 있습니다.</p>
+<p><b><font color="#FFFFFF">2. </font></b>기본으로는 <b>default</b> 와 <b>nzeo</b> 디렉토리 
+  2가지가 있습니다.</p>
+<p><b><font color="#FFFFFF">2. </font></b>즉 이 <b>디렉토리 이름이 외부로그인 스킨 이름</b>이 되는 
+  것입니다.</p>
+<p><b><font color="#FFFFFF">2. </font></b>자신이 원하는 형식으로 외부로그인 스킨을 만들고 싶다면 default 
+  디렉토리를 원하는 이름으로 바꾸시거나</p>
+<p><b><font color="#FFFFFF">2. </font></b>복사하시면 됩니다.</p>
+<p>&nbsp;</p>
+<p><b><font color="#FFFFFF">2. </font></b>그럼 직접적인 스킨 제작을 알아보도록 하겠습니다.</p>
+<p>&nbsp;</p>
+<p><b><font color="#FFFFFF">2. </font></b>외부로그인 스킨 디렉토리에는 2개의 파일과 하나의 디렉토리가 있습니다.</p>
+<p><b><font color="#FFFFFF">2. </font></b>용도는 다음과 같습니다.</p>
+<p><b><font color="#FFFFFF">2. 2. </font>logged.html</b> : 로그인 된 회원일 경우에 표시되는 
+  파일</p>
+<p><b><font color="#FFFFFF">2. 2. </font>login.html</b> : 비회원의 경우 로그인 하는 폼이 포함된 
+  파일</p>
+<p><b><font color="#FFFFFF">2. 2. </font>images</b> : 외부로그인 스킨에 사용되는 이미지 모음</p>
+<p>&nbsp;</p>
+<p><b><font color="#FFFFFF">2. </font></b>그럼 제로보드의 아웃로그인 스킨을 만드는 방법을 설명해 드리겠습니다.</p>
+<p><b><font color="#FFFFFF">2. </font>* outlogin_skin 디렉토리 내의 README.TXT 파일의 내용과 
+  동일합니다.</b></p>
+<p><b><font color="#FFFFFF">2. * <font color="#000000">Default 외부로그인 스킨을 응용하시면 
+  만들기 쉽습니다.</font></font></b></p>
+<p><b><font color="#FFFFFF">2. </font>* 아래에서 [dir] 등은 약속된 코드입니다.</b></p>
+<p>&nbsp;</p>
+<p><b><font color="#FFFFFF">2. </font>- 로그인 파일 : <font color="#0000FF">login.html</font></b></p>
+<p> <b><font color="#FFFFFF">2. - </font></b>login.html 파일은 외부로그인 사용시 출력될 로그인 
+  폼입니다.</p>
+<p> <b><font color="#FFFFFF">2. - </font></b>다음 세부분은 절대 수정하지 마세요.</p>
+<p> <b><font color="#FFFFFF">2. - </font></b><font color="#FF0000">&lt;form name=zb_login 
+  method=post action=&quot;[action]&quot; onsubmit=&quot;return zb_login_check_submit();&quot;&gt;<br>
+  <b><font color="#FFFFFF">2. - </font></b>&lt;input type=hidden name=s_url value=&quot;[s_url]&quot;&gt;<br>
+  <b><font color="#FFFFFF">2. - </font></b>&lt;form&gt;</font></p>
+<p> <b><font color="#FFFFFF">2. - </font></b>위의 3줄을 제외한 나머지는 마음껏 수정하셔도 됩니다.</p>
+<p> <b><font color="#FFFFFF">2. - </font></b>다음은 각 표시에 해당하는 내용입니다.</p>
+<p><b><font color="#FFFFFF">2. - </font>[action]</b> : 로그인 하는 페이지</p>
+<p><b><font color="#FFFFFF">2. - </font>[s_url]</b> : 현재 페이지</p>
+<p>&nbsp;</p>
+<p> <b><font color="#FFFFFF">2. - </font></b>그리고 login.html 파일에서 사용되는 기본 이미지는 
+  다음 3가지입니다.</p>
+<p><b><font color="#FFFFFF">2. - </font></b>아래 3가지 이미지는 꼭 <b>images</b> 디렉토리에 
+  해당되는 이름으로 위치하여야 합니다.</p>
+<p> <b><font color="#FFFFFF">2. - </font>i_login.gif</b> : 로그인 버튼</p>
+<p><b><font color="#FFFFFF">2. - </font></b><b>i_join.gif </b>: 회원가입 버튼</p>
+<p><b><font color="#FFFFFF">2. - </font></b><b>i_help.gif </b>: 비밀번호 분실 버튼</p>
+<p>&nbsp;</p>
+<p><b><font color="#FFFFFF">2. </font>- 로그인 되었을 때 : <font color="#0000FF">logged.html</font></b></p>
+<p> <b><font color="#FFFFFF">2. - </font></b>로그인 되었을때의 화면입니다.</p>
+<p> <b><font color="#FFFFFF">2. - </font>[name]</b> : 이름을 표시합니다. (쪽지함의 링크까지 되어 
+  있습니다)</p>
+<p><b><font color="#FFFFFF">2. - </font>[memo]</b> : 쪽지 화면 표시입니다.</p>
+<p><b><font color="#FFFFFF">2. - </font>[logout]</b> : 로그아웃 버튼입니다.</p>
+<p><b><font color="#FFFFFF">2. - </font>[level]</b> : 회원의 레벨 표시입니다.</p>
+<p><b><font color="#FFFFFF">2. - </font>[info]</b> : 정보수정 표시입니다.</p>
+<p><b><font color="#FFFFFF">2. - </font>[point]</b> : 회원의 포인트 입니다</p>
+<p><b><font color="#FFFFFF">2. - </font>[write_num]</b> : 지금까지 쓴 글의 숫자입니다.</p>
+<p><b><font color="#FFFFFF">2. - </font>[write_comment]</b> : 지금까지 쓴 코멘트의 숫자입니다.</p>
+<p><b><font color="#FFFFFF">2. - </font>[join_date]</b> : 가입일입니다.</p>
+<p><b><font color="#FFFFFF">2. - </font>[admin]</b> : 관리자일경우 관리자 버튼입니다.</p>
+<p> <b><font color="#FFFFFF">2. - </font></b>위의 8가지 항목을 원하는 곳에 넣으시면 됩니다.</p>
+<p>&nbsp;</p>
+<p> <b><font color="#FFFFFF">2. - </font></b>그리고 아래 5개의 이미지 및 1개의 flash파일은 꼭 같은 
+  이름으로 outlogin_skin/images 디렉토리에 </p>
+<p><b><font color="#FFFFFF">2. - </font></b>있어야 합니다.</p>
+<p> <b><font color="#FFFFFF">2. - </font>i_memo_on.gif</b> : 쪽지가 왔을때 반짝이는 아이콘</p>
+<p><b><font color="#FFFFFF">2. - </font>i_memo_off.gif</b> : 쪽지가 오지 않았을때 가만 있는 
+  아이콘</p>
+<p><b><font color="#FFFFFF">2. - </font>i_logout.gif</b> : 로그아웃 아이콘</p>
+<p><b><font color="#FFFFFF">2. - </font>i_info.gif</b> : 정보 수정 아이콘</p>
+<p><b><font color="#FFFFFF">2. - </font>i_admin.gif</b> : 관리자 페이지 접근 아이콘</p>
+<p><b><font color="#FFFFFF">2. - </font>i_memo.swf </b>: 쪽지가 도착함을 알리는 목소리</p>
+<p> <b><font color="#FFFFFF">2. - </font></b>로그인 폼을 고치실때 위의 아이콘도 고치시면 됩니다</p>
+<p>&nbsp;</p>
+<p><b><font color="#FFFFFF">2. </font>- 로그인/로그아웃 상관없는 코드</b></p>
+<p> <b><font color="#FFFFFF">2. - </font>[total_member_connect]</b> : 현재 접속해 있는 
+  회원수입니다.</p>
+<p><b><font color="#FFFFFF">2. - </font>[total_guest_connect]</b> : 현재 접속해 있는 
+  비회원수입니다.</p>
+<p><b><font color="#FFFFFF">2. - </font>[total_connect]</b> : 현재 접속해 있는 총 접속자수입니다.</p>
+<p><b><font color="#FFFFFF">2. - </font>[dir]</b> : 외부로그인 스킨의 경로입니다.</p>
+<p><b><font color="#FFFFFF">2. - [dir]</font></b><font color="#FFFFFF"> : </font>외부로그인 
+  스킨 자료실에 데이타를 넣고 &lt;img src=[dir]a.gif&gt; 라고 하시면 자동으로 </p>
+<p><b><font color="#FFFFFF">2. - [dir]</font></b><font color="#FFFFFF"> : </font>경로를 
+  찾아서 바꿉니다.</p>
+	
+
+	</td>
+</tr>
+</table>
+<br>
+<div align=right><a href=# style=font-size=8pt;font-family:tamoha><u><b>Top</b></u></a>&nbsp;&nbsp;&nbsp;</div>
+<br>
+</body>
+</html>

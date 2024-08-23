@@ -1,0 +1,1 @@
+<a href=http://webdive.org target=_blank onfocus=blur()>Telles</a> / modify by <a href=http://slowplus.com target=_blank onfocus=blur()>키르</a>

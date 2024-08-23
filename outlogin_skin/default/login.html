@@ -1,0 +1,33 @@
+<!--- 로그인 폼입니다 -->
+
+<table cellpadding=2 cellspacing=1 border=0>
+
+<form name=zb_login method=post action="[action]" onsubmit="return zb_login_check_submit();">
+<input type=hidden name=s_url value="[s_url]">
+<tr>
+	<td align=right><font style=font-family:tahoma;font-size:8pt><B>ID:</b></font></td>
+	<td> <input type=text name=user_id value='' size=9 class=input> </td>
+</tr>
+
+<tr>
+	<td align=right><font style=font-family:tahoma;font-size:8pt><B>PW:</b></font></td>
+	<td> 
+		<input type=password name=password value='' size=9 class=input> 
+		<input type=checkbox name=auto_login value=1 onclick=check_autologin()>
+	</td>
+</tr>
+
+<tr>
+	<td align=center colspan=2 nowrap>
+		[login] [lost_id]
+	</td>
+</tr>
+
+<tr>
+	<td colspan=2 align=center>
+		[member_join]
+	</td>
+</tr>
+</form>
+
+</table>

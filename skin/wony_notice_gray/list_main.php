@@ -1,0 +1,3 @@
+<tr><td height=23 class=su style='padding-top:2'>&nbsp;<img src=<?=$dir?>/star.gif align=absmiddle>&nbsp;<b><?=$data['subject']?></b></td><td align=right class=n><?=$reg_date?>&nbsp;<?=$a_modify?>M&nbsp;</a><?=$a_delete?>D</a><?=$hide_cart_start?><input type=checkbox name=cart value="<?=$data['no']?>" onfocus=blur()>&nbsp;<?=$hide_cart_end?></td></tr>
+<tr><td colspan=2 style='word-break:break-all;padding:8'><?=$memo?></td></tr>
+<tr height=1><td colspan=2 background=<?=$dir?>/dot.gif><img src=dot.gif height=1></td></tr>

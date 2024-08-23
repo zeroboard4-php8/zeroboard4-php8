@@ -1,0 +1,129 @@
+﻿<html>
+<head>
+<title>ZeroBoard 4.1 pl2 매뉴얼</title>
+	<meta http-equiv=Content-Type content=text/html; charset=UTF-8>
+	<link rel=StyleSheet HREF=style.css type=text/css title=style>
+</head>
+<body topmargin='5'  leftmargin='5' marginwidth='0' marginheight='0'>
+<div align=center>
+<br>
+<table border=0 cellspacing=0 cellpadding=3 width=100%>
+<tr valign=top>
+	<td>
+
+<p><b><u>노프레임 사이트 만들기</u></b></p>
+<p><b><font color="#FFFFFF">3. </font></b>다음과 같은 형태의 사이트가 있다고 생각하여 봅시다.</p>
+<p><img src="images/9_1.gif" width="372" height="275"></p>
+<p><b><font color="#FFFFFF">3. </font></b>흔히 볼수 있는 레이아웃이며 nzeo.com 에서도 사용하고 있는 
+  레이아웃입니다.</p>
+<p><b><font color="#FFFFFF">3. </font></b>위의 레이아웃같은 경우 총 3 부분으로 나누어 집니다.</p>
+<table border=1 width=400>
+<tr>
+<td align=center colspan=2>상단 메뉴</td>
+</tr>
+<tr>
+    <td width="97"> 외부로그인<br>
+<br>
+좌측메뉴
+</td>
+    <td width="287">
+      <div align="center">내용 HTML<br>
+        또는 제로보드</div>
+    </td>
+</tr>
+</table>
+<p><b><font color="#FFFFFF">3. </font></b>이것을 HTML 로 표시하면 다음과 같습니다.</p>
+<p><font color="#0000FF"><b><font color="#FFFFFF">3. </font></b>&lt;table border=1 
+  width=400&gt;<br>
+  <b><font color="#FFFFFF">3. </font></b>&lt;tr&gt;<br>
+  </font><font color="#FFFFFF"><b><font color="#FFFFFF">3. </font></b>&lt;tr&gt;</font><font color="#0000FF">&lt;td 
+  align=center colspan=2&gt;<br>
+  </font><font color="#FFFFFF">&lt;t<b><font color="#FFFFFF">3. </font></b>r&gt;</font> 
+  <font color="#FFFFFF">&lt;tr&gt;</font><font color="#0000FF">상단 메뉴<br>
+  </font><font color="#FFFFFF"><b><font color="#FFFFFF">3. </font></b>&lt;tr&gt;</font><font color="#0000FF">&lt;/td&gt;<br>
+  <b><font color="#FFFFFF">3. </font></b>&lt;/tr&gt;<br>
+  <b><font color="#FFFFFF">3. </font></b>&lt;tr&gt;<br>
+  </font><font color="#FFFFFF"><b><font color="#FFFFFF">3. </font></b>&lt;tr&gt;</font><font color="#0000FF">&lt;td 
+  width=&quot;97&quot;&gt; <br>
+  </font><font color="#FFFFFF"><b><font color="#FFFFFF">3. </font></b>&lt;tr&gt;</font><font color="#FFFFFF">&lt;tr&gt;</font><font color="#0000FF">외부로그인<br>
+  </font><font color="#FFFFFF"><b><font color="#FFFFFF">3. </font></b>&lt;tr&gt;</font><font color="#FFFFFF">&lt;tr&gt;</font><font color="#0000FF">&lt;br&gt;<br>
+  </font><font color="#FFFFFF"><b><font color="#FFFFFF">3. </font></b>&lt;tr&gt;</font><font color="#FFFFFF">&lt;tr&gt;</font><font color="#0000FF">좌측메뉴<br>
+  </font><font color="#FFFFFF">&lt;tr&gt;</font><font color="#FFFFFF">&lt;tr&gt;</font><font color="#0000FF"><br>
+  </font><font color="#FFFFFF"><b><font color="#FFFFFF">3. </font></b>&lt;tr&gt;</font><font color="#0000FF">&lt;td 
+  width=&quot;287&quot;&gt;</font><br>
+  <font color="#FFFFFF"><b><font color="#FFFFFF">3. </font></b>&lt;tr&gt;</font><font color="#FFFFFF">&lt;tr&gt;</font>내용 
+  HTML&lt;br&gt;<br>
+  <font color="#FFFFFF"><b><font color="#FFFFFF">3. </font></b>&lt;tr&gt;</font><font color="#FFFFFF">&lt;tr&gt;</font>또는 
+  제로보드&lt;/div&gt;<br>
+  <font color="#FFFFFF"><b><font color="#FFFFFF">3. </font></b>&lt;tr&gt;</font><font color="#FF0000">&lt;/td&gt;<br>
+  <b><font color="#FFFFFF">3. </font></b>&lt;/tr&gt;<br>
+  <b><font color="#FFFFFF">3. </font></b>&lt;/table&gt;</font></p>
+<p><b><font color="#FFFFFF">3. </font></b>위를 보시면 파란색, 검은색, 빨간색으로 나누어 놓았습니다.</p>
+<p><b><font color="#FFFFFF">3. </font></b>즉 파란색 부분인 다음의 부분을 <b>head.html</b> 로 
+  저장합니다.</p>
+<p><font color="#0000FF"><b><font color="#FFFFFF">3. </font></b>&lt;table border=1 
+  width=400&gt;<br>
+  <b><font color="#FFFFFF">3. </font></b>&lt;tr&gt;<br>
+  </font><font color="#FFFFFF"><b><font color="#FFFFFF">3. </font></b>&lt;tr&gt;</font><font color="#0000FF">&lt;td 
+  align=center colspan=2&gt;<br>
+  </font><font color="#FFFFFF"><b><font color="#FFFFFF">3. </font></b>&lt;tr&gt;</font> 
+  <font color="#FFFFFF">&lt;tr&gt;</font><font color="#0000FF">상단 메뉴<br>
+  </font><font color="#FFFFFF"><b><font color="#FFFFFF">3. </font></b>&lt;tr&gt;</font><font color="#0000FF">&lt;/td&gt;<br>
+  <b><font color="#FFFFFF">3. </font></b>&lt;/tr&gt;<br>
+  <b><font color="#FFFFFF">3. </font></b>&lt;tr&gt;<br>
+  </font><font color="#FFFFFF"><b><font color="#FFFFFF">3. </font></b>&lt;tr&gt;</font><font color="#0000FF">&lt;td 
+  width=&quot;97&quot;&gt; <br>
+  </font><font color="#FFFFFF"><b><font color="#FFFFFF">3. </font></b>&lt;tr&gt;</font><font color="#FFFFFF">&lt;tr&gt;</font><font color="#0000FF">외부로그인<br>
+  </font><font color="#FFFFFF"><b><font color="#FFFFFF">3. </font></b>&lt;tr&gt;</font><font color="#FFFFFF">&lt;tr&gt;</font><font color="#0000FF">&lt;br&gt;<br>
+  </font><font color="#FFFFFF"><b><font color="#FFFFFF">3. </font></b>&lt;tr&gt;</font><font color="#FFFFFF">&lt;tr&gt;</font><font color="#0000FF">좌측메뉴<br>
+  </font><font color="#FFFFFF">&lt;tr&gt;</font><font color="#FFFFFF">&lt;tr&gt;</font><font color="#0000FF"><br>
+  </font><font color="#FFFFFF"><b><font color="#FFFFFF">3. </font></b>&lt;tr&gt;</font><font color="#0000FF">&lt;td 
+  width=&quot;287&quot;&gt;</font></p>
+<p><b><font color="#FFFFFF">3. </font></b>그리고 빨간색 부분을 <b>foot.html</b> 로 저장을 합니다.</p>
+<p><font color="#FFFFFF"><b><font color="#FFFFFF">3. </font></b>&lt;tr&gt;</font><font color="#FF0000">&lt;/td&gt;<br>
+  <b><font color="#FFFFFF">3. </font></b>&lt;/tr&gt;<br>
+  <b><font color="#FFFFFF">3. </font></b>&lt;/table&gt;</font></p>
+<p><b><font color="#FFFFFF">3. </font></b>그럼 노프레임사이트를 만들때 이 head.html 파일과 foot.html 
+  파일만 이용하면</p>
+<p><b><font color="#FFFFFF">3. </font></b>외부 레이아웃은 정해진 것입니다.</p>
+<p><b><font color="#FFFFFF">3. </font></b>물론 head.html 과 foot.html 의 경우 위의 모습은 
+  모두 대략적인 형태입니다.</p>
+  <p><b><font color="#FFFFFF">3. </font></b>그리고 마지막으로 head.html 의 <font color="#0000FF">외부로그인</font>
+  <font color="#555555">에는 옆에 메뉴에서 <b>외부로그인 사용법</b>을 보시면 됩니다.</font></font></p>
+<p><font color="#555555"><b><font color="#FFFFFF">3. </font></b>실제 적용하기 위해서 제로보드에서는 
+  게시판, 또는 그룹설정에서 다음과 같이 지정합니다.</font></p>
+<p><img src="images/9_2.gif" width="446" height="25" border="1"></p>
+<p><img src="images/9_3.gif" width="446" height="25" border="1"></p>
+<p><b><font color="#FFFFFF">3. </font></b>물론<b> ../ </b>라는 경로는 제로보드 보다 상위 디렉토리에 
+  있다는 표시입니다.</p>
+<p><b><font color="#FFFFFF">3. </font></b>이때 주의하실점은 제로보드에서<b> head.html</b> 파일을 
+  읽어올때경로가 바뀐다는 것입니다.</p>
+<p><b><font color="#FFFFFF">3. </font></b>즉 <b>&lt;img src=a.gif&gt;</b> 등으로 이미지등을 
+  호출하면 경로가 <b>제로보드의 경로로</b> 바뀌게 되어서</p>
+<p> <b><font color="#FFFFFF">3. </font>zb41/a.gif</b> 으로 파일을 찾으려 하기 때문에 이미지가 깨어집니다.</p>
+<p><b><font color="#FFFFFF">3. </font>http://abc.com/a.gif</b> 나 <b>/images/a.gif 
+  </b>등의 어디서나 확인할수 있는 <b>절대 경로</b>로 이미지등의 경로를 </p>
+<p><b><font color="#FFFFFF">3. </font></b>지정해 주어야 합니다.</p>
+<p><b><font color="#FFFFFF">3. </font></b>일반 html 파일의 경우 다음과 같이 하면 됩니다.</p>
+<p><img src="images/9_4.gif" width="311" height="219"></p>
+<p><b><font color="#FFFFFF">3. </font></b>위의 소스는 <b>head.html</b>이나 <b>foot.html</b>이 
+  같은 디렉토리에 있다는 가정입니다.</p>
+<p>&nbsp;</p>
+<p><b><font color="#FFFFFF">3. </font></b>이상은 노프레임 사이트 적용에 대한 매우 간단한 예입니다.</p>
+<p><b><font color="#FFFFFF">3. </font></b>수없는 시행착오를 거치면서 html에 대해서, 그리고 간단한 php에 
+  대해서 공부를 하셔야지 원하는</p>
+<p><b><font color="#FFFFFF">3. </font></b>형태의 사이트를 만드실수 있습니다.</p>
+<p><b><font color="#FFFFFF">3. </font></b>제로보드는 조금 더 편리하게 하는 하나의 도구일 뿐이며 이를 사용해서 
+  자신만의 개성을 나타내는 것은</p>
+<p><b><font color="#FFFFFF">3. </font></b>자신에게 달린 것입니다.</p>
+<p>&nbsp;</p>
+
+
+	</td>
+</tr>
+</table>
+<br>
+<div align=right><a href=# style=font-size=8pt;font-family:tamoha><u><b>Top</b></u></a>&nbsp;&nbsp;&nbsp;</div>
+<br>
+</body>
+</html>

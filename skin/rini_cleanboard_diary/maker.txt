@@ -1,0 +1,1 @@
+<a href=http://rinihouse.com  target=_blank  onfocus='this.blur()'>rini</a>

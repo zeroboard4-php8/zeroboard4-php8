@@ -1,0 +1,29 @@
+BODY,TD,SELECT,input,DIV,form,TEXTAREA,center,option,pre,blockquote {font-size:8pt; font-family:verdana; color:aaa; line-height:175%;}
+
+A:link    {color:aaa;text-decoration:none;}
+A:visited {color:aaa;text-decoration:none;}
+A:active  {color:aaa;text-decoration:none;}
+A:hover  {color:bca800;text-decoration:none}
+
+
+BODY
+{scrollbar-face-color:000; 
+scrollbar-shadow-color:#000000 ;
+scrollbar-highlight-color: #000000;
+scrollbar-3dlight-color: #000000;
+scrollbar-darkshadow-color: #000000;
+scrollbar-track-color: #000000;
+scrollbar-arrow-color: #bca800}
+
+.textarea {border:solid 1;border-color:333333;background-color:transparent}
+.input{background-color:transparent; border:1 solid #333333; border-bottom-width:1; border-left-width:0; border-right-width:0; border-top-width:0;}
+.input2{background-color:transparent; border:1 solid #333333; border-bottom-width:1; border-left-width:0; border-right-width:0; border-top-width:0;}
+.com {border:1 solid #333333; background-color:transparent;}
+.bar {font-size:8pt; color:505050;}
+
+.submit {border:0;font-family:verdana;font-size:7pt;background-color:transparent;height:19px}
+.n {font-family:verdana;font-size:7pt}
+.en {font-family:tahoma;font-size:7pt}
+.num {font-family:MS gothic;font-size:8pt}
+.sub {font-family:Times New Roman;}
+.line {background-color:#303030; padding:0}

@@ -1,0 +1,19 @@
+@font-face {font-family:앙증체;src:url(http://joeyw.cafe24.com/nontoxic_ang_2.eot);}
+BODY,TD,SELECT,input,DIV,form,TEXTAREA,center,option,pre,blockquote {font-family:앙증체;font-size:9pt;color:#FF7FBF}
+
+A:link    {color:#FF4BA5;text-decoration:none;}
+A:visited {color:#FF4BA5;text-decoration:none;}
+A:active  {color:#FF4BA5;text-decoration:none;}
+A:hover  {color:#FF7FBF;background-image: url(dot.gif); background-position:bottom; background-repeat:repeat-x;text-decoration:none}
+
+body{SCROLLBAR-FACE-COLOR: #FFE8F5;
+ SCROLLBAR-HIGHLIGHT-COLOR: #FFffff;
+ SCROLLBAR-3DLIGHT-COLOR: #FFFFFF;
+ SCROLLBAR-SHADOW-COLOR: #FF7FBF;
+ SCROLLBAR-DARKSHADOW-COLOR: #FFFFFF;
+ SCROLLBAR-TRACK-COLOR: #FFFFFF;
+ SCROLLBAR-ARROW-COLOR: #FF7FBF}
+
+.input {border:solid 1;background-color:white;border-color:#FF7FBF}
+.submit {border:solid 1 white;font-family:앙증체;font-size:9pt;color:white;background-color:#FF7FBF; height=18px}
+.thm8 {font-family:앙증체;font-size:8pt}

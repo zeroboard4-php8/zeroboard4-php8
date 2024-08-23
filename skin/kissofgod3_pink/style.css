@@ -1,0 +1,29 @@
+A {color:#FF75BB;text-decoration:none}
+A:hover {color:#FF5DCA;text-decoration:underline}
+
+BODY,TD,SELECT,input,DIV,form,TEXTAREA,center,option,pre,blockquote {font-family:굴림;font-size:9pt;color:#FF75BB}
+
+body {background:#FFFFFF; overflow:auto;
+      scrollbar-face-color:;
+      scrollbar-highlight-color:;
+      scrollbar-3dlight-color:;
+      scrollbar-shadow-color:;
+      scrollbar-darkshadow-color:;
+      scrollbar-track-color:;
+      scrollbar-arrow-color:}
+
+.input {border:0; background:; line-height:100%}
+.kissofgod-input {border-width:0 0 1 0; border-style:solid; border-color:#FFB7DB; line-height:100%}
+.kissofgod-input-search {border-width:0 0 1; border-color:#FFB7DB; background:; line-height:100%}
+.kissofgod-submit {border:0; background-color:#FFB7DB; color:white; font-family:Tahoma;font-size:8pt; width:55; height:15; line-height:100%}
+.kissofgod-textarea {border:solid 1 #FFB7DB; background-color:white; overflow-x:hidden; overflow-y:auto}
+.kissofgod-comment-textarea {border:0; background-color:#FFF0F5; overflow:auto}
+
+.kissofgod-tahoma7 {font-family:Tahoma;font-size:7pt}
+.kissofgod-tahoma8 {font-family:Tahoma;font-size:8pt}
+.kissofgod-head-td {background:url(head_bg.gif) repeat-x left bottom; height:14}
+.kissofgod-notice-td {background-color:#FFF0F5}
+.kissofgod-line1 {background-color:#FFF0F5}
+.kissofgod-line2 {background-color:#FFB7DB}
+.kissofgod-line3 {background-color:#FFF0F5}
+.kissofgod-large-font {font-family:굴림; font-size:9pt; color:#FFB7DB}

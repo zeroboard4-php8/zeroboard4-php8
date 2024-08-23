@@ -1,0 +1,126 @@
+
+1.
+
+style.css
+게시판 스킨 대부분의 색 수정이 가능한 화일
+
+
+
+
+
+────────────────────────────────────
+2.
+
+value.php3
+글 목록의 일반 게시물과 코멘트 위에
+마우스가 올라갔을 때 변하는 색 수정하는 부분이 들어 있는 화일
+
+
+
+
+
+────────────────────────────────────
+3.
+
+스크롤바 색은 style.css 에서 바꿀 수 있습니다.
+
+body {background:#FFFFFF; overflow:auto;
+      scrollbar-face-color:;
+      scrollbar-highlight-color:;
+      scrollbar-3dlight-color:;
+      scrollbar-shadow-color:;
+      scrollbar-darkshadow-color:;
+      scrollbar-track-color:;
+      scrollbar-arrow-color:}
+
+
+위와 같은 부분을 아래처럼 색을 채움으로써 바꿀 수 있습니다.
+
+body {background:#FFFFFF; overflow:auto;
+      scrollbar-face-color:#FFFFFF;
+      scrollbar-highlight-color:#000080;
+      scrollbar-3dlight-color:#FFFFFF;
+      scrollbar-shadow-color:#000080;
+      scrollbar-darkshadow-color:#FFFFFF;
+      scrollbar-track-color:#FFFFFF;
+      scrollbar-arrow-color:#000080}
+
+
+색 바꾸는 방법을 모르시는 분은 신의키스(http://kissofgod.net)에 오셔서
+'웹디자인팁→css→투명 스크롤바 만들기'를 참고하시면 됩니다.
+
+
+
+
+
+────────────────────────────────────
+4.
+
+검색폼에 포함된 이미지와 공지게시물 이미지의 경우,
+색만 바꿀 때는 관계 없지만 사이즈(가로*세로크기)까지 변경할 때는
+list_foot에서 검색폼아이콘의 사이즈를, list_notice.php에서 공지아이콘의
+사이즈를 바꿔줘야합니다.
+
+
+
+
+
+────────────────────────────────────
+5.
+
+스킨을 이루고 있는 주요화일들은 아래와 같습니다.
+이 스킨의 색이나 그림만 수정할 때는 굳이 알지 않아도 되는 부분입니다.
+[단, 검색폼과 공지아이콘은 경우 색만 바꿀 때는 관계 없지만,
+사이즈(가로*세로크기)까지 변경할 때는
+list_foot에서 검색폼아이콘의 사이즈를, list_notice.php에서 공지아이콘의
+사이즈를 바꿔줘야합니다.]
+
+
+
+setup.php
+맨 윗 부분 (멤버로그인 등을 클릭할 수 있는)
+
+
+list_head.php
+글 목록의 대표 테이블
+글 목록의 윗 부분 (번호/제목/날짜/조회수 라는 글씨가 써 있는 부분)
+
+
+list_notice.php
+글목록 중 공지사항
+
+
+list_main.php
+글목록의 중간 부분(목록 중 가장 넓은 부분)
+
+
+list_foot.php
+글목록의 아랫 부분 (쓰기/쓰기버튼/관리자접속시 정리버튼/검색폼이 있는 부분)
+
+
+view.php
+글내용보기의 윗부분(이름/홈페이지/제목/내용),
+간단한답글(코멘트박스)테이블설정부분
+
+
+view_write_comment.php
+코멘트쓰기박스내부
+
+
+view_comment.php
+코멘트보기박스내부
+
+
+view_foot.php
+글내용보기(본문)의 아랫부분 - 목록/글쓰기/답글/수정/삭제 버튼
+
+
+
+
+
+────────────────────────────────────
+6.
+
+스킨을 사용하시다가 궁금한 점, 또는 이상한 점이 발견되면
+http://kissofgod.net 에 오셔서 묻고 답하기 게시판에 질문 주시면 됩니다.
+

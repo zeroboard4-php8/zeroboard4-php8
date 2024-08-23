@@ -1,0 +1,12 @@
+BODY,TD,SELECT,input,DIV,form,TEXTAREA,center,option,pre,blockquote {font-size:9pt; font-family:굴림; color:#2B8537;line-height:150%}
+
+A:link    {color:#21611F;text-decoration:none;}
+A:visited {color:#21611F;text-decoration:none;}
+A:active  {color:#cc0000;text-decoration:none;}
+A:hover  {color;#21611F;text-decoration:none;}
+
+.head {border:solid 1 black;font-family:굴림;font-size:9pt;color:black;background-color:white;height:19px}
+.textarea {border:solid 1 #318D2D; font-family:굴림;font-size:9pt;color:black;background-color:white}
+.input{border:solid 1 #318D2D;font-family:굴림;font-size:9pt;color:black;background-color:white;height:19px}
+.submit {border:solid 1;font-family:굴림;font-size:9pt;color:white;background-color:black;height:19px}
+.thm8 {font-family:Tahoma;font-size:8pt;}

@@ -1,0 +1,1 @@
+a,img,embed,font,b,div,center,p,br,audio,video,source

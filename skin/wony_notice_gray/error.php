@@ -1,0 +1,1 @@
+<form><br><br><br><br><br><?php echo $message;?><br><br><?php  if(!$url)  {?>  <input type=button value="back" onclick=history.go(-1) class=submit onfocus=blur()><?php  }  else  {?>  <input type=button value="move" onclick=location.href="<?php echo $url;?>" class=submit onfocus=blur()><?php  }?>   <br><br><br>

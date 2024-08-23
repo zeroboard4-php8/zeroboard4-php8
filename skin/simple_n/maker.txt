@@ -1,0 +1,1 @@
+<a href=http://plusyein.net target=_blank onfocus='this.blur()'><b><font face="Verdana" color="#F06420" size="1">+</font><font class=yeinsfont><b>Yein<b></a></font>

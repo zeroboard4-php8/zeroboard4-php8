@@ -1,0 +1,1 @@
+<td nowrap>&nbsp;<font class=bar><b>|</b></font> <?=$print_category_data?></td>

@@ -1,0 +1,14 @@
+@font-face {font-family:정9;src:url(http://joeyw.cafe24.com/font/JUNG0.eot);}
+BODY,TD,SELECT,input,DIV,form,TEXTAREA,center,option,pre,blockquote {font-size:9pt; font-family:정9; color:F68AB5;line-height:160%}
+
+A:link    {color:F68AB5;text-decoration:none;}
+A:visited {color:F68AB5;text-decoration:none;}
+A:active  {color:F68AB5;text-decoration:none;}
+A:hover  {color:52ADCE;text-decoration:underline}
+
+.head {border:solid 1 F68AB5;font-family:정9;font-size:9pt;color:F68AB5;background-color:white;height:19px}
+.textarea {border:solid 1; font-family:정9;font-size:9pt;color:F68AB5;background-color:white}
+.input {border:solid 1;font-family:정9;font-size:9pt;color:F68AB5;background-color:#ffffff;height:19px}
+.input2  {border-width:1px;border-color:F68AB5;border-top-style:solid;border-left-style:solid;border-right-style:none;border-bottom-style:solid;font-family:정9;font-size:9pt;color:F68AB5;background-color:#ffffff;height:19px}
+.submit {border:solid 1;font-family:정9t;font-size:9pt;color:F68AB5;background-color:white;height:19px;line-height:110%}
+.Lfont {font-family:정9;font-size:9pt;color:F68AB5}
