@@ -26,7 +26,7 @@
 	$dbData = file("config.php");
 	$dbname = $dbData[4];
 
-	$result = zb_query("show table status from $dbname like 'zetyx%'",$connect);
+	$result = zb_query("show table status from $dbname like '".$table_prefix."%'",$connect);
 	$size = 0;
 	$num = 1;
 	while($dbData=mysql_fetch_array($result)) {

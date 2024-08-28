@@ -17,7 +17,7 @@
 	if(!isset($like)) $like='';
 	$href="&keykind=$keykind&like=$like";
 
-	if($total_group_num>1) $s_que = " where group_no = '$group_no' ";
+	if($total_group_num>1) $s_que = " where (group_no = '$group_no' or group_no = '0') ";
 	
 	if(isset($level_search) && intval($level_search)>0) {
 		if($s_que) $s_que.=" and "; else $s_que=" where ";
@@ -42,7 +42,7 @@
 	$total=$temp[0];
 	
 	// 좌측 총 회원수가 실제와 다른 경우 보정
-	if($group_data['member_num']!==$total && empty($s_que)) zb_query("update $group_table set member_num=$total where no='$group_no'");
+	if($group_data['member_num']!==$total_member) zb_query("update $group_table set member_num=$total_member where no='$group_no'");
   
 //페이지 구하는 부분
 	if(empty($page_num))$page_num=10;
@@ -126,7 +126,7 @@
 
    if(confirm("선택된 멤버를 모두 삭제하시겠습니까?"))
    {
-    write.exec2.value="deleteall";
+    write.exec2.value="deleteall_member";
     write.submit();
     return true;
    }

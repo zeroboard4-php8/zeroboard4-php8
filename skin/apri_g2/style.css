@@ -1,0 +1,40 @@
+
+a:link { text-decoration:none; color:#B27E3D}     	
+a:visited { text-decoration:none; color:#B27E3D}  	
+a:active { text-decoration:none; color:#B27E3D}   	
+a:hover { text-decoration:none; color:#B27E3D;  position:relative;top:2px;left:2px;}
+ 
+BODY {background-color:#ffffff;
+     scrollbar-face-color: #ffffff;
+     scrollbar-shadow-color: #F3EEDE; 
+     scrollbar-highlight-color: #F3EEDE;
+     scrollbar-3dlight-color: #ffffff; 
+     scrollbar-darkshadow-color: #ffffff;
+     scrollbar-track-color: #ffffff;
+     scrollbar-arrow-color: #F3EEDE;
+     background-color:transparent}
+
+
+body,td,select,input,div,form,textarea,center,option,pre,blockquote {font-size:9pt; font-family:굴림,Verdana; color:#B27E3D; line-height:160%}
+body {background:#ffffff url(bg.gif) fixed}
+
+.textarea {border:1 solid #D2B48C; overflow:auto; background: url(bg2.gif) no-repeat fixed right bottom}
+.input {border:0; background:; background:url(dot1.gif) repeat-x bottom; line-height:100%}
+.input-search {border-width:0 0 1; border-color:#FFFAF0; background:; line-height:100%}
+.submit {border:0; color:#B27E3D; background-color:#FFFAF0}
+
+.line {background:url(dot.gif); height:1}
+.listline {background:url(dot.gif); height:1}
+.base-line {background-color:#D2B48C; height:1}
+.bg_width {background-image:url('dot.gif')}
+.bg_height {background-image:url('dot2.gif')}
+.info {font-family:verdana; font-size:8pt}
+.button {font-family:verdana; font-size:8pt}
+.submit {border:1; background-color:#FFFAF0; color:#B27E3D; font-family:Verdana; font-size:90%; <tr> 51; height:15;line-height:100%}
+.re-content {color:#B27E3D }
+
+
+
+
+
+

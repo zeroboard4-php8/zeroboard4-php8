@@ -19,7 +19,7 @@
 
 	// 현재 버젼
     	$zb_version = "4.1 pl8";
-    	$zb_php8_version = 'php8-0.2';
+    	$zb_php8_version = 'php8-0.3';
 
 	/*******************************************************************************
  	 * 에러 리포팅 설정과 register_globals_on일때 변수 재 정의
@@ -29,7 +29,7 @@
  	$ext_arr = array('PHP_SELF', '_ENV', '_GET', '_POST', '_FILES', '_SERVER', '_COOKIE', '_SESSION', '_REQUEST',
                   	'HTTP_ENV_VARS', 'HTTP_GET_VARS', 'HTTP_POST_VARS', 'HTTP_POST_FILES', 'HTTP_SERVER_VARS',
                	    'HTTP_COOKIE_VARS', 'HTTP_SESSION_VARS', 'GLOBALS');
-	$filterxssval = array('name', 'email', 'homepage', 'subject', 'memo', 'keyword', 'user_id',
+	$filterxssval = array('name', 'email', 'homepage', 'subject', 'memo', 'keyword', 'user_id', 'jumin1', 'jumin2',
 					'birth_1', 'birth_2', 'birth_3', 'sitelink1', 'sitelink2', 'icq', 'aol', 'msn', 'hobby', 'job',
 					'home_address', 'home_tel', 'office_address', 'office_tel', 'handphone', 'comment');
  	$ext_cnt = count($ext_arr);
@@ -1027,7 +1027,7 @@
 		$tar[] = "@";
 		if (!empty($is_admin) && isset($data['ismember']) && isset($member['no'])) { 
 			if ($is_admin && $data['ismember']!==$member['no']) { 
-            	$src[] = "/(\<(embed|object|ruby)[^\>]*)\>?(\<\/(embed|object|ruby)\>)?/i";
+            	$src[] = "/(\<(embed|object|ruby|form|meta)[^\>]*)\>?(\<\/(embed|object|ruby|form|meta)\>)?/i";
             	$tar[] = "<div style=\"border:1px solid #dcbba3;padding: 6px;background-color: #f9f2ee;color: #bf0000;line-height: 160%\">보안문제로 인하여 관리자 아이디로는 이 게시물에 사용된 embed 또는 object 태그를 볼 수 없습니다.<br />확인하시려면 관리자 권한이 없는 다른 아이디로 접속하세요.</div>";
 			}
 		}
@@ -1055,7 +1055,7 @@
 		if($cut_size<=0) return $msg;
 		if(strpos(strtolower($msg),'[re]') !== false) $cut_size=$cut_size+4;
 		for($i=0;$i<$cut_size;$i++) if(ord($msg[$i])>127) $han++; else $eng++;
-		$cut_size=$cut_size+(int)$han*0.6;
+		$cut_size=intval($cut_size+(int)$han*0.6);
 		$point=1;
 		for ($i=0;$i<strlen($msg);$i++) {
 			if ($point>$cut_size) return $pointtmp."...";
@@ -1352,7 +1352,10 @@
 		$query = preg_replace("#^select.*from.*where.*`?information_schema`?.*#i", "select 1", $query);
 		if ($conn != null) $connect = $conn;
 		if (!function_exists("mysql_query")) {
-			return @mysqli_query($connect, $query);
+			try {
+			    return @mysqli_query($connect, $query);
+			}  catch (Exception $e) {
+			}
 		} else {
 			return @mysql_query($query);
 		}
@@ -1360,10 +1363,14 @@
 	
 	function zb_error() {
 		global $connect, $is_admin;
-		if(empty($is_admin)&&(strpos($_SERVER['SCRIPT_NAME'], 'install')===false)) {
+		if (empty($is_admin)&&(strpos($_SERVER['SCRIPT_NAME'], 'install')===false)&&(strpos($_SERVER['SCRIPT_NAME'], 'admin_setup.php')===false)) {
 			return 'DB 질의 중 오류가 발생했습니다.<br>관리자라면 로그인해서 해당 내용을 확인 할 수 있습니다.';
 		} elseif(!function_exists("mysql_error")) {
-			return mysqli_error($connect);
+			if (empty($connect)) {
+			    Error("DB 접속시 에러가 발생했습니다");
+			} else {
+			    return mysqli_error($connect);
+			}
 		} else {
 			return mysql_error();
 		}
@@ -1425,13 +1432,19 @@
 
 	if (!function_exists("mysql_fetch_array")) {
 		function mysql_fetch_array($resource) {
-			return mysqli_fetch_array($resource);
+			try {
+			    return mysqli_fetch_array($resource);
+			}  catch (Exception $e) {
+			}
 		}
 	}
 
 	if (!function_exists("mysql_connect")) {
 		function mysql_connect($host = null, $user = null, $password = null, $database = null, $port = null, $socket = null) {
-			return @mysqli_connect($host, $user, $password, $database, $port, $socket);
+			try {
+			    return @mysqli_connect($host, $user, $password, $database, $port, $socket);
+			} catch (Exception $e) {
+			}
 		}
 	}
 
@@ -1439,13 +1452,19 @@
 		function mysql_select_db($dbname, $conn = null) {
 			global $connect;
 			if ($conn != null) $connect = $conn;
-			return mysqli_select_db($connect, $dbname);
+			try {
+				return mysqli_select_db($connect, $dbname);
+			} catch (Exception $e) {
+			}
 		}
 	}
 
 	if (!function_exists("mysql_close")) {
 		function mysql_close($result) {
-			return mysqli_close($result);
+			try {
+			    return mysqli_close($result);
+			} catch (Exception $e) {
+			}
 		}
 	}
 
@@ -1459,7 +1478,10 @@
 
 	if (!function_exists("mysql_num_rows")) {
 		function mysql_num_rows($result = null) {
-			return mysqli_num_rows($result);
+			try {
+			    return mysqli_num_rows($result);
+			} catch (Exception $e) {
+			}
 		}
 	}
 
@@ -1479,13 +1501,19 @@
 		function mysql_insert_id($result = null) {
 			global $connect;
 			if ($result != null) $connect = $result;
-			return mysqli_insert_id($connect);
+			try {
+			    return mysqli_insert_id($connect);
+			} catch (Exception $e) {
+			}
 		}
 	}
 
 	if (!function_exists("mysql_free_result")) {
 		function mysql_free_result($result) {
-			return mysqli_free_result($result);
+			try {
+			    return mysqli_free_result($result);
+			} catch (Exception $e) {
+			}
 		}
 	}
 	//////////////////////////////////////

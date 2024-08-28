@@ -89,7 +89,7 @@
 
 	function zbDB_All_down($dbname) {
 		global $connect;
-		$result = zb_query("show table status from $dbname like 'zetyx%'",$connect) or die(zb_error());
+		$result = zb_query("show table status from $dbname like '".$table_prefix."%'",$connect) or die(zb_error());
 		$i=0;
 		while($dbData=mysql_fetch_array($result)) {
 			$tableName = $dbData['Name'];

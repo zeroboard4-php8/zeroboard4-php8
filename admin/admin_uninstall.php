@@ -2,15 +2,15 @@
 	if(isset($_POST['exec'])&&$_POST['exec']=="uninstall"&&$_POST['uninstall']=="ok") {
 		if(!$u_hostname) Error("Hostname을 입력하세요");
 		if(!$u_userid) Error("User ID를 입력하세요");
-		if(!$u_password) Error("Password를 입력하세요");
+		//if(!$u_password) Error("Password를 입력하세요");
 		if(!$u_dbname) Error("DB Name을 입력하세요");
 
 		mysql_close($connect);
 
 		$connect = mysql_connect($u_hostname,$u_userid,$u_password) or error(zb_error());
-		mysql_select_db($u_dbname) or Error(zb_error());
+		mysql_select_db($u_dbname) or error(zb_error());
 		
-		$result = zb_query("show table status from $u_dbname like 'zetyx%'",$connect) or error(zb_error());
+		$result = zb_query("show table status from $u_dbname like '".$table_prefix."%'",$connect) or error(zb_error());
 		while($data=mysql_fetch_array($result)) {
 			zb_query("drop table $data[Name]");
 		}

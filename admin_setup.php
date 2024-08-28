@@ -276,6 +276,7 @@
 			if($exec2=="sendmail") {include "admin/admin_sendmail.php";}
 			elseif($exec2=="modify") {include "admin/admin_modify_member.php";}
 			elseif($exec2=="del_member") { include "admin/admin_del_member.php"; }
+			elseif($exec2=="deleteall_member") { include "admin/admin_del_member.php"; }
 			else {include "admin/admin_view_member.php";} 
 		} elseif($exec=="view_board") {
 			if($exec2=="add") {include "admin/admin_add_board.php";}

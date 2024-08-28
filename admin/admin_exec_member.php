@@ -35,8 +35,15 @@
 // 회원전체 삭제하는 부분 
 	if(isset($_POST['exec2']) && $_POST['exec2']==="deleteall") {
 		//exit(count($_POST));
+		if(!$admin_passwd) Error("관리자 비밀번호를 입력해주세요.");
+		$isold = false;
+		if(strlen($member['password'])<=16&&strlen(get_password("a"))>=41) $isold = true;
+		if($member['password'] != get_password($admin_passwd, $isold)) {
+				Error("관리자 비밀번호가 틀렸습니다.");
+			}
+		if(isset($_SESSION['csrf_token'])) unset($_SESSION['csrf_token']);
 		foreach ($_POST['cart'] as $value) {
-del_member($value);
+            del_member($value);
 		}
 		movepage("$PHP_SELF?exec=view_member&group_no=$group_no&page=$page&keyword=$keyword&keykind=$keykind&like=$like&level_search=$level_search&page_num=$page_num");
 	}

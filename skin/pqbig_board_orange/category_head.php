@@ -1,0 +1,1 @@
+<div align=left><img src=images/t.gif border=0 width=100 height=5><br><Table border=0 width=100% cellspacing=0 cellpadding=0><tr>  <td nowrap valign=middle align=left class=pqbig-thm9><?=$a_c_list?>ALL (<?=$setup['total_article']?>)</a> 
