@@ -40,10 +40,10 @@
 <script>
 function board_recover(a,b)
 {
- c = confirm(b + " 게시판을 정리하시겠습니까?")
+ c = confirm(b + " 게시판을 정리하고 게시판의 스킨을 php 8 이상 환경의 문법에 부합하도록 자동으로 패치합니다.\n이 동작으로 정상 작동이 불가한 스킨은 직접 패치하여야 하며\n패치 전 원본 파일은 각 스킨 디렉토리 하단의 original 디렉토리에 저장됩니다.")
  if(c==true)
  {
-	window.open("admin/recover.php?no="+a,"recover","width=300,height=100,toolbars=no,resizable=no,scrollbars=no")
+	window.open("admin/recover.php?no="+a,"recover","width=450,height=100,toolbars=no,resizable=no,scrollbars=no")
  }
 }
 </script>
@@ -63,7 +63,7 @@ echo"
        <td style=font-family:Tahoma;font-size:8pt;><b>기본설정 변경</td>
        <td style=font-family:Tahoma;font-size:8pt;><b>권한 설정</td>
        <td style=font-family:Tahoma;font-size:8pt;><b>카테고리 관리</a></td>
-       <td style=font-family:Tahoma;font-size:8pt;><b>오류복구</a></td>
+       <td style=font-family:Tahoma;font-size:8pt;><b>정리 및 스킨패치</a></td>
        <td style=font-family:Tahoma;font-size:8pt;><b>삭제</a></td>
      </tr>";
 

@@ -52,7 +52,7 @@ return true;
   </td>
 </tr>
 <tr height=25 bgcolor=#e0e0e0>
-  <td  align=right style=font-family:Tahoma;font-size:8pt;><b>관리자 암호를 입력해주세요.&nbsp;</td>
+  <td  align=right style=font-family:Tahoma;font-size:8pt;><b>관리자 비밀번호 입력&nbsp;</td>
   <td >&nbsp;&nbsp;
      <input type=password  name=admin_passwd value='' size=40 maxlength=255 class=input style="border: 2px solid #ff0000;">
   </td>

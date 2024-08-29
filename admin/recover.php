@@ -1,23 +1,98 @@
 <?php
- $_zb_path = "../";
+    $_zb_path = "../";
 
- include "../lib.php";
+    include "../lib.php";
 
- $connect=dbconn();
+    $connect=dbconn();
 
- $member=member_info();
+    $member=member_info();
 
- if(!$member['no']||$member['is_admin']>1||$member['level']>1) Error("최고 관리자만이 사용할수 있습니다");
+    if(!$member['no']||$member['is_admin']>1||$member['level']>1) Error("최고 관리자만이 사용할수 있습니다");
 
- $board_info=mysql_fetch_array(zb_query("select * from $admin_table where no='$no'",$connect));
+    $board_info=mysql_fetch_array(zb_query("select * from $admin_table where no='$no'",$connect));
 
- $id=$board_info['name'];
+    $id=$board_info['name'];
  
- head("bgcolor=black")
+    head("bgcolor=black");
+	
+	$skinname=$board_info['skinname'];
+    $scanarr = array();
+	if (!is_dir('../skin/'.$skinname.'/')) {
+		$skinstat = "스킨 디렉토리 접근 불가";
+	} else {
+        scanskindir('../skin/'.$skinname.'/');
+        if (!is_dir('../skin/'.$skinname.'/original')) {
+	        @mkdir('../skin/'.$skinname.'/original', 0755, true);
+		    if (is_dir('../skin/'.$skinname.'/original')) {
+                foreach ($scanarr as $file) {
+                    if (preg_match("/(\.(php|php3|htm|html|txt))$/i", strtolower($file)) && filesize($file) > 0) {
+				        if (!file_exists(dirname($file)."/original/".basename($file))) {
+					        @copy($file, dirname($file)."/original/".basename($file));
+				        }
+                        $f = @fopen($file,"r");
+                        $temp = @fread($f,filesize($file));
+                        @fclose($f);
+		                if (!is_utf8($temp)) {
+                            $temp = iconv("EUC-KR", "UTF-8", $temp);
+                        }
+                        $temp = str_replace("<?php", "<?", $temp);
+                        $temp = str_replace("<?php ", "<?", $temp);
+                        $temp = str_replace("<? ", "<?", $temp);
+                        $temp = str_replace("<?", "<?php ", $temp);
+                        $temp = str_replace("<?php =", "<?=", $temp);
+                        $temp = preg_replace("/(\\$[a-z_][a-z0-9_]*)\\[([a-z][a-z0-9_]*)\\]/", "$1['$2']", $temp);
+		
+                        $f = @fopen($file,"w");
+                        @fwrite($f, $temp);
+                        @fclose($f);
+                    }
+                }
+			    $skinstat = "성공";
+		    } else {
+                $skinstat = "퍼미션 체크";
+            }
+        } else {
+		    $skinstat = "완료";
+	    }
+	}
+ 
+    function is_utf8($string) {
+        // UTF-8 문자열은 1바이트에서 4바이트로 구성됩니다.
+        // 각 바이트는 특정 범위 내에 있어야 합니다.
+        return preg_match('%^(?:
+              [\x09\x0A\x0D\x20-\x7E]            # ASCII
+            | [\xC2-\xDF][\x80-\xBF]             # 2바이트 시퀀스
+            | \xE0[\xA0-\xBF][\x80-\xBF]         # 3바이트 시퀀스 (E0)
+            | [\xE1-\xEC\xEE\xEF][\x80-\xBF]{2}  # 3바이트 시퀀스 (E1-EC, EE-EF)
+            | \xED[\x80-\x9F][\x80-\xBF]         # 3바이트 시퀀스 (ED)
+            | \xF0[\x90-\xBF][\x80-\xBF]{2}      # 4바이트 시퀀스 (F0)
+            | [\xF1-\xF3][\x80-\xBF]{3}          # 4바이트 시퀀스 (F1-F3)
+            | \xF4[\x80-\x8F][\x80-\xBF]{2}      # 4바이트 시퀀스 (F4)
+        )*$%xs', $string);
+    }
+
+    function scanskindir($dir) {
+	    global $scanarr;
+        if (is_dir($dir)) {
+            if ($dh = opendir($dir)) {
+                while (($file = readdir($dh)) !== false) {
+				    if ($file === '.' || $file === '..' || $file === 'original') continue;
+				    if (is_dir($dir.$file)) {
+					    scanskindir($dir.$file.'/');
+				    } else {
+					    $scanarr[] = $dir.$file;
+				    }
+                }
+                closedir($dh);
+            }
+        }
+	    return $scanarr;
+    }
 ?>
 <img src=../images/t.gif border=0 width=1 height=8><Br>
 <u><center><font color=aaaaaa>[<b><?=$id?></b>] 게시판 정리</font></center></u><Br>
 <img src=../images/t.gif border=0 width=1 height=8><Br>
+<font color=white>&nbsp;&nbsp;&nbsp;&nbsp;스킨 패치 : <font color=yellow><?php echo $skinstat; ?></font>
 <font color=white>&nbsp;&nbsp;&nbsp;&nbsp;Category 정리 :
 <?php
   $s_que="";

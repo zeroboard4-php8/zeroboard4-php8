@@ -1,5 +1,5 @@
 <?php include "$dir/value.php3"; ?>
-<?php
+<?php 
   /*
   글을 삭제하거나 할때 비밀번호를 물어보는 부분입니다
  

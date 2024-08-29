@@ -345,7 +345,7 @@ while($board_data_list=mysql_fetch_array($board_list))
 	 </td>
   </tr>
 <tr height=22 align=center>
-     <td bgcolor=#a0a0a0 align=right style=font-family:Tahoma;font-size:8pt;font-weight:bold;>관리자 비밀번호를 입력해주세요&nbsp;&nbsp;</td>
+     <td bgcolor=#a0a0a0 align=right style=font-family:Tahoma;font-size:8pt;font-weight:bold;>관리자 비밀번호 입력&nbsp;&nbsp;</td>
 	 <td align=left bgcolor=#e0e0e0>&nbsp;<input type=password  name=admin_passwd value='' size=40 maxlength=255 class=input style="border: 2px solid #ff0000;"></td>
   </tr>
   <tr height=22 align=center><td colspan=2><input type=submit value='  변경 완료  ' style=font-weight:bold;border-color:#b0b0b0;background-color:#3d3d3d;color:#ffffff;font-size:8pt;font-family:Tahoma;height:23px;>

@@ -17,7 +17,7 @@
 	if(!isset($like)) $like='';
 	$href="&keykind=$keykind&like=$like";
 
-	if($total_group_num>1) $s_que = " where (group_no = '$group_no' or group_no = '0') ";
+	if($total_group_num>1) $s_que = " where (group_no = '$group_no' or group_no = '0' or group_no is null) ";
 	
 	if(isset($level_search) && intval($level_search)>0) {
 		if($s_que) $s_que.=" and "; else $s_que=" where ";

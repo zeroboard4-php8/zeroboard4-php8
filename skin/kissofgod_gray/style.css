@@ -1,0 +1,26 @@
+
+A:link    {color:black;text-decoration:none}
+A:visited {color:black;text-decoration:none}
+A:active  {color:black;text-decoration:none}
+A:hover  {color:gray;text-decoration:underline}
+
+body,td,select,input,div,form,textarea,center,option,pre,blockquote {font-size:9pt; font-family:µ¸¿ò; color:black;line-height:160%}
+
+body {background:white url(bg.jpg) no-repeat fixed right bottom}
+
+.textarea {border:solid 1 silver; background-color:white; overflow:auto}
+.input {border:0; background:; background:url(dot.gif) repeat-x bottom; line-height:100%}
+.input-search {border-width:0 0 1; border-color:silver; background:; line-height:100%}
+.submit {border:0; color:white; background-color:gray}
+
+.kissofgod-base-line {background-color:black; height:1}
+.kissofgod-base-listline {background:url(dot.gif); height:1}
+.kissofgod-bold-font {font-family:Tahoma; font-size:8pt; font-weight:bold}
+.kissofgod-list-head-td {background-color:}
+.kissofgod-list-head-title {font-family:Tahoma; font-size:8pt}
+.kissofgod-list-notice-tr {background-color:}
+.kissofgod-button-font {font-family:Tahoma; font-size:8pt}
+.kissofgod-write-commentbox {border:0; background:url(dot.gif) repeat-x left top}
+.kissofgod-dotline {background:url(dot.gif)}
+.kissofgod-line {background-color:}
+.kissofgod-submit {border:0; background:; font-family:Tahoma; font-size:8pt; font-weight:bold; cursor:hand}

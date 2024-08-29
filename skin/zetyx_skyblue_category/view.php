@@ -35,11 +35,11 @@
   <?=$hide_comment_start?> <?=$hide_comment_end?> : 간단한 답글 쓰기 보여주기/ 숨기기
 
 
-  <?=$name?> : 메일이 링크되어 있는 이름 * 원래 그대로 <?=$data[name]?>
-  <?=$email?> : 메일.. 거의 직접 쓸일은 없음;; 메일만 있는 변수 <?=$data[email]?>
-  <?=$subject?> : 제목  * 원래 그대로 <?=$data[suject]?>
+  <?=$name?> : 메일이 링크되어 있는 이름 * 원래 그대로 <?=$data['name']?>
+  <?=$email?> : 메일.. 거의 직접 쓸일은 없음;; 메일만 있는 변수 <?=$data['email']?>
+  <?=$subject?> : 제목  * 원래 그대로 <?=$data['suject']?>
   <?=$memo?> : 내용 부분
-  <?=$homepage?> : 링크가 걸린 홈페이지 * 홈페이지 주소만 : <?=$data[homepage]?>
+  <?=$homepage?> : 링크가 걸린 홈페이지 * 홈페이지 주소만 : <?=$data['homepage']?>
   <?=$hit?> : 조회수
   <?=$vote?> : 추천수
   <?=$ip?> : 아피주소

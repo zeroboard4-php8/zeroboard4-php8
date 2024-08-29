@@ -151,7 +151,7 @@ $_SESSION['zb_logged_no']=$zb_logged_no;
 ?>
 
 <script>
-	alert("회원가입이 정상적으로 처리 되었습니다\r\n\r\n회원이 되신것을 진심으로 축하드립니다.");
+	alert("회원가입이 정상적으로 처리 되었습니다\n\n회원이 되신것을 진심으로 축하드립니다.");
 	opener.window.history.go(0);
 	window.close();
 </script>

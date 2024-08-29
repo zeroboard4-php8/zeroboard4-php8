@@ -11,7 +11,7 @@ function formresize(mode) {
 }
 // -->
 </SCRIPT>
-<?php
+<?php 
   /*
   write.php 는 글쓰기 폼입니다.
   아래 변수를 사용합니다.
@@ -51,7 +51,7 @@ function formresize(mode) {
   <td background=<?=$dir?>/images/lh_bg.gif><img src=images/t.gif height=15></td>
   </tr>
 </table>
-<?php
+<?php 
   if($mode=="reply") $title="<span style=font-family:Arial;font-size:8pt;font-weight:bold;><font color=#333333>Post a </font> <span style=font-size:15px;letter-spacing:-1px;>Reply</span></span>";
   elseif($mode=="modify") $title="<span style=font-family:Arial;font-size:8pt;font-weight:bold;><font color=#333333>Modify</font> <span style=font-size:15px;letter-spacing:-1px;>Article</span></span>";
   else $title="<span style=font-family:Arial;font-size:8pt;font-weight:bold;><font color=#333333>Post a </font> <span style=font-size:15px;letter-spacing:-1px;>New Article</span></span>";

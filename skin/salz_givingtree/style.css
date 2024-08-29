@@ -1,0 +1,30 @@
+BODY  
+{scrollbar-face-color: #ffffff; scrollbar-shadow-color: #7A6C54;  
+scrollbar-highlight-color: #ffffff; scrollbar-3dlight-color: #7A6C54;  
+scrollbar-darkshadow-color: #ffffff; scrollbar-track-color: #ffffff; 
+scrollbar-arrow-color: #ffffff}
+
+BODY,TD,SELECT,input,DIV,form,TEXTAREA,center,option,pre,blockquote {font-size:9pt; font-family:±¼¸²,arial; color:#4F3A16;line-height:150%}
+
+body {background-attachment:fixed; background-image:url(bg.gif);  background-repeat:no-repeat; background-position: left bottom;
+} 
+
+A:link    {color:#000000;text-decoration:none;}
+A:visited {color:#000000;text-decoration:none;}
+A:active  {color:#000000;text-decoration:none;}
+A:hover  {color:#908F5F;text-decoration:none;}
+
+.dot {	border-top-style:none; border-right-style:none; border-bottom-style:none; BACKGROUND: url(dot.gif) repeat-x bottom;border-left-style:none; solid;font-size:9pt;color:#000000;line-height:100%;HEIGHT: 17px}
+.input{border:solid 1 #000000;font-family:Arial;font-size:9pt;color:#000000;height:19px}
+.pass {border:solid 1 #000000;font-family:arial;font-size:9pt;color:#000000;background-color: white;height:17px}
+.passsubmit {border:solid 0;background: url(submit.gif);background-repeat:no-repeat; background-position:0% 0%; background-attachment:fixed; font-family:±¼¸²;font-size:9pt;color:white;height:17px; width:61px}
+.date {font-family:aria;font-size:9pt;color:#000000;}
+.top {font-family: Arial;font-size:9pt;color:#000000;}
+
+.number {font-family:arial;font-size:8pt;color: Black;}
+.url {font-family:arial;font-size:9px;color: Black;}
+
+.textarea {border:solid 1 #000000;font-family:Arial;font-size:9pt;color:#000000;}
+
+.memo {font-size:9pt;color:#000000;}
+.name {font-size:9pt;color:#000000;}
