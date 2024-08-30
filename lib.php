@@ -1216,31 +1216,31 @@
 	// 3. mysql에 password()가 아예 없는 경우
 	function get_password($str, $isold=false) {
 		global $connect;
-		$tmp0 = zb_query("SELECT password('$str')");
-		if (isset($tmp0)) {
-			$tmp1 = mysql_fetch_array($tmp0);
-			mysql_free_result($tmp0);
-			if ($isold===true) {
-				$nr    = 1345345333;
-				$add   = 7;
-				$nr2   = 0x12345671;
-				$tmp   = null;
-				for ($i = 0; $i < strlen($str); $i++) {
-					$byte = substr($str, $i, 1);
-					if ($byte == ' ' || $byte == "\t") {
-						continue;
-					}
-					$tmp = ord($byte);
-					$nr ^= ((($nr & 63) + $add) * $tmp) + (($nr << 8) & 0xFFFFFFFF);
-					$nr2 += (($nr2 << 8) & 0xFFFFFFFF) ^ $nr;
-					$add += $tmp;
+		if ($isold===true) {
+			$nr    = 1345345333;
+			$add   = 7;
+			$nr2   = 0x12345671;
+			$tmp   = null;
+			for ($i = 0; $i < strlen($str); $i++) {
+				$byte = substr($str, $i, 1);
+				if ($byte == ' ' || $byte == "\t") {
+					continue;
 				}
-				$rs = sprintf("%08x%08x", $nr & 0x7FFFFFFF, $nr2 & 0x7FFFFFFF);
-			} else {
-				$rs = $tmp1[0];
+				$tmp = ord($byte);
+				$nr ^= ((($nr & 63) + $add) * $tmp) + (($nr << 8) & 0xFFFFFFFF);
+				$nr2 += (($nr2 << 8) & 0xFFFFFFFF) ^ $nr;
+				$add += $tmp;
 			}
+			$rs = sprintf("%08x%08x", $nr & 0x7FFFFFFF, $nr2 & 0x7FFFFFFF);
 		} else {
-			$rs = '*'.strtoupper(sha1(sha1($str, true)));
+			$tmp0 = zb_query("SELECT password('$str')");
+			if (isset($tmp0)) {
+				$tmp1 = mysql_fetch_array($tmp0);
+				mysql_free_result($tmp0);
+				$rs = $tmp1[0];
+			} else {
+				$rs = '*'.strtoupper(sha1(sha1($str, true)));
+			}
 		}
 		return $rs;
 	}
