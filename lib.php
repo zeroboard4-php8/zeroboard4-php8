@@ -8,18 +8,18 @@
  * by zero (zero@nzeo.com)
  *
  ******************************************************************************/
-    if(realpath($_SERVER['SCRIPT_FILENAME']) == realpath(__FILE__)) exit;
+	if(realpath($_SERVER['SCRIPT_FILENAME']) == realpath(__FILE__)) exit;
 
-    // 에러 표시 설정    
-    ini_set('display_errors', '0');
-    require "fixcloudflare.php";
+	// 에러 표시 설정    
+	ini_set('display_errors', '0');
+	require "fixcloudflare.php";
 
-    // W3C P3P 규약설정
-    header('P3P: CP="ALL CURa ADMa DEVa TAIa OUR BUS IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE LOC OTC"');
+	// W3C P3P 규약설정
+	header('P3P: CP="ALL CURa ADMa DEVa TAIa OUR BUS IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE LOC OTC"');
 
 	// 현재 버젼
-    	$zb_version = "4.1 pl8";
-    	$zb_php8_version = 'php8-0.4';
+	$zb_version = "4.1 pl8";
+	$zb_php8_version = 'php8-0.4';
 
 	/*******************************************************************************
  	 * 에러 리포팅 설정과 register_globals_on일때 변수 재 정의
@@ -68,17 +68,17 @@
 	unset($group);
 	unset($setup);
 	unset($s_que);
-        if(isset($select_arrange)) {
-			$select_arrange = str_replace(array("'",'"','\\'),'',$select_arrange);
-            if(!in_array($select_arrange,array('headnum','subject','name','hit','vote','reg_date','download1','download2'))) unset($select_arrange);
-		}
-        if(isset($desc)) if(!in_array($desc,array('desc','asc'))) unset($desc);
+	if(isset($select_arrange)) {
+		$select_arrange = str_replace(array("'",'"','\\'),'',$select_arrange);
+		if(!in_array($select_arrange,array('headnum','subject','name','hit','vote','reg_date','download1','download2'))) unset($select_arrange);
+	}
+	if(isset($desc)) if(!in_array($desc,array('desc','asc'))) unset($desc);
 
 	/*******************************************************************************
  	 * include 되었는지를 검사
  	 ******************************************************************************/
 	if(defined("_zb_lib_included")) return;
-    define("_zb_lib_included",true);
+	define("_zb_lib_included",true);
 
 	$_startTime=getmicrotime();
 
@@ -441,7 +441,7 @@
 <html> 
 <head>
 	<title><?=$setup['title']?></title>
-	<meta http-equiv=Content-Type content=text/html; charset=utf-8>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<link rel=StyleSheet HREF=<?=$stylefile?> type=text/css title=style>
 	<?php if($setup['use_formmail']) echo $zbLayerScript;?>
 	<?php if($scriptfile) include "script/".$scriptfile;?>
@@ -465,7 +465,7 @@
 			?>
 <html>
 <head>
-	<meta http-equiv=Content-Type content=text/html; charset=utf-8>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<link rel=StyleSheet HREF=style.css type=text/css title=style>
 	<?php if(isset($script)) echo $script; ?>
 </head>
@@ -796,7 +796,7 @@
 	// 제로보드 자동 로그인 세션값을 만드는 함수
 	function makeZBSessionID($no) {
 		global $_zb_path, $_zbDefaultSetup;
-        $no = (int)$no;
+		$no = (int)$no;
 
 		$zbSessionID = md5($no."-^A-".time());
 
@@ -880,8 +880,8 @@
 		$str=str_replace("<","&lt;",$str);
 		$source = array();
 		$target = array();
-                $list = explode(",", trim($list).',iframe');
-                foreach($list as $key => $val) {
+		$list = explode(",", trim($list).',iframe');
+		foreach($list as $key => $val) {
 			$val = trim($val);
 			if (!$val) continue;
 			$source[] = "/&lt;{$val}/i";
@@ -889,7 +889,7 @@
 			$source[] = "/&lt;\/{$val}/i";
 			$target[] = "</{$val}";
 		}
-                return preg_replace($source, $target, $str);
+		return preg_replace($source, $target, $str);
 	}
 
 
@@ -1027,8 +1027,8 @@
 		$tar[] = "@";
 		if (!empty($is_admin) && isset($data['ismember']) && isset($member['no'])) { 
 			if ($is_admin && $data['ismember']!==$member['no']) { 
-            	$src[] = "/(\<(embed|object|ruby|form|meta)[^\>]*)\>?(\<\/(embed|object|ruby|form|meta)\>)?/i";
-            	$tar[] = "<div style=\"border:1px solid #dcbba3;padding: 6px;background-color: #f9f2ee;color: #bf0000;line-height: 160%\">보안문제로 인하여 관리자 아이디로는 이 게시물에 사용된 embed 또는 object 태그를 볼 수 없습니다.<br />확인하시려면 관리자 권한이 없는 다른 아이디로 접속하세요.</div>";
+				$src[] = "/(\<(embed|object|ruby|form|meta)[^\>]*)\>?(\<\/(embed|object|ruby|form|meta)\>)?/i";
+				$tar[] = "<div style=\"border:1px solid #dcbba3;padding: 6px;background-color: #f9f2ee;color: #bf0000;line-height: 160%\">보안문제로 인하여 관리자 아이디로는 이 게시물에 사용된 embed 또는 object 태그를 볼 수 없습니다.<br />확인하시려면 관리자 권한이 없는 다른 아이디로 접속하세요.</div>";
 			}
 		}
 	
@@ -1040,10 +1040,10 @@
 	// 파일 사이즈를 kb, mb에 맞추어서 변환해서 리턴
 	function getfilesize($bytes) {
 		$units = array( 0 => 'Byte', 1 => 'KB', 2 => 'MB', 3 => 'GB' );
-    	$log = log( $bytes, 1024 );
-    	$power = (int) $log;
-    	$size = pow(1024, $log - $power);
-    	return round($size, 2) . ' ' . $units[$power];
+		$log = log( $bytes, 1024 );
+		$power = (int) $log;
+		$size = pow(1024, $log - $power);
+		return round($size, 2) . ' ' . $units[$power];
 	}
 
 
@@ -1123,7 +1123,6 @@
 
 	// 지정된 디렉토리의 파일 정보를 구함
 	function get_dirinfo($path) {
-
 		$handle=@opendir($path);
 		while($info = readdir($handle)) {
 			if($info != "." && $info != "..") {
@@ -1211,44 +1210,46 @@
 		else return htmlspecialchars(str_replace(array("\r\n", "\r", "\0"), array("\n", "\n", ''), $str));
 	}
 	
-	// 1. mysql에서 password()가 16자(옛날) 방식인 경우
-	// 2. 16자 방식 비밀번호 출력을 원하는 경우
-	// 3. mysql에서 password()가 41자 방식인 경우
-	// 4. mysql에 password()가 아예 없는 경우
-    function get_password($str, $isold=false) {
-        global $connect;
-        $tmp0 = zb_query("SELECT password('$str')");
-        $tmp1 = mysql_fetch_array($tmp0);
-        mysql_free_result($tmp0);
-        if(strlen($tmp1[0])<=16) {
-            $rs = $tmp1[0];
-        } else if($isold===true) {
-            $nr    = 1345345333;
-            $add   = 7;
-            $nr2   = 0x12345671;
-            $tmp   = null;
-            for ($i = 0; $i < strlen($str); $i++) {
-                $byte = substr($str, $i, 1);
-                if ($byte == ' ' || $byte == "\t") {
-                    continue;
-                }
-                $tmp = ord($byte);
-                $nr ^= ((($nr & 63) + $add) * $tmp) + (($nr << 8) & 0xFFFFFFFF);
-                $nr2 += (($nr2 << 8) & 0xFFFFFFFF) ^ $nr;
-                $add += $tmp;
-            }
-            $rs = sprintf("%08x%08x", $nr & 0x7FFFFFFF, $nr2 & 0x7FFFFFFF);
-        } else {
-            $rs = (strlen($tmp1[0])===41) ? $tmp1[0] : '*'.strtoupper(sha1(sha1($str, true)));
-        }
-        return $rs;
-    }
+	// 패스워드 생성 함수
+	// 1. 16자 방식 비밀번호 출력을 원하는 경우
+	// 2. mysql에서 password() 사용 가능한 경우(16자 또는 41자 출력)
+	// 3. mysql에 password()가 아예 없는 경우
+	function get_password($str, $isold=false) {
+		global $connect;
+		$tmp0 = zb_query("SELECT password('$str')");
+		if (isset($tmp0)) {
+			$tmp1 = mysql_fetch_array($tmp0);
+			mysql_free_result($tmp0);
+			if ($isold===true) {
+				$nr    = 1345345333;
+				$add   = 7;
+				$nr2   = 0x12345671;
+				$tmp   = null;
+				for ($i = 0; $i < strlen($str); $i++) {
+					$byte = substr($str, $i, 1);
+					if ($byte == ' ' || $byte == "\t") {
+						continue;
+					}
+					$tmp = ord($byte);
+					$nr ^= ((($nr & 63) + $add) * $tmp) + (($nr << 8) & 0xFFFFFFFF);
+					$nr2 += (($nr2 << 8) & 0xFFFFFFFF) ^ $nr;
+					$add += $tmp;
+				}
+				$rs = sprintf("%08x%08x", $nr & 0x7FFFFFFF, $nr2 & 0x7FFFFFFF);
+			} else {
+				$rs = $tmp1[0];
+			}
+		} else {
+			$rs = '*'.strtoupper(sha1(sha1($str, true)));
+		}
+		return $rs;
+	}
 	
 	// <input type=hidden name=csrf_token value=<?=generate_csrf_token() 방식으로 사용
 	function generate_csrf_token() {
-        if (isset($_SESSION['csrf_token']) && time() - $_SESSION['csrf_token_time'] < 600) {
-            return $_SESSION['csrf_token'];
-        }
+		if (isset($_SESSION['csrf_token']) && time() - $_SESSION['csrf_token_time'] < 600) {
+		return $_SESSION['csrf_token'];
+	}
 		$_SESSION['csrf_token'] = uniqid(md5(mt_rand()), false);
 		$_SESSION['csrf_token_time'] = time();
 		return $_SESSION['csrf_token'];
@@ -1320,31 +1321,28 @@
  		return $message;
 	}
 	
-    function xss2($data) {
-        $data = str_replace(array('&amp;','&lt;','&gt;'), array('&amp;amp;','&amp;lt;','&amp;gt;'), $data);
-        $data = preg_replace('/(&#*\w+)[\x00-\x20]+;/u', '$1;', $data);
-        $data = preg_replace('/(&#x*[0-9A-F]+);*/iu', '$1;', $data);
-        $data = html_entity_decode($data, ENT_COMPAT, 'UTF-8');
-        $data = preg_replace('#(<[^>]+?[\x00-\x20"\'])(?:on|xmlns)[^>]*+>#iu', '$1>', $data);
-        $data = preg_replace('#([a-z]*)[\x00-\x20]*=[\x00-\x20]*([`\'"]*)[\x00-\x20]*j[\x00-\x20]*a[\x00-\x20]*v[\x00-\x20]*a[\x00-\x20]*s[\x00-\x20]*c[\x00-\x20]*r[\x00-\x20]*i[\x00-\x20]*p[\x00-\x20]*t[\x00-\x20]*:#iu', '$1=$2nojavascript...', $data);
-        $data = preg_replace('#([a-z]*)[\x00-\x20]*=([\'"]*)[\x00-\x20]*v[\x00-\x20]*b[\x00-\x20]*s[\x00-\x20]*c[\x00-\x20]*r[\x00-\x20]*i[\x00-\x20]*p[\x00-\x20]*t[\x00-\x20]*:#iu', '$1=$2novbscript...', $data);
-        $data = preg_replace('#([a-z]*)[\x00-\x20]*=([\'"]*)[\x00-\x20]*-moz-binding[\x00-\x20]*:#u', '$1=$2nomozbinding...', $data);
-        $data = preg_replace('#(<[^>]+?)style[\x00-\x20]*=[\x00-\x20]*[`\'"]*.*?expression[\x00-\x20]*\([^>]*+>#i', '$1>', $data);
-        $data = preg_replace('#(<[^>]+?)style[\x00-\x20]*=[\x00-\x20]*[`\'"]*.*?behaviour[\x00-\x20]*\([^>]*+>#i', '$1>', $data);
-        $data = preg_replace('#(<[^>]+?)style[\x00-\x20]*=[\x00-\x20]*[`\'"]*.*?s[\x00-\x20]*c[\x00-\x20]*r[\x00-\x20]*i[\x00-\x20]*p[\x00-\x20]*t[\x00-\x20]*:*[^>]*+>#iu', '$1>', $data);
-        $data = preg_replace('#</*\w+:\w[^>]*+>#i', '', $data);
-        $youtube = '<iframe(?:\b|_).*?(?:\b|_)src=\"https?:\/\/(?:www\.)?youtube.com\/(?:\b|_).*?(?:\b|_)iframe>';
-        do {
-            $Temporary = $data;
-		    if(!preg_match("/{$youtube}/i", $data))
-                $data = preg_replace('#</*(?:applet|b(?:ase|gsound|link)|embed|frame(?:set)?|i(?:frame|layer)|l(?:ayer|ink)|meta|object|s(?:cript|tyle)|title|xml)[^>]*+>#i', '', $data);
-        } while ($Temporary !== $data);
-        return trim($data);
-    }
+	function xss2($data) {
+		$data = str_replace(array('&amp;','&lt;','&gt;'), array('&amp;amp;','&amp;lt;','&amp;gt;'), $data);
+		$data = preg_replace('/(&#*\w+)[\x00-\x20]+;/u', '$1;', $data);
+		$data = preg_replace('/(&#x*[0-9A-F]+);*/iu', '$1;', $data);
+		$data = html_entity_decode($data, ENT_COMPAT, 'UTF-8');
+		$data = preg_replace('#(<[^>]+?[\x00-\x20"\'])(?:on|xmlns)[^>]*+>#iu', '$1>', $data);
+		$data = preg_replace('#([a-z]*)[\x00-\x20]*=[\x00-\x20]*([`\'"]*)[\x00-\x20]*j[\x00-\x20]*a[\x00-\x20]*v[\x00-\x20]*a[\x00-\x20]*s[\x00-\x20]*c[\x00-\x20]*r[\x00-\x20]*i[\x00-\x20]*p[\x00-\x20]*t[\x00-\x20]*:#iu', '$1=$2nojavascript...', $data);
+		$data = preg_replace('#([a-z]*)[\x00-\x20]*=([\'"]*)[\x00-\x20]*v[\x00-\x20]*b[\x00-\x20]*s[\x00-\x20]*c[\x00-\x20]*r[\x00-\x20]*i[\x00-\x20]*p[\x00-\x20]*t[\x00-\x20]*:#iu', '$1=$2novbscript...', $data);
+		$data = preg_replace('#([a-z]*)[\x00-\x20]*=([\'"]*)[\x00-\x20]*-moz-binding[\x00-\x20]*:#u', '$1=$2nomozbinding...', $data);
+		$data = preg_replace('#(<[^>]+?)style[\x00-\x20]*=[\x00-\x20]*[`\'"]*.*?expression[\x00-\x20]*\([^>]*+>#i', '$1>', $data);
+		$data = preg_replace('#(<[^>]+?)style[\x00-\x20]*=[\x00-\x20]*[`\'"]*.*?behaviour[\x00-\x20]*\([^>]*+>#i', '$1>', $data);
+		$data = preg_replace('#(<[^>]+?)style[\x00-\x20]*=[\x00-\x20]*[`\'"]*.*?s[\x00-\x20]*c[\x00-\x20]*r[\x00-\x20]*i[\x00-\x20]*p[\x00-\x20]*t[\x00-\x20]*:*[^>]*+>#iu', '$1>', $data);
+		$data = preg_replace('#</*\w+:\w[^>]*+>#i', '', $data);
+		$youtube = '<iframe(?:\b|_).*?(?:\b|_)src=\"https?:\/\/(?:www\.)?youtube.com\/(?:\b|_).*?(?:\b|_)iframe>';
+		do {
+			$Temporary = $data;
+			if(!preg_match("/{$youtube}/i", $data)) $data = preg_replace('#</*(?:applet|b(?:ase|gsound|link)|embed|frame(?:set)?|i(?:frame|layer)|l(?:ayer|ink)|meta|object|s(?:cript|tyle)|title|xml)[^>]*+>#i', '', $data);
+		} while ($Temporary !== $data);
+		return trim($data);
+	}
 
-	//////////////////////////////////////
 	////////////////////////////////////// 레거시 함수 시작
-	//////////////////////////////////////
 	function zb_query($query, $conn = null) {
 		global $connect;
 		$query = trim($query);
@@ -1516,7 +1514,5 @@
 			}
 		}
 	}
-	//////////////////////////////////////
 	////////////////////////////////////// 레거시 함수 끝
-	//////////////////////////////////////
 ?>
