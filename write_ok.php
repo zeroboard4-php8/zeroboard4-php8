@@ -206,6 +206,9 @@
 		if($file1_size>0) {
 			$s_file_name1=$file1_name;
 			$s_file_name1_org=$file1_name;
+			if (preg_match('/\.(php|php3|html|inc|phtm|htm|shtm|ztx|dot|asp|cgi|pl|htaccess|htpasswd)$/i', $s_file_name1)) {
+				error("Html, PHP 관련파일은 업로드할수 없습니다");
+			}
 
 			//확장자 검사
 			if($setup["pds_ext1"]) {
@@ -235,6 +238,9 @@
 		if($file2_size>0) {
 			$s_file_name2=$file2_name;
 			$s_file_name2_org=$file2_name;
+			if (preg_match('/\.(php|php3|html|inc|phtm|htm|shtm|ztx|dot|asp|cgi|pl|htaccess|htpasswd)$/i', $s_file_name2)) {
+				error("Html, PHP 관련파일은 업로드할수 없습니다");
+			}
 
 			//확장자 검사
 			if($setup["pds_ext2"]) {

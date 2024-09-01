@@ -110,7 +110,7 @@
 
 </script>
 <form name=check_attack><input type=hidden name=check value=0></form>
-<div id='zb_waiting' style='position:absolute; left:50px; top:120px; width:292; height: 91; z-index:1; visibility: hidden'>
+<div id='zb_waiting' style='position:absolute; left:0; right:0; top:0; bottom:0; margin:auto; width:292; height: 91; z-index:1; visibility: hidden'>
 <table border=0 width=98% cellspacing=1 cellpadding=0 bgcolor=black>
 <form name=waiting_form>
 <tr bgcolor=white>
