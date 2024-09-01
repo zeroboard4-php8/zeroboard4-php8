@@ -906,7 +906,10 @@
 			//$file_name = rawurlencode($file_name);
 			$file_name = preg_replace("/\./", "%2E", $file_name, substr_count($file_name, '.') - 1);
 		}
-
+		
+		if (!file_exists($filename)) {
+			error("파일을 찾을 수 없습니다.");
+		}
 		$fp = fopen($filename, 'rb');
 		if(!$fp) exit;
 		header("Cache-Control: ");
