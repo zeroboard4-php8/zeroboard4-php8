@@ -19,7 +19,7 @@
 
 	// 현재 버젼
 	$zb_version = "4.1 pl8";
-	$zb_php8_version = 'php8-0.4';
+	$zb_php8_version = 'php8-0.5';
 
 	/*******************************************************************************
  	 * 에러 리포팅 설정과 register_globals_on일때 변수 재 정의
@@ -68,6 +68,8 @@
 	unset($group);
 	unset($setup);
 	unset($s_que);
+	unset($que);
+	unset($now_data);
 	if(isset($select_arrange)) {
 		$select_arrange = str_replace(array("'",'"','\\'),'',$select_arrange);
 		if(!in_array($select_arrange,array('headnum','subject','name','hit','vote','reg_date','download1','download2'))) unset($select_arrange);
@@ -343,21 +345,22 @@
 	// 글의 아이콘을 뽑아줌;;
 	function get_icon($data) {
 		global $dir;
+		if(isset($data['reg_date'])) {
+			// 글쓴 시간 구함
+			$check_time=(time()-$data['reg_date'])/60/60;
 
-		// 글쓴 시간 구함
-		$check_time=(time()-$data['reg_date'])/60/60;
-
-		// 앞에 붙는 아이콘 정의
-		if($data['depth']) {
-			if($check_time<=12) $icon="<img src=$dir/reply_new_head.gif border=0 align=absmiddle>&nbsp;"; // 최근 글일경우
-			else $icon="<img src=$dir/reply_head.gif border=0 align=absmiddle>&nbsp;"; // 답글일때
-		} else {
-			if($check_time<=12) $icon="<img src=$dir/new_head.gif border=0 align=absmiddle>&nbsp;"; // 최근 글일경우
-			else $icon="<img src=$dir/old_head.gif border=0 align=absmiddle>&nbsp;";          // 답글이 아닐때
+			// 앞에 붙는 아이콘 정의
+			if($data['depth']) {
+				if($check_time<=12) $icon="<img src=$dir/reply_new_head.gif border=0 align=absmiddle>&nbsp;"; // 최근 글일경우
+				else $icon="<img src=$dir/reply_head.gif border=0 align=absmiddle>&nbsp;"; // 답글일때
+			} else {
+				if($check_time<=12) $icon="<img src=$dir/new_head.gif border=0 align=absmiddle>&nbsp;"; // 최근 글일경우
+				else $icon="<img src=$dir/old_head.gif border=0 align=absmiddle>&nbsp;";          // 답글이 아닐때
+			}
+			if($data['headnum']<=-2000000000) $icon="<img src=$dir/notice_head.gif border=0 align=absmiddle>&nbsp;"; // 공지사항일때
+			else if($data['is_secret']==1) $icon="<img src=$dir/secret_head.gif border=0 align=absmiddle alt='비밀글입니다'>&nbsp;";
+			return $icon;
 		}
-		if($data['headnum']<=-2000000000) $icon="<img src=$dir/notice_head.gif border=0 align=absmiddle>&nbsp;"; // 공지사항일때
-		else if($data['is_secret']==1) $icon="<img src=$dir/secret_head.gif border=0 align=absmiddle alt='비밀글입니다'>&nbsp;";
-		return $icon;
 	}
 
 
@@ -562,6 +565,7 @@
 		global $zbLayer, $setup, $member, $is_admin, $id, $_zbCheckNum;
 		if($setup['use_formmail']) {
 			if(!$_zbCheckNum) $_zbCheckNum=0;
+			$data['name']=isset($data['name']) ? $data['name'] : '';
 			$data['name']=stripslashes($data['name']);
 			$data['name']=urlencode($data['name']);
 			//$data['name']=str_replace("\"","",$data['name']);
@@ -605,8 +609,7 @@
 			if(!isset($data['homepage'])) $data['homepage'] = '';
 			$zbLayer = $zbLayer."\nprint_ZBlayer('zbLayer$_zbCheckNum', '".$data['homepage']."', '$data[email]', '$data[ismember]', '$id', '$data[name]', '$traceID', '$traceType', '$isAdmin', '$isMember');";
 			return $_zbCount;
-		}   
-		else {
+		} else {
 			return 0;
 		}
 	}
@@ -1028,7 +1031,7 @@
 		if (!empty($is_admin) && isset($data['ismember']) && isset($member['no'])) { 
 			if ($is_admin && $data['ismember']!==$member['no']) { 
 				$src[] = "/(\<(embed|object|ruby|form|meta)[^\>]*)\>?(\<\/(embed|object|ruby|form|meta)\>)?/i";
-				$tar[] = "<div style=\"border:1px solid #dcbba3;padding: 6px;background-color: #f9f2ee;color: #bf0000;line-height: 160%\">보안문제로 인하여 관리자 아이디로는 이 게시물에 사용된 embed 또는 object 태그를 볼 수 없습니다.<br />확인하시려면 관리자 권한이 없는 다른 아이디로 접속하세요.</div>";
+				$tar[] = "<div style=\"border:1px solid #dcbba3;padding: 6px;background-color: #f9f2ee;color: #bf0000;line-height: 160%\">보안문제로 인하여 관리자 아이디로는 이 게시물에 사용된 embed 또는 object 태그를 볼 수 없습니다.<br />확인하시려면 관리자 권한이 없는 다른 아이디로 접속하십시오.</div>";
 			}
 		}
 	
@@ -1046,32 +1049,27 @@
 		return round($size, 2) . ' ' . $units[$power];
 	}
 
-
+	
 	// 문자열 끊기 (이상의 길이일때는 ... 로 표시)
-	function cut_str($msg,$cut_size) {
-		$han = 0;
-		$eng = 0;
-		$pointtmp = '';
-		if($cut_size<=0) return $msg;
-		if(strpos(strtolower($msg),'[re]') !== false) $cut_size=$cut_size+4;
-		for($i=0;$i<$cut_size;$i++) if(ord($msg[$i])>127) $han++; else $eng++;
-		$cut_size=intval($cut_size+(int)$han*0.6);
-		$point=1;
-		for ($i=0;$i<strlen($msg);$i++) {
-			if ($point>$cut_size) return $pointtmp."...";
-			if (ord($msg[$i])<=127) {
-				$pointtmp.= $msg[$i];
-				if ($point%$cut_size==0) return $pointtmp."..."; 
-			} else {
-				if ($point%$cut_size==0) return $pointtmp."...";
-				$pointtmp.=$msg[$i].$msg[++$i];
-				$point++;
-			}
-			$point++;
+	function cut_str($msg, $cut_size, $suffix='...') {
+		if ($cut_size <= 0) return $msg;
+		$result = '';
+		$currentlen = 0;
+		$i = 0;
+		$strlength = strlen($msg);
+		while ($i < $strlength && $currentlen < $cut_size) {
+			$char = ord($msg[$i]);
+			// UTF-8 문자 바이트 수 계산
+			$charlen = ($char < 128) ? 1 : (($char & 0xE0) == 0xC0 ? 2 : (($char & 0xF0) == 0xE0 ? 3 : 4));
+			// 길이를 초과하지 않는 경우만 추가
+			if ($currentlen + 1 > $cut_size) break;
+			$result .= substr($msg, $i, $charlen);
+			$currentlen += 1;
+			$i += $charlen;
 		}
-		return $pointtmp;
+		if ($i < $strlength) $result .= $suffix;
+		return $result;
 	}
-
 
 	// 페이지 이동 스크립트
 	function movepage($url) {
@@ -1248,8 +1246,8 @@
 	// <input type=hidden name=csrf_token value=<?=generate_csrf_token() 방식으로 사용
 	function generate_csrf_token() {
 		if (isset($_SESSION['csrf_token']) && time() - $_SESSION['csrf_token_time'] < 600) {
-		return $_SESSION['csrf_token'];
-	}
+			return $_SESSION['csrf_token'];
+		}
 		$_SESSION['csrf_token'] = uniqid(md5(mt_rand()), false);
 		$_SESSION['csrf_token_time'] = time();
 		return $_SESSION['csrf_token'];
@@ -1365,7 +1363,7 @@
 			return 'DB 질의 중 오류가 발생했습니다.<br>관리자라면 로그인해서 해당 내용을 확인 할 수 있습니다.';
 		} elseif(!function_exists("mysql_error")) {
 			if (empty($connect)) {
-			    Error("DB 접속시 에러가 발생했습니다");
+			    error("DB 접속시 에러가 발생했습니다");
 			} else {
 			    return mysqli_error($connect);
 			}

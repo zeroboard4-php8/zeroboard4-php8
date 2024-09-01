@@ -29,8 +29,8 @@
 		$isold = false;
 		if(strlen($member['password'])<=16&&strlen(get_password("a"))>=41) $isold = true;
 		if($member['password'] != get_password($admin_passwd, $isold)) {
-				Error("관리자 비밀번호가 틀렸습니다.");
-			}
+				error("관리자 비밀번호가 틀렸습니다.");
+		}
 		if(isset($_SESSION['csrf_token'])) unset($_SESSION['csrf_token']);
 		if($member['is_admin']>1) Error("그룹생성 권한이 없습니다");
 		if(isblank($name)) Error("그룹이름은 필수로 지정하셔야 합니다");
@@ -74,8 +74,8 @@
 		$isold = false;
 		if(strlen($member['password'])<=16&&strlen(get_password("a"))>=41) $isold = true;
 		if($member['password'] != get_password($admin_passwd, $isold)) {
-				Error("관리자 비밀번호가 틀렸습니다.");
-			}
+				error("관리자 비밀번호가 틀렸습니다.");
+		}
 		if($member['is_admin']>2) Error("그룹수정 권한이 없습니다");
 		if($member['is_admin']==2&&$member['group_no']!=$group_no) Error("그룹수정 권한이 없습니다");
 		if(isblank($name)) Error("그룹이름은 필수로 지정하셔야 합니다");
@@ -119,8 +119,8 @@
 		$isold = false;
 		if(strlen($member['password'])<=16&&strlen(get_password("a"))>=41) $isold = true;
 		if($member['password'] != get_password($admin_passwd, $isold)) {
-				Error("관리자 비밀번호가 틀렸습니다.");
-			}
+				error("관리자 비밀번호가 틀렸습니다.");
+		}
 		if($member['is_admin']>1) Error("그룹삭제 권한이 없습니다");
 		// 삭제할 그룹의 회원수와 게시판 수를 구함
 		$num=mysql_fetch_array(zb_query("select member_num, board_num from $group_table where no='$group_no'"));

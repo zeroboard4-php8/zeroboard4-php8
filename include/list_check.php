@@ -50,7 +50,7 @@ function list_check(&$data,$view_check=0) {
 
 
 	// ' 등의 특수문자때문에 붙인 \(역슬래쉬)를 떼어낸다
-	$name=$data['name']=stripslashes($data['name']); 
+	$name=$data['name']=isset($data['name']) ? stripslashes($data['name']) : ''; 
 	$temp_name = get_private_icon($data['ismember'], "2");
 	if($temp_name) $name="<img src='$temp_name' border=0 align=absmiddle>"; 
 
@@ -64,21 +64,23 @@ function list_check(&$data,$view_check=0) {
 		if($ss=="on") $subject = preg_replace($keyword_pattern, "<span color='FF001E' style='color:#FF001E;background-color:#FFF000;'>$keyword</span>", $subject);
 	}
 
-	$hit=$data['hit'];  // 조회수
-	$vote=$data['vote'];  // 투표수
-	$comment_num="[".$data['total_comment']."]"; // 간단한 답글 수
-	if($data['total_comment']==0) $comment_num='';
+	$hit=isset($data['hit']) ? $data['hit'] : 0;  // 조회수
+	$vote=isset($data['vote']) ? $data['vote'] : 0;  // 투표수
+	$comment_num=isset($data['total_comment']) ? "[".$data['total_comment']."]" : '[0]'; // 간단한 답글 수
+	if(isset($data['total_comment']) && $data['total_comment']==0) $comment_num='';
 	if(!isset($addShowComment)) $addShowComment='';
 	if($setup['use_alllist']) $view_file="zboard.php"; else $view_file="view.php";
 	// 제목에 링크 거는 부분;
 	if($member['level']<=$setup['grant_view']||$is_admin) {
 		//if($setup['use_status']&&!$data['is_secret']) $addShowComment = " onMouseOver=\"showComment('$showCommentStr',true)\" onMouseOut=\"showComment('',false)\" ";
+		$data['is_secret']=isset($data['is_secret']) ? $data['is_secret'] : 0;
+		$data['no']=isset($data['no']) ? $data['no'] : 0;
 		if($setup['use_status']&&!$data['is_secret']) $addShowComment = " title=\"$showCommentStr\" ";
 		$subject="<a href=\"".$view_file."?$href$sort&no=$data[no]\" $addShowComment >".$subject."</a>"; 
 	}
 
 	if(!$setup['only_board']) {
-		$homepage=$data['homepage']=stripslashes($data['homepage']);
+		$homepage=$data['homepage']=isset($data['homepage']) ? stripslashes($data['homepage']) : '';
 		if($homepage) $homepage="<a href='$homepage' target=_blank>$homepage</a>";
 
 		// 이미지 박스 사용을 위해서 정규표현식 사용
@@ -109,16 +111,16 @@ function list_check(&$data,$view_check=0) {
 		$_zbResizeCheck = true;
 
 		// 아이피
-		if($is_admin) $ip="IP Address : ".$data['ip']."&nbsp;";  
+		if($is_admin&&isset($data['ip'])) $ip="IP Address : ".$data['ip']."&nbsp;";  
 
-		$sitelink1=$data["sitelink1"]=stripslashes($data["sitelink1"]);
-		$sitelink2=$data["sitelink2"]=stripslashes($data["sitelink2"]);
+		$sitelink1=$data["sitelink1"]=isset($data["sitelink1"]) ? stripslashes($data["sitelink1"]) : '';
+		$sitelink2=$data["sitelink2"]=isset($data["sitelink2"]) ? stripslashes($data["sitelink2"]) : '';
 		if($sitelink1)$sitelink1="<a href='$sitelink1' target=_blank>$sitelink1</a>";
 		if($sitelink2)$sitelink2="<a href='$sitelink2' target=_blank>$sitelink2</a>";
-		$file_name1=$data["s_file_name1"];
-		$file_name2=$data["s_file_name2"];
-		$file_download1=$data["download1"];
-		$file_download2=$data["download2"];
+		$file_name1=isset($data["s_file_name1"]) ? $data["s_file_name1"] : '';
+		$file_name2=isset($data["s_file_name2"]) ? $data["s_file_name2"] : '';
+		$file_download1=isset($data["download1"]) ? $data["download1"] : 0;
+		$file_download2=isset($data["download2"]) ? $data["download2"] : 0;
 		if($file_name1) {
 			$file_size1=@GetFileSize(filesize($data["file_name1"]));
 			$a_file_link1="<a href='download.php?$href$sort&no=$data[no]&filenum=1'>";
@@ -141,12 +143,12 @@ function list_check(&$data,$view_check=0) {
 	}
 
 	// 카테고리의 이름을 구함
-	if($data['category']&&$setup['use_category']) $category_name=$category_data[$data['category']];
+	if(!empty($data['category'])&&$setup['use_category']) $category_name=$category_data[$data['category']];
 	else $category_name="&nbsp;";
 
 	// 글쓴 시간을 년월일 시분초 로 변환함
-	$reg_date="<span title='".date("Y년 m월 d일 H시 i분 s초", $data['reg_date'])."'>".date("Y/m/d", $data['reg_date'])."</span>";
-	$date=date("Y-m-d H:i:s", $data['reg_date']);
+	$reg_date=isset($data['reg_date']) ? "<span title='".date("Y년 m월 d일 H시 i분 s초", $data['reg_date'])."'>".date("Y/m/d", $data['reg_date'])."</span>" : 0;
+	$date=isset($data['reg_date']) ? date("Y-m-d H:i:s", $data['reg_date']) : 0;
 	
 	// 폼메일을 사용하고 관련메뉴가 생성이 되면 레이어오픈
 	if($_zbCount&&$setup['use_formmail']) {
@@ -158,9 +160,11 @@ function list_check(&$data,$view_check=0) {
 	}
 
 	// Depth에 의한 들임값을 정함
-	$insert="";
-	if($data['depth']>15) $data['depth']=15;
-	for($z=0;$z<$data['depth'];$z++) $insert .="&nbsp; ";
+	if(isset($data['depth'])) {
+		$insert="";
+		if($data['depth']>15) $data['depth']=15;
+		for($z=0;$z<$data['depth'];$z++) $insert .="&nbsp; ";
+	}
 
 	$icon=get_icon($data);
 
@@ -173,11 +177,13 @@ function list_check(&$data,$view_check=0) {
 	if($prev_no==$data['no']) $number="<img src=$dir/arrow.gif border=0 align=absmiddle>"; elseif($number!="&nbsp;") $number=$loop_number;
 
 	// 답글 버튼
+	if(!isset($data['headnum'])) $data['headnum']=null;
 	if(($is_admin||$member['level']<=$setup['grant_reply'])&&$data['headnum']>-2000000000&&$data['headnum']!=-1) $a_reply="<a href='write.php?$href$sort&no=$data[no]&mode=reply'>"; 
 	else $a_reply="<Zeroboard";
 
 	// 삭제버튼
 	if(!isset($member['no'])) $member['no']=null;
+	if(!isset($data['child'])) $data['child']=null;
 	if(($is_admin||$member['level']<=$setup['grant_delete']||$data['ismember']==$member['no']||!$data['ismember'])&&!$data['child']) $a_delete="<a href='delete.php?$href$sort&no=$data[no]'>"; 
 	else $a_delete="<Zeroboard";
 

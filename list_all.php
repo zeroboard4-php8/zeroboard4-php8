@@ -23,6 +23,9 @@
 	if($exec=="copy_all") $_kind = "복사";
 	elseif($exec=="move_all") $_kind = "이동";
 	elseif($exec=="delete_all") $_kind = "삭제";
+	
+	$notice_bbs=isset($_POST['notice_bbs']) ? $_POST['notice_bbs'] : 0;
+	$notice_user=isset($_POST['notice_user']) ? $_POST['notice_user'] : 0;
 
 /**********************************************************************************
  * 쪽지 보내는 함수 간단하게 사용할수 있는 것
@@ -168,6 +171,7 @@
 				$next_no=$next_data['no'];
 				$father=0;
 				$term_father=0;
+				$term_child=0;
 				$root_no=0;
 
 				// looping 하면서 데이타 입력
@@ -199,10 +203,10 @@
 					$data['name']=addslashes($data['name']);
 					$data['subject']=addslashes($data['subject']);
 					$data['memo']=addslashes($data['memo']);
-					$sitelink1=addslashes($sitelink1);
-					$sitelink2=addslashes($sitelink2);
-					$email=addslashes($email);
-					$homepage=addslashes($homepage);
+					$sitelink1=isset($sitelink1) ? addslashes($sitelink1) : '';
+					$sitelink2=isset($sitelink2) ? addslashes($sitelink2) : '';
+					$email=isset($email) ? addslashes($email) : '';
+					$homepage=isset($homepage) ? addslashes($homepage) : '';
 					$division=add_division($board_name);
 					$data['headnum']=$headnum;
 					$data['division']=$division;

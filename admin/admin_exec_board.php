@@ -13,8 +13,8 @@
 		$isold = false;
 		if(strlen($member['password'])<=16&&strlen(get_password("a"))>=41) $isold = true;
 		if($member['password'] != get_password($admin_passwd, $isold)) {
-				Error("관리자 비밀번호가 틀렸습니다.");
-			}
+				error("관리자 비밀번호가 틀렸습니다.");
+		}
 		if(isset($_SESSION['csrf_token'])) unset($_SESSION['csrf_token']);
 		$name=addslashes($name);
 		$bg_color=addslashes($bg_color);
@@ -54,7 +54,7 @@
 	}
 
 // 게시판 추가 
-	elseif(isset($_POST['exec2']) && $_POST['exec2']==="add_ok") {
+	elseif($member['is_admin']<=2 && isset($_POST['exec2']) && $_POST['exec2']==="add_ok") {
 		// 입력된 테이블 값이 빈값인지, 한글이 들어갔는지를 검사
 		if(isBlank($name)) Error("게시판 이름을 입력하셔야 합니다","");
 		if(!isAlNum($name)) Error("게시판 이름은 영문과 숫자로만 하셔야 합니다","");
@@ -62,8 +62,8 @@
 		$isold = false;
 		if(strlen($member['password'])<=16&&strlen(get_password("a"))>=41) $isold = true;
 		if($member['password'] != get_password($admin_passwd, $isold)) {
-				Error("관리자 비밀번호가 틀렸습니다.");
-			}
+				error("관리자 비밀번호가 틀렸습니다.");
+		}
 
 		// 같은 이름의 게시판이 이미 생성되었는지를 검사
 		$result=zb_query("select count(*) from $admin_table where name='$name'",$connect) or Error(zb_error());
@@ -128,13 +128,13 @@
 	}
 
 	// 게시판 삭제 
-	elseif(isset($_POST['exec2']) && $_POST['exec2']==="del") {
+	elseif($member['is_admin']<=2 && isset($_POST['exec2']) && $_POST['exec2']==="del") {
 		if(!$admin_passwd) Error("관리자 비밀번호를 입력해주세요.");
 		$isold = false;
 		if(strlen($member['password'])<=16&&strlen(get_password("a"))>=41) $isold = true;
 		if($member['password'] != get_password($admin_passwd, $isold)) {
-				Error("관리자 비밀번호가 틀렸습니다.");
-			}
+				error("관리자 비밀번호가 틀렸습니다.");
+		}
 		$data=mysql_fetch_array(zb_query("select name from $admin_table where no='$no'"));
 		
 		$table_name=$data['name'];
@@ -200,8 +200,8 @@
 		$isold = false;
 		if(strlen($member['password'])<=16&&strlen(get_password("a"))>=41) $isold = true;
 		if($member['password'] != get_password($admin_passwd, $isold)) {
-				Error("관리자 비밀번호가 틀렸습니다.");
-			}
+				error("관리자 비밀번호가 틀렸습니다.");
+		}
 		zb_query("update $admin_table set grant_html='$grant_html', grant_list='$grant_list',
 				grant_view='$grant_view', grant_comment='$grant_comment', grant_write='$grant_write',
 				grant_reply='$grant_reply', grant_delete='$grant_delete', grant_notice='$grant_notice',

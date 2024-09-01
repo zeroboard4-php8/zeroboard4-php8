@@ -9,6 +9,7 @@
 
 		$member_data = mysql_fetch_array(zb_query("select * from $member_table where no = '$no'"));
 		if($member['is_admin']>1&&$member['no']!=$member_data['no']&&$member_data['level']<=$member['level']&&$member_data['is_admin']<=$member['is_admin']) error("선택하신 회원의 정보를 변경할 권한이 없습니다");
+		if($no===$member['no']) error("자기 자신은 삭제할 수 없습니다");
 
 		// 멤버 정보 삭제
 		zb_query("delete from $member_table where no='$no'") or error(zb_error());
@@ -39,8 +40,8 @@
 		$isold = false;
 		if(strlen($member['password'])<=16&&strlen(get_password("a"))>=41) $isold = true;
 		if($member['password'] != get_password($admin_passwd, $isold)) {
-				Error("관리자 비밀번호가 틀렸습니다.");
-			}
+				error("관리자 비밀번호가 틀렸습니다.");
+		}
 		if(isset($_SESSION['csrf_token'])) unset($_SESSION['csrf_token']);
 		foreach ($_POST['cart'] as $value) {
             del_member($value);
@@ -87,7 +88,7 @@
 
 	if(isset($_POST['exec2']) && $_POST['exec2']==="moveall") {
 		foreach ($_POST['cart'] as $value) {
-zb_query("update $member_table set level='$movelevel' where no='$value'",$connect);
+			zb_query("update $member_table set level='$movelevel' where no='$value'",$connect);
 		}
 		
 		movepage("$PHP_SELF?exec=view_member&group_no=$group_no&page=$page&keyword=$keyword&level_search=$level_search&page_num=$page_num&keykind=$keykind&like=$like");
@@ -98,7 +99,7 @@ zb_query("update $member_table set level='$movelevel' where no='$value'",$connec
 
 	if(isset($_POST['exec2']) && $_POST['exec2']==="move_group"&&$member['is_admin']==1) {
 		foreach ($_POST['cart'] as $value) {
-zb_query("update $member_table set group_no='$movegroup' where no='$value'",$connect);
+			zb_query("update $member_table set group_no='$movegroup' where no='$value'",$connect);
 			zb_query("update $group_table set member_num=member_num-1 where no='$group_no'");
 			zb_query("update $group_table set member_num=member_num+1 where no='$movegroup'");
 		}
@@ -113,8 +114,8 @@ zb_query("update $member_table set group_no='$movegroup' where no='$value'",$con
 		$isold = false;
 		if(strlen($member['password'])<=16&&strlen(get_password("a"))>=41) $isold = true;
 		if($member['password'] != get_password($admin_passwd, $isold)) {
-				Error("관리자 비밀번호가 틀렸습니다.");
-			}
+				error("관리자 비밀번호가 틀렸습니다.");
+		}
 		if(isset($_SESSION['csrf_token'])) unset($_SESSION['csrf_token']);
 		del_member($no);
 		movepage("$PHP_SELF?exec=view_member&group_no=$group_no&page=$page&keyword=$keyword&level_search=$level_search&page_num=$page_num&keykind=$keykind&like=$like");
@@ -129,8 +130,8 @@ zb_query("update $member_table set group_no='$movegroup' where no='$value'",$con
 		$isold = false;
 		if(strlen($member['password'])<=16&&strlen(get_password("a"))>=41) $isold = true;
 		if($member['password'] != get_password($admin_passwd, $isold)) {
-				Error("관리자 비밀번호가 틀렸습니다.");
-			}
+				error("관리자 비밀번호가 틀렸습니다.");
+		}
 		if(isset($_SESSION['csrf_token'])) unset($_SESSION['csrf_token']);
 		if(isblank($name)) Error("이름을 입력하셔야 합니다");
 

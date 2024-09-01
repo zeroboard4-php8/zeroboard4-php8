@@ -15,24 +15,24 @@
  
     head("bgcolor=black");
 	
-	$skinname=$board_info['skinname'];
+    $skinname=$board_info['skinname'];
     $scanarr = array();
-	if (!is_dir('../skin/'.$skinname.'/')) {
-		$skinstat = "스킨 디렉토리 접근 불가";
-	} else {
+    if (!is_dir('../skin/'.$skinname.'/')) {
+        $skinstat = "스킨 디렉토리 접근 불가";
+    } else {
         scanskindir('../skin/'.$skinname.'/');
         if (!is_dir('../skin/'.$skinname.'/original')) {
-	        @mkdir('../skin/'.$skinname.'/original', 0755, true);
-		    if (is_dir('../skin/'.$skinname.'/original')) {
+            @mkdir('../skin/'.$skinname.'/original', 0755, true);
+            if (is_dir('../skin/'.$skinname.'/original')) {
                 foreach ($scanarr as $file) {
                     if (preg_match("/(\.(php|php3|htm|html|txt))$/i", strtolower($file)) && filesize($file) > 0) {
-				        if (!file_exists(dirname($file)."/original/".basename($file))) {
-					        @copy($file, dirname($file)."/original/".basename($file));
-				        }
+                        if (!file_exists(dirname($file)."/original/".basename($file))) {
+                            @copy($file, dirname($file)."/original/".basename($file));
+                        }
                         $f = @fopen($file,"r");
                         $temp = @fread($f,filesize($file));
                         @fclose($f);
-		                if (!is_utf8($temp)) {
+                        if (!is_utf8($temp)) {
                             $temp = iconv("EUC-KR", "UTF-8", $temp);
                         }
                         $temp = str_replace("<?php", "<?", $temp);
@@ -47,14 +47,14 @@
                         @fclose($f);
                     }
                 }
-			    $skinstat = "성공";
-		    } else {
+                $skinstat = "성공";
+            } else {
                 $skinstat = "퍼미션 체크";
             }
         } else {
-		    $skinstat = "완료";
-	    }
-	}
+            $skinstat = "완료";
+        }
+    }
  
     function is_utf8($string) {
         // UTF-8 문자열은 1바이트에서 4바이트로 구성됩니다.
@@ -72,21 +72,21 @@
     }
 
     function scanskindir($dir) {
-	    global $scanarr;
+        global $scanarr;
         if (is_dir($dir)) {
             if ($dh = opendir($dir)) {
                 while (($file = readdir($dh)) !== false) {
-				    if ($file === '.' || $file === '..' || $file === 'original') continue;
-				    if (is_dir($dir.$file)) {
-					    scanskindir($dir.$file.'/');
-				    } else {
-					    $scanarr[] = $dir.$file;
-				    }
+                    if ($file === '.' || $file === '..' || $file === 'original') continue;
+                    if (is_dir($dir.$file)) {
+                        scanskindir($dir.$file.'/');
+                    } else {
+                        $scanarr[] = $dir.$file;
+                    }
                 }
                 closedir($dh);
             }
         }
-	    return $scanarr;
+        return $scanarr;
     }
 ?>
 <img src=../images/t.gif border=0 width=1 height=8><Br>

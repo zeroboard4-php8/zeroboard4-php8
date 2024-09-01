@@ -25,7 +25,7 @@
 	$total=$temp[0];
 	
 	// 좌측 총 게시판 갯수가 실제와 다른 경우 보정
-	if($group_data['board_num']!==$total) zb_query("update $group_table set board_num=$total where no='$group_no'");
+	if($member['is_admin']<=2) if($group_data['board_num']!==$total) zb_query("update $group_table set board_num=$total where no='$group_no'");
 
 	// 페이지 구하는 부분
 	$page=!empty($page) ? intval($page) : 1;

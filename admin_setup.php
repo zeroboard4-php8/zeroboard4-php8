@@ -33,8 +33,8 @@
 		$isold = false;
 		if(strlen($member['password'])<=16&&strlen(get_password("a"))>=41) $isold = true;
 		if($member['password'] != get_password($admin_passwd, $isold)) {
-				Error("관리자 비밀번호가 틀렸습니다.");
-			}
+				error("관리자 비밀번호가 틀렸습니다.");
+		}
 		if(isset($_SESSION['csrf_token'])) unset($_SESSION['csrf_token']);
 		set_time_limit(0);
 		include "admin/dbDump.php";
@@ -205,7 +205,7 @@
 		<table width=100% border=0 cellspacing=0 cellpadding=0>
 		<tr>
 			<td height=29 background=images/gnamebg.gif align=center><img src=images/t.gif width=10 height=3><br>
-				<a href=<?=$PHP_SELF?>?exec=view_group&group_no=<?=$group_data['no']?>><b><font color=white><?=$b.$group_data['name']?> (<?=$group_data['no']?>)</b></font></a></td>
+				<a href=<?=$PHP_SELF?>?exec=view_group&group_no=<?=$group_data['no']?>><b><font color=white><?=isset($b)?$b:"".$group_data['name']?> (<?=$group_data['no']?>)</b></font></a></td>
 		</tr>
 
 <?php
@@ -218,11 +218,11 @@
 				<a href=<?=$PHP_SELF?>?group_no=<?=$group_data['no']?>&exec=modify_group><img src=images/g_properties.gif width=60 height=12 border=0 alt="그룹 설정"></a><br>
 				<img src=images/t.gif width=10 height=5><br>
 				<img src=images/m_top1.gif width=51 height=14 align=absmiddle><b><font color=#FFFFFF><?=$group_data['member_num']?></font></b><img src=images/m_top2.gif width=6 height=14 align=absmiddle><br>
-				<a href=<?=$PHP_SELF?>?exec=view_member&group_no=<?=$group_data['no']?>><img src=images/m_manage.gif width=73 height=12 border=0 alt="회원 관리"></a><a href=<?=$PHP_SELF?>?exec=modify_member_join&group_no=<?=$group_data['no']?>><img src=images/m_joinform.gif width=55 height=12 border=0 alt="가입폼설정"></a><br>
+				<a href=<?=$PHP_SELF?>?exec=view_member&group_no=<?=$group_data['no']?>><img src=images/m_manage.gif border=0 alt="회원 관리"></a><a href=<?=$PHP_SELF?>?exec=modify_member_join&group_no=<?=$group_data['no']?>><img src=images/m_joinform.gif border=0 alt="가입폼설정"></a><br>
 				<img src=images/t.gif width=10 height=5><br>
 				<img src=images/w_top1.gif width=58 height=14 align=absmiddle><b><font color=#FFFFFF><?=$group_data['board_num']?></font></b><img src=images/w_top2.gif width=4 height=14 align=absmiddle>
 				<br>
-				<a href=<?=$PHP_SELF?>?exec=view_board&group_no=<?=$group_data['no']?>><img src=images/w_manage.gif width=73 height=12 alt="게시판 관리" border=0></a><a href=<?=$PHP_SELF?>?exec=view_board&exec2=add&group_no=<?=$group_data['no']?>><img src=images/w_add.gif width=29 height=12 alt="게시판 추가" border=0></a>
+				<a href=<?=$PHP_SELF?>?exec=view_board&group_no=<?=$group_data['no']?>><img src=images/w_manage.gif alt="게시판 관리" border=0></a><a href=<?=$PHP_SELF?>?exec=view_board&exec2=add&group_no=<?=$group_data['no']?>><img src=images/w_add.gif alt="게시판 추가" border=0></a>
 			</td>
 		</tr>
 
@@ -295,32 +295,30 @@
 		if($exec=="modify_group") { include "admin/admin_modify_group.php";}
 		elseif($exec=="modify_group") { include "admin/admin_modify_group.php";}
 		elseif($exec=="modify_member_join") { include "admin/admin_modify_member_join.php"; }
+		elseif($exec=="del_board") { include "admin/admin_del_board.php"; }
 		elseif($exec=="view_member") { 
 			if($exec2=="sendmail") {include "admin/admin_sendmail.php";} 
 			elseif($exec2=="modify") {include "admin/admin_modify_member.php";}
+			elseif($exec2=="del_member") { include "admin/admin_del_member.php"; }
+			elseif($exec2=="deleteall_member") { include "admin/admin_del_member.php"; }
 			else {include "admin/admin_view_member.php";}
 		} elseif($exec=="view_board") {
 			if($exec2=="add") {include "admin/admin_add_board.php";}
 			elseif($exec2=="modify") {include "admin/admin_modify_board.php";}
 			elseif($exec2=="category") {include "admin/admin_category.php";}
 			elseif($exec2=="modify_category") {include "admin/admin_category_modify.php";}
+			elseif($exec2=="del_category_ok") {include "admin/admin_category_del.php";}
 			elseif($exec2=="grant") {include "admin/admin_modify_grant.php";}
 			else {include "admin/admin_board_list.php";}
 		} else {include "admin/admin_view_group.php"; }
-		} elseif($member['board_name']) {
-			if($exec=="view_board") {
-			if($exec2=="modify") {include "admin/admin_modify_board.php";}                                                                                      
-			elseif($exec2=="category") {include "admin/admin_category.php";}                                                                                        
-			elseif($exec2=="modify_category") {include "admin/admin_category_modify.php";}                                                                          
-			elseif($exec2=="grant") {include "admin/admin_modify_grant.php";}                                                                                       
-			else {include "admin/admin_board_list.php";}
-		} 
 
 // 게시판 관리자일때
 	} elseif($member['board_name']&&$exec=="view_board") {
+			$group_no=$group_data['no'];
 			if($exec2=="modify") {include "admin/admin_modify_board.php";}
 			elseif($exec2=="category") {include "admin/admin_category.php";}
 			elseif($exec2=="modify_category") {include "admin/admin_category_modify.php";}
+			elseif($exec2=="grant") {include "admin/admin_modify_grant.php";}
 			else {include "admin/admin_board_list.php";}
 	}
 ?>

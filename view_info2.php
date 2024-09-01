@@ -7,20 +7,20 @@
 
 // 글쓴이의 정보를 갖고옴;;
 	$data=mysql_fetch_array(zb_query("select * from $member_table where no='$member_no'"));
-	$data['name'] = stripslashes($data['name']);
-	$data['job'] = stripslashes($data['job']);
-	$data['email'] = stripslashes($data['email']);
-	$data['homepage'] = stripslashes($data['homepage']);
-	$data['birth'] = stripslashes($data['birth']);
-	$data['hobby'] = stripslashes($data['hobby']);
-	$data['icq'] = stripslashes($data['icq']);
-	$data['msn'] = stripslashes($data['msn']);
-	$data['home_address'] = stripslashes($data['home_address']);
-	$data['home_tel'] = stripslashes($data['home_tel']);
-	$data['office_address'] = stripslashes($data['office_address']);
-	$data['office_tel'] = stripslashes($data['office_tel']);
-	$data['handphone'] = stripslashes($data['handphone']);
-	$data['comment'] = stripslashes($data['comment']);
+	$data['name'] = isset($data['name']) ? stripslashes($data['name']) : '';
+	$data['job'] = isset($data['job']) ? stripslashes($data['job']) : '';
+	$data['email'] = isset($data['email']) ? stripslashes($data['email']) : '';
+	$data['homepage'] = isset($data['homepage']) ? stripslashes($data['homepage']) : '';
+	$data['birth'] = isset($data['birth']) ? stripslashes($data['birth']) : '';
+	$data['hobby'] = isset($data['hobby']) ? stripslashes($data['hobby']) : '';
+	$data['icq'] = isset($data['icq']) ? stripslashes($data['icq']) : '';
+	$data['msn'] = isset($data['msn']) ? stripslashes($data['msn']) : '';
+	$data['home_address'] = isset($data['home_address']) ? stripslashes($data['home_address']) : '';
+	$data['home_tel'] = isset($data['home_tel']) ? stripslashes($data['home_tel']) : '';
+	$data['office_address'] = isset($data['office_address']) ? stripslashes($data['office_address']) : '';
+	$data['office_tel'] = isset($data['office_tel']) ? stripslashes($data['office_tel']) : '';
+	$data['handphone'] = isset($data['handphone']) ? stripslashes($data['handphone']) : '';
+	$data['comment'] = isset($data['comment']) ? stripslashes($data['comment']) : '';
 
 	$temp_name = get_private_icon($data['no'], "2");
 	$i_name='';

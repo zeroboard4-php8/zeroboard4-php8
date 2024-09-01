@@ -21,8 +21,8 @@
 	}
 
  if(isset($keykind[5])) {
-		$userno = mysql_Fetch_array(zb_query("select no from ".$member_table." where user_id='$keyword'", $connect));
-		$userno = $userno[0];
+		$userno = mysql_fetch_array(zb_query("select no from ".$member_table." where user_id='$keyword'", $connect));
+		if(isset($userno)) $userno = $userno[0];
  }
 
  // 실제 검색부분

@@ -15,10 +15,11 @@
 
 	if($s_data['ismember']||$is_admin||$member['level']<=$setup['grant_delete']) {
 		if(!$is_admin&&$s_data['ismember']!=$member['no']) Error("삭제할 권한이 없습니다");
-		$title="글을 삭제하시겠습니까?";
+		$title='글을 삭제하시겠습니까?';
+		$input_password='';
 	} else {
-		$title="글을 삭제합니다.<br>비밀번호를 입력하여 주십시오";
-		$input_password="<input type=password name=password size=20 class=input>";
+		$title='글을 삭제합니다.<br>비밀번호를 입력하여 주십시오';
+		$input_password='<input type=password name=password size=20 class=input>';
 	}
 
 	$target="del_comment_ok.php";

@@ -76,6 +76,14 @@ zb_query("delete from $get_memo_table where no='$value' and member_no='$member[n
 	$show_page_num=10;
 	$start_page=(int)(($page-1)/$show_page_num)*$show_page_num;
 	$i=1;
+	if(!isset($id)) $id=null;
+	if(!isset($select_arrange)) $select_arrange=null;
+	if(!isset($desc)) $desc=null;
+	if(!isset($category)) $category=null;
+	if(!isset($sn)) $sn=null;
+	if(!isset($ss)) $ss=null;
+	if(!isset($sc)) $sc=null;
+	if(!isset($keyword)) $keyword=null;
 
 	if($page>$show_page_num) {
 		$prev_page=$start_page;
