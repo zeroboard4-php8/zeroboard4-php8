@@ -40,6 +40,8 @@
                         $temp = str_replace("<? ", "<?", $temp);
                         $temp = str_replace("<?", "<?php ", $temp);
                         $temp = str_replace("<?php =", "<?=", $temp);
+                        $temp = str_replace("mysql_query(", "zb_query(", $temp);
+                        $temp = str_replace("mysql_error(", "zb_error(", $temp);
                         $temp = preg_replace("/(\\$[a-z_][a-z0-9_]*)\\[([a-z][a-z0-9_]*)\\]/", "$1['$2']", $temp);
 		
                         $f = @fopen($file,"w");
