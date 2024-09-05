@@ -1,0 +1,16 @@
+BODY,TD,SELECT,input,DIV,form,TEXTAREA,option {font-size:9pt; font-family:굴림;line-height:160%;color:666666} 
+
+A:link    {color:#666666;text-decoration:none;}
+A:visited {color:#666666;text-decoration:none;}
+A:hover  {color:#666666;text-decoration:none;}
+.head {border:solid 1 #FFFFFF;height:19px}
+.textarea {border:solid 1;border-color=eeeeee; background-color:#FFFFFF}
+.input{border:solid 1;border-color=dddddd;background-color:#FFFFFF;height:19px}
+.input_search{border:solid 1;border-color=eeeeee;background-color:#FFFFFF;height:18px}
+.submit {border:solid 1;border-color=dddddd;background-color:#FFFFFF;height:19px;font-family:verdana;font-size:10pt;}
+.thm7 {font-family:tahoma;font-size:10pt;}
+.ver7 {font-family:verdana;font-size:10pt;}
+.ver8 {font-family:verdana;font-size:10pt;}
+.ver9 {font-family:verdana;font-size:10pt;}
+.margin { padding-top:20px;padding-left:15px; padding-right:15px; padding-bottom:20px; text-align: justify; }
+.margin_comment { padding-top:10px;padding-left:15px; padding-right:15px;  text-align: justify; }

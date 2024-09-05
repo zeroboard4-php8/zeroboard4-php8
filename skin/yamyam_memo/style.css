@@ -1,0 +1,25 @@
+@font-face {font-family:가을; src:url(폰트주소);} 
+BODY,TD,SELECT,input,DIV,form,TEXTAREA,center,option,pre,blockquote {font-size:9pt; font-family:가을; color:#337375;line-height:150%}
+
+A:link    {color:#337375;text-decoration:none;}
+A:visited {color:#447172;text-decoration:none;}
+A:active  {color:#5F9EA0;text-decoration:none;}
+A:hover   {color:#5F9EA0; text-decoration:none}
+
+.input{border:solid 1 #73B2B4;font-family:가을;font-size:9pt;color:#428082;background-color:transparent;height:19px}
+.input2 {border:dotted 1 #73B2B4;background-color:transparent;}
+BODY  
+            
+            {scrollbar-base-color : #DDF1F2;
+scrollbar-face-color : #DDF1F2;
+scrollbar-track-color: #DDF1F2;
+scrollbar-arrow-color : #DDF1F2;
+scrollbar-3dlight-color: #73B2B4;
+scrollbar-highlight-color : #DDF1F2;
+scrollbar-shadow-color : #73B2B4;
+scrollbar-darkshadow-color : #DDF1F2;}
+
+
+            
+
+

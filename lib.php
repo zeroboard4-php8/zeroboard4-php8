@@ -19,7 +19,7 @@
 
 	// 현재 버젼
 	$zb_version = "4.1 pl8";
-	$zb_php8_version = 'php8-0.5';
+	$zb_php8_version = 'php8-0.6';
 
 	/*******************************************************************************
  	 * 에러 리포팅 설정과 register_globals_on일때 변수 재 정의
@@ -35,7 +35,7 @@
  	$ext_cnt = count($ext_arr);
  	for($i=0; $i<$ext_cnt; $i++) {
  	 	if (isset($_GET[$ext_arr[$i]]))  unset($_GET[$ext_arr[$i]]);
-     	 	if (isset($_POST[$ext_arr[$i]])) unset($_POST[$ext_arr[$i]]);
+     	if (isset($_POST[$ext_arr[$i]])) unset($_POST[$ext_arr[$i]]);
  	}
 	foreach($filterxssval as $val) {
 		if(in_array($val, array_keys($_GET))) $_GET[$val] = xss2($_GET[$val]);
@@ -54,8 +54,6 @@
  	$REQUEST_METHOD = $_SERVER['REQUEST_METHOD'];
  	$REQUEST_URI = $_SERVER['REQUEST_URI'];
 
- 	if(isset($page)) $page = (int)$page;
-
 	$temp_filename=realpath(__FILE__);
 	if($temp_filename) $config_dir=str_replace("lib.php","",$temp_filename);
 	else $config_dir="";
@@ -70,11 +68,26 @@
 	unset($s_que);
 	unset($que);
 	unset($now_data);
+	if(isset($desc)) if(!in_array($desc,array('desc','asc'))) unset($desc);
+	if(isset($sn)) if(!in_array($sn,array('on','off'))) unset($sn);
+	if(isset($sn1)) if(!in_array($sn1,array('on','off'))) unset($sn1);
+	if(isset($ss)) if(!in_array($ss,array('on','off'))) unset($ss);
+	if(isset($sc)) if(!in_array($sc,array('on','off'))) unset($sc);
+	if(isset($page)) if(!is_numeric($page)) unset($page);
+	if(isset($divpage)) if(!is_numeric($divpage)) unset($divpage);
+	if(isset($category)) if(!is_numeric($category)) unset($category);
+	if(isset($no)) if(!is_numeric($no)) unset($no);
+	if(isset($c_no)) if(!is_numeric($c_no)) unset($c_no);
+	if(isset($page_num)) if(!is_numeric($page_num)) unset($page_num);
+	if(isset($notice)) if(!is_numeric($notice)) unset($notice);
+	if(isset($use_html)) if(!is_numeric($use_html)) unset($use_html);
+	if(isset($reply_mail)) if(!is_numeric($reply_mail)) unset($reply_mail);
+	if(isset($secret)) if(!is_numeric($secret)) unset($secret);
+	if(isset($selected)) if(!preg_match('/^[0-9;]+$/', $selected)) unset($selected);
 	if(isset($select_arrange)) {
 		$select_arrange = str_replace(array("'",'"','\\'),'',$select_arrange);
 		if(!in_array($select_arrange,array('headnum','subject','name','hit','vote','reg_date','download1','download2'))) unset($select_arrange);
 	}
-	if(isset($desc)) if(!in_array($desc,array('desc','asc'))) unset($desc);
 
 	/*******************************************************************************
  	 * include 되었는지를 검사
@@ -1349,6 +1362,14 @@
 		$query = trim($query);
 		$query = preg_replace("#^select.*from.*[\s\(]+union[\s\)]+.*#i ", "select 1", $query);
 		$query = preg_replace("#^select.*from.*where.*`?information_schema`?.*#i", "select 1", $query);
+		$query = preg_replace("#load_file\s*\(#i", "select 1", $query);
+		$query = preg_replace("#0x[0-9a-fA-F]+#i", "select 1", $query);
+		$query = preg_replace("#benchmark\s*\(#i", "select 1", $query);
+		$query = preg_replace("#case\s+when.*then.*end#i", "select 1", $query);
+		$query = preg_replace("#substring\s*\(#i", "select 1", $query);
+		$query = preg_replace("#into\s+outfile#i", "select 1", $query);
+		$query = preg_replace("#load\s+data#i", "select 1", $query);
+		$query = preg_replace("#declare.+varchar.+set#i", "select 1", $query);
 		if ($conn != null) $connect = $conn;
 		if (!function_exists("mysql_query")) {
 			try {

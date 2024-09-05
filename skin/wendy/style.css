@@ -1,0 +1,26 @@
+BODY,TD,SELECT,input,DIV,form,TEXTAREA,center,option,pre,blockquote {font-size:9pt;font-family:±Ã¼­; color:#4A4A4A;line-height:160%}
+
+A:link    {color:#888888;text-decoration:none;}
+A:visited {color:#888888;text-decoration:none;}
+A:active  {color:#888888;text-decoration:none;}
+A:hover  {color:#999999;text-decoration:none}
+
+BODY
+{scrollbar-face-color:#000000; 
+scrollbar-highlight-color:#666666; 
+scrollbar-shadow-color:#666666; 
+scrollbar-3dlight-color:#000000;
+scrollbar-arrow-color:#666666; 
+scrollbar-track-color:#000000;
+scrollbar-darkshadow-color:#000000;}
+
+.head {border:solid 1 black;font-size:9pt;font-family:µ¸¿ò;color:#888888;background-color:black;height:19px}
+.textarea {color:#ffffff;border:solid 0;background-color: #333333; width:100%; height:80;}
+.input {color:#888888;border:solid 0;font-size:9pt;font-family:µ¸¿ò;color:#ffffff;background-color:#333333;height:19px}
+.input2 {color:#888888;border-width:0px;border-bottom: dotted #333333 1px;}
+.submit {border:solid 1 #333333;font-size:9pt;font-family:±¼¸²;color:#888888;background-color:black;}
+.small {font-size:9pt;font-family:µ¸¿ò;}
+.reply {background-color:#333333;color:#888888}
+.notice {border:solid 1 #666666;width:350;}
+.writewidth {width:350;}
+.iconprev {border:dotted 1 #ffffff;width:100%;}

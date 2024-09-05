@@ -17,7 +17,7 @@
 	if(isblank($name)) Error("이름을 입력하셔야 합니다");
 	if(preg_match("/(<|>)/",$name)) Error("이름에는 태그를 사용하실수 없습니다.");
 	if($password&&$password1&&$password!=$password1) Error("비밀번호가 일치하지 않습니다");
-	$birth=mktime(0,0,0,isset($birth_2)?birth_2:null,isset($birth_3)?birth_3:null,isset($birth_1)?birth_1:null);
+	$birth=mktime(0,0,0,isset($_POST['birth_2'])?$_POST['birth_2']:null,isset($_POST['birth_3'])?$_POST['birth_3']:null,isset($_POST['birth_1'])?$_POST['birth_1']:null);
 
 	$check=mysql_fetch_array(zb_query("select count(*) from $member_table where email='$email' and no <> ".$member['no'],$connect));
 	if($check[0]>0) Error("이미 등록되어 있는 E-Mail입니다");
@@ -56,25 +56,24 @@
 	if(isset($group['use_office_address'])) $que.=",office_address='$office_address'";
 	if(isset($group['use_office_tel'])) $que.=",office_tel='$office_tel'";
 	if(isset($group['use_handphone'])) $que.=",handphone='$handphone'";
-	if(isset($group['use_mailing'])) $que.=",mailing='$mailing'";
-	$que.=",openinfo='$openinfo'";
+	if(isset($group['use_mailing'])) $que.=empty($mailing) ? ",mailing='0'" : ",mailing='1'";
+	$que.=empty($openinfo) ? ",openinfo='0'" : ",openinfo='1'";
 	if(isset($group['use_comment'])) $que.=",comment='$comment'";
-	if(!isset($openinfo)) $openinfo = '';
-	if(!isset($open_email)) $open_email = '';
-	if(!isset($open_homepage)) $open_homepage = '';
-	if(!isset($open_icq)) $open_icq = '';
-	if(!isset($open_msn)) $open_msn = '';
-	if(!isset($open_comment)) $open_comment = '';
-	if(!isset($open_job)) $open_job = '';
-	if(!isset($open_hobby)) $open_hobby = '';
-	if(!isset($open_home_address)) $open_home_address = '';
-	if(!isset($open_home_tel)) $open_home_tel = '';
-	if(!isset($open_office_address)) $open_office_address = '';
-	if(!isset($open_office_tel)) $open_office_tel = '';
-	if(!isset($open_handphone)) $open_handphone = '';
-	if(!isset($open_birth)) $open_birth = '';
-	if(!isset($open_picture)) $open_picture = '';
-	if(!isset($open_aol)) $open_aol = '';
+	if(!isset($open_email)) $open_email = empty($open_email) ? '0' : '1';
+	if(!isset($open_homepage)) $open_homepage = empty($open_homepage) ? '0' : '1';
+	if(!isset($open_icq)) $open_icq = empty($open_icq) ? '0' : '1';
+	if(!isset($open_msn)) $open_msn = empty($open_msn) ? '0' : '1';
+	if(!isset($open_comment)) $open_comment = empty($open_comment) ? '0' : '1';
+	if(!isset($open_job)) $open_job = empty($open_job) ? '0' : '1';
+	if(!isset($open_hobby)) $open_hobby = empty($open_hobby) ? '0' : '1';
+	if(!isset($open_home_address)) $open_home_address = empty($open_home_address) ? '0' : '1';
+	if(!isset($open_home_tel)) $open_home_tel = empty($open_home_tel) ? '0' : '1';
+	if(!isset($open_office_address)) $open_office_address = empty($open_office_address) ? '0' : '1';
+	if(!isset($open_office_tel)) $open_office_tel = empty($open_office_tel) ? '0' : '1';
+	if(!isset($open_handphone)) $open_handphone = empty($open_handphone) ? '0' : '1';
+	if(!isset($open_birth)) $open_birth = empty($open_birth) ? '0' : '1';
+	if(!isset($open_picture)) $open_picture = empty($open_picture) ? '0' : '1';
+	if(!isset($open_aol)) $open_aol = empty($open_aol) ? '0' : '1';
 	$que.=",openinfo='$openinfo',open_email='$open_email',open_homepage='$open_homepage',open_icq='$open_icq',open_msn='$open_msn',open_comment='$open_comment',open_job='$open_job',open_hobby='$open_hobby',open_home_address='$open_home_address',open_home_tel='$open_home_tel',open_office_address='$open_office_address',open_office_tel='$open_office_tel',open_handphone='$open_handphone',open_birth='$open_birth',open_picture='$open_picture',open_aol='$open_aol' ";
 	$que.=" where no='$member[no]'";
 
@@ -92,7 +91,7 @@
         $picture_size = $_FILES['picture']['size'];
     }
 
-	if(isset($picture_name)) {
+	if(!empty($picture_name)) {
 		if(!is_uploaded_file($picture)) Error("정상적인 방법으로 업로드 해주세요");
 		if(!preg_match("/\.(gif|jpe?g|png)$/i",$picture_name)) Error("사진은 gif, png 또는 jpg 파일을 올려주세요");
 		$picture_name_org = md5(uniqid(mt_rand(), true)).".".array_pop(explode(".",$picture_name));
@@ -105,7 +104,7 @@
 	mysql_close($connect);
 ?>
 <script>
-alert("회원님의 정보 수정이 제대로 처리되었습니다.");
+alert("회원님의 정보 수정이 제대로 처리되었습니다. <?=$que?>");
 opener.window.history.go(0);
 window.close();
 </script>

@@ -1,0 +1,25 @@
+
+A:link    {color:navy;text-decoration:none}
+A:visited {color:navy;text-decoration:none}
+A:active  {color:navy;text-decoration:none}
+A:hover  {color:navy;text-decoration:underline}
+
+body,td,select,input,div,form,textarea,center,option,pre,blockquote {font-size:9pt; font-family:µ¸¿ò; color:navy;line-height:160%}
+
+body {background:white url(bg.jpg) no-repeat fixed right bottom}
+
+.textarea {border:1 solid navy; overflow:auto}
+.input {border:0; background:; background:url(dot.gif) repeat-x bottom; line-height:100%}
+.input-search {border-width:0 0 1; border-color:#858BC0; background:; line-height:100%}
+.submit {border:0; color:white; background-color:navy}
+
+.kissofgod-line {background:url(dot.gif); height:1}
+.kissofgod-listline {background:url(dot.gif); height:1}
+.kissofgod-base-line {background-color:navy; height:1}
+.kissofgod-write-stamptable {background:url(stamp.gif) no-repeat right top}
+.kissofgod-bgdotwidth {background-image:url('dot.gif')}
+.kissofgod-bgdotheight {background-image:url('dot2.gif')}
+.kissofgod-info-font {font-family:Tahoma; font-size:8pt}
+.kissofgod-button-font {font-family:Tahoma; font-size:8pt}
+.kissofgod-submit {border:0; background-color:navy; color:white; font-family:Verdana; font-size:90%; width:51; height:15;line-height:100%}
+.kissofgod-re-content {color:navy}

@@ -1,0 +1,45 @@
+BODY,TD,input,DIV,form,TEXTAREA,center,pre,blockquote {font-size:9pt;font-family:굴림;color:#000000}
+
+select,option {font-size:10pt;font-family:eutum10;color:#D06070;background-color:FFEFF5;}
+
+TD {line-height:160%}
+
+body{
+	background:transport; overflow:auto;
+}
+
+A:link    {font-size:10pt;color:black;text-decoration:none;}
+A:visited {font-size:10pt;color:black;text-decoration:none;}
+A:active  {font-size:10pt;color:black;text-decoration:none;}
+A:hover   {font-size:10pt;color:orange;text-decoration:none}
+
+.textarea {border:solid 1;border-color:FFDAF2;font-size:10pt;color:042330;background-color:transport;}
+.input {border:solid 1;border-color:FFDAF2;font-size:10pt;color:042330;background-color:transport;}
+.input3 {border:solid 1;border-color:FFDAF2;font-size:10pt;color:#999999;background-color:#FFDAF2;}
+.submit {border:solid 1;border-color:FFDAF2;font-size:10pt;color:000000;background-color:#FFEFF5;}
+.button {border:solid 1;border-color:FFDAF2;font-size:10pt;color:000000;background-color:#FFEFF5;}
+
+.thm7pt {font-family:tahoma;font-size:7pt}
+
+.ment {border:1 solid; border-color:e7e7e7; background-color:fafafa; font-size:9pt; table-layout:fixed}
+.ment_text {color:000000;font-size:9pt;line-height:140%;padding:10px;}
+
+.line1 {background-color:#FFDAF2; padding:0}
+.line2 {background-color:#FFEFF5; padding:0}
+
+.title {background-color:image: url(); background-repeat-x; height:33px;}
+.list0 {background-color:transport; height:25px; font-size:9pt;}
+.list1 {background-color:transport; height:25px; font-size:9pt;}
+
+.title_han {color:;font-weight:bold;font-size:9pt}
+.list_han {color:;font-size:10pt;text-decoration:none;text-decoration:none}
+
+.title_eng {font-family:Verdana;color:;font-weight:bold;font-size:8pt;text-decoration:none}
+.list_eng {font-family:Verdana;color:;font-size:8pt;text-decoration:none;}
+.list_eng2 {font-family:Tahoma;color:;font-size:7pt;text-decoration:none;}
+.list_com {font-family:Verdana;color:;font-size:7pt;text-decoration:none}
+
+.view2 {font-family:eutum10;color:black;font-size:10pt; background-color:#FFF9FB; text-decoration:none;padding:3 0 0 20;}
+.view3 {font-family:eutum10;color:black;font-size:10pt; background-color:#FFF9FB;border-style:solid; border-width:0,0,1,0; border-color:#FFDAF2 #FFDAF2 #FFDAF2 #FFDAF2; text-decoration:none}
+
+.ver8 {font-family:Verdana;color:black;font-size:8pt;border-width:0 0 1 0;border-style:solid;border-color:#FFFAFC; text-decoration:none}

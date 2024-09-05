@@ -1,0 +1,23 @@
+BODY,TD,SELECT,input,DIV,form,TEXTAREA,center,option,pre,blockquote {font-size:8pt;font-family:verdana;color:#666666;line-height:170%} 
+  
+body
+{scrollbar-face-color:#F7F7F7;
+scrollbar-highlight-color:#ffffff; 
+scrollbar-shadow-color:#cccccc; 
+scrollbar-3dlight-color:#FFFFFF;
+scrollbar-arrow-color:#cccccc; 
+scrollbar-track-color:#FFFFFF;
+scrollbar-darkshadow-color:#ffffff;}
+
+A:link    {color:#666666;text-decoration:none;} 
+A:visited {color:#666666;text-decoration:none;}
+A:active  {color:#666666;text-decoration:none;} 
+A:hover   {color:#bdbdbd;text-decoration:none;position:relative;top:2;left:2}
+
+  
+.textarea {border:0; font-family:verdana;font-size:8pt;color:#666666;background-color:#f6f6f6;overflow-x:hidden; overflow-y:auto} 
+.input    {border:solid 0;font-family:verdana;font-size:8pt;color:#666666;background-color:#f6f6f6;height:19px}
+.fine     {font-family:verdana;font-size:8pt;color:#666666}
+.fine2    {font-family:tahoma;font-size:7pt;color:#C0C0C0}
+.fine3    {font-family:verdana;font-size:7pt;color:#FFA4D0}
+.fine4    {font-family:verdana;font-size:7pt;color:#888888}

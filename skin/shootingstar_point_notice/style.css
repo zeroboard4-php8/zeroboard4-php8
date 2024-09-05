@@ -1,0 +1,16 @@
+body, td, table, select, input, form, textarea 
+{font-family:±¼¸², ±¼¸²Ã¼, µ¸¿ò; font-size:9pt; color:#404040; line-height:16pt;}
+body {scrollbar-face-color:#F7F7F7; scrollbar-shadow-color:#cccccc ;scrollbar-highlight-color: #FFFFFF;
+scrollbar-3dlight-color: #FFFFFF;scrollbar-darkshadow-color: #FFFFFF;
+scrollbar-track-color: ffffff;scrollbar-arrow-color: #cccccc; background-color:transparent;}
+A:link    {color:#404040; text-decoration:none}
+A:visited {color:#404040; text-decoration:none}
+A:active  {color:#404040; text-decoration:none}
+A:hover   {color:#404040;  text-decoration:none}
+
+.textarea {background-color:transparent; border:0; overflow-x:hidden; overflow-y:auto; padding-top:1; padding-right:5; padding-bottom:5; padding-left:5;}
+.light {color:cfcfcf;}
+.input {border:0; background:url(./dot.gif) repeat-x left bottom; background-color:transparent; line-height:110%;}
+.ver7 {font-family:verdana, tahoma, arial;font-size:7pt;}
+.line {background-color:#ECECEC}
+.color {color:#CE8A94} //¿©±â¸¦ ¼öÁ¤ÇÏ¼¼¿ä

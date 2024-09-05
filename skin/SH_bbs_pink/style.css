@@ -1,0 +1,23 @@
+
+BODY,TD,SELECT,input,DIV,form,TEXTAREA,center,option,pre,blockquote {font-family:±¼¸²;font-size:9pt;color:#666666;}
+
+BODY { scrollbar-3dlight-color:eeeeee;
+scrollbar-arrow-color:dddddd;
+scrollbar-track-color:ffffff;
+scrollbar-darkshadow-color:ffffff;
+scrollbar-face-color:f7f7f7;
+scrollbar-highlight-color:ffffff;
+scrollbar-shadow-color:eeeeee}
+
+A:link    {color:666666;text-decoration:none;}
+A:visited {color:666666;text-decoration:none;}
+A:active  {color:666666;text-decoration:none;}
+A:hover  {color:FF7E9B;text-decoration:none;text-decoration: underline;}
+
+.input {border:solid 1;background-color:white;border-color:eeeeee}
+.submit {border:solid 1 white;font-family:±¼¸²;font-size:9pt;color:white;background-color:999999; height=18px}
+.thm8 {font-family:Tahoma;font-size:7pt}
+.date01 {font-family:Tahoma;font-size:7pt;color:FCBD5F}
+.date02 {font-family:Tahoma;font-size:7pt;color:F1839D}
+.date03 {font-family:Tahoma;font-size:7pt;color:B385E1}
+

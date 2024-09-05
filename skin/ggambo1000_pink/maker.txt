@@ -1,0 +1,1 @@
+<a href=http://ggambo.com target=_blank onfocus=blur()>ggambo</a>

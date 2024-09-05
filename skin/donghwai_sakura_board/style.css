@@ -1,0 +1,20 @@
+BODY { scrollbar-3dlight-color:F1F1F1; scrollbar-arrow-color:999999; scrollbar-track-color:CCCCCC; scrollbar-darkshadow-color:999999; scrollbar-face-color:F1F1F1; scrollbar-highlight-color:FFFFFF; scrollbar-shadow-color:CCCCCC; }
+a {color:#ACACAC; text-decoration:none;}
+a:hover {color:#ACACAC; text-decoration:none;}
+body { font-family:verdana; font-size:9pt; color:#ACACAC;}
+td { font-family:verdana; font-size:9pt; color:#ACACAC; line-height:150%; margin-top:2; margin-bottom:2;}
+select,input,DIV,form,TEXTAREA,center,pre,option,select,blockquote { font-family:verdana; font-size:9pt; color:#ACACAC;}
+
+.textarea {color:#ACACAC; font-size:9pt; font-family:verdana; background-color:fcfcfc; border:1 solid #E3E3E3;}
+.comment_textarea {color:#ACACAC; font-size:9pt; font-family:verdana; background-color:FAFAFA; width:290; height:80; border:1 solid #EDEDED;}
+.input {color:#ACACAC; font-size:9pt; font-family:verdana; border-width:0px ;border-bottom: solid 1 #E3E3E3 1px;line-height:100%;background-color:transparent;}
+.submit {color:#90B7DF; font-size:8pt; font-family:verdana; border:solid 1 #D3E9FF; background-color:#F1F8FF; cursor:hand;}
+.search {color:#ACACAC; font-size:9pt; font-family:verdana; border:1 solid #DFEFFF; width:85; height:19; filter: Alpha(Opacity=88); overflow:no; line-height:120%}
+.v7 {font-family:verdana; font-size:7pt; color:#ACACAC;}
+.v8 {font-family:verdana; font-size:8pt; color:#ACACAC;}
+.v9 {font-family:verdana; font-size:8pt; color:#ACACAC;}
+.d8 {font-family:µ¸¿ò; font-size:8pt; color:#ACACAC;}
+.v71 {font-family:verdana; font-size:7pt; color:#919191;}
+.v81 {font-family:verdana; font-size:8pt; color:#919191;}
+.v91 {font-family:verdana; font-size:9pt; color:#919191;}
+.v82 {font-family:verdana; font-size:8pt; color:#757575;}

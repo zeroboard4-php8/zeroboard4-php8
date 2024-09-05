@@ -1,0 +1,20 @@
+<!--
+body,td,select,table,input,div,form,textarea,center,option,pre,blockquote {font-size:9pt;font-family:µ¸¿ò;color:#787878;line-height:150%}
+-->
+
+a:link {color:#787878;text-decoration:none}
+a:visited {color:#787878;text-decoration:none}
+a:active {color:#787878;text-decoration:none}
+a:hover {color:#787878;text-decoration:none}
+
+.p {text-align:justify;}
+.color {color:#FF8600}
+.comment_number {FONT-FAMILY:verdana; FONT-SIZE:7pt; color:#DFC9B6; font-weight:bold;}
+.textarea {background-color:#F8F5F2; border:solid 1; border-color:#EEE6DE;overflow-x:hidden; overflow-y:auto; padding-top:1; 
+padding-right:5; padding-bottom:5; padding-left:5;width:100%;height:350px}
+.comment_textarea {background-color:#FFFFFF; border:solid 1; border-color:#E7DED7; overflow-x:hidden; overflow-y:auto; padding-top:1;padding-right:5; padding-bottom:5; padding-left:5;width:100%;height:50px}
+.search {border:solid 1; border-color:#E7DED7; background-color:#FFFFFF; height:23;}
+.input {border:solid 1; border-color:#E7DED7; background-color:#FFFFFF; line-height:120%;width:100;height:23;}
+.input2 {border:solid 1; border-color:#E7DED7; background-color:#FFFFFF; line-height:120%;width:100%;height:23;}
+.ver7 {font-family:tahoma; font-size:7pt;}
+.ver8 {font-family:verdana; font-size:7pt;color:#787878;}

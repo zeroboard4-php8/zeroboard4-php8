@@ -59,7 +59,7 @@
 
 	echo "<div align=center><br>";
 ?>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
  function address_popup(num)
  {

@@ -1,0 +1,1 @@
+<a href=http://woni.x-y.net target=_blank onfocus=blur()>woni</a>

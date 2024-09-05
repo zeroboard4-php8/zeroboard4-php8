@@ -1,0 +1,13 @@
+BODY,TD,SELECT,input,DIV,form,TEXTAREA,center,option,pre,blockquote {font-size:9pt; font-family:±¼¸²,verdana,tahoma; color:3D3D3D;line-height:1.5;}
+A:link { color:#3D3D3D; font-family:±¼¸²;line-height:1.5; font-size:9pt; text-decoration:none;}
+A:visited { color:#3D3D3D; font-family:±¼¸²;line-height:1.5; font-size:9pt; text-decoration:none;}
+A:active { color:#3D3D3D; font-family:±¼¸²;line-height:1.5; font-size:9pt; text-decoration:none;}
+
+BODY {scrollbar-face-color:white; scrollbar-shadow-color: #3D3D3D; scrollbar-highlight-color: #3D3D3D; scrollbar-3dlight-color:white; scrollbar-darkshadow-color:white; scrollbar-track-color:white; scrollbar-arrow-color: #3D3D3D}
+
+.input{border:#3D3D3D solid 1;font-family:±¼¸²,verdana;font-size:9pt;color:#3D3D3D;background-color:white;height:19px}
+.input2{border:#3D3D3D solid 1;font-family:±¼¸²,verdana;font-size:9pt;color:#3D3D3D;background-color:white;height:70px;WIDTH: 400px}
+.tdclass {background-color:3D3D3D;}
+.td_top {background-color:FFFFFF;font-family:matchworks,verdana;font-size:9pt;color:#3D3D3D;}
+.td_middle {}
+.td_bottom {background-color:FFFFFF;font-family:matchworks,verdana;font-size:7pt;color:#3D3D3D;}

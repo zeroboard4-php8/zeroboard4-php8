@@ -90,7 +90,7 @@
 	$handphone=isset($handphone) ? addslashes(del_html($handphone)) : '';
 	$comment=isset($comment) ? addslashes(del_html($comment)) : '';
 	$birth=isset($birth_1) ? mktime(0,0,0,$birth_2,$birth_3,$birth_1) : '';
-	if(strpos($homepage,'http://') === false &&$homepage) $homepage="http://$homepage";
+	if(strpos($homepage,'http://') === false &&$homepage) $homepage=addslashes(del_html("http://$homepage"));
 	$reg_date=time();
 	$job = isset($job) ? addslashes(del_html($job)) : '';
 	$homepage = isset($homepage) ? addslashes(del_html($homepage)) : '';
@@ -99,18 +99,24 @@
 	$icq = isset($icq) ? addslashes(del_html($icq)) : '';
 	$msn = isset($msn) ? addslashes(del_html($msn)) : '';
 	
-	if(!isset($open_msn)) $open_msn = "";
-	if(!isset($open_job)) $open_job = "";
-	if(!isset($open_hobby)) $open_hobby = "";
-	if(!isset($open_home_address)) $open_home_address = "";
-	if(!isset($open_home_tel)) $open_home_tel = "";
-	if(!isset($open_office_address)) $open_office_address = "";
-	if(!isset($open_office_tel)) $open_office_tel = "";
-	if(!isset($open_handphone)) $open_handphone = "";
-	if(!isset($open_birth)) $open_birth = "";
-	if(!isset($open_picture)) $open_picture = "";
+	if(!isset($mailing)) $mailing = empty($mailing) ? '0' : '1';
+	$openinfo = empty($openinfo) ? '0' : '1';
+	if(!isset($open_email)) $open_email = empty($open_email) ? '0' : '1';
+	if(!isset($open_homepage)) $open_homepage = empty($open_homepage) ? '0' : '1';
+	if(!isset($open_icq)) $open_icq = empty($open_icq) ? '0' : '1';
+	if(!isset($open_msn)) $open_msn = empty($open_msn) ? '0' : '1';
+	if(!isset($open_comment)) $open_comment = empty($open_comment) ? '0' : '1';
+	if(!isset($open_job)) $open_job = empty($open_job) ? '0' : '1';
+	if(!isset($open_hobby)) $open_hobby = empty($open_hobby) ? '0' : '1';
+	if(!isset($open_home_address)) $open_home_address = empty($open_home_address) ? '0' : '1';
+	if(!isset($open_home_tel)) $open_home_tel = empty($open_home_tel) ? '0' : '1';
+	if(!isset($open_office_address)) $open_office_address = empty($open_office_address) ? '0' : '1';
+	if(!isset($open_office_tel)) $open_office_tel = empty($open_office_tel) ? '0' : '1';
+	if(!isset($open_handphone)) $open_handphone = empty($open_handphone) ? '0' : '1';
+	if(!isset($open_birth)) $open_birth = empty($open_birth) ? '0' : '1';
+	if(!isset($open_picture)) $open_picture = empty($open_picture) ? '0' : '1';
 	if(!isset($picture_name)) $picture_name = "";
-	if(!isset($open_aol)) $open_aol = "";
+	if(!isset($open_aol)) $open_aol = empty($open_aol) ? '0' : '1';
 
 	if(isset($_FILES['picture'])) {
 		$picture = $_FILES['picture']['tmp_name'];

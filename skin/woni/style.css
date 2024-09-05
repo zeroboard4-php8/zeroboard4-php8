@@ -1,0 +1,31 @@
+	/* link */
+@font-face   { font-family:團9;src:url(http://woni.x-y.net/min9.mwf);}
+
+BODY,TD,SELECT,TEXTAREA,DIV,form,center,option,pre,blockquote {font-family:團9;font-size:9pt;color:0D4963}
+
+body {background:#FFFFFF url(http://logue.new21.org/Beone/bg.jpg); overflow:auto;
+      scrollbar-face-color:FFFFFF;
+      scrollbar-highlight-color:FFFFFF;
+      scrollbar-3dlight-color:FFFFFF;
+      scrollbar-shadow-color:86ABBB;
+      scrollbar-darkshadow-color:FFFFFF;
+      scrollbar-track-color:FFFFFF;
+      scrollbar-arrow-color:0D4963}
+
+A:link    {color:#0D4963;text-decoration:none;}
+A:visited {color:#0D4963;text-decoration:none;}
+A:active  {color:#0D4963;text-decoration:none;}
+A:hover  {color:#639EB7;text-decoration:none}
+
+.head {border:solid 0 #B7D4E1;font-family:團9;font-size:9pt;color:0D4963;background-color:white;height:19px}
+.reply {font-family:團9;font-size:9pt;color:72909E}
+.textarea {border:solid 1 #B7D4E1; font-family:團9;font-size:9pt;color:0D4963;background-color:white}
+.input{border:solid 0 #B7D4E1;font-family:團9;font-size:9pt;color:0D4963;background-color:white;height:19px}
+.input4{border:solid 1 #B7D4E1;font-family:團9;font-size:9pt;color:0D4963;background-color:white;height:19px}
+.input3{border:solid 1 #B7D4E1;font-family:團9;font-size:9pt;color:0D4963;background-color:white;height:19px}
+.input2{border:solid 0 #B7D4E1;font-family:團9;font-size:9pt;color:0D4963;background-color:white;height:19px}
+.submit {border:0; background-color:#639EB7; color:white; font-family:團9;font-size:9pt; width:55; height:19px; line-height:100%}
+.comment {border:0; background-color: #E5F0F5; overflow:auto}
+.search {border-width:0 0 1; border-color:#B7D4E1; background:; line-height:100%; font-family:團9;font-size:9pt;color:0D4963}
+.page {font-family:團9;font-size:9pt;color:72909E}
+.thm8 {font-family:團9;font-size:9pt;color:0D4963;height:20px} 

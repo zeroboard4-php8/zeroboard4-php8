@@ -39,9 +39,10 @@
 	$group=$group_data;
 	$group_no=isset($group['no']) ? $group['no'] : '';
 
-	$check[1]="checked";
+    $check[0]='';
+	$check[1]='checked';
 
-	$referer=$HTTP_REFERER;
+	$referer=$_SERVER['HTTP_REFERER'];
 
 	$setup['header']="";
 	$setup['footer']="";
@@ -57,7 +58,7 @@
 
 ?>
 <div align=center><br>
-
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
  function address_popup(num)                                                                                                      
  {                                                                                                                                
@@ -97,6 +98,20 @@
 
   return true;
   }
+  
+    function execDaumPostcode(isoffice) {
+		if(isoffice) {
+			var idval = "office_address";
+		} else {
+			var idval = "home_address";
+		}
+        new daum.Postcode({
+            oncomplete: function(data) {
+                var addr = data.address;
+                document.getElementById(idval).value = addr;
+            }
+        }).open();
+    }
 
 </script>
 <table border=0 cellspacing=1 cellpadding=0 width=540>
@@ -225,7 +240,7 @@
 <?php if(!empty($group_data['use_home_address'])) { ?> 
   <tr height=28 align=right>
      <td style=font-family:Tahoma;font-size:8pt;>Home Address&nbsp;</td>
-     <td align=left>&nbsp;<input type=text name=home_address size=40 maxlength=255 value="<?=$member['home_address']?>" style=border-color:#d8b3b3 class=input><input type=button value='검색' class=input style=border-color:#d8b3b3 onclick=address_popup(1)>
+     <td align=left>&nbsp;<input type=text id=home_address name=home_address size=40 maxlength=255 value="<?=$member['home_address']?>" style=border-color:#d8b3b3 class=input><input type=button value='검색' class=input style=border-color:#d8b3b3 onclick=execDaumPostcode(false)>
                           <input type=checkbox value=1 name=open_home_address <?=$check[$member['open_home_address']]?>> 공개</td>
   </tr>        <tr>
           <td colspan="5" bgcolor="#EBD9D9" align="center"><img src="images/t.gif" width="10" height="1"></td>
@@ -245,7 +260,7 @@
 <?php if(!empty($group_data['use_office_address'])) { ?>
   <tr height=28 align=right>
      <td style=font-family:Tahoma;font-size:8pt;>Office Address&nbsp;</td>
-     <td align=left>&nbsp;<input type=text name=office_address size=40 maxlength=255 value="<?=$member['office_address']?>" style=border-color:#d8b3b3 class=input><input type=button value='검색' class=input style=border-color:#d8b3b3 onclick=address_popup(2)>
+     <td align=left>&nbsp;<input type=text id=office_address name=office_address size=40 maxlength=255 value="<?=$member['office_address']?>" style=border-color:#d8b3b3 class=input><input type=button value='검색' class=input style=border-color:#d8b3b3 onclick=execDaumPostcode(true)>
                           <input type=checkbox value=1 name=open_office_address <?=$check[$member['open_office_address']]?>> 공개</td>
   </tr>        <tr>
           <td colspan="5" bgcolor="#EBD9D9" align="center"><img src="images/t.gif" width="10" height="1"></td>

@@ -1,0 +1,40 @@
+BODY,TD,input,select,DIV,form,TEXTAREA,center,option,pre,blockquote {font-family:±¼¸²;font-size:9pt;color:#C6C6C7;}
+
+select {border:solid 0;background-color:#000000;border-color:#333333}
+.input {border:solid 1;background-color:#000000;border-color:#333333}
+
+body {background:black; overflow:auto;
+      scrollbar-face-color:;
+      scrollbar-highlight-color:;
+      scrollbar-3dlight-color:;
+      scrollbar-shadow-color:;
+      scrollbar-darkshadow-color:;
+      scrollbar-track-color:;
+      scrollbar-arrow-color:}
+
+A:link    {color:#999999;text-decoration:none;}
+A:visited {color:#999999;text-decoration:none;}
+A:active  {color:#999999;text-decoration:none;}
+A:hover   {color:#999999;text-decoration:none;}
+
+.ssuk_input {border:solid;border-width:0 0 1 0;border-color:#444444;background-color:transparent;height:14;}
+.ssuk_input2 {border:solid 1;background-color:#222222;border-color:#333333}
+.ssuk_view {border:solid 1;background-color:#282828;border-color:#333333}
+.ssuk_submit {border:solid 1 white;font-family:verdana;font-size:8pt;color:#484848;background-color:333333; height=18px}
+
+
+.ssuk_comment_submit {font-family:Verdaba; font-size:8pt; color:#999999; background-color:#000000; border-width:1px; border-color:#333333; border-style:solid;}
+
+
+.ssuk_setup {font-family:tahoma;font-size:7pt;color:#999999;}
+.ssuk_setup1 {font-family:tahoma;font-size:6pt;color:#999999;}
+.ssuk_category {font-family:verdana;font-size:8pt;color:#999999;}
+.ssuk_lh {background:url(bg_2.gif) repeat-x left bottom; height:10}
+.ssuk_num {font-family:verdana;font-size:7pt;}
+.ssuk_num_list {font-family:verdana;font-size:7pt;letter-spacing:-1pt;}
+.ssuk_page {font-family:tahoma;font-size:7pt;}
+.ssuk_comment {font-family:tahoma;font-size:6pt;}
+
+.ssuk-write1 {font-family:verdana;font-size:7pt;font-weight:bold;color=#1AD9D9}
+.ssuk-write2 {font-family:verdana;font-size:7pt;color=#cccccc}
+.ssuk-write3 {font-family:verdana;font-size:7pt;color=#1ad9d9}

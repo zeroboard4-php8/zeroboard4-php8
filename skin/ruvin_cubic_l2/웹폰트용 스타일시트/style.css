@@ -1,0 +1,32 @@
+@font-face {font-family:웹폰트이름;src:url(http://홈주소(웹폰트경로)/웹폰트이름.mwf);}
+
+BODY,TD,SELECT,input,DIV,form,TEXTAREA,center,option,pre,blockquote {font-size:9pt;font-family:웹폰트이름;color:#696756;line-height:170%}
+
+body
+{scrollbar-3dlight-color:#E6E7E1;
+scrollbar-arrow-color:#E6E7E1;
+scrollbar-track-color:#E6E7E1;
+scrollbar-darkshadow-color:#E6E7E1;
+scrollbar-face-color:#E6E7E1;
+scrollbar-highlight-color:#FFFFFF;
+scrollbar-shadow-color:#BEC0B1;background-color:#E6E7E1}
+
+A:link    {color:#696756;text-decoration:none}
+A:visited {color:#696756;text-decoration:none}
+A:active  {color:#696756;text-decoration:none}
+A:hover   {color:#A4A28E;text-decoration:none}
+
+.text   {border: solid 1;border-top-color:#BEC0B1;border-right-color:#FFFFFF;border-left-color:#BEC0B1;border-bottom-color:#FFFFFF; background-color:#E6E7E1;font-family:웹폰트이름;font-size:9pt;overflow-x:hidden;overflow-y:auto}
+.input  {border: solid 1;border-top-color:#BEC0B1;border-right-color:#FFFFFF;border-left-color:#BEC0B1;border-bottom-color:#FFFFFF; background-color:#E6E7E1;height:19px}
+.input2 {border: solid 1;border-top-color:#BEC0B1;border-right-color:#FFFFFF;border-left-color:#BEC0B1;border-bottom-color:#FFFFFF; background-color:#E6E7E1;height:17px}
+.submit {border-width:1;border-style:solid;font-weight:bold;font-family:verdana;font-size:7pt;color:#696756;border-top-color:#FFFFFF;border-right-color:#BEC0B1;border-left-color:#FFFFFF;border-bottom-color:#BEC0B1; background-color:#E6E7E1;height:19px}
+.line1  {background-color:#BEC0B1}
+.line2  {background-color:#FFFFFF}
+
+.cu       {font-size:9pt;width:100%;font-family:웹폰트이름;filter:dropshadow(color=#FFFFFF,offX=1,offY=1,positive=1);line-height:170%}
+.cub      {font-weight:bold;font-size:9pt;width:100%;font-family:웹폰트이름;filter:dropshadow(color=#FFFFFF,offX=1,offY=1,positive=1);line-height:170%}
+.t7       {font-family:tahoma;font-size:7pt;color:#696756}
+.v7       {font-family:verdana;font-size:7pt;color:#696756}
+.v8       {font-family:verdana;font-size:8pt;color:#696756}
+.notice   {font-family:tahoma;font-size:7pt;color:#E16887}
+.top      {font-family:verdana;font-size:7pt;color:#CD74A9}

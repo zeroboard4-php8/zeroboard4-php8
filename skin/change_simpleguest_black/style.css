@@ -1,0 +1,23 @@
+BODY,TD,SELECT,input,DIV,form,TEXTAREA,center,option,pre,blockquote {font-size:9pt; font-family:±¼¸²; color:#dcdcdc;line-height:160%}
+
+A:link    {color:#dcdcdc;text-decoration:none;}
+A:visited {color:#dcdcdc;text-decoration:none;}
+A:active  {color:#dcdcdc;text-decoration:none;}
+A:hover  {color:white;text-decoration:none}
+
+body {
+background:black; overflow:auto;
+scrollbar-face-color:#393939;
+scrollbar-highlight-color:#505050;
+scrollbar-3dlight-color:black;
+scrollbar-shadow-color:#505050;
+scrollbar-darkshadow-color:black;
+scrollbar-arrow-color:#505050;
+scrollbar-track-color:black;}
+
+.textarea {border:solid 1; font-family:±¼¸²;font-size:9pt;color:#505050;background-color:black;overflow:auto;}
+.input {border:solid 1 #505050;height:17;font-family:tahoma;font-size:9pt;color:#dcdcdc;background-color:black;}
+.submit {border:solid 0 black;width:62;height:17;font-family:tahoma;font-size:8pt;color:#dcdcdc;background-color:#505050;}
+.change_input {border:solid 1 #505050; height:17; font-family:±¼¸²; font-size:9pt; color:#dcdcdc;background-color:black;}
+.change_search {border-top-width:0; border-right-width:0; border-bottom-width:1; border-left-width:0; border-color:#505050; background-color:black; border-style:solid;}
+.change_tahoma_8pt {font-family:Tahoma,±¼¸²; font-size:8pt;}
