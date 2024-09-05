@@ -104,7 +104,7 @@
 	mysql_close($connect);
 ?>
 <script>
-alert("회원님의 정보 수정이 제대로 처리되었습니다. <?=$que?>");
+alert("회원님의 정보 수정이 제대로 처리되었습니다.");
 opener.window.history.go(0);
 window.close();
 </script>
