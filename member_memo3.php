@@ -10,6 +10,9 @@
 
 	if(!isset($member['no'])) Error("로그인된 회원만이 사용할수 있습니다","window.close");
 
+	$page = isset($_REQUEST['page']) && is_numeric($_REQUEST['page']) ? $_REQUEST['page'] : null;
+	$keyword = isset($_REQUEST['keyword']) ? $_REQUEST['keyword'] : null;
+	$status = isset($_REQUEST['status']) && is_numeric($_REQUEST['status']) ? $_REQUEST['status'] : null;
 	if(!isset($page)&&!isset($status)) $status=1;
 	if(empty($status)) $status='';
 	if(empty($keyword)) $keyword='';
@@ -77,21 +80,21 @@
 
 	if($page>$show_page_num) {
 		$prev_page=$start_page;
-		$print_page="<a href=$PHP_SELF?page=$prev_page&status=$status&keyword=$keyword>[Prev]</a> ";
-		$print_page.="<a href=$PHP_SELF?page=1&status=$status&keyword=$keyword>[1]</a>..";
+		$print_page="<a href={$_SERVER['PHP_SELF']}?page=$prev_page&status=$status&keyword=$keyword>[Prev]</a> ";
+		$print_page.="<a href={$_SERVER['PHP_SELF']}?page=1&status=$status&keyword=$keyword>[1]</a>..";
 	}
 	
 	while($i+$start_page<=$total_page&&$i<=$show_page_num) {
 		$move_page=$i+$start_page;
 		if($page==$move_page) $print_page.=" <b>$move_page</b> ";
-		else $print_page.="<a href=$PHP_SELF?page=$move_page&status=$status&keyword=$keyword>[$move_page]</a>";
+		else $print_page.="<a href={$_SERVER['PHP_SELF']}?page=$move_page&status=$status&keyword=$keyword>[$move_page]</a>";
 		$i++;
 	}
 
 	if($total_page>$move_page) {
 		$next_page=$move_page+1;
-		$print_page.="..<a href=$PHP_SELF?page=$total_page&status=$status&keyword=$keyword>[$total_page]</a>";
-		$print_page.=" <a href=$PHP_SELF?page=$next_page&status=$status&keyword=$keyword>[Next]</a>";
+		$print_page.="..<a href={$_SERVER['PHP_SELF']}?page=$total_page&status=$status&keyword=$keyword>[$total_page]</a>";
+		$print_page.=" <a href={$_SERVER['PHP_SELF']}?page=$next_page&status=$status&keyword=$keyword>[Next]</a>";
 	}
    
 	head("bgcolor=white");
@@ -138,7 +141,7 @@
 </script>
 
 <table border=0 cellspacing=0 cellpadding=0 width=100%>
-<form method=post action=<?=$PHP_SELF?> name=list onsubmit="return check_status()">
+<form method=post action=<?=$_SERVER['PHP_SELF']?> name=list onsubmit="return check_status()">
 <input type=hidden name=page value=<?=$page?>>
 <tr align=center height=15>
   <td width=35%><img src=images/memo_level.gif></td>
@@ -195,7 +198,7 @@
      <td><input type=checkbox value=1 name=status <?=isset($checked[1])?$checked[1]:''?>></td>
      <td><img src=images/memo_online.gif align=absmiddle style=cursor:hand >&nbsp;&nbsp;&nbsp;</td>
      <td><input type=image border=0 src=images/memo_search.gif align=absmiddle>&nbsp;</td>
-     <td><a href=<?=$PHP_SELF?>?page=<?=$page?>><img src=images/memo_cancel.gif border=0></a></td>
+     <td><a href=<?=$_SERVER['PHP_SELF']?>?page=<?=$page?>><img src=images/memo_cancel.gif border=0></a></td>
      </tr>
      </table>
   

@@ -1,3 +1,41 @@
+<?php
+	$f = @fopen('lib.php','r');
+	$libfile = @fread($f,filesize('lib.php'));
+	@fclose($f);
+	$g = @fopen('_head.php','r');
+	$headfile = @fread($g,filesize('_head.php'));
+	@fclose($g);
+	if (preg_match('/@?\s*(extract|zb_gpc_extract)\s*\(\s*\$_(GET|POST|REQUEST|COOKIE)\s*\)\s*;?/i', $libfile)
+		|| preg_match('/@?\s*(extract|zb_gpc_extract)\s*\(\s*\$_(GET|POST|REQUEST|COOKIE)\s*\)\s*;?/i', $headfile)
+		|| !empty($globaldetect)) {
+?>
+<br>
+<br>
+<br>
+<table border=0 cellpadding=3 cellspacing=1 width=300 bgcolor=8d8d8d>
+<tr bgcolor=bbbbbb>
+	<td align=center height=30  style="font-family:Tahoma;font-size:8pt;"><b>!!! 경&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;고 !!!</font></td>
+</tr>
+<tr bgcolor=d3d3d3>
+	<td align=center height=30 style="font-family:Tahoma;font-size:8pt;">
+		<br>
+		현재 외부 파라미터가 전역 변수로 처리되고 있습니다.<br><br>
+		extract()와 같은 함수로 외부 파라미터 입력을<br>
+		전역변수화 하는 코드를 삽입하였거나,<br><br>
+		php의 register_globals 옵션이 On으로<br>
+		설정되어 있기 때문일 수 있습니다.<br><br>
+		이는 보안 상 사용하여서는 안되는 설정입니다.<br><br>
+		해당 설정이 제거되는 경우 본 경고는 출력되지 않습니다.
+		<br>
+		<br>
+ 		<br>
+    </td>
+</tr>
+</form>
+</table>
+<br>
+<br>
+<?php } ?>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/json2/20160511/json2.min.js"></script>
 <script>
 var myver0 = '<?=$zb_php8_version?>';

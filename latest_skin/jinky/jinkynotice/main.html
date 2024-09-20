@@ -1,0 +1,103 @@
+<head>
+
+<style>
+body,td,select,input,div,form,textarea,center,option,pre,blockquote {font-size:8pt;font-family:verdana;color:#000000;line-height:160%;}
+
+a:link     {color:#000000;text-decoration:none}
+
+a:visited  {color:#000000;text-decoration:none}
+
+a:active   {color:#000000;text-decoration:none}
+
+a:hover   {color:#7A7A7A;text-decoration:none}
+
+</style>
+
+<script>
+var sRepeat=null;
+function doScrollerIE(dir, src, amount) {
+if (amount==null) amount=10;
+if (dir=="up")
+document.all[src].scrollTop-=amount;
+else
+document.all[src].scrollTop+=amount;
+if (sRepeat==null)
+sRepeat = setInterval("doScrollerIE('" + dir + "','" + src + "'," + amount + ")",100);
+return false }
+window.document.onmouseout = new Function("clearInterval(sRepeat);sRepeat=null");
+window.document.ondragstart = new Function("return false");
+</script>
+</head>
+
+
+
+<table border="0" cellpadding="0" cellspacing="0" width=100% align=center>
+    <tr>
+        <td width=100%>
+        <img src="[dir]bl.gif">&nbsp;[notice_subject]&nbsp;&nbsp;<font style=font-family:verdana;font-size:7pt>([notice_date])</font>
+
+        </td></tr>
+<tr>
+        <td bgcolor="#1BA2B6" height=1>
+
+        </td>
+    </tr>
+<tr>
+        <td bgcolor="#58CADB" height=3>
+
+        </td>
+    </tr>
+
+
+ <tr>
+
+   <td>
+
+   <table cellpadding="5" cellspacing="0" border=0 width="100%" >
+    <tr>
+        <td width="100%" rowspan="2" >
+<DIV ID=scroll STYLE="width:100%; height:200; overflow:hidden;  margin-left:5px;">[notice_memo]</DIV>
+        </td>
+        <td width="15" valign="top">
+            <a style="text-indent: 0px;" ONMOUSEOVER="return doScrollerIE('up','scroll',10)" ONMOUSEOUT="clearInterval(sRepeat)" style="cursor:n-resize"><img src="[dir]up.gif"></a>
+        </td>
+    </tr>
+    <tr>
+        <td width="15" valign="bottom">
+            <a style="text-indent: 0px;" ONMOUSEOVER="return doScrollerIE('down','scroll',10)" ONMOUSEOUT="clearInterval(sRepeat)" style="cursor:s-resize"><img src="[dir]down.gif"></a>
+        </td>
+    </tr>
+</table>
+
+
+   </td>
+ </tr>
+<tr>
+        <td bgcolor="#58CADB" height=3>
+
+        </td>
+    </tr>
+<tr><td height=1 bgcolor=#1BA2B6></td></tr>
+
+ <tr>
+   <td height="4" ></td>
+ </tr>
+
+ <tr>
+   <td>
+       <table border=0 width=100% cellspacing=0 cellpadding=0 >
+        [loop]
+        <tr>
+        <td height="18">&nbsp;<img src="[dir]bl.gif" border=0 align=absmiddle>&nbsp;[subject]&nbsp;&nbsp;<font style=font-family:verdana;font-size:7pt>([date])&nbsp;&nbsp;<font color=#C0C0C0>[comment]</font></td>
+        </tr>
+        [/loop]
+ </tr>
+ <tr>
+   <td height="4" ></td>
+ </tr>
+
+     </table>
+
+  </td>
+ </tr>
+ </table>

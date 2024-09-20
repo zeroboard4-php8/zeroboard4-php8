@@ -1,0 +1,1 @@
+<a href=http://kimamore.com  target=_blank  onfocus='this.blur()'><font style="font-family:verdana;font-size:7pt;">kima</a> + <a href=http://blog.naver.com/bz_zd  target=_blank  onfocus='this.blur()'><font style="font-family:verdana;font-size:7pt;">ROMY</font></a>

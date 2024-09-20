@@ -1,0 +1,33 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+body, td, select, input, div, form, textarea, center, option, pre, p, blockquote, br {font-family:나눔고딕, Nanum Gothic, verdana; font-size:8pt; color:#000000; line-height:160%;}
+
+
+a:link    {color:000000; text-decoration:none;}
+a:visited {color:000000; text-decoration:none;}
+a:active  {color:000000; text-decoration:none;}
+a:hover   {color:000000; text-decoration:none;}
+
+.input {border:1 solid #000000; background-color:transparent;}
+.input2 {background-color:transparent; border-bottom:1 solid #000000; border-left-width:0; border-right-width:0; border-top-width:0;}
+.button {border:0; background-color:transparent; height:21; font-family:나눔고딕, Nanum Gothic, verdana; font-size:6pt;}
+
+.ver7    {font-family:나눔고딕, Nanum Gothic, verdana; font-size:7pt;}
+.thm7  {font-family:나눔고딕, Nanum Gothic, tahoma; font-size:7pt;}
+.tim6   {font-family:times new roman; font-size:6.5pt;}
+.dot7   {font-family:나눔고딕, Nanum Gothic, dotum; font-size:8pt;}
+.bat7   {font-family:나눔고딕, Nanum Gothic, batang; font-size:9pt;}
+.bat6   {font-family:나눔고딕, Nanum Gothic, batang; font-size:6.5pt;}
+.color {color:000000;}
+.color2 {font-family:나눔고딕, Nanum Gothic, tahoma; font-size:7pt; color:000000;}
+.line {background-color:#606060;}
+.line_dot {border-top:1px dashed #E6E6E6; border-left-width:0; border-right-width:0; border-bottom-width:0;} 
+.line2 {background-color:transparent; border:1 solid #E6E6E6; border-bottom-width:0; border-left-width:0; border-right-width:1; border-top-width:0;}
+.box {
+    background-color:transparent;
+ border:solid #000000;
+ border-bottom-width:1;
+border-left-width:1;
+    border-right-width:1;
+border-top-width:1;}
+

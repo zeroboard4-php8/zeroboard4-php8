@@ -46,9 +46,10 @@
   <td align=left style='word-break:break-all;'><?=$insert?><?=$icon?><?=$subject?> <font style=font-family:tahoma;font-size:7pt><?=$comment_num?></font></td> 
   <td nowrap><?=$face_image?>&nbsp;&nbsp;<?=$name?>&nbsp;&nbsp;</div></td>
   <td nowrap><font color=#F96FA6 style=font-family:tahoma;font-size:7pt>&nbsp;<?=$reg_date?>&nbsp;&nbsp;</td>
-  <td nowrap><font color=#F96FA6 style=font-family:tahoma;font-size:7pt><?=$hit?>&nbsp;</td>
+  <td nowrap><font color=#F96FA6 style=font-family:tahoma;font-size:7pt>&nbsp;&nbsp;<?=$hit?>&nbsp;&nbsp;</td>
+  <td nowrap><font color=#F96FA6 style=font-family:tahoma;font-size:7pt><?=$vote?>&nbsp;</td>
 </tr>
-<tr><td height=1 colspan=6 background=<?=$dir?>/dot.gif height=1></td></tr>
+<tr><td height=1 colspan=7 background=<?=$dir?>/dot.gif height=1></td></tr>
  
 
  

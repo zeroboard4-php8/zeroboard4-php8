@@ -5,7 +5,7 @@
  	if(isset($_POST['exec2']) && !check_csrf_token()) Error('CSRF 토큰이 일치하지 않습니다.');
 
 	function del_member($no) {
-		global $group_no, $member_table, $get_memo_table,  $send_memo_table,$admin_table, $t_board, $t_comment, $connect, $group_table, $member;
+		global $group_no, $member_table, $get_memo_table, $send_memo_table, $admin_table, $t_board, $t_comment, $connect, $group_table, $member;
 
 		$member_data = mysql_fetch_array(zb_query("select * from $member_table where no = '$no'"));
 		if($member['is_admin']>1&&$member['no']!=$member_data['no']&&$member_data['level']<=$member['level']&&$member_data['is_admin']<=$member['is_admin']) error("선택하신 회원의 정보를 변경할 권한이 없습니다");
@@ -34,26 +34,27 @@
 	if(!isset($mailing)) $mailing = '';
 
 // 회원전체 삭제하는 부분 
-	if(isset($_POST['exec2']) && $_POST['exec2']==="deleteall") {
+	if(isset($_POST['exec2']) && $_POST['exec2']==='deleteall') {
 		//exit(count($_POST));
-		if(!$admin_passwd) Error("관리자 비밀번호를 입력해주세요.");
+		if(empty($_POST['admin_passwd'])) Error("관리자 비밀번호를 입력해주세요.");
 		$isold = false;
 		if(strlen($member['password'])<=16&&strlen(get_password("a"))>=41) $isold = true;
-		if($member['password'] != get_password($admin_passwd, $isold)) {
+		if($member['password'] != get_password($_POST['admin_passwd'], $isold)) {
 				error("관리자 비밀번호가 틀렸습니다.");
 		}
 		if(isset($_SESSION['csrf_token'])) unset($_SESSION['csrf_token']);
 		foreach ($_POST['cart'] as $value) {
             del_member($value);
 		}
-		movepage("$PHP_SELF?exec=view_member&group_no=$group_no&page=$page&keyword=$keyword&keykind=$keykind&like=$like&level_search=$level_search&page_num=$page_num");
+		movepage("{$_SERVER['PHP_SELF']}?exec=view_member&group_no=$group_no&page=$page&keyword=$keyword&keykind=$keykind&like=$like&level_search=$level_search&page_num=$page_num");
 	}
 
 
 // 회원 게시판 권한 취소시키는 부분 
 
-	if($exec2=="modify_member_board_manager") {
-
+	if($exec2==='modify_member_board_manager') {
+		$member_no = isset($_REQUEST['member_no']) && is_numeric($_REQUEST['member_no']) ? $_REQUEST['member_no'] : '';
+		$board_num = isset($_REQUEST['board_num']) && is_numeric($_REQUEST['board_num']) ? $_REQUEST['board_num'] : '';
 		$_temp=mysql_fetch_array(zb_query("select * from $member_table where no = '$member_no'",$connect));
 	
 		$__temp = split(",",$_temp['board_name']);
@@ -67,91 +68,103 @@
 
 		zb_query("update $member_table set board_name = '$_st' where no='$member_no'",$connect) or error(zb_error());
 
-		movepage("$PHP_SELF?exec=view_member&exec2=modify&group_no=$group_no&page=$page&keyword=$keyword&level_search=$level_search&page_num=$page_num&no=$member_no&keykind=$keykind&like=$like");
+		movepage("{$_SERVER['PHP_SELF']}?exec=view_member&exec2=modify&group_no=$group_no&page=$page&keyword=$keyword&level_search=$level_search&page_num=$page_num&no=$member_no&keykind=$keykind&like=$like");
 	}
 
 
 // 회원 게시판 권한 추가시키는 부분 
 
-	if($exec2=="add_member_board_manager") {
-
+	if($exec2==='add_member_board_manager') {
+		$member_no = isset($_REQUEST['member_no']) && is_numeric($_REQUEST['member_no']) ? $_REQUEST['member_no'] : '';
+		$board_num = isset($_REQUEST['board_num']) && is_numeric($_REQUEST['board_num']) ? $_REQUEST['board_num'] : '';
 		$_temp=mysql_fetch_array(zb_query("select * from $member_table where no = '$member_no'",$connect));
 		$_board_name = $_temp['board_name'].$board_num.",";
 
 		zb_query("update $member_table set board_name = '$_board_name' where no='$member_no'",$connect) or error(zb_error());
 
-		movepage("$PHP_SELF?exec=view_member&exec2=modify&group_no=$group_no&page=$page&keyword=$keyword&level_search=$level_search&page_num=$page_num&no=$member_no&keykind=$keykind&like=$like");
+		movepage("{$_SERVER['PHP_SELF']}?exec=view_member&exec2=modify&group_no=$group_no&page=$page&keyword=$keyword&level_search=$level_search&page_num=$page_num&no=$member_no&keykind=$keykind&like=$like");
 	}
 
 
 // 회원 권한 변경하는 부분 
 
-	if(isset($_POST['exec2']) && $_POST['exec2']==="moveall") {
+	if(isset($_POST['exec2']) && $_POST['exec2']==='moveall') {
+		$movelevel = isset($_POST['movelevel']) && is_numeric($_POST['movelevel']) ? $_POST['movelevel'] : '10';
 		foreach ($_POST['cart'] as $value) {
 			zb_query("update $member_table set level='$movelevel' where no='$value'",$connect);
 		}
 		
-		movepage("$PHP_SELF?exec=view_member&group_no=$group_no&page=$page&keyword=$keyword&level_search=$level_search&page_num=$page_num&keykind=$keykind&like=$like");
+		movepage("{$_SERVER['PHP_SELF']}?exec=view_member&group_no=$group_no&page=$page&keyword=$keyword&level_search=$level_search&page_num=$page_num&keykind=$keykind&like=$like");
 	}
 
 
 // 회원 그룹 변경하는 부분 
 
-	if(isset($_POST['exec2']) && $_POST['exec2']==="move_group"&&$member['is_admin']==1) {
+	if(isset($_POST['exec2']) && $_POST['exec2']==='move_group'&&$member['is_admin']==1) {
+		$movegroup = isset($_POST['movegroup']) && is_numeric($_POST['movegroup']) ? $_POST['movegroup'] : '1';
 		foreach ($_POST['cart'] as $value) {
 			zb_query("update $member_table set group_no='$movegroup' where no='$value'",$connect);
 			zb_query("update $group_table set member_num=member_num-1 where no='$group_no'");
 			zb_query("update $group_table set member_num=member_num+1 where no='$movegroup'");
 		}
-		movepage("$PHP_SELF?exec=view_member&group_no=$group_no&page=$page&keyword=$keyword&level_search=$level_search&page_num=$page_num&keykind=$keykind&like=$like");
+		movepage("{$_SERVER['PHP_SELF']}?exec=view_member&group_no=$group_no&page=$page&keyword=$keyword&level_search=$level_search&page_num=$page_num&keykind=$keykind&like=$like");
 	}
 
 
 // 회원삭제하는 부분 
 
-	if(isset($_POST['exec2']) && $_POST['exec2']==="del") {
-		if(!$admin_passwd) Error("관리자 비밀번호를 입력해주세요.");
+	if(isset($_POST['exec2']) && $_POST['exec2']==='del') {
+		$no = isset($_POST['no']) && is_numeric($_POST['no']) ? $_POST['no'] : '';
+		if(empty($_POST['admin_passwd'])) Error("관리자 비밀번호를 입력해주세요.");
 		$isold = false;
 		if(strlen($member['password'])<=16&&strlen(get_password("a"))>=41) $isold = true;
-		if($member['password'] != get_password($admin_passwd, $isold)) {
+		if($member['password'] != get_password($_POST['admin_passwd'], $isold)) {
 				error("관리자 비밀번호가 틀렸습니다.");
 		}
 		if(isset($_SESSION['csrf_token'])) unset($_SESSION['csrf_token']);
 		del_member($no);
-		movepage("$PHP_SELF?exec=view_member&group_no=$group_no&page=$page&keyword=$keyword&level_search=$level_search&page_num=$page_num&keykind=$keykind&like=$like");
+		movepage("{$_SERVER['PHP_SELF']}?exec=view_member&group_no=$group_no&page=$page&keyword=$keyword&level_search=$level_search&page_num=$page_num&keykind=$keykind&like=$like");
 	}
 
 
 // 회원정보 변경하는 부분 
 
-	if(isset($_POST['exec2']) && $_POST['exec2']==="modify_member_ok") {
-
-		if(!$admin_passwd) Error("관리자 비밀번호를 입력해주세요.");
+	if(isset($_POST['exec2']) && $_POST['exec2']==='modify_member_ok') {
+		if(empty($_POST['admin_passwd'])) Error("관리자 비밀번호를 입력해주세요.");
 		$isold = false;
 		if(strlen($member['password'])<=16&&strlen(get_password("a"))>=41) $isold = true;
-		if($member['password'] != get_password($admin_passwd, $isold)) {
+		if($member['password'] != get_password($_POST['admin_passwd'], $isold)) {
 				error("관리자 비밀번호가 틀렸습니다.");
 		}
 		if(isset($_SESSION['csrf_token'])) unset($_SESSION['csrf_token']);
-		if(isblank($name)) Error("이름을 입력하셔야 합니다");
-
-		if($password&&$password1&&$password!=$password1) Error("비밀번호가 일치하지 않습니다");
+		$member_no = isset($_POST['member_no']) && is_numeric($_POST['member_no']) ? $_POST['member_no'] : '0';
+		$birth_1 = isset($_POST['birth_1']) && is_numeric($_POST['birth_1']) ? $_POST['birth_1'] : 0;
+		$birth_2 = isset($_POST['birth_2']) && is_numeric($_POST['birth_2']) ? $_POST['birth_2'] : 0;
+		$birth_3 = isset($_POST['birth_3']) && is_numeric($_POST['birth_3']) ? $_POST['birth_3'] : 0;
+		$password = isset($_POST['password']) ? $_POST['password'] : '';
+		$password1 = isset($_POST['password1']) ? $_POST['password1'] : '';
+		$is_admin = isset($_POST['is_admin']) && in_array($_POST['is_admin'], array('1', '2', '3')) ? $_POST['is_admin'] : '3';
+		$level = isset($_POST['level']) && is_numeric($_POST['level']) ? $_POST['level'] : '9';
+		$name = isset($_POST['name']) ? $_POST['name'] : '';
+		$email = isset($_POST['email']) ? $_POST['email'] : '';
+		$homepage = isset($_POST['homepage']) ? $_POST['homepage'] : '';
+		$icq = isset($_POST['icq']) ? $_POST['icq'] : '';
+		$aol = isset($_POST['aol']) ? $_POST['aol'] : '';
+		$msn = isset($_POST['msn']) ? $_POST['msn'] : '';
+		$hobby = isset($_POST['hobby']) ? $_POST['hobby'] : '';
+		$job = isset($_POST['job']) ? $_POST['job'] : '';
+		$home_address = isset($_POST['home_address']) ? $_POST['home_address'] : '';
+		$home_tel = isset($_POST['home_tel']) ? $_POST['home_tel'] : '';
+		$office_address = isset($_POST['office_address']) ? $_POST['office_address'] : '';
+		$office_tel = isset($_POST['office_tel']) ? $_POST['office_tel'] : '';
+		$handphone = isset($_POST['handphone']) ? $_POST['handphone'] : '';
+		$mailing = isset($_POST['mailing']) && in_array($_POST['mailing'], array('0', '1')) ? $_POST['mailing'] : null;
+		$openinfo = isset($_POST['openinfo']) && in_array($_POST['openinfo'], array('0', '1')) ? $_POST['openinfo'] : null;
+		$comment = isset($_POST['comment']) ? $_POST['comment'] : '';
+		$maxdirsize = isset($_POST['maxdirsize']) && is_numeric($_POST['maxdirsize']) ? $_POST['maxdirsize'] : '100';
 		
-		if(!isset($birth_1)) $birth_1 = 0;
-		if(!isset($birth_2)) $birth_2 = 0;
-		if(!isset($birth_3)) $birth_3 = 0;
-		if(!isset($icq)) $icq = '';
-		if(!isset($comment)) $comment = '';
-		if(!isset($aol)) $aol = '';
-		if(!isset($msn)) $msn = '';
-		if(!isset($hobby)) $hobby = '';
-		if(!isset($job)) $job = '';
-		if(!isset($home_address)) $home_address = '';
-		if(!isset($home_tel)) $home_tel = '';
-		if(!isset($office_address)) $office_address = '';
-		if(!isset($office_tel)) $office_tel = '';
-		if(!isset($handphone)) $handphone = '';
-
+		if(isblank($name)) Error("이름을 입력하셔야 합니다");
+		if($password&&$password1&&$password!=$password1) Error("비밀번호가 일치하지 않습니다");
 		$birth=mktime(0,0,0,$birth_2,$birth_3,$birth_1);
 
 		if($member['no']==$member_no) {
@@ -220,7 +233,7 @@
 		// 이름앞에 붙는 아이콘 삭제시
 		if(isset($delete_private_icon)) @z_unlink("icon/private_icon/".$member_no.".gif");
 
-		if($_FILES['private_icon']) {
+		if(isset($_FILES['private_icon'])) {
 			$private_icon = $_FILES['private_icon']['tmp_name'];
 			$private_icon_name = $_FILES['private_icon']['name'];
 			$private_icon_type = $_FILES['private_icon']['type'];
@@ -269,7 +282,7 @@
 			//setcookie("zetyxboard_password",$password,'',"/");
 		//}
 
-		movepage("$PHP_SELF?exec=view_member&exec2=modify&no=$member_no&group_no=$group_no&page=$page&keyword=$keyword&level_search=$level_search&page_num=$page_num&keykind=$keykind&like=$like");
+		movepage("{$_SERVER['PHP_SELF']}?exec=view_member&exec2=modify&no=$member_no&group_no=$group_no&page=$page&keyword=$keyword&level_search=$level_search&page_num=$page_num&keykind=$keykind&like=$like");
 	}
 
 ?>

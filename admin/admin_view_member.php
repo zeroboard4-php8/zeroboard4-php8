@@ -12,14 +12,20 @@
 	$total_member=$temp[0];
 
 // 검색어에 대해서 처리
-	$s_que="";
-	if(!isset($keykind)) $keykind='';
-	if(!isset($like)) $like='';
+	$s_que = '';
+	$page = isset($_REQUEST['page']) && is_numeric($_REQUEST['page']) ? $_REQUEST['page'] : '1';
+	$keykind = isset($_REQUEST['keykind']) ? $_REQUEST['keykind'] : '';
+	$keyword = isset($_REQUEST['keyword']) ? $_REQUEST['keyword'] : '';
+	$like = isset($_REQUEST['like']) ? $_REQUEST['like'] : '';
+	$cart = isset($_POST['cart']) ? $_POST['cart'] : '';
+	$level_search = isset($_POST['level_search']) && is_numeric($_POST['level_search']) ? $_POST['level_search'] : '';
+	$page_num = isset($_REQUEST['page_num']) && is_numeric($_REQUEST['page_num']) ? $_REQUEST['page_num'] : '10';
+	if(!isset($exec2)) $exec2 = '';
 	$href="&keykind=$keykind&like=$like";
 
 	if($total_group_num>1) $s_que = " where (group_no = '$group_no' or group_no = '0' or group_no is null) ";
 	
-	if(isset($level_search) && intval($level_search)>0) {
+	if(!empty($level_search) && intval($level_search)>0) {
 		if($s_que) $s_que.=" and "; else $s_que=" where ";
 		$s_que.=" level='$level_search' ";
 		$href.="&level_search=$level_search";
@@ -30,9 +36,9 @@
 			if($like) $s_que .= " $keykind like '%".$keyword."%' ";
 			else $s_que .= " $keykind = '$keyword' ";
 		} else {
-			$keyword=get_password($keyword);
+			$keyword1=get_password($keyword);
 			$keyword_old=get_password($keyword, true);
-			$s_que .= " $keykind = '$keyword' OR $keykind = '$keyword_old' ";
+			$s_que .= " $keykind = '$keyword1' OR $keykind = '$keyword_old' ";
 		}
 			
 		$href.="&keyword=$keyword&keykind=$keykind&like=$like";
@@ -58,14 +64,6 @@
 //  앞에 붙는 가상번호
 	$number=$total-($page-1)*$page_num;
 	
-	if(!isset($page)) $page = '';
-	if(!isset($keykind)) $keykind = '';
-	if(!isset($keyword)) $keyword = '';
-	if(!isset($like)) $like = '';
-	if(!isset($group_no)) $group_no = '';
-	if(!isset($exec)) $exec = '';
-	if(!isset($page_num)) $page_num = '';
-	if(!isset($exec2)) $exec2 = '';
 	$csrftkn_member = generate_csrf_token();
 ?>
 
@@ -196,7 +194,7 @@
   <td style=font-family:Tahoma;font-size:8pt;font-weight:bold;>삭제</td>
 </tr>
 
-   <form method=post action=<?=$PHP_SELF?> name=write>
+   <form method=post action=<?=$_SERVER['PHP_SELF']?> name=write>
    <input type=hidden name=page value=<?=$page?>>
    <input type=hidden name=keykind value=<?=$keykind?>>
    <input type=hidden name=keyword value=<?=$keyword?>>
@@ -215,7 +213,7 @@
    elseif($data['level']==3) $grant_color="<font color=green><b>";
    else $grant_color="";
 
-   echo"
+   echo "
         <tr align=center height=23 bgcolor=#e0e0e0>
            <td style=font-family:Tahoma;font-size:7pt;>$number</td>
            <td><input type=checkbox name=cart[] value=$data[no]></td>
@@ -224,10 +222,10 @@
            <td style=font-family:Tahoma;font-size:8pt;>$grant_color$data[level]</td>
            <td style=font-family:Tahoma;font-size:8pt;>".($data["point1"]*10+$data["point2"])." <font style=font-size:7pt;>(".$data["point1"]."/".$data["point2"].")</font></td>
            <td style=font-family:Tahoma;font-size:8pt;>".date("Y-m-d",$data['reg_date'])."</td>
-           <td style=font-family:Tahoma;font-size:8pt;><a href=$PHP_SELF?exec=$exec&group_no=$group_no&exec2=modify&page=$page&no=$data[no]&keyword=$keyword&keykind=$keykind&like=$like&page_num=$page_num>Modify</a></td>
+           <td style=font-family:Tahoma;font-size:8pt;><a href={$_SERVER['PHP_SELF']}?exec=$exec&group_no=$group_no&exec2=modify&page=$page&no=$data[no]&keyword=$keyword&keykind=$keykind&like=$like&page_num=$page_num>Modify</a></td>
            <td style=font-family:Tahoma;font-size:8pt;>";
-   if($data['no']>1) echo"<a href=$PHP_SELF?exec=$exec&group_no=$group_no&exec2=del_member&keyword=$keyword&page=$page&no=$data[no]$href>Delete</a>"; else echo"&nbsp;";
-   echo"   </td>
+   if($data['no']>1) echo"<a href={$_SERVER['PHP_SELF']}?exec=$exec&group_no=$group_no&exec2=del_member&keyword=$keyword&page=$page&no=$data[no]$href>Delete</a>"; else echo"&nbsp;";
+   echo "   </td>
         </tr>
         ";
    $number--;
@@ -276,7 +274,7 @@
 <td colspan=9 align=right bgcolor=666666>
 <table border=0 cellpadding=2 cellspacing=0 width=100%>
 <!-- 검색하는 부분;;;; -->
-<form method=post action=<?=$PHP_SELF?> name=search>
+<form method=post action=<?=$_SERVER['PHP_SELF']?> name=search>
 <input type=hidden name=exec2 value="">
 <input type=hidden name=s_que value="<?=$s_que?>">
 <input type=hidden name=page value=<?=$page?>>
@@ -310,7 +308,7 @@
 		<input type=text name=keyword value='<?php echo $keyword;?>'>
 		<input type=checkbox name=like value=1 <?php if($like) echo"checked";?> onclick='alert("Include 체크시 검색어를 포함하는 대상을 검색합니다.\n\n체크시 : *검색어*\n\n체크를 하지 않을경우 완전한 대상을 검색하며 더 빠릅니다\n\nComment를 제외하고는 체크하지 않는 것을 권해드립니다")'> <font style=color:#ffffff;font-size:8pt;font-family:Tahoma;>Include</font> &nbsp;
 		<input type=submit value=' 검색 '  style=border-color:#b0b0b0;background-color:#3d3d3d;color:#ffffff;font-size:8pt;font-family:Tahoma;height:20px; >
-		<input type=button value=' 처음으로 ' style=border-color:#b0b0b0;background-color:#3d3d3d;color:#ffffff;font-size:8pt;font-family:Tahoma;height:20px; onclick=location.href="<?=$PHP_SELF?>?exec=<?=$exec?>&group_no=<?=$group_no?>">
+		<input type=button value=' 처음으로 ' style=border-color:#b0b0b0;background-color:#3d3d3d;color:#ffffff;font-size:8pt;font-family:Tahoma;height:20px; onclick=location.href="<?=$_SERVER['PHP_SELF']?>?exec=<?=$exec?>&group_no=<?=$group_no?>">
 	</td>
 </tr>
 <tr>
@@ -331,15 +329,15 @@
 $show_page_num=10;
 $start_page=(int)(($page-1)/$show_page_num)*$show_page_num;
 $i=1;
-if($page>$show_page_num){$prev_page=$start_page-1;echo"<a href=$PHP_SELF?exec=$exec&group_no=$group_no&page=$prev_page$href><font color=#ffffff>[Prev]</font></a>";}
+if($page>$show_page_num){$prev_page=$start_page-1;echo"<a href={$_SERVER['PHP_SELF']}?exec=$exec&group_no=$group_no&page=$prev_page$href><font color=#ffffff>[Prev]</font></a>";}
 while($i+$start_page<=$total_page&&$i<=$show_page_num)
 {
  $move_page=$i+$start_page;
  if($page==$move_page)echo"<b>$move_page</b>";
- else echo"<a href=$PHP_SELF?exec=$exec&group_no=$group_no&page=$move_page$href><font color=#ffffff>[$move_page]</font></a>";
+ else echo"<a href={$_SERVER['PHP_SELF']}?exec=$exec&group_no=$group_no&page=$move_page$href><font color=#ffffff>[$move_page]</font></a>";
  $i++;
 }
-if($total_page>$move_page){$next_page=$move_page+1;echo"<a href=$PHP_SELF?exec=$exec&group_no=$group_no&page=$next_page$href><font color=#ffffff>[Next]</font></a>";}
+if($total_page>$move_page){$next_page=$move_page+1;echo"<a href={$_SERVER['PHP_SELF']}?exec=$exec&group_no=$group_no&page=$next_page$href><font color=#ffffff>[Next]</font></a>";}
 //페이지 나타내는 부분 끝
 
 ?></font><br><br>

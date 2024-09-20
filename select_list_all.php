@@ -7,6 +7,8 @@
 	$member=member_info();
 
 	// 그룹 정보 구해오기
+	$selected = isset($_REQUEST['selected']) ? $_REQUEST['selected'] : null;
+	$id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
 	$setup=get_table_attrib($id);
 
 	// 현재 로그인되어 있는 멤버가 전체, 또는 그룹관리자인지 검사

@@ -1,0 +1,25 @@
+body, table, tr, td, a {font-family:tahoma; font-size:7pt; color:#aaaaaa; background-color:#cccccc;}
+
+select{background-color:black;}
+
+body {scrollbar-face-color: #ffffff; scrollbar-highlight-color: #dcdcdc; scrollbar-3dlight-color: #ffffff; scrollbar-shadow-color: #dcdcdc; scrollbar-darkshadow-color: #fffffff; scrollbar-track-color: #ffffff; scrollbar-arrow-color: #dcdcdc; }
+
+a:link {text-decoration:none; }
+a:active {text-decoration:none; }
+a:visited {text-decoration:none; }
+a:hover {text-decoration:underline; }
+
+.setup {font-family:tahoma; font-size:7pt; color:#aaaaaa; }
+.date {font-family:tahoma; font-size:7pt; color:#5f5f5f; }
+.title {font-family:tahoma; font-size:7pt; color:#8a8a8a; font-weight:bold; }
+.detail {font-family:tahoma; font-size:8pt; color:#666666; line-height:150%; }
+.line {background-color:#dcdcdc; }
+.page {font-family:tahoma; font-size:7pt; color:#8a8a8a; }
+.copyright {font-family:tahoma; font-size:7pt; color:#8a8a8a; }
+
+td {word-break:break-all; }
+
+.textarea {border:solid 1 #aaaaaa; font-family:tahoma; font-size:8pt; color:#aaaaaa; background-color:white; width:300px; height:300px; }
+.input {border:solid 1 #aaaaaa; font-family:tahoma; font-size:8pt; color:#aaaaaa; background-color:white; width:100px; height:18px; }
+.input_long {border:solid 1 #aaaaaa; font-family:tahoma; font-size:8pt; color:#aaaaaa; background-color:white; width:300px; height:18px; }
+.submit {border:solid 1 #aaaaaa; font-family:tahoma; font-size:8pt; color:#aaaaaa; background-color:white; width:50px; height:18px; }

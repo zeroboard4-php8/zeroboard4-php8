@@ -1,11 +1,13 @@
 <?php
+  $no = isset($_REQUEST['no']) && is_numeric($_REQUEST['no']) ? $_REQUEST['no'] : '';
+  $page_num = isset($_REQUEST['category_no']) && is_numeric($_REQUEST['category_no']) ? $_REQUEST['category_no'] : '';
   $data=mysql_fetch_array(zb_query("select * from $admin_table where no='$no'"));
 ?>
 <table border=0 cellspacing=1 cellpadding=0 width=100% bgcolor=#b0b0b0>
   <tr height=30><td bgcolor=#3d3d3d colspan=2></td></tr>
   <tr height=1><td bgcolor=#000000 style=padding:0px; colspan=2><img src=images/t.gif height=1></td></tr>
 
-<form name=write method=post action=<?=$PHP_SELF?> enctype=multipart/form-data onsubmit="return confirm('<?=$data['name']?> 게시판을 삭제 하시겠습니까?')">
+<form name=write method=post action=<?=$_SERVER['PHP_SELF']?> enctype=multipart/form-data onsubmit="return confirm('<?=$data['name']?> 게시판을 삭제 하시겠습니까?')">
 <input type=hidden name=exec value="view_board">
 <input type=hidden name=group_no value=<?=$group_no?>>
 <input type=hidden name=exec2 value="del">

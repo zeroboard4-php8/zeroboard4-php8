@@ -2,10 +2,13 @@
 	include "lib.php";
 	include "include/list_check.php";
 
-	if(!eregi($HTTP_HOST,$HTTP_REFERER)) Error("정상적으로 글을 작성하여 주시기 바랍니다.","window.close");
-	if(!eregi("write.php",$HTTP_REFERER)) Error("정상적으로 글을 쓰시기 바랍니다","window.close");
-	if(getenv("REQUEST_METHOD") == 'GET' ) Error("정상적으로 글을 쓰시기 바랍니다","window.close");
+	if(!eregi($_SERVER['HTTP_HOST'],$_SERVER['HTTP_REFERER'])) Error("정상적으로 글을 작성하여 주시기 바랍니다.","window.close");
+	if(!eregi("write.php",$_SERVER['HTTP_REFERER'])) Error("정상적으로 글을 쓰시기 바랍니다","window.close");
+	if($_SERVER['REQUEST_METHOD'] == 'GET' ) Error("정상적으로 글을 쓰시기 바랍니다","window.close");
 
+	$subject = isset($_POST['subject']) ? str_replace('ㅤ','',$_POST['subject']) : null;
+	$memo = isset($_POST['memo']) ? str_replace('ㅤ','',$_POST['memo']) : null;
+	$use_html = isset($_POST['use_html']) && in_array($_POST['use_html'], array('0','1')) ? $_POST['use_html'] : '0';
 
 	if(!isset($subject)) Error("제목을 입력하여 주십시오","window.close");
 	if(!isset($memo)) Error("내용을 입력하여 주십시오","window.close");
@@ -14,6 +17,7 @@
 	$connect=dbconn();
 
 // 게시판 설정 읽어 오기
+	$id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
 	$setup=get_table_attrib($id);
 
 // 설정되지 않은 게시판
@@ -26,7 +30,8 @@
 	$member = member_info();
 
 // 현재 로그인되어 있는 멤버가 전체, 또는 그룹관리자인지 검사
-	if($member['is_admin']==1||($member['is_admin']==2&&$member['group_no']==$setup['group_no'])||check_board_master($member, $setup['no'])) $is_admin=1; else $is_admin="";
+	$member['is_admin']=isset($member['is_admin']) ? $member['is_admin'] : null;
+	if($member['is_admin']==1||($member['is_admin']==2&&$member['group_no']==$setup['group_no'])||check_board_master($member, $setup['no'])) $is_admin=1; else $is_admin='';
 
 
 // 가상의 게시물 데이타 제작
@@ -69,7 +74,7 @@
 
 	// 기타 데이타 작성
 	$data['use_html']=isset($use_html) ? $use_html : null;
-	$data['ismember']=$member['no'];
+	$data['ismember']=isset($member['no']) ? $member['no'] : null;
 
 // 데이타 가공
 	list_check($data,1);

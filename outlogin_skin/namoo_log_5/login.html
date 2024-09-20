@@ -1,0 +1,72 @@
+<html>
+<head><style type=text/css>
+BODY,TD,SELECT,input,DIV,form,TEXTAREA,center,option,pre,blockquote 
+{font-family:verdana, color:#a2a2a2;}
+
+a {color:#a2a2a2; text-decoration:none;}
+a:hover {color: #a2a2a2; text-decoration: none;}
+
+.a2-eng {font-family:verdana; font-size:7pt; color:black;}
+.toform {border-width:1; border-color:#a2a2a2; border-style:solid; font-size:7pt; color:#a2a2a2}
+
+</style>
+
+<body>
+<table border="0" cellspacing="0" cellpadding="0" align="left">
+<form name=zb_login method=post action="[action]" onsubmit="return zb_login_check_submit();">
+  <tr><td><br></td></tr><tr>
+        <td colspan="2"  align=left>[lost_id]
+            
+</td>
+    </tr>
+  <tr><td height="5"></td></tr>
+<input type=hidden name=s_url value="[s_url]">
+    <tr>
+        <td width=100% align="left" class=a2-eng><input type=text name=user_id value='' class=toform size="8">&nbsp;<input type=password name=password value='' class=toform size="5">
+            
+</td>
+    </tr>
+        <tr>
+        <td colspan="2"  align=left>[login]&nbsp;<!-- 이미지 자동로그인 박스 소스 시작 --><input type="checkbox" style='display:none;' name="auto_login" value="1">
+<a href=# onclick="rollovercheck();onoff();"><img name=offpic src=[dir]auto.001.gif border=0></a>            
+
+<script>
+var thebox=document.zb_login 
+function rollovercheck(){ 
+        if(thebox.auto_login.checked==false) { 
+                thebox.auto_login.checked=true 
+                var check; 
+                check = alert("자동 로그인 기능을 사용하시겠습니까?\n\n자동 로그인 사용시 다음 접속부터는 로그인을 하실 필요가 없습니다.\n\n단, 게임방, 학교등 공공장소에서 이용시 개인정보가 유출될수 있으니 주의해주세요"); 
+        } 
+        else { 
+                thebox.auto_login.checked=false 
+        } 
+} 
+
+var reedyfox = new Image(); 
+reedyfox.src = "[dir]login_06.gif" 
+
+function changeimg() { 
+document.images.offpic.src='[dir]auto.001.gif'; 
+} 
+
+var changepic = true; 
+function onoff() { 
+    if (!changepic) { 
+         changeimg(); 
+         changepic = true; 
+         return; 
+
+      } 
+    else (!changepic); { 
+         document.images.offpic.src='[dir]auto.002.gif'; 
+         changepic = false; 
+
+      } 
+} 
+</script> <!-- 이미지 자동로그인 박스 끝 --></td></tr>
+        <tr>
+        <td colspan="2"  align=left>[member_join]
+</td></tr></table></form></body>
+
+</html>

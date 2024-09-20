@@ -8,14 +8,14 @@
  * 게시판 설정 체크
  **************************************************************************/
 
- 	$mode = $_GET['mode'];
+ 	$mode = isset($_REQUEST['mode']) && in_array($_REQUEST['mode'], array('write','modify','reply')) ? $_REQUEST['mode'] : null;
 
- 	if(strpos(strtolower($HTTP_REFERER),strtolower($HTTP_HOST)) === false) Error("정상적으로 글을 작성하여 주시기 바랍니다.");
+ 	if(strpos(strtolower($_SERVER['HTTP_REFERER']),strtolower($_SERVER['HTTP_HOST'])) === false) Error("정상적으로 글을 작성하여 주시기 바랍니다.");
 
-  if(strpos($dir,'://') !== false) $dir=".";
+	if(strpos($dir,'://') !== false) $dir=".";
 
 // 변수 체크
-	if(!$mode||$mode=="write") {
+	if(empty($mode)||$mode=="write") {
 		$mode = "write";
 		unset($no);
 	}
@@ -50,7 +50,7 @@
 		$category_kind="<select name=category><option>Category</option>";
 
 		while($category_data=mysql_fetch_array($category_result)) {
-			if($data['category']==$category_data['no']) $category_kind.="<option value=$category_data[no] selected>$category_data[name]</option>";
+			if(isset($data['category'])&&($data['category']===$category_data['no'])) $category_kind.="<option value=$category_data[no] selected>$category_data[name]</option>";
 			else $category_kind.="<option value=$category_data[no]>$category_data[name]</option>";
 		}
 
@@ -71,7 +71,7 @@
  *****************************************************************************************/
 
 	if($mode=="modify") {
-
+		if(!isset($member['no'])) $member['no']=null;
 		// 비밀글이고 패스워드가 틀리고 관리자가 아니면 리턴
 		if($data['is_secret']&&!$is_admin&&$data['ismember']!=$member['no']&&$_SESSION['zb_s_check']!=$setup['no']."_".$no) error("정상적인 방법으로 수정하세요");
 

@@ -39,7 +39,7 @@
 <tr bgcolor=bbbbbb height=30>
    <td align=right colspan=8 height=25 colspan=2 style=font-family:Tahoma;font-size:8pt;>
     그룹 이름 : <b><?=$group_data['name']?></b>&nbsp;&nbsp;&nbsp;</td>
-<form method=post action=<?=$PHP_SELF?> name=write onsubmit="return check_submit();">
+<form method=post action=<?=$_SERVER['PHP_SELF']?> name=write onsubmit="return check_submit();">
 <input type=hidden name=no value=<?php if(isset($data['no'])) echo $data['no'];?>>
 <input type=hidden name=exec value=view_board>
 <input type=hidden name=exec2 value=<?php if($no) echo"modify_ok"; else echo"add_ok";?>>

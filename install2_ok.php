@@ -12,6 +12,10 @@
 	}
 
 // 빈문자열인지를 검사
+	$user_id = $_POST['user_id'];
+	$password1 = $_POST['password1'];
+	$password2 = $_POST['password2'];
+	$name = $_POST['name'];
 	if(isBlank($user_id)) Error("아이디를 입력하셔야 합니다","");
 	if(isBlank($password1)) Error("비밀번호를 입력하셔야 합니다","");
 	if(isBlank($password2)) Error("비밀번호 확인을 입력하셔야 합니다","");

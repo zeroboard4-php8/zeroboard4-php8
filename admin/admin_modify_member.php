@@ -1,4 +1,5 @@
 <?php
+  $no = isset($_REQUEST['no']) && is_numeric($_REQUEST['no']) ? $_REQUEST['no'] : '';
   $group_data=mysql_fetch_array(zb_query("select * from $group_table where no='$group_no'"));
 
   $member_data=mysql_fetch_array(zb_query("select * from $member_table where no='$no'"));
@@ -10,14 +11,10 @@
   $check[1]="checked";
   $get_string='';
   $__manager_board_name='';
-	if(!isset($page)) $page = '';
-	if(!isset($keykind)) $keykind = '';
-	if(!isset($keyword)) $keyword = '';
-	if(!isset($like)) $like = '';
-	if(!isset($group_no)) $group_no = '';
-	if(!isset($exec)) $exec = '';
-	if(!isset($page_num)) $page_num = '';
-	if(!isset($exec2)) $exec2 = '';
+  $page = isset($_REQUEST['page']) && is_numeric($_REQUEST['page']) ? $_REQUEST['page'] : '1';
+  $keykind = isset($_REQUEST['keykind']) ? $_REQUEST['keykind'] : '';
+  $keyword = isset($_REQUEST['keyword']) ? $_REQUEST['keyword'] : '';
+  $like = isset($_REQUEST['like']) ? $_REQUEST['like'] : '';
 ?>
 
 <script>
@@ -59,7 +56,7 @@
 	var no=document.write.board_name.options[myindex].value;
 
 	if(no) {
-		location.href="<?=$PHP_SELF?>?exec=view_member&exec2=add_member_board_manager&group_no=<?=$group_no?>&member_no=<?=$no?>&page=<?=$page?>&keyword=<?=$keyword?>&keykind=<?=$keykind?>&like=<?=$like?>&board_num="+ no;
+		location.href="<?=$_SERVER['PHP_SELF']?>?exec=view_member&exec2=add_member_board_manager&group_no=<?=$group_no?>&member_no=<?=$no?>&page=<?=$page?>&keyword=<?=$keyword?>&keykind=<?=$keykind?>&like=<?=$like?>&board_num="+ no;
 	}
   }
 
@@ -67,7 +64,7 @@
 <table border=0 cellspacing=1 cellpadding=3 width=100% bgcolor=#b0b0b0>
   <tr height=30><td bgcolor=#3d3d3d colspan=2><img src=images/admin_webboard.gif></td></tr>
   <tr height=1><td bgcolor=#000000 style=padding:0px; colspan=2><img src=images/t.gif height=1></td></tr>
-<form name=write method=post action=<?=$PHP_SELF?> enctype=multipart/form-data onsubmit="return check_submit();">
+<form name=write method=post action=<?=$_SERVER['PHP_SELF']?> enctype=multipart/form-data onsubmit="return check_submit();">
 <input type=hidden name=exec value=view_member>
 <input type=hidden name=exec2 value=modify_member_ok>
 <input type=hidden name=group_no value=<?=$group_no?>>
@@ -139,7 +136,7 @@
 	   }
 	   $manager_board_list = zb_query("select * from $admin_table where $get_string",$connect) or die(zb_error());
 	   while($__manager_data = mysql_fetch_array($manager_board_list)) {
-	   $__manager_board_name .= "&nbsp;".stripslashes($__manager_data['name'])." &nbsp; <a href='$PHP_SELF?exec=view_member&exec2=modify_member_board_manager&group_no=$group_no&member_no=$no&page=$page&keyword=$keyword&board_num=$__manager_data[no]' onclick=\"return confirm('권한을 취소시키시겠습니까?')\">[권한취소]</a><br><img src=images/t.gif border=0 height=4><br>";
+	   $__manager_board_name .= "&nbsp;".stripslashes($__manager_data['name'])." &nbsp; <a href='{$_SERVER['PHP_SELF']}?exec=view_member&exec2=modify_member_board_manager&group_no=$group_no&member_no=$no&page=$page&keyword=$keyword&board_num=$__manager_data[no]' onclick=\"return confirm('권한을 취소시키시겠습니까?')\">[권한취소]</a><br><img src=images/t.gif border=0 height=4><br>";
 
 	   }
    }
@@ -349,7 +346,7 @@ while($board_data_list=mysql_fetch_array($board_list))
 	 <td align=left bgcolor=#e0e0e0>&nbsp;<input type=password  name=admin_passwd value='' size=40 maxlength=255 class=input style="border: 2px solid #ff0000;"></td>
   </tr>
   <tr height=22 align=center><td colspan=2><input type=submit value='  변경 완료  ' style=font-weight:bold;border-color:#b0b0b0;background-color:#3d3d3d;color:#ffffff;font-size:8pt;font-family:Tahoma;height:23px;>
-                                 <input type=button value='  변경 취소  ' style=border-color:#b0b0b0;background-color:#3d3d3d;color:#ffffff;font-size:8pt;font-family:Tahoma;height:23px; onclick=location.href="<?="$PHP_SELF?exec=view_member&group_no=$group_no&page=$page&keyword=$keyword&level_search=$level_search&page_num=$page_num&keykind=$keykind&like=$like"?>">
+                                 <input type=button value='  변경 취소  ' style=border-color:#b0b0b0;background-color:#3d3d3d;color:#ffffff;font-size:8pt;font-family:Tahoma;height:23px; onclick=location.href="<?="{$_SERVER['PHP_SELF']}?exec=view_member&group_no=$group_no&page=$page&keyword=$keyword&level_search=$level_search&page_num=$page_num&keykind=$keykind&like=$like"?>">
   </td></tr>
   </form>
 </table>

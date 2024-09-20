@@ -4,7 +4,7 @@
  **************************************************************************/
 	include_once "_head.php";
 
-	if(strpos(strtolower($HTTP_REFERER),strtolower($HTTP_HOST)) === false) Error("정상적으로 글을 작성하여 주시기 바랍니다.");
+	if(strpos(strtolower($_SERVER['HTTP_REFERER']),strtolower($_SERVER['HTTP_HOST'])) === false) Error("정상적으로 글을 작성하여 주시기 바랍니다.");
 
 /***************************************************************************
  * 게시판 설정 체크
@@ -17,7 +17,9 @@
 	if($setup['grant_comment']<$member['level']&&!$is_admin) Error("사용권한이 없습니다","login.php?id=$id&page=$page&page_num=$page_num&category=$category&sn=$sn&ss=$ss&sc=$sc&keyword=$keyword&no=$no&file=$view_file_link");
 
 // 각종 변수 검사;;
-	$memo = str_replace("ㅤ","",$memo);
+	$memo = isset($_POST['memo']) ? str_replace("ㅤ","",$_POST['memo']) : null;
+	$name = isset($_POST['name']) ? $_POST['name'] : null;
+	$password = isset($_POST['password']) ? $_POST['password'] : null;
 	if(isblank($memo)) Error("내용을 입력하셔야 합니다");
 	if(!isset($member['no'])) {
 		if(isblank($name)) Error("이름을 입력하셔야 합니다");
@@ -97,7 +99,7 @@
 	if(!$check[0]) Error("원본 글이 존재하지 않습니다.");
 
 // 코멘트 입력
-	zb_query("insert into $t_comment"."_$id (parent,ismember,name,password,memo,reg_date,ip) values ('$parent','$member[no]','$name','$password','$memo','$reg_date','$REMOTE_ADDR')") or error(zb_error());
+	zb_query("insert into $t_comment"."_$id (parent,ismember,name,password,memo,reg_date,ip) values ('$parent','$member[no]','$name','$password','$memo','$reg_date','{$_SERVER['REMOTE_ADDR']}')") or error(zb_error());
 
 
 // 코멘트 갯수를 구해서 정리

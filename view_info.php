@@ -10,6 +10,8 @@ require "lib.php";
 	$member=member_info();
 
 	if(!$member['no']) Error("가입되어 있는 회원만 쪽지 보내기가 가능합니다","window.close");
+	
+	$member_no = isset($_REQUEST['member_no']) && is_numeric($_REQUEST['member_no']) ? $_REQUEST['member_no'] : null;
 
 	$data=mysql_fetch_array(zb_query("select * from $member_table where no='$member_no'"));
 

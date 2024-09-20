@@ -12,6 +12,10 @@
 
 	$connect = dbconn();
 
+ 	$email = isset($_POST['email']) ? $_POST['email'] : null;
+ 	$jumin1 = isset($_POST['jumin1']) && is_numeric($_POST['jumin1']) ? $_POST['jumin1'] : null;
+	$jumin2 = isset($_POST['jumin2']) && is_numeric($_POST['jumin2']) ? $_POST['jumin2'] : null;
+	
  	if(isblank($email)) Error("E-Mail을 입력하여 주세요");
  	if(isblank($jumin1)||!isnum($jumin1)) Error("주민등록번호를 제대로 입력하여 주세요");
 	if(isblank($jumin2)||!isnum($jumin2)) Error("주민등록번호를 제대로 입력하여 주세요");

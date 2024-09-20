@@ -6,6 +6,7 @@
 	if(!isset($connect)) $connect=dbConn();
 
 // 글쓴이의 정보를 갖고옴;;
+	$member_no = isset($_POST['member_no']) && is_numeric($_POST['member_no']) ? $_POST['member_no'] : null;
 	$data=mysql_fetch_array(zb_query("select * from $member_table where no='$member_no'"));
 
 // 멤버정보 구하기
@@ -18,6 +19,11 @@
 
 
 // 쪽지 보내기일때;;
+	$from = isset($_POST['from']) ? $_POST['from'] : '';
+	$email = isset($_POST['email']) ? $_POST['email'] : '';
+	$subject = isset($_POST['subject']) ? $_POST['subject'] : '';
+	$memo = isset($_POST['memo']) ? $_POST['memo'] : '';
+	$kind = isset($_POST['kind']) ? $_POST['kind'] : 0;
 	if($kind==1&&$member['no']&&$data['no']) {
 		if(isblank($subject)) Error("제목이 없습니다. 제목을 입력해 주십시오.");
 		if(isblank($memo)) Error("내용이 없습니다. 내용을 입력해 주십시오.");

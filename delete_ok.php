@@ -2,10 +2,23 @@
   // 라이브러리 함수 파일 인크루드
   require "lib.php";
 
-	if(strpos(strtolower($HTTP_REFERER),strtolower($HTTP_HOST)) === false) Error("정상적으로 글을 삭제하여 주시기 바랍니다.");
-	if(getenv("REQUEST_METHOD") == 'GET' ) Error("정상적으로 글을 삭제하시기 바랍니다","");
+  if(strpos(strtolower($_SERVER['HTTP_REFERER']),strtolower($_SERVER['HTTP_HOST'])) === false) Error('정상적으로 글을 삭제하여 주시기 바랍니다.');
+  if($_SERVER['REQUEST_METHOD'] === 'GET') Error('정상적으로 글을 삭제하시기 바랍니다','');
 
   // 게시판 이름 지정이 안되어 있으면 경고;;;
+  $id = isset($_POST['id']) ? $_POST['id'] : null;
+  $no = isset($_POST['no']) && is_numeric($_POST['no']) ? $_POST['no'] : null;
+  $page = isset($_REQUEST['page']) && is_numeric($_REQUEST['page']) ? $_REQUEST['page'] : null;
+  $page_num = isset($_REQUEST['page_num']) && is_numeric($_REQUEST['page_num']) ? $_REQUEST['page_num'] : null;
+  $select_arrange = isset($_REQUEST['select_arrange'])
+			&& in_array($_REQUEST['select_arrange'], array('headnum','subject','name','hit','vote','reg_date','download1','download2')) ? $_REQUEST['select_arrange'] : null;
+  $des = isset($_REQUEST['des']) && in_array($_REQUEST['des'], array('desc','asc')) ? $_REQUEST['des'] : null;
+  $sn = isset($_REQUEST['sn']) && in_array($_REQUEST['sn'], array('on','off')) ? $_REQUEST['sn'] : null;
+  $sn1 = isset($_REQUEST['sn1']) && in_array($_REQUEST['sn1'], array('on','off')) ? $_REQUEST['sn1'] : null;
+  $ss = isset($_REQUEST['ss']) && in_array($_REQUEST['ss'], array('on','off')) ? $_REQUEST['ss'] : null;
+  $sc = isset($_REQUEST['sc']) && in_array($_REQUEST['sc'], array('on','off')) ? $_REQUEST['sc'] : null;
+  $keyword = isset($_REQUEST['keyword']) ? $_REQUEST['keyword'] : null;
+  $divpage = isset($_REQUEST['divpage']) && is_numeric($_REQUEST['divpage']) ? $_REQUEST['divpage'] : null;
   if(!isset($id)) Error("게시판 이름을 지정해 주셔야 합니다.<br><br>예) zboard.php?id=이름","");
 
   // DB 연결
@@ -38,14 +51,14 @@
   if($group['is_open']==0&&!$is_admin&&$member['group_no']!=$setup['group_no']) Error("공개 되어 있지 않습니다");
 
   //패스워드를 암호화
-  if(isset($password))
+  if(isset($_POST['password']))
   {
-   $password=get_password($password);   
+   $password=get_password($_POST['password']);   
   }
 
   // 원본글을 가져옴
   $s_data=mysql_fetch_array(zb_query("select * from $t_board"."_$id where no='$no'"));
-  if(strlen($s_data['password'])<=16&&strlen(get_password("a"))>=41) $password=get_password($_POST['password'], true);
+  if(strlen($s_data['password'])<=16&&strlen(get_password("a"))>=41&&isset($_POST['password'])) $password=get_password($_POST['password'], true);
 
   // 회원일때를 확인;;
   if(!$is_admin&&$member['level']>$setup['grant_delete'])
@@ -101,8 +114,5 @@
   //////// MySQL 닫기 ///////////////////////////////////////////////
   $query_time=getmicrotime();
   
-  if(!isset($des)) $des = '';
-  if(!isset($sn1)) $sn1 = '';
-  if(!isset($divpage)) $divpage = '';
   movepage("zboard.php?id=$id&page=$page&page_num=$page_num&select_arrange=$select_arrange&desc=$des&sn=$sn&ss=$ss&sc=$sc&keyword=$keyword&sn1=$sn1&divpage=$divpage");
 ?>

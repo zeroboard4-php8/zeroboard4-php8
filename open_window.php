@@ -1,5 +1,7 @@
 <?php
 	include "lib.php";
+	$mode = isset($_REQUEST['mode']) ? $_REQUEST['mode'] : null;
+	$str = isset($_REQUEST['str']) ? $_REQUEST['str'] : null;
 	if(!$mode||!$str) die("<script>window.close()</script>");
 	if($mode!="m"&&$mode!="i"&&$mode!="t"&&$mode!="tn") die("<script>window.close()</script>");
 

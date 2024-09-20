@@ -1,0 +1,84 @@
+<style type="text/css">
+<!--
+div { scrollbar-face-color: #FFFFFF; scrollbar-shadow-color: #FFFFFF;
+scrollbar-highlight-color: #FFFFFF; scrollbar-3dlight-color: #FFFFFF;
+scrollbar-darkshadow-color: #FFFFFF; scrollbar-track-color: #FFFFFF;
+scrollbar-arrow-color: #cccccc;}
+.clover_1 {color:#666666; font-family:Verdana; font-size:7pt;}
+.clover_2 {color:#666666; font-family:Verdana; font-size:9pt;}
+.clover_3 {color:#333333; font-family:Verdana; font-size:7pt;}
+//-->
+</style>
+
+<script>
+var sRepeat=null;
+function doScrollerIE(dir, src, amount) {
+if (amount==null) amount=10;
+if (dir=="up")
+document.all[src].scrollTop-=amount;
+else
+document.all[src].scrollTop+=amount;
+if (sRepeat==null)
+sRepeat = setInterval("doScrollerIE('" + dir + "','" + src + "'," + amount + ")",100);
+return false }
+window.document.onmouseout = new Function("clearInterval(sRepeat);sRepeat=null");
+window.document.ondragstart = new Function("return false");
+</script>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr> 
+    <td>     
+       	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr> 
+          <td width="5" height="25"></td>
+          <td class=c_subject>&nbsp; <b>[title]</b>&nbsp;&nbsp;&nbsp;</td>
+          <td class=c_head align=right><font class=clover_1>[notice_date]</font>&nbsp; </td>
+        </tr>
+        </table>
+    </td>
+  </tr>
+
+  <tr> 
+    <td height="3" width="100%" background="[dir]dot_c.gif"></td>
+  </tr>
+
+  <tr> 
+    <td>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr> 
+          <td width="100%" height="160" rowspan="2">
+
+
+<div id=scroll style="overflow:hidden; width:100%; height=160px; padding:10px; line-height:120%"align=right>[notice_memo]</div>
+<td width="17" valign="top">
+   <a style="text-indent: 0px;" onmouseover="return doScrollerIE('up','scroll',10)" onmouseout="clearInterval(sRepeat)" style="cursor:n-resize"><img src="[dir]down.gif"></a>
+</td>
+</tr>
+<tr>
+<td width="17" valign="bottom"align="right">
+   <a style="text-indent: 0px;" onmouseover="return doScrollerIE('down','scroll',10)" onmouseout="clearInterval(sRepeat)" style="cursor:s-resize"><img src="[dir]up.gif"></a>
+            
+          </td>
+        </tr>
+        </table>
+    </td>
+  </tr>
+  <tr> 
+    <td height="1" width="100%"background="[dir]dot_c.gif"></td>
+  </tr>
+<tr> 
+   <!---- <td height="1" width="100%" background="[dir]dot_g2.gif"></td>--->
+
+  </tr>
+</table>
+
+<TABLE border=0 width=100% height= cellspacing=0 cellpadding=0>
+  [loop] 
+  <tr>
+    <td height=20 class=c_list>&nbsp;<img src="[dir]clover_6.gif">&nbsp;[subject]&nbsp;</TD>
+  </TR>
+  <tr>
+    <td height="1" width="100%" background="[dir]dot_c.gif"> </TD>
+  </TR>
+  [/loop] 
+</TABLE>

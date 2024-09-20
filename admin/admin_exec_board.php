@@ -6,38 +6,54 @@
 
 // 게시판 수정
 	if(isset($_POST['exec2']) && $_POST['exec2']==="modify_ok") {
+		$no = isset($_POST['no']) && is_numeric($_POST['no']) ? $_POST['no'] : '';
+		$skinname = isset($_POST['skinname']) ? $_POST['skinname'] : '';
+		$only_board = empty($_POST['only_board']) ? '0' : '1';
+		$bg_image = isset($_POST['bg_image']) ? addslashes($_POST['bg_image']) : '';
+		$bg_color = isset($_POST['bg_color']) ? addslashes($_POST['bg_color']) : 'white';
+		$table_width = isset($_POST['table_width']) && is_numeric($_POST['table_width']) ? $_POST['table_width'] : '95';
+		$cut_length = isset($_POST['cut_length']) && is_numeric($_POST['cut_length']) ? $_POST['cut_length'] : '45';
+		$memo_num = isset($_POST['memo_num']) && is_numeric($_POST['memo_num']) ? $_POST['memo_num'] : '20';
+		$page_num = isset($_POST['page_num']) && is_numeric($_POST['page_num']) ? $_POST['page_num'] : '10';
+		$s_page_num = isset($_POST['s_page_num']) && is_numeric($_POST['s_page_num']) ? $_POST['s_page_num'] : '10';
+		$title = isset($_POST['title']) ? addslashes($_POST['title']) : '';
+		$header_url = isset($_POST['header_url']) ? addslashes($_POST['header_url']) : '';
+		$header = isset($_POST['header']) ? addslashes($_POST['header']) : '<div align=center>';
+		$footer_url = isset($_POST['footer_url']) ? addslashes($_POST['footer_url']) : '';
+		$footer = isset($_POST['footer']) ? addslashes($_POST['footer']) : '</div>';
+		$use_alllist = empty($_POST['use_alllist']) ? '0' : '1';
+		$use_category = empty($_POST['use_category']) ? '0' : '1';
+		$use_html = isset($_POST['use_html']) && in_array($_POST['use_html'], array('0', '1', '2')) ? $_POST['use_html'] : '0';
+		$use_showreply = empty($_POST['use_showreply']) ? '0' : '1';
+		$use_filter = empty($_POST['use_filter']) ? '0' : '1';
+		$use_status = empty($_POST['use_status']) ? '0' : '1';
+		$use_homelink = empty($_POST['use_homelink']) ? '0' : '1';
+		$use_filelink = empty($_POST['use_filelink']) ? '0' : '1';
+		$use_pds = empty($_POST['use_pds']) ? '0' : '1';
+		$pds_ext1 = isset($_POST['pds_ext1']) ? str_replace(' ','', $_POST['pds_ext1']) : '';
+		$pds_ext2 = isset($_POST['pds_ext2']) ? str_replace(' ','', $_POST['pds_ext2']) : '';
+		$max_upload_size = isset($_POST['max_upload_size']) && is_numeric($_POST['max_upload_size']) ? $_POST['max_upload_size'] : '2097152';
+		$use_cart = empty($_POST['use_cart']) ? '0' : '1';
+		$use_autolink = empty($_POST['use_autolink']) ? '0' : '1';
+		$use_showip = empty($_POST['use_showip']) ? '0' : '1';
+		$use_comment = empty($_POST['use_comment']) ? '0' : '1';
+		$use_formmail = empty($_POST['use_formmail']) ? '0' : '1';
+		$use_secret = empty($_POST['use_secret']) ? '0' : '1';
+		$filter = isset($_POST['filter']) ? $_POST['filter'] : '';
+		$avoid_tag = isset($_POST['avoid_tag']) ? $_POST['avoid_tag'] : '';
+		$avoid_ip = isset($_POST['avoid_ip']) ? $_POST['avoid_ip'] : '';
+		$name = isset($_POST['name']) ? addslashes($_POST['name']) : '';
+		
 		// 입력된 테이블 값이 빈값인지, 한글이 들어갔는지를 검사
 		if(isBlank($name)) Error("게시판 이름을 입력하셔야 합니다","");
 		if(!isAlNum($name)) Error("게시판 이름은 영문과 숫자로만 하셔야 합니다","");
-		if(!$admin_passwd) Error("관리자 비밀번호를 입력해주세요.");
+		if(empty($_POST['admin_passwd'])) Error("관리자 비밀번호를 입력해주세요.");
 		$isold = false;
 		if(strlen($member['password'])<=16&&strlen(get_password("a"))>=41) $isold = true;
-		if($member['password'] != get_password($admin_passwd, $isold)) {
+		if($member['password'] != get_password($_POST['admin_passwd'], $isold)) {
 				error("관리자 비밀번호가 틀렸습니다.");
 		}
 		if(isset($_SESSION['csrf_token'])) unset($_SESSION['csrf_token']);
-		$name=addslashes($name);
-		$bg_color=addslashes($bg_color);
-		$ba_image=addslashes($bg_image);
-		$header_url=addslashes($header_url);
-		$footer_url=addslashes($footer_url);
-		$header=addslashes($header);
-		$footer=addslashes($footer);
-		$pds_ext1=str_replace(" ","",$pds_ext1);
-		$pds_ext2=str_replace(" ","",$pds_ext2);
-		$title=addslashes($title);
-		if(!isset($use_category)) $use_category=0;
-		if(!isset($use_status)) $use_status=0;
-		if(!isset($use_pds)) $use_pds=0;
-		if(!isset($use_homelink)) $use_homelink=0;
-		if(!isset($use_filelink)) $use_filelink=0;
-		if(!isset($use_cart)) $use_cart=0;
-		if(!isset($use_showip)) $use_showip=0;
-		if(!isset($use_alllist)) $use_alllist=0;
-		if(!isset($use_filter)) $use_filter=0;
-		if(!isset($use_secret)) $use_secret=0;
-		if(!isset($only_board)) $only_board=0;
-		if(!isset($use_showreply)) $use_showreply=0;
 		zb_query("update $admin_table set
 				only_board='$only_board',skinname='$skinname',header='$header',footer='$footer',header_url='$header_url',footer_url='$footer_url',
 				bg_image='$bg_image',bg_color='$bg_color',table_width='$table_width',memo_num='$memo_num', page_num='$page_num', cut_length='$cut_length', use_category='$use_category', use_html='$use_html',max_upload_size='$max_upload_size',
@@ -50,18 +66,55 @@
 		if(!empty($applyall_tag)) zb_query("update $admin_table set avoid_tag='$avoid_tag'");
 		if(!empty($applyall_ip)) zb_query("update $admin_table set avoid_ip='$avoid_ip'");
 
-		movepage("$PHP_SELF?group_no=$group_no&exec=view_board&no=$no&exec2=modify&page=$page&page_num=$s_page_num");
+		movepage("{$_SERVER['PHP_SELF']}?group_no=$group_no&exec=view_board&no=$no&exec2=modify&page=$page&page_num=$s_page_num");
 	}
 
 // 게시판 추가 
 	elseif($member['is_admin']<=2 && isset($_POST['exec2']) && $_POST['exec2']==="add_ok") {
+		$no = isset($_POST['no']) && is_numeric($_POST['no']) ? $_POST['no'] : '';
+		$skinname = isset($_POST['skinname']) ? $_POST['skinname'] : '';
+		$only_board = empty($_POST['only_board']) ? '0' : '1';
+		$bg_image = isset($_POST['bg_image']) ? addslashes($_POST['bg_image']) : '';
+		$bg_color = isset($_POST['bg_color']) ? addslashes($_POST['bg_color']) : 'white';
+		$table_width = isset($_POST['table_width']) && is_numeric($_POST['table_width']) ? $_POST['table_width'] : '95';
+		$cut_length = isset($_POST['cut_length']) && is_numeric($_POST['cut_length']) ? $_POST['cut_length'] : '45';
+		$memo_num = isset($_POST['memo_num']) && is_numeric($_POST['memo_num']) ? $_POST['memo_num'] : '20';
+		$page_num = isset($_POST['page_num']) && is_numeric($_POST['page_num']) ? $_POST['page_num'] : '10';
+		$title = isset($_POST['title']) ? addslashes($_POST['title']) : '';
+		$header_url = isset($_POST['header_url']) ? addslashes($_POST['header_url']) : '';
+		$header = isset($_POST['header']) ? addslashes($_POST['header']) : '<div align=center>';
+		$footer_url = isset($_POST['footer_url']) ? addslashes($_POST['footer_url']) : '';
+		$footer = isset($_POST['footer']) ? addslashes($_POST['footer']) : '</div>';
+		$use_alllist = empty($_POST['use_alllist']) ? '0' : '1';
+		$use_category = empty($_POST['use_category']) ? '0' : '1';
+		$use_html = isset($_POST['use_html']) && in_array($_POST['use_html'], array('0', '1', '2')) ? $_POST['use_html'] : '0';
+		$use_showreply = empty($_POST['use_showreply']) ? '0' : '1';
+		$use_filter = empty($_POST['use_filter']) ? '0' : '1';
+		$use_status = empty($_POST['use_status']) ? '0' : '1';
+		$use_homelink = empty($_POST['use_homelink']) ? '0' : '1';
+		$use_filelink = empty($_POST['use_filelink']) ? '0' : '1';
+		$use_pds = empty($_POST['use_pds']) ? '0' : '1';
+		$pds_ext1 = isset($_POST['pds_ext1']) ? str_replace(' ','', $_POST['pds_ext1']) : '';
+		$pds_ext2 = isset($_POST['pds_ext2']) ? str_replace(' ','', $_POST['pds_ext2']) : '';
+		$max_upload_size = isset($_POST['max_upload_size']) && is_numeric($_POST['max_upload_size']) ? $_POST['max_upload_size'] : '2097152';
+		$use_cart = empty($_POST['use_cart']) ? '0' : '1';
+		$use_autolink = empty($_POST['use_autolink']) ? '0' : '1';
+		$use_showip = empty($_POST['use_showip']) ? '0' : '1';
+		$use_comment = empty($_POST['use_comment']) ? '0' : '1';
+		$use_formmail = empty($_POST['use_formmail']) ? '0' : '1';
+		$use_secret = empty($_POST['use_secret']) ? '0' : '1';
+		$filter = isset($_POST['filter']) ? $_POST['filter'] : '';
+		$avoid_tag = isset($_POST['avoid_tag']) ? $_POST['avoid_tag'] : '';
+		$avoid_ip = isset($_POST['avoid_ip']) ? $_POST['avoid_ip'] : '';
+		$name = isset($_POST['name']) ? addslashes($_POST['name']) : '';
+
 		// 입력된 테이블 값이 빈값인지, 한글이 들어갔는지를 검사
 		if(isBlank($name)) Error("게시판 이름을 입력하셔야 합니다","");
 		if(!isAlNum($name)) Error("게시판 이름은 영문과 숫자로만 하셔야 합니다","");
-		if(!$admin_passwd) Error("관리자 비밀번호를 입력해주세요.");
+		if(empty($_POST['admin_passwd'])) Error("관리자 비밀번호를 입력해주세요.");
 		$isold = false;
 		if(strlen($member['password'])<=16&&strlen(get_password("a"))>=41) $isold = true;
-		if($member['password'] != get_password($admin_passwd, $isold)) {
+		if($member['password'] != get_password($_POST['admin_passwd'], $isold)) {
 				error("관리자 비밀번호가 틀렸습니다.");
 		}
 
@@ -69,25 +122,6 @@
 		$result=zb_query("select count(*) from $admin_table where name='$name'",$connect) or Error(zb_error());
 		$temp=mysql_fetch_array($result);
 		if($temp[0]>0) Error("이미 등록되어 있는 게시판입니다.<br>다른 이름으로 생성하십시오","");
-
-		$name=addslashes($name);
-		$bg_color=addslashes($bg_color);
-		$ba_image=addslashes($bg_image);
-		$header_url=addslashes($header_url);
-		$footer_url=addslashes($footer_url);
-		$header=addslashes($header);
-		$footer=addslashes($footer);
-		$title=addslashes($title);
-		$pds_ext1=str_replace(" ","",$pds_ext1);
-		$pds_ext2=str_replace(" ","",$pds_ext2);
-		if(!isset($use_category)) $use_category=0;
-		if(!isset($use_status)) $use_status=0;
-		if(!isset($use_pds)) $use_pds=0;
-		if(!isset($use_homelink)) $use_homelink=0;
-		if(!isset($use_filelink)) $use_filelink=0;
-		if(!isset($use_cart)) $use_cart=0;
-		if(!isset($use_showip)) $use_showip=0;
-		if(!isset($use_alllist)) $use_alllist=0;
 
 		// 관리자 테이블 생성
 		zb_query("insert into $admin_table 
@@ -102,7 +136,7 @@
 
 		$table_name=$name;
 
-		include "schema.sql";
+		include 'schema.sql';
 
 		// 게시판 본체 테이블 생성
 		zb_query($board_table_main_schema) or Error("게시판의 메인 테이블 생성 에러가 발생하였습니다");
@@ -124,17 +158,19 @@
  
 		zb_query("update $group_table set board_num=board_num+1 where no='$group_no'");    
 
-		movepage("$PHP_SELF?exec=view_board&group_no=$group_no&page=$page&page_num=$page_num");
+		movepage("{$_SERVER['PHP_SELF']}?exec=view_board&group_no=$group_no&page=$page&page_num=$page_num");
 	}
 
 	// 게시판 삭제 
 	elseif($member['is_admin']<=2 && isset($_POST['exec2']) && $_POST['exec2']==="del") {
-		if(!$admin_passwd) Error("관리자 비밀번호를 입력해주세요.");
+		if(empty($_POST['admin_passwd'])) Error("관리자 비밀번호를 입력해주세요.");
 		$isold = false;
 		if(strlen($member['password'])<=16&&strlen(get_password("a"))>=41) $isold = true;
-		if($member['password'] != get_password($admin_passwd, $isold)) {
+		if($member['password'] != get_password($_POST['admin_passwd'], $isold)) {
 				error("관리자 비밀번호가 틀렸습니다.");
 		}
+		$no = isset($_POST['no']) && is_numeric($_POST['no']) ? $_POST['no'] : '';
+		$page_num = isset($_REQUEST['page_num']) && is_numeric($_REQUEST['page_num']) ? $_REQUEST['page_num'] : '10';
 		$data=mysql_fetch_array(zb_query("select name from $admin_table where no='$no'"));
 		
 		$table_name=$data['name'];
@@ -155,31 +191,44 @@
 
 		zb_query("update $group_table set board_num=board_num-1 where no='$group_no'");    
 
-		movepage("$PHP_SELF?exec=view_board&group_no=$group_no&page=$page&page_num=$page_num");
+		movepage("{$_SERVER['PHP_SELF']}?exec=view_board&group_no=$group_no&page=$page&page_num=$page_num");
 	}
 
 	// 카테고리 부분
 	if(isset($_POST['exec2']) && $_POST['exec2']==="category_add") {
+		$no = isset($_POST['no']) && is_numeric($_POST['no']) ? $_POST['no'] : '';
+		$name = isset($_POST['name']) ? addslashes($_POST['name']) : '';
+		$page_num = isset($_REQUEST['page_num']) && is_numeric($_REQUEST['page_num']) ? $_REQUEST['page_num'] : '10';
 		if(!$name) error("생성할 카테고리 이름을 입력하여 주십시오");
 		$table_data=mysql_fetch_array(zb_query("select name from $admin_table where no='$no'"));
 		$check=mysql_fetch_array(zb_query("select count(*) from $t_category"."_$table_data[name] where name='$name'"));
 		if($check[0]>0) Error("동일한 이름의 카테고리가 있습니다");
 		zb_query("insert into $t_category"."_$table_data[name] (name) values ('$name')") or error("카테고리 추가시 에러가 발생했습니다");
-		movepage("$PHP_SELF?exec=view_board&exec2=category&no=$no&page=$page&page_num=$page_num&group_no=$group_no");
+		movepage("{$_SERVER['PHP_SELF']}?exec=view_board&exec2=category&no=$no&page=$page&page_num=$page_num&group_no=$group_no");
 	} elseif(isset($_POST['exec2']) && $_POST['exec2']==="del_category") {
+		$no = isset($_POST['no']) && is_numeric($_POST['no']) ? $_POST['no'] : '';
+		$category_no = isset($_REQUEST['category_no']) && is_numeric($_REQUEST['category_no']) ? $_REQUEST['category_no'] : '';
+		$page_num = isset($_REQUEST['page_num']) && is_numeric($_REQUEST['page_num']) ? $_REQUEST['page_num'] : '10';
 		$table_data=mysql_fetch_array(zb_query("select name from $admin_table where no='$no'"));
 		zb_query("delete from $t_category"."_$table_data[name] where no='$category_no'",$connect) or Error("카테고리 삭제시 에러가 발생했습니다");
-		movepage("$PHP_SELF?exec=view_board&exec2=category&no=$no&page=$page&page_num=$page_num&group_no=$group_no");
+		movepage("{$_SERVER['PHP_SELF']}?exec=view_board&exec2=category&no=$no&page=$page&page_num=$page_num&group_no=$group_no");
 	} elseif(isset($_POST['exec2']) && $_POST['exec2']==="category_modify_ok") {
+		$no = isset($_POST['no']) && is_numeric($_POST['no']) ? $_POST['no'] : '';
+		$name = isset($_POST['name']) ? addslashes($_POST['name']) : '';
+		$category_no = isset($_REQUEST['category_no']) && is_numeric($_REQUEST['category_no']) ? $_REQUEST['category_no'] : '';
+		$page_num = isset($_REQUEST['page_num']) && is_numeric($_REQUEST['page_num']) ? $_REQUEST['page_num'] : '10';
 		if(!$name) error("수정할 카테고리 이름을 입력하여 주십시오");
 		$table_data=mysql_fetch_array(zb_query("select name from $admin_table where no='$no'"));
 		zb_query("update $t_category"."_$table_data[name] set name='$name' where no='$category_no'",$connect);
 
-		movepage("$PHP_SELF?exec=view_board&exec2=category&no=$no&page=$page&page_num=$page_num&group_no=$group_no");
+		movepage("{$_SERVER['PHP_SELF']}?exec=view_board&exec2=category&no=$no&page=$page&page_num=$page_num&group_no=$group_no");
 	}
 
 	// 카테고리 내용 이동 
 	elseif(isset($_POST['exec2']) && $_POST['exec2']==="category_move") {
+		$no = isset($_POST['no']) && is_numeric($_POST['no']) ? $_POST['no'] : '';
+		$page_num = isset($_REQUEST['page_num']) && is_numeric($_REQUEST['page_num']) ? $_REQUEST['page_num'] : '10';
+		$movename = isset($_POST['movename']) && is_numeric($_POST['movename']) ? $_POST['movename'] : '';
 		$table_data=mysql_fetch_array(zb_query("select name from $admin_table where no='$no'"));
 		foreach ($_POST['c'] as $value) {
 			zb_query("update $t_board"."_$table_data[name] set category='$movename' where category='$value'",$connect);
@@ -191,21 +240,33 @@
 			zb_query("update $t_category"."_$table_data[name] set num='$num[0]' where no = '$data[no]'") or die(zb_error());
 		}
 
-		movepage("$PHP_SELF?exec=view_board&exec2=category&no=$no&page=$page&page_num=$page_num&group_no=$group_no");
+		movepage("{$_SERVER['PHP_SELF']}?exec=view_board&exec2=category&no=$no&page=$page&page_num=$page_num&group_no=$group_no");
 	}
 
 	// 권한 설정 
 	elseif(isset($_POST['exec2']) && $_POST['exec2']==="modify_grant_ok") {
-		if(!$admin_passwd) Error("관리자 비밀번호를 입력해주세요.");
+		if(empty($_POST['admin_passwd'])) Error("관리자 비밀번호를 입력해주세요.");
 		$isold = false;
 		if(strlen($member['password'])<=16&&strlen(get_password("a"))>=41) $isold = true;
-		if($member['password'] != get_password($admin_passwd, $isold)) {
+		if($member['password'] != get_password($_POST['admin_passwd'], $isold)) {
 				error("관리자 비밀번호가 틀렸습니다.");
 		}
+		$no = isset($_POST['no']) && is_numeric($_POST['no']) ? $_POST['no'] : '';
+		$page_num = isset($_REQUEST['page_num']) && is_numeric($_REQUEST['page_num']) ? $_REQUEST['page_num'] : '10';
+		$grant_list = isset($_POST['grant_list']) && is_numeric($_POST['grant_list']) ? $_POST['grant_list'] : '1';
+		$grant_view = isset($_POST['grant_view']) && is_numeric($_POST['grant_view']) ? $_POST['grant_view'] : '1';
+		$grant_write = isset($_POST['grant_write']) && is_numeric($_POST['grant_write']) ? $_POST['grant_write'] : '1';
+		$grant_comment = isset($_POST['grant_comment']) && is_numeric($_POST['grant_comment']) ? $_POST['grant_comment'] : '1';
+		$grant_reply = isset($_POST['grant_reply']) && is_numeric($_POST['grant_reply']) ? $_POST['grant_reply'] : '1';
+		$grant_delete = isset($_POST['grant_delete']) && is_numeric($_POST['grant_delete']) ? $_POST['grant_delete'] : '1';
+		$grant_html = isset($_POST['grant_html']) && is_numeric($_POST['grant_html']) ? $_POST['grant_html'] : '1';
+		$grant_notice = isset($_POST['grant_notice']) && is_numeric($_POST['grant_notice']) ? $_POST['grant_notice'] : '1';
+		$grant_view_secret = isset($_POST['grant_view_secret']) && is_numeric($_POST['grant_view_secret']) ? $_POST['grant_view_secret'] : '1';
+		$grant_imagebox = isset($_POST['grant_imagebox']) && is_numeric($_POST['grant_imagebox']) ? $_POST['grant_imagebox'] : '1';
 		zb_query("update $admin_table set grant_html='$grant_html', grant_list='$grant_list',
 				grant_view='$grant_view', grant_comment='$grant_comment', grant_write='$grant_write',
 				grant_reply='$grant_reply', grant_delete='$grant_delete', grant_notice='$grant_notice',
 				grant_view_secret='$grant_view_secret', use_showip = '$grant_imagebox' where no='$no'") or Error("권한 설정 변경시 에러가 발생하였습니다".zb_error());
-		movepage("$PHP_SELF?exec=view_board&exec=view_board&exec2=grant&no=$no&page=$page&page_num=$page_num&group_no=$group_no");
+		movepage("{$_SERVER['PHP_SELF']}?exec=view_board&exec=view_board&exec2=grant&no=$no&page=$page&page_num=$page_num&group_no=$group_no");
 	}
 ?>

@@ -6,6 +6,7 @@
 	if(!isset($connect)) $connect=dbConn();
 
 // 현재 게시판 설정 읽어 오기
+	$id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
 	if(isset($id)) {
 		$setup=get_table_attrib($id);
 
@@ -18,20 +19,20 @@
 
 	if(!$member['no']) Error("회원 정보가 존재하지 않습니다","window.close");
 
-	$member['name'] = isset($member['name']) ? stripslashes($member['name']) : "";
-	$member['job'] = isset($member['job']) ? stripslashes($member['job']) : "";
-	$member['email'] = isset($member['email']) ? stripslashes($member['email']) : "";
-	$member['homepage'] = isset($member['homepage']) ? stripslashes($member['homepage']) : "";
-	$member['birth'] = isset($member['birth']) ? stripslashes($member['birth']) : "";
-	$member['hobby'] = isset($member['hobby']) ? stripslashes($member['hobby']) : "";
-	$member['icq'] = isset($member['icq']) ? stripslashes($member['icq']) : "";
-	$member['msn'] = isset($member['msn']) ? stripslashes($member['msn']) : "";
-	$member['home_address'] = isset($member['home_address']) ? stripslashes($member['home_address']) : "";
-	$member['home_tel'] = isset($member['home_tel']) ? stripslashes($member['home_tel']) : "";
-	$member['office_address'] = isset($member['office_address']) ? stripslashes($member['office_address']) : "";
-	$member['office_tel'] = isset($member['office_tel']) ? stripslashes($member['office_tel']) : "";
-	$member['handphone'] = isset($member['handphone']) ? stripslashes($member['handphone']) : "";
-	$member['comment'] = isset($member['comment']) ? stripslashes($member['comment']) : "";
+	$member['name'] = isset($member['name']) ? stripslashes($member['name']) : '';
+	$member['job'] = isset($member['job']) ? stripslashes($member['job']) : '';
+	$member['email'] = isset($member['email']) ? stripslashes($member['email']) : '';
+	$member['homepage'] = isset($member['homepage']) ? stripslashes($member['homepage']) : '';
+	$member['birth'] = isset($member['birth']) ? stripslashes($member['birth']) : '';
+	$member['hobby'] = isset($member['hobby']) ? stripslashes($member['hobby']) : '';
+	$member['icq'] = isset($member['icq']) ? stripslashes($member['icq']) : '';
+	$member['msn'] = isset($member['msn']) ? stripslashes($member['msn']) : '';
+	$member['home_address'] = isset($member['home_address']) ? stripslashes($member['home_address']) : '';
+	$member['home_tel'] = isset($member['home_tel']) ? stripslashes($member['home_tel']) : '';
+	$member['office_address'] = isset($member['office_address']) ? stripslashes($member['office_address']) : '';
+	$member['office_tel'] = isset($member['office_tel']) ? stripslashes($member['office_tel']) : '';
+	$member['handphone'] = isset($member['handphone']) ? stripslashes($member['handphone']) : '';
+	$member['comment'] = isset($member['comment']) ? stripslashes($member['comment']) : '';
 
 
 // 그룹데이타 읽어오기;;
@@ -39,6 +40,7 @@
 	$group=$group_data;
 	$group_no=isset($group['no']) ? $group['no'] : '';
 
+	$check['']='';
     $check[0]='';
 	$check[1]='checked';
 
@@ -116,7 +118,7 @@
 </script>
 <table border=0 cellspacing=1 cellpadding=0 width=540>
 <form name=write method=post action=member_modify_ok.php enctype=multipart/form-data onsubmit="return check_submit();">
-<input type=hidden name=one_page value="<?=$HTTP_REFERER?>">
+<input type=hidden name=one_page value="<?=$_SERVER['HTTP_REFERER']?>">
 <input type=hidden name=page value=<?=isset($page)?$page:''?>>
 <input type=hidden name=id value=<?=isset($id)?$id:''?>>
 <input type=hidden name=no value=<?=isset($no)?$no:''?>>

@@ -6,6 +6,7 @@
 	if(!isset($connect)) $connect=dbConn();
 
 // 글쓴이의 정보를 갖고옴;;
+	$member_no = isset($_REQUEST['member_no']) && is_numeric($_REQUEST['member_no']) ? $_REQUEST['member_no'] : null;
 	$data=mysql_fetch_array(zb_query("select * from $member_table where no='$member_no'"));
 	$data['name'] = isset($data['name']) ? stripslashes($data['name']) : '';
 	$data['job'] = isset($data['job']) ? stripslashes($data['job']) : '';

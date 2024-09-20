@@ -7,7 +7,7 @@
 <table border=0 cellspacing=1 cellpadding=3 width=100% bgcolor=#b0b0b0>
   <tr height=30><td bgcolor=#3d3d3d colspan=2><img src=images/admin_memberjoin.gif></td></tr>
   <tr height=1><td bgcolor=#000000 style=padding:0px; colspan=2><img src=images/t.gif height=1></td></tr>
-<form name=write method=post action=<?=$PHP_SELF?>>
+<form name=write method=post action=<?=$_SERVER['PHP_SELF']?>>
 <input type=hidden name=exec value=modify_member_join_ok>
 <input type=hidden name=group_no value=<?=$group_no?>>
 <input type=hidden name=csrf_token value=<?=generate_csrf_token()?>>

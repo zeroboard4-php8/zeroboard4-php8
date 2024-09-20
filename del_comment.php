@@ -4,13 +4,17 @@
  **************************************************************************/
 	include_once "_head.php";
 
-	if(!eregi($HTTP_HOST,$HTTP_REFERER)) Error("정상적으로 글을 삭제하여 주시기 바랍니다.");
+	if(!eregi($_SERVER['HTTP_HOST'],$_SERVER['HTTP_REFERER'])) Error("정상적으로 글을 삭제하여 주시기 바랍니다.");
 
 /***************************************************************************
  * 코멘트 삭제 페이지 처리
  **************************************************************************/
 
 // 원본글을 가져옴
+	$id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
+	$no = isset($_REQUEST['no']) && is_numeric($_REQUEST['no']) ? $_REQUEST['no'] : null;
+	$c_no = isset($_REQUEST['c_no']) && is_numeric($_REQUEST['c_no']) ? $_REQUEST['c_no'] : null;
+	if(!isset($member['no'])) $member['no'] = null;
 	$s_data=mysql_fetch_array(zb_query("select * from $t_comment"."_$id where no='$c_no'"));
 
 	if($s_data['ismember']||$is_admin||$member['level']<=$setup['grant_delete']) {

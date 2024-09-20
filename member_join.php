@@ -6,6 +6,7 @@
 	if(!isset($connect)) $connect=dbConn();
 
 // 그룹 번호 체크
+	$group_no = isset($_REQUEST['group_no']) && is_numeric($_REQUEST['group_no']) ? $_REQUEST['group_no'] : null;
 	if(!isset($group_no)) {
 		$tmpResult = mysql_fetch_array(zb_query("select * from $group_table order by no limit 1"));
 		$group_no = $tmpResult['no'];
@@ -13,37 +14,38 @@
 
 // 멤버 정보 구해오기;;; 멤버가 있을때
 	$member=member_info();
-
-	if(isset($mode)&&$mode=="admin"&&($member['is_admin']==1||($member['is_admin']==2&&$member['group_no']==$group_no))) $mode = "admin";
-	else $mode = "";
+	
+	if(isset($_REQUEST['mode'])&&$_REQUEST['mode']==='admin'&&($member['is_admin']==1||($member['is_admin']==2&&$member['group_no']==$group_no))) $mode = 'admin';
+	else $mode = '';
 
 	if(isset($member['no'])&&!$mode) Error("이미 가입이 되어 있습니다.","window.close");
 
 
 // 게시판과 그룹설정에 따라서 회원 가입 설정
+	$id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
 	if(isset($id)) {
 		// 현재 게시판 설정 읽어 오기
 		$setup=get_table_attrib($id);
 
 		// 설정되지 않은 게시판일때 에러 표시
-		if(!$setup['name']) Error("생성되지 않은 게시판입니다.<br><br>게시판을 생성후 사용하십시오","window.close");
+		if(!$setup['name']) Error('생성되지 않은 게시판입니다.<br><br>게시판을 생성후 사용하십시오','window.close');
 
 		// 현재 게시판의 그룹의 설정 읽어 오기
 		$group=group_info($setup['group_no']);
-		if(!$group['use_join']&&!$mode) Error("현재 지정된 그룹은 추가 회원을 모집하지 않습니다","window.close");
+		if(!$group['use_join']&&!$mode) Error('현재 지정된 그룹은 추가 회원을 모집하지 않습니다','window.close');
 
 	} else {
 
 		if(isset($group_name)) $group=mysql_fetch_array(zb_query("select * from $group_table where name='$group_name'"));
 		elseif(isset($group_no)) $group=mysql_fetch_array(zb_query("select * from $group_table where no='$group_no'"));
-		if(!isset($group['no'])) Error("지정된 그룹이 존재하지 않습니다");
-		if(!$group['use_join']&&!$mode) Error("현재 지정된 그룹은 추가 회원을 모집하지 않습니다");
+		if(!isset($group['no'])) Error('지정된 그룹이 존재하지 않습니다');
+		if(!$group['use_join']&&!$mode) Error('현재 지정된 그룹은 추가 회원을 모집하지 않습니다');
 
 	}
 
 	$check[1]="checked";
 
-	if(!isset($referer)) $referer=$HTTP_REFERER;
+	if(!isset($referer)) $referer=isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null;
 
 	$setup['header']="";
 	$setup['footer']="";
@@ -197,8 +199,8 @@
   <tr><td colspan=2><img src=images/member_joinin.gif><br><br></td></tr>
 
 <?php
-	if(file_exists("./join_license.txt")) {
-		$f=fopen("join_license.txt",r);
+	if(file_exists('./join_license.txt')) {
+		$f=fopen('join_license.txt','r');
 		$join_license = fread($f,filesize("join_license.txt"));
 		fclose($f);
 ?>

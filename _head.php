@@ -20,7 +20,7 @@ if(realpath($_SERVER['SCRIPT_FILENAME']) == realpath(__FILE__)) exit;
  	$_zb_file_list = array("apply_vote.php","comment_ok.php","del_comment.php","del_comment_ok.php","delete.php","download.php","list_all.php","view.php","vote.php","write.php","write_ok.php","zboard.php","image_box.php");
 	$_zb_c = count($_zb_file_list);
 	for($i=0;$i<$_zb_c;$i++) {
-		if(strpos(strtolower($PHP_SELF), $_zb_file_list[$i]) !== false) { $_zboardis = TRUE; break; }
+		if(strpos(strtolower($_SERVER['PHP_SELF']), $_zb_file_list[$i]) !== false) { $_zboardis = TRUE; break; }
 		else $_zboardis = FALSE;
 	}
 
@@ -33,7 +33,30 @@ if(realpath($_SERVER['SCRIPT_FILENAME']) == realpath(__FILE__)) exit;
  **************************************************************************/
 
 // 게시판 $id 체크
-	if(!$id&&$_zboardis&&!isalNum($id)) Error("게시판 이름을 지정해 주셔야 합니다.<br><br>예) zboard.php?id=이름",""); // 게시판 이름 체크
+	$id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
+	$keyword = isset($_REQUEST['keyword']) ? $_REQUEST['keyword'] : null;
+	$desc = isset($_REQUEST['desc']) && in_array($_REQUEST['desc'], array('desc','asc')) ? $_REQUEST['desc'] : null;
+	$sn = isset($_REQUEST['sn']) && in_array($_REQUEST['sn'], array('on','off')) ? $_REQUEST['sn'] : null;
+	$sn1 = isset($_REQUEST['sn1']) && in_array($_REQUEST['sn1'], array('on','off')) ? $_REQUEST['sn1'] : null;
+	$ss = isset($_REQUEST['ss']) && in_array($_REQUEST['ss'], array('on','off')) ? $_REQUEST['ss'] : null;
+	$sc = isset($_REQUEST['sc']) && in_array($_REQUEST['sc'], array('on','off')) ? $_REQUEST['sc'] : null;
+	$page = isset($_REQUEST['page']) && is_numeric($_REQUEST['page']) ? $_REQUEST['page'] : null;
+	$divpage = isset($_REQUEST['divpage']) && is_numeric($_REQUEST['divpage']) ? $_REQUEST['divpage'] : null;
+	$category = isset($_REQUEST['category']) && is_numeric($_REQUEST['category']) ? $_REQUEST['category'] : null;
+	$no = isset($_REQUEST['no']) && is_numeric($_REQUEST['no']) ? $_REQUEST['no'] : null;
+	$c_no = isset($_REQUEST['c_no']) && is_numeric($_REQUEST['c_no']) ? $_REQUEST['c_no'] : null;
+	$sub_no = isset($_REQUEST['sub_no']) && is_numeric($_REQUEST['sub_no']) ? $_REQUEST['sub_no'] : null;
+	$page_num = isset($_REQUEST['page_num']) && is_numeric($_REQUEST['page_num']) ? $_REQUEST['page_num'] : null;
+	$notice = isset($_REQUEST['notice']) && is_numeric($_REQUEST['notice']) ? $_REQUEST['notice'] : null;
+	$use_html = isset($_REQUEST['use_html']) && is_numeric($_REQUEST['use_html']) ? $_REQUEST['use_html'] : null;
+	$reply_mail = isset($_REQUEST['reply_mail']) && is_numeric($_REQUEST['reply_mail']) ? $_REQUEST['reply_mail'] : null;
+	$secret = isset($_REQUEST['secret']) && is_numeric($_REQUEST['secret']) ? $_REQUEST['secret'] : null;
+	$selected = isset($_REQUEST['selected']) && preg_match('/^[0-9;]+$/', $_REQUEST['selected']) ? $_REQUEST['selected'] : null;
+	$select_arrange = isset($_REQUEST['select_arrange'])
+				&& in_array($_REQUEST['select_arrange'], array('headnum','subject','name','hit','vote','reg_date','download1','download2')) ? $_REQUEST['select_arrange'] : null;
+	$href='';
+	$sort='';
+	if(empty($id)&&$_zboardis&&!isalNum($id)) Error("게시판 이름을 지정해 주셔야 합니다.<br><br>예) zboard.php?id=이름",""); // 게시판 이름 체크
 
 
 /***************************************************************************
@@ -104,7 +127,7 @@ if(realpath($_SERVER['SCRIPT_FILENAME']) == realpath(__FILE__)) exit;
 		/////////////////////////////////////////////
 		// write.php가 아닐때 검색갯수 및 query 정리
 		/////////////////////////////////////////////
-		if(strpos(strtolower($PHP_SELF),"write.php") === false) {
+		if(strpos(strtolower($_SERVER['PHP_SELF']),"write.php") === false) {
 
 			// Division의 현황을 체크
 			$_dbTimeStart = getmicrotime();
@@ -237,7 +260,7 @@ if(realpath($_SERVER['SCRIPT_FILENAME']) == realpath(__FILE__)) exit;
 		if($is_admin) $a_setup="<a onfocus=blur() href='admin_setup.php?exec=view_board&no=$setup[no]&group_no=$setup[group_no]&exec2=modify' target=_blank>"; else $a_setup="<Zeroboard ";
 
 		// 현재 멤버의 새 쪽지가 있을때 아이콘 변경;;
-		$memo_on_sound="";
+		$memo_on_sound='';
 		if(isset($member['no'])) {
 			if(!empty($member['new_memo'])) {
 				$member_memo_icon="<img name=memozzz src=$dir/member_memo_on.gif border=0 align=absmiddle>";
@@ -255,7 +278,7 @@ if(realpath($_SERVER['SCRIPT_FILENAME']) == realpath(__FILE__)) exit;
 
 // 로그인, 아웃, 회원 정보 수정, 쪽지 메뉴 버튼
 	if(!isset($_zb_url)) $_zb_url='';
-	$s_url = $REQUEST_URI;
+	$s_url = $_SERVER['REQUEST_URI'];
 	if($id&&strpos(strtolower($s_url),strtolower($id)) === false) {
 		if(strpos($s_url,'?') !== false) $s_url = $s_url . "&id=$id";
 		else $s_url = $s_url . "?id=$id";
@@ -276,7 +299,7 @@ if(realpath($_SERVER['SCRIPT_FILENAME']) == realpath(__FILE__)) exit;
 
 
 // 회원가입버튼;;
-	if(!isset($member['no'])&&$group['use_join']) $a_member_join="<a onfocus=blur() href=# onclick=\"window.open('".$_zb_url."member_join.php?group_no=$setup[group_no]','zbMemberJoin','width=560,height=590,toolbars=no,resizable=yes,scrollbars=yes')\">"; else $a_member_join="<Zeroboard ";
+	if(!isset($member['no'])&&!empty($group['use_join'])) $a_member_join="<a onfocus=blur() href=# onclick=\"window.open('".$_zb_url."member_join.php?group_no=$setup[group_no]','zbMemberJoin','width=560,height=590,toolbars=no,resizable=yes,scrollbars=yes')\">"; else $a_member_join="<Zeroboard ";
 
 
 ?>

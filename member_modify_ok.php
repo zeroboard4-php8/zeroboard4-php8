@@ -2,7 +2,7 @@
 // 라이브러리 함수 파일 인크루드
 	include "lib.php";
 
-	if(getenv("REQUEST_METHOD") == 'GET' ) Error("정상적으로 글을 쓰시기 바랍니다","");
+	if($_SERVER['REQUEST_METHOD'] == 'GET' ) Error("정상적으로 글을 쓰시기 바랍니다","");
 
 // DB 연결
 	if(!isset($connect)) $connect=dbConn();
@@ -11,13 +11,52 @@
 	$member=member_info();
 	if(!$member['no']) Error("회원정보가 존재하지 않습니다");
 	$group=group_info($member['group_no']);
+	
+	$password = isset($_POST['password']) ? $_POST['password'] : null;
+	$password1 = isset($_POST['password1']) ? $_POST['password1'] : null;
+	$name = isset($_POST['name']) ? $_POST['name'] : null;
+	$birth_1 = isset($_POST['birth_1']) && is_numeric($_POST['birth_1']) ? $_POST['birth_1'] : null;
+	$birth_2 = isset($_POST['birth_2']) && is_numeric($_POST['birth_2']) ? $_POST['birth_2'] : null;
+	$birth_3 = isset($_POST['birth_3']) && is_numeric($_POST['birth_3']) ? $_POST['birth_3'] : null;
+	$open_birth = isset($_POST['open_birth']) && in_array($_POST['open_birth'], array('0','1')) ? $_POST['open_birth'] : null;
+	$email = isset($_POST['email']) ? $_POST['email'] : null;
+	$open_email = isset($_POST['open_email']) && in_array($_POST['open_email'], array('0','1')) ? $_POST['open_email'] : null;
+	$homepage = isset($_POST['homepage']) ? $_POST['homepage'] : null;
+	$open_homepage = isset($_POST['open_homepage']) && in_array($_POST['open_homepage'], array('0','1')) ? $_POST['open_homepage'] : null;
+	$icq = isset($_POST['icq']) ? $_POST['icq'] : null;
+	$open_icq = isset($_POST['open_icq']) && in_array($_POST['open_icq'], array('0','1')) ? $_POST['open_icq'] : null;
+	$aol = isset($_POST['aol']) ? $_POST['aol'] : null;
+	$open_aol = isset($_POST['open_aol']) && in_array($_POST['open_aol'], array('0','1')) ? $_POST['open_aol'] : null;
+	$msn = isset($_POST['msn']) ? $_POST['msn'] : null;
+	$open_msn = isset($_POST['open_msn']) && in_array($_POST['open_msn'], array('0','1')) ? $_POST['open_msn'] : null;
+	$jumin1 = isset($_POST['jumin1']) && is_numeric($_POST['jumin1']) ? $_POST['jumin1'] : null;
+	$jumin2 = isset($_POST['jumin2']) && is_numeric($_POST['jumin2']) ? $_POST['jumin2'] : null;
+	$hobby = isset($_POST['hobby']) ? $_POST['hobby'] : null;
+	$open_hobby = isset($_POST['open_hobby']) && in_array($_POST['open_hobby'], array('0','1')) ? $_POST['open_hobby'] : null;
+	$job = isset($_POST['job']) ? $_POST['job'] : null;
+	$open_job = isset($_POST['open_job']) && in_array($_POST['open_job'], array('0','1')) ? $_POST['open_job'] : null;
+	$home_address = isset($_POST['home_address']) ? $_POST['home_address'] : null;
+	$open_home_address = isset($_POST['open_home_address']) && in_array($_POST['open_home_address'], array('0','1')) ? $_POST['open_home_address'] : null;
+	$home_tel = isset($_POST['home_tel']) ? $_POST['home_tel'] : null;
+	$open_home_tel = isset($_POST['open_home_tel']) && in_array($_POST['open_home_tel'], array('0','1')) ? $_POST['open_home_tel'] : null;
+	$office_address = isset($_POST['office_address']) ? $_POST['office_address'] : null;
+	$open_office_address = isset($_POST['open_office_address']) && in_array($_POST['open_office_address'], array('0','1')) ? $_POST['open_office_address'] : null;
+	$office_tel = isset($_POST['office_tel']) ? $_POST['office_tel'] : null;
+	$open_office_tel = isset($_POST['open_office_tel']) && in_array($_POST['open_office_tel'], array('0','1')) ? $_POST['open_office_tel'] : null;
+	$handphone = isset($_POST['handphone']) ? $_POST['handphone'] : null;
+	$open_handphone = isset($_POST['open_handphone']) && in_array($_POST['open_handphone'], array('0','1')) ? $_POST['open_handphone'] : null;	
+	$mailing = isset($_POST['mailing']) && in_array($_POST['mailing'], array('0','1')) ? $_POST['mailing'] : null;	
+	$open_picture = isset($_POST['open_picture']) && in_array($_POST['open_picture'], array('0','1')) ? $_POST['open_picture'] : null;	
+	$comment = isset($_POST['comment']) ? $_POST['comment'] : null;
+	$open_comment = isset($_POST['open_comment']) && in_array($_POST['open_comment'], array('0','1')) ? $_POST['open_comment'] : null;
+	$openinfo = isset($_POST['openinfo']) && in_array($_POST['openinfo'], array('0','1')) ? $_POST['openinfo'] : null;			
 
-	$name = str_replace("ㅤ","",$name);
+	$name = str_replace('ㅤ','',$name);
 
 	if(isblank($name)) Error("이름을 입력하셔야 합니다");
 	if(preg_match("/(<|>)/",$name)) Error("이름에는 태그를 사용하실수 없습니다.");
 	if($password&&$password1&&$password!=$password1) Error("비밀번호가 일치하지 않습니다");
-	$birth=mktime(0,0,0,isset($_POST['birth_2'])?$_POST['birth_2']:null,isset($_POST['birth_3'])?$_POST['birth_3']:null,isset($_POST['birth_1'])?$_POST['birth_1']:null);
+	$birth=mktime(0,0,0,$birth_2,$birth_3,$birth_1);
 
 	$check=mysql_fetch_array(zb_query("select count(*) from $member_table where email='$email' and no <> ".$member['no'],$connect));
 	if($check[0]>0) Error("이미 등록되어 있는 E-Mail입니다");

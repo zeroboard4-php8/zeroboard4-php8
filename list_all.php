@@ -8,6 +8,11 @@
  * 설정 체크
  *********************************************************************************/
 	// 그룹 정보 구해오기
+	$exec = isset($_REQUEST['exec']) ? $_REQUEST['exec'] : null;
+	$selected = isset($_REQUEST['selected']) ? $_REQUEST['selected'] : null;
+	$select_board_name = isset($_REQUEST['select_board_name']) ? $_REQUEST['select_board_name'] : null;
+	$board_name = isset($_REQUEST['board_name']) ? $_REQUEST['board_name'] : null;
+	$id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
 	$setup=get_table_attrib($id);
 
 	// 사용권한 체크

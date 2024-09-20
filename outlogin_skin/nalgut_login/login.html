@@ -1,0 +1,36 @@
+<html>
+<head><style type=text/css>
+BODY,TD,SELECT,input,DIV,form,TEXTAREA,center,option,pre,blockquote 
+{font-family:tahoma; font-size:8pt; color:#a2a2a2;}
+
+a {color:#a2a2a2; text-decoration:none;}
+a:hover {color: #a2a2a2; text-decoration: none;}
+
+.a2-eng {font-family:tahoma; font-size:7pt; color:black;}
+.toform {border-width:1; border-color:#a2a2a2; border-style:solid; font-size:7pt; color:#a2a2a2}
+
+</style>
+
+<body>
+<table border="0" cellspacing="0" cellpadding="0" align="left">
+<form name=zb_login method=post action="[action]" onsubmit="return zb_login_check_submit();">
+
+<input type=hidden name=s_url value="[s_url]">
+
+<tr><td valign=top align="left" style="padding:0 0 0 0;" class=a2-eng>
+
+<input style="background-image:url('[dir]id.gif');background-repeat:no-repeat;" onfocus="this.style.background='#E9FAFF'" type=text name=user_id OnBlur = 'document.zb_login.password.focus();' 
+ value=''  maxlength=20 style='color:#00BBEC;  background-color:#E9FAFF; border:1 #E9FAFF solid ;width:60px; height:20px;'>
+
+</td><td width="5"></td><td valign=top align="left" style="padding:0 0 0 0;" class=a2-eng>
+
+<input style="background-image:url('[dir]pw.gif');background-repeat:no-repeat;" onfocus="this.style.background='#E9FAFF'" type="password" name=password
+ value='' maxlength=20 style='color:#00BBEC;  background-color:#E9FAFF; border:1 #E9FAFF solid ;width:65px; height:20px;'>
+
+</td><td width="5"></td>
+
+<td valign=top colspan="2" align="left" style="padding:1 0 0 0;">[member_join]&nbsp;&nbsp;[login]&nbsp;&nbsp;[lost_id]</td></tr>
+
+</table></form></body>
+
+</html>

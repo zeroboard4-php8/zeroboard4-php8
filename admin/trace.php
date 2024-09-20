@@ -7,11 +7,11 @@
 
  $member=member_info();
  
- if(!isset($keyword)) $keyword = '';
+ $keyword = isset($_REQUEST['keyword']) ? $_REQUEST['keyword'] : '';
  $s_keyword = $keyword;
  $keykind = isset($_REQUEST['keykind']) ? $_REQUEST['keykind'] : '';
 
- if(!$member['no']||$member['is_admin']>1||$member['level']>1) Error("최고 관리자만이 사용할수 있습니다");
+ if(!isset($member['no'])||$member['is_admin']>1||$member['level']>1) Error("최고 관리자만이 사용할수 있습니다");
 
  $zb_hash_chk = md5($member['reg_m_date'].$member['user_id'].$member['no'].$_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT']);
 	if($_SESSION['zb_hash'] != $zb_hash_chk) {
@@ -26,7 +26,7 @@
  }
 
  // 실제 검색부분
- if($keyword)
+ if(!empty($keyword))
  {
   $comment_search=1;
   $s_que = "";
@@ -62,7 +62,7 @@
   <td width=100% background=../images/trace_back.gif><img src=../images/trace_back.gif border=0></td>
   <td><img src=../images/trace_right.gif border=0></td>
 </tr>
-<form action=<?=$PHP_SELF?> method=post>
+<form action=<?=$_SERVER['PHP_SELF']?> method=post>
 <tr>
   <td colspan=3 align=right>
 

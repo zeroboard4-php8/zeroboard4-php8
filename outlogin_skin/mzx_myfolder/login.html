@@ -1,0 +1,27 @@
+<!--- 로그인 폼입니다 -->
+
+<div align=center>
+<table cellpadding=0 cellspacing=0 border=0>
+
+<form name=zb_login method=post action="[action]" onsubmit="return zb_login_check_submit();">
+<input type=hidden name=s_url value="[s_url]">
+
+  <tr>
+   <td><font style=font-family:tahoma;font-size:9pt>아이디</font></td>
+   <td> <input type=text name=user_id value='' size=12 class=input></td>
+  </tr>
+  <tr>
+   <td><font style=font-family:tahoma;font-size:9pt>비밀번호</font></td>
+   <td><input type=password name=password value='' size=12 class=input></td>
+  </tr>	
+  <tr>
+   <td colspan=2 nowrap>
+    [login]
+   </td>
+  </tr>
+  <tr align="center">
+   <td colspan=2 nowrap>
+     <input type=checkbox name=auto_login value=1 onclick=check_autologin()><img src=[dir]i_save.gif border=0 align=absmiddle>[lost_id]<br>[member_join]</td>	
+</tr>
+</table>
+</div></form>

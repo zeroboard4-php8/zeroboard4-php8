@@ -1,4 +1,5 @@
 <?php
+    $no = isset($_REQUEST['no']) && is_numeric($_REQUEST['no']) ? $_REQUEST['no'] : '';
     if(isset($_POST['cart'])) {
 	    $data['name'] = "선택된";
     } else {	  
@@ -9,7 +10,7 @@
   <tr height=30><td bgcolor=#3d3d3d colspan=2></td></tr>
   <tr height=1><td bgcolor=#000000 style=padding:0px; colspan=2><img src=images/t.gif height=1></td></tr>
 
-<form name=write method=post action=<?=$PHP_SELF?> enctype=multipart/form-data onsubmit="return confirm('<?=del_html(stripslashes($data['name']))?> 회원을 삭제 하시겠습니까?')">
+<form name=write method=post action=<?=$_SERVER['PHP_SELF']?> enctype=multipart/form-data onsubmit="return confirm('<?=del_html(stripslashes($data['name']))?> 회원을 삭제 하시겠습니까?')">
 <input type=hidden name=exec value="view_member">
 <input type=hidden name=group_no value=<?=$group_no?>>
 <input type=hidden name=exec2 value="<?=isset($_POST['cart'])?'deleteall':'del'?>">

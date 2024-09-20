@@ -15,7 +15,7 @@
   <tr height=30><td bgcolor=#3d3d3d colspan=2><img src=images/admin_deletegroup.gif></td></tr>
   <tr height=1><td bgcolor=#000000 style=padding:0px; colspan=2><img src=images/t.gif height=1></td></tr>
 
-<form name=write method=post action=<?=$PHP_SELF?> enctype=multipart/form-data onsubmit="return confirm('삭제하시겠습니까?')">
+<form name=write method=post action=<?=$_SERVER['PHP_SELF']?> enctype=multipart/form-data onsubmit="return confirm('삭제하시겠습니까?')">
 <input type=hidden name=exec value=del_group_ok>
 <input type=hidden name=group_no value=<?=$group_no?>>
 <input type=hidden name=csrf_token value=<?=generate_csrf_token()?>>

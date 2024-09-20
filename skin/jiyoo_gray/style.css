@@ -1,0 +1,18 @@
+
+BODY,TD,SELECT,input,DIV,form,TEXTAREA,center,option,pre,blockquote {font-family:굴림;font-size:9pt;color:444444;}
+
+A:link    {color:444444;text-decoration:none;}
+A:visited {color:444444;text-decoration:none;}
+A:active  {color:444444;text-decoration:none;}
+A:hover  {color:737373;text-decoration:none}
+
+.textarea {border:solid 1; font-family:굴림,verdana;font-size:9pt;color:444444;background-color:white font-size:8pt;font-family:Arial;vertical-align:top;border-left-color:D7D6D6;border-right-color:D7D6D6;border-top-color:D7D6D6;border-bottom-color:D7D6D6;}
+.input{border:solid 1;font-family:굴림,verdana;font-size:9pt;color:444444;background-color:white; font-size:8pt;font-family:Arial;vertical-align:top;border-left-color:D7D6D6;border-right-color:D7D6D6;border-top-color:D7D6D6;border-bottom-color:D7D6D6;height:18px;}
+.input2{border:solid 1;font-family:굴림,verdana;font-size:9pt;color:444444;background-color:white;font-size:8pt;font-family:Arial;vertical-align:top;border-left-color:666666;border-right-color:666666;border-top-color:666666;border-bottom-color:666666;height:19px;}
+.submit {border:solid 1 white;font-family:굴림;font-size:9pt;color:white;background-color:666666; height=18px}
+.thm8 {font-family:Tahoma;font-size:8pt}
+
+
+.setup {font-family:verdana;font-size:6pt;color:444444; font-weight:bold}
+.write {font-family:verdana;font-size:7pt;color:666666; font-weight:bold}
+.w_title {font-family:verdana;font-size:7pt;color:666666; font-weight:none; line-height:14pt}

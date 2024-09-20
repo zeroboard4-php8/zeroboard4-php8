@@ -46,7 +46,7 @@ function check_view() {
 <?php
   if(fileperms(".")==16839||fileperms(".")==16895) $check="1";
   if(!$check) echo"<font color=red>현재 707로 퍼미션이 되어 있지 않습니다. 텔넷이나 FTP에서 퍼미션을 조정하세요.<font><br><br>
-                   <div align=center><table border=0><tr><form method=post action=$PHP_SELF><td align=center height=30><input type=submit value='퍼미션 조정하였습니다' style=height:20px;></td></tr></table>";
+                   <div align=center><table border=0><tr><form method=post action={$_SERVER['PHP_SELF']}><td align=center height=30><input type=submit value='퍼미션 조정하였습니다' style=height:20px;></td></tr></table>";
   else echo"<br><br><div align=center><table border=0><tr><form method=post action=install1.php onsubmit='return check_submit()'><td align=center height=30><input type=image src=images/inst_b_1.gif border=0 align=absmiddle></td></tr></table>";
 ?>
   <br>

@@ -13,6 +13,13 @@
 // 그룹데이타 읽어오기;;
 	$group_data=mysql_fetch_array(zb_query("select * from $group_table where no='$member[group_no]'"));
 
+	$keyword = isset($_REQUEST['keyword']) ? $_REQUEST['keyword'] : null;
+	$no = isset($_REQUEST['no']) && is_numeric($_REQUEST['no']) ? $_REQUEST['no'] : null;
+	$del = isset($_POST['del']) ? $_POST['del'] : null;
+	$page = isset($_REQUEST['page']) && is_numeric($_REQUEST['page']) ? $_REQUEST['page'] : null;
+	$exec = isset($_REQUEST['exec']) && in_array($_REQUEST['exec'], array('del','del_all')) ? $_REQUEST['exec'] : null;
+	$page_num = isset($_REQUEST['page_num']) && is_numeric($_REQUEST['page_num']) ? $_REQUEST['page_num'] : null;
+
 // 새쪽지 왔습니다;; 알람 없애기
 	zb_query("update $member_table set new_memo='0' where no='$member[no]'");
 
@@ -20,17 +27,17 @@
 	if(intval($_zbDefaultSetup['memo_limit_time'])!==0) zb_query("delete from $get_memo_table where member_no='$member[no]' and (".time()." - reg_date) >= ".$_zbDefaultSetup['memo_limit_time']) or error(zb_error());
 
 // 선택된 메모 삭제;;;
-	if(isset($exec) && $exec=="del_all") {
+	if(isset($exec) && isset($_POST['del']) && $exec=="del_all") {
 		foreach ($_POST['del'] as $value) {
-zb_query("delete from $get_memo_table where no='$value' and member_no='$member[no]'");
+			zb_query("delete from $get_memo_table where no='$value' and member_no='$member[no]'");
 		}
-		movepage("$PHP_SELF?page=$page");
+		movepage("{$_SERVER['PHP_SELF']}?page=$page");
 	}
 
 // 메모삭제
 	if(isset($exec) && $exec=="del") {
 		zb_query("delete from $get_memo_table where no='$no' and member_no='$member[no]'");
-		movepage("$PHP_SELF?page=$page");
+		movepage("{$_SERVER['PHP_SELF']}?page=$page");
 	}
 
 // 선택된 메모가 있을시 데이타 뽑아오기;;
@@ -87,21 +94,21 @@ zb_query("delete from $get_memo_table where no='$value' and member_no='$member[n
 
 	if($page>$show_page_num) {
 		$prev_page=$start_page;
-		$print_page="<a href=$PHP_SELF?id=$id&page=$prev_page&select_arrange=$select_arrange&desc=$desc&category=$category&sn=$sn&ss=$ss&sc=$sc&keyword=$keyword&page_num=$page_num>[Prev]</a> ";
-		$print_page.="<a href=$PHP_SELF?id=$id&page=1&select_arrange=$select_arrange&desc=$desc&category=$category&sn=$sn&ss=$ss&sc=$sc&keyword=$keyword&page_num=$page_num>[1]</a>..";
+		$print_page="<a href={$_SERVER['PHP_SELF']}?id=$id&page=$prev_page&select_arrange=$select_arrange&desc=$desc&category=$category&sn=$sn&ss=$ss&sc=$sc&keyword=$keyword&page_num=$page_num>[Prev]</a> ";
+		$print_page.="<a href={$_SERVER['PHP_SELF']}?id=$id&page=1&select_arrange=$select_arrange&desc=$desc&category=$category&sn=$sn&ss=$ss&sc=$sc&keyword=$keyword&page_num=$page_num>[1]</a>..";
 	}
 
 	while($i+$start_page<=$total_page&&$i<=$show_page_num) {
 		$move_page=$i+$start_page;
 		if($page==$move_page) $print_page.=" <b>$move_page</b> ";
-		else $print_page.="<a href=$PHP_SELF?id=$id&page=$move_page&select_arrange=$select_arrange&desc=$desc&category=$category&sn=$sn&ss=$ss&sc=$sc&keyword=$keyword&page_num=$page_num>[$move_page]</a>";
+		else $print_page.="<a href={$_SERVER['PHP_SELF']}?id=$id&page=$move_page&select_arrange=$select_arrange&desc=$desc&category=$category&sn=$sn&ss=$ss&sc=$sc&keyword=$keyword&page_num=$page_num>[$move_page]</a>";
 		$i++;
 	}
 
 	if($total_page>$move_page) {
 		$next_page=$move_page+1;
-		$print_page.="..<a href=$PHP_SELF?id=$id&page=$total_page&select_arrange=$select_arrange&desc=$desc&category=$category&sn=$sn&ss=$ss&sc=$sc&keyword=$keyword&page_num=$page_num>[$total_page]</a>";
-		$print_page.=" <a href=$PHP_SELF?id=$id&page=$next_page&select_arrange=$select_arrange&desc=$desc&category=$category&sn=$sn&ss=$ss&sc=$sc&keyword=$keyword&page_num=$page_num>[Next]</a>";
+		$print_page.="..<a href={$_SERVER['PHP_SELF']}?id=$id&page=$total_page&select_arrange=$select_arrange&desc=$desc&category=$category&sn=$sn&ss=$ss&sc=$sc&keyword=$keyword&page_num=$page_num>[$total_page]</a>";
+		$print_page.=" <a href={$_SERVER['PHP_SELF']}?id=$id&page=$next_page&select_arrange=$select_arrange&desc=$desc&category=$category&sn=$sn&ss=$ss&sc=$sc&keyword=$keyword&page_num=$page_num>[Next]</a>";
 	}
    
 	head("bgcolor=white");
@@ -194,7 +201,7 @@ zb_query("delete from $get_memo_table where no='$value' and member_no='$member[n
         </tr>
         <tr>
           <td align="right" valign="top">&nbsp;</td>
-          <td><a href=javascript:void(window.open('view_info.php?member_no=<?=$now_data['member_from']?>','view_info','width=400,height=500,toolbar=no,scrollbars=yes'))><img src="images/memo_reply.gif" width="28" height="15" border=0></a> <a href=<?=$PHP_SELF?>?exec=del&no=<?=$no?>&page=<?=$page?> onclick="return confirm('삭제하시겠습니까?')"><img src="images/memo_delete2.gif" width="31" height="15" border=0></a> <a href=<?=$PHP_SELF?>><img src="images/memo_list.gif" width="18" height="15" border=0></a> </td>
+          <td><a href=javascript:void(window.open('view_info.php?member_no=<?=$now_data['member_from']?>','view_info','width=400,height=500,toolbar=no,scrollbars=yes'))><img src="images/memo_reply.gif" width="28" height="15" border=0></a> <a href=<?=$_SERVER['PHP_SELF']?>?exec=del&no=<?=$no?>&page=<?=$page?> onclick="return confirm('삭제하시겠습니까?')"><img src="images/memo_delete2.gif" width="31" height="15" border=0></a> <a href=<?=$_SERVER['PHP_SELF']?>><img src="images/memo_list.gif" width="18" height="15" border=0></a> </td>
         </tr>
       </table>
     </td>
@@ -222,7 +229,7 @@ zb_query("delete from $get_memo_table where no='$value' and member_no='$member[n
 </table>
 <table border=0 width=100% cellpadding=0 cellspacing=0>
 <tr>
-<form method=post name=list action=<?=$PHP_SELF?> onsubmit="return confirm('삭제하시겠습니까?')">
+<form method=post name=list action=<?=$_SERVER['PHP_SELF']?> onsubmit="return confirm('삭제하시겠습니까?')">
 <input type=hidden name=exec value=del_all>
 <input type=hidden name=page value=<?=$page?>>
 <td>
@@ -261,8 +268,8 @@ zb_query("delete from $get_memo_table where no='$value' and member_no='$member[n
             <input type=checkbox name="del[]" value="<?=$data['no']?>">
           </td>
           <td width="20" align="center"><?=$readed?></td>
-          <td style='word-break:break-all;' style=cursor:hand; onclick=location.href="<?="$PHP_SELF?exec=view&no=$data[no]&page=$page"?>"><img src="images/t.gif" width="10" height="3"><br>
-            <a href=<?="$PHP_SELF?exec=view&no=$data[no]&page=$page"?>><?=$data['subject']?></a></td>
+          <td style='word-break:break-all;' style=cursor:hand; onclick=location.href="<?="{$_SERVER['PHP_SELF']}?exec=view&no=$data[no]&page=$page"?>"><img src="images/t.gif" width="10" height="3"><br>
+            <a href=<?="{$_SERVER['PHP_SELF']}?exec=view&no=$data[no]&page=$page"?>><?=$data['subject']?></a></td>
           <td width="80" align="center"><img src="images/t.gif" width="10" height="3"><br>
             <a href=javascript:void(window.open('view_info.php?member_no=<?=$data['member_from']?>','view_info','width=400,height=510,toolbar=no,scrollbars=yes'))><?=$data['name']?></a><br><font style=font-size:8pt;color:999999>(<?=$data['user_id']?>)</td>
           <td width="60" align="center"><font style=font-family:Tahoma;font-size:8pt;><span title='<?=$reg_date?>'><?php echo"".date("m/d",$data['reg_date'])."" ?></span></font></td>

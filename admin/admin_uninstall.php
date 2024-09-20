@@ -1,16 +1,22 @@
 <?php
-	if(isset($_POST['exec'])&&$_POST['exec']=="uninstall"&&$_POST['uninstall']=="ok") {
-		if(!$u_hostname) Error("Hostname을 입력하세요");
-		if(!$u_userid) Error("User ID를 입력하세요");
-		//if(!$u_password) Error("Password를 입력하세요");
-		if(!$u_dbname) Error("DB Name을 입력하세요");
+	if(isset($_POST['exec'])&&$_POST['exec']=="uninstall"&&$_POST['uninstall']=="ok"&&check_csrf_token()) {
+		if(empty($_POST['admin_passwd'])) Error("관리자 비밀번호를 입력해주세요.");
+		$isold = false;
+		if(strlen($member['password'])<=16&&strlen(get_password("a"))>=41) $isold = true;
+		if($member['password'] != get_password($_POST['admin_passwd'], $isold)) {
+				error("관리자 비밀번호가 틀렸습니다.");
+		}
+		if(empty($_POST['u_hostname'])) Error("Hostname을 입력하세요");
+		if(empty($_POST['u_userid'])) Error("User ID를 입력하세요");
+		//if(empty($_POST['u_password'])) Error("Password를 입력하세요");
+		if(empty($_POST['u_dbname'])) Error("DB Name을 입력하세요");
 
 		mysql_close($connect);
 
-		$connect = mysql_connect($u_hostname,$u_userid,$u_password) or error(zb_error());
-		mysql_select_db($u_dbname) or error(zb_error());
+		$connect = mysql_connect($_POST['u_hostname'],$_POST['u_userid'],$_POST['u_password']) or error(zb_error());
+		mysql_select_db($_POST['u_dbname']) or error(zb_error());
 		
-		$result = zb_query("show table status from $u_dbname like '".$table_prefix."%'",$connect) or error(zb_error());
+		$result = zb_query("show table status from {$_POST['u_dbname']} like '".$table_prefix."%'",$connect) or error(zb_error());
 		while($data=mysql_fetch_array($result)) {
 			zb_query("drop table $data[Name]");
 		}
@@ -63,6 +69,10 @@
 	<tr>
 		<td bgcolor=555555 align=right style=font-family:tahoma;font-size:8pt;color:white width=100><b>DB Name&nbsp;</td>
 		<td bgcolor=f3f3f3><input type=input name=u_dbname value="" class=input size=20></td>
+	</tr>
+	<tr>
+		<td bgcolor=555555 align=right style=font-family:tahoma;font-size:8pt;color:white width=100><b>관리자 비밀번호&nbsp;</td>
+		<td bgcolor=f3f3f3><input type=password name=admin_passwd value="" class=input style="border: 2px solid #ff0000;"></td>
 	</tr>
 	<tr>
 		<td colspan=2 bgcolor=555555 align=center><input type=submit value="    확        인    " style=border-color:#b0b0b0;background-color:#3d3d3d;color:#ffffff;font-size:8pt;font-family:Tahoma;height:20px;></td>

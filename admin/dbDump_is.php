@@ -4,7 +4,7 @@ head(" bgcolor=444444 ");
   <tr height=30><td bgcolor=#3d3d3d colspan=2></td></tr>
   <tr height=1><td bgcolor=#000000 style=padding:0px; colspan=2><img src=images/t.gif height=1></td></tr>
 
-<form name=write method=post action=<?=$PHP_SELF?> enctype=multipart/form-data onsubmit="return confirm('백업 하시겠습니까?')">
+<form name=write method=post action=<?=$_SERVER['PHP_SELF']?> enctype=multipart/form-data onsubmit="return confirm('백업 하시겠습니까?')">
 <input type=hidden name=exec value="db_dump">
 <input type=hidden name=act value="db_dump_ok">
 <input type=hidden name=csrf_token value=<?=generate_csrf_token()?>>

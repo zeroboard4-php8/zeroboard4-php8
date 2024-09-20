@@ -10,7 +10,7 @@
  **************************************************************************/
 
 // 사용권한 체크
-	if($setup['grant_view']<$member['level']&&!$is_admin) Error("사용권한이 없습니다","login.php?id=$id&page=$page&page_num=$page_num&category=$category&sn=$sn&ss=$ss&sc=$sc&keyword=$keyword&no=$no&s_url=".urlencode($REQUEST_URI));
+	if($setup['grant_view']<$member['level']&&!$is_admin) Error("사용권한이 없습니다","login.php?id=$id&page=$page&page_num=$page_num&category=$category&sn=$sn&ss=$ss&sc=$sc&keyword=$keyword&no=$no&s_url=".urlencode($_SERVER['REQUEST_URI']));
 
 
 // 현재 선택된 데이타가 있을때, 즉 $no 가 있을때 데이타 가져옴
@@ -19,7 +19,7 @@
 	$data=mysql_fetch_array(zb_query("select * from  $t_board"."_$id  where no='$no'"));
 	$_dbTime += getmicrotime()-$_dbTimeStart;
 
-	if(!$data['no']) Error("선택하신 게시물이 존재하지 않습니다","zboard.php?$href$sort");
+	if(empty($data['no'])) Error("선택하신 게시물이 존재하지 않습니다","zboard.php?$href$sort");
 
 // 이전글과 이후글의 데이타를 구함;
 	if(!$setup['use_alllist']) {	
@@ -47,12 +47,13 @@
 	else $target="zboard.php";
 
 // 비밀글이고 패스워드가 틀리고 관리자가 아니면 에러 표시
+	if(!isset($member['no'])) $member['no']=null;
 	if($data['is_secret']&&!$is_admin&&$data['ismember']!=$member['no']&&$member['level']>$setup['grant_view_secret']) {
 		if($member['no']) {
 			$secret_check=mysql_fetch_array(zb_query("select count(*) from $t_board"."_$id where headnum='$data[headnum]' and ismember='$member[no]'"));
 			if(!$secret_check[0]) error("비밀글을 열람할 권한이 없습니다");
 		} else {
-			$password=zb_escape_string($password);
+			$password=zb_escape_string($_POST['password']);
 			$password_new=get_password($password);
 			$password=get_password($password,true);
 			$secret_check=mysql_fetch_array(zb_query("select count(*) from $t_board"."_$id where headnum='$data[headnum]' and password='$password_new'"));
@@ -127,6 +128,8 @@
 		// 스팸 메일러 금지용
 		$prev_mail=$prev_data['email']="";
 		$a_prev_email="<Zeroboard ";
+		$hide_prev_start='';
+		$hide_prev_end='';
 	} else {
 		$hide_prev_start="<!--";
 		$hide_prev_end="-->";
@@ -170,6 +173,8 @@
 		// 스팸 메일러 금지용
 		$next_mail=$next_data['email']="";
 		$a_next_email="<Zeroboard ";
+		$hide_next_start='';
+		$hide_next_end='';
 	} else {
 		$hide_next_start="<!--";
 		$hide_next_end="-->";
@@ -208,7 +213,7 @@
 	if($is_admin||$member['level']<=$setup['grant_list']) $a_list="<a onfocus=blur() href='zboard.php?id=$id&page=$page&page_num=$page_num&category=$category&sn=$sn&ss=$ss&sc=$sc&keyword=$keyword&prev_no=$no&sn1=$sn1&divpage=$divpage&select_arrange=$select_arrange&desc=$desc'>"; else $a_list="<Zeroboard  ";
 
 // 취소버튼
-	$a_cancel="<a onfocus=blur() href='$PHP_SELF?id=$id'>";
+	$a_cancel="<a onfocus=blur() href='{$_SERVER['PHP_SELF']}?id=$id'>";
 
 // 삭제버튼
 	if(($is_admin||$member['level']<=$setup['grant_delete']||$data['ismember']==$member['no']||!$data['ismember'])&&!$data['child']) $a_delete="<a onfocus=blur() href='delete.php?$href$sort&no=$no'>"; else $a_delete="<Zeroboard ";
@@ -272,6 +277,7 @@
 // 내용보기 출력
 	$_skinTimeStart = getmicrotime();
 	include $dir."/view.php";
+	if(!isset($_skinTime)) $_skinTime = getmicrotime()-$_skinTimeStart;
 	$_skinTime += getmicrotime()-$_skinTimeStart;
 
 // 코멘트 출력;;

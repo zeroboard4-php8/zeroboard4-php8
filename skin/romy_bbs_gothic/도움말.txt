@@ -1,0 +1,39 @@
+1. 본 스킨은 키마님의 zb4 스킨을 수정한 것입니다. 마커는 지우지 마세요.
+2. 문의가 있으실 경우 http://something.ivyro.net 혹은 http://blog.naver.com/bz_zd 이곳으로 문의 바랍니다.
+
+
+
+
+
+3. 글을 삭제하시겠습니까? 페이지에서 패스워드를 입력해야 하는 경우 ask_password.php 파일을 열고
+
+<?php 
+ if(!$member['no']) {
+?>
+<tr>
+  <td height=10 colspan=2></td>
+</tr>
+<tr>
+  <td width=90 align=right class=ver7>password&nbsp;&nbsp;</td>
+  <td align=left><input type=password name=password style="width:100;height:18;" class=input2></td>
+</tr>
+<?php 
+    }
+?>
+
+에서 
+
+<?php 
+ if(!$member['no']) {
+?>
+
+와
+
+<?php 
+    }
+?>
+
+삭제.
+
+
+

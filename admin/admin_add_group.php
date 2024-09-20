@@ -9,7 +9,7 @@ return true;
 }
 </script>
 <table border=0 cellspacing=1 cellpadding=3 width=100% bgcolor=#b0b0b0>
-<form name=write method=post action=<?=$PHP_SELF?> enctype=multipart/form-data onsubmit="return check_submit();">
+<form name=write method=post action=<?=$_SERVER['PHP_SELF']?> enctype=multipart/form-data onsubmit="return check_submit();">
 <input type=hidden name=exec value=add_group_ok>
 <input type=hidden name=csrf_token value=<?=generate_csrf_token()?>>
 

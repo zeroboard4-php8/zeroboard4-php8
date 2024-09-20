@@ -177,7 +177,7 @@ function formresize(mode) {
 <?=$hide_pds_start?>
 <tr height=20>
   <td>&nbsp;</td>
-  <td style=font-family:Lfont >올릴수 있는 파일의 용량 : <?=$upload_limit?></td>
+  <td style=font-family:Lfont >올릴 수 있는 파일의 용량 : <?=$upload_limit?></td>
 </tr>
 <tr><td bgcolor=#ffffff height=1 colspan=2><img src=images/t.gif height=1></td></tr>
 <tr height=20>

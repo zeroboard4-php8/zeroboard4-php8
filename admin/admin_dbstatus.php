@@ -34,7 +34,7 @@
 			$password_type = mysql_fetch_array(zb_query("show columns from $dbData[Name] like 'password'",$connect));
 			if(strpos($password_type['Type'], '20')!==false) zb_query("alter table $dbData[Name] modify password char(41)",$connect);
 			$jumin_type = mysql_fetch_array(zb_query("show columns from $dbData[Name] like 'jumin'",$connect));
-			if(strpos($jumin_type['Type'], '20')!==false) zb_query("alter table $dbData[Name] modify jumin char(41)",$connect);
+			if(intval($jumin_type['Type'])<=20) zb_query("alter table $dbData[Name] modify jumin char(41)",$connect);
 		}
 		if(strpos($dbData['Name'], $t_board)!==false && strpos($dbData['Name'], $t_category)===false && intval($dbData['Rows'])<5000000){
 			$password_type = mysql_fetch_array(zb_query("show columns from $dbData[Name] like 'password'",$connect));

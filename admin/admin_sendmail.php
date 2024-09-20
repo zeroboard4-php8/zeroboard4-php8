@@ -1,6 +1,7 @@
 <?php
 	if(!isset($s_que)) $s_que='';
-	if($cart) {
+	if(!empty($_POST['cart'])) {
+		$cart = $_POST['cart'];
 		$temp=explode("||",$cart);
 		$s_que=" and ( no='$temp[1]' ";
 		for($i=2;$i<count($temp);$i++)
@@ -9,6 +10,7 @@
 	}
 	// 직접 선택이 없을때
 	else {
+		$cart = '';
 		$s_que=stripslashes($s_que); 
 		$s_que = str_replace("where","and", $s_que);
 	}

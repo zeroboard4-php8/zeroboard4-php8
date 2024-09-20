@@ -57,9 +57,9 @@
 <input type=hidden name=page_num value=<?=$page_num?>>
 <input type=hidden name=selected>
 <input type=hidden name=exec>
-<input type=hidden name=sn value="<?=$sn?>">
-<input type=hidden name=ss value="<?=$ss?>">
-<input type=hidden name=sc value="<?=$sc?>">
+<input type=hidden name=sn value="on">
+<input type=hidden name=ss value="on">
+<input type=hidden name=sc value="on">
 <input type=hidden name=category value="<?=$category?>">
 <!----------------------------------------------->
  </td>
@@ -75,7 +75,7 @@
 <table border=0 cellspacing=0 cellpadding=0>
 <tr>
   <td><input type=text name=keyword value="<?=$keyword?>" <?=size(15)?> class=input2> </td>
-  <td><input onfocus='this.blur()' style=font-family:Lfont type=submit value=' 검색 ' class=submit></td>
+  <td><input onfocus='this.blur()' style=font-family:Lfont type=submit value=' 검색 ' class=submit>&nbsp;<?=$a_cancel?>취소</a></td>
 </form>
  </tr>
 

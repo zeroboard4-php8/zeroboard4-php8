@@ -9,22 +9,36 @@
  *
  ******************************************************************************/
 	if(realpath($_SERVER['SCRIPT_FILENAME']) == realpath(__FILE__)) exit;
-
-	// 에러 표시 설정    
-	ini_set('display_errors', '0');
-	require "fixcloudflare.php";
+	require 'fixcloudflare.php';
 
 	// W3C P3P 규약설정
 	header('P3P: CP="ALL CURa ADMa DEVa TAIa OUR BUS IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE LOC OTC"');
 
 	// 현재 버젼
 	$zb_version = "4.1 pl8";
-	$zb_php8_version = 'php8-0.6';
+	$zb_php8_version = 'php8-1.0';
+	/*******************************************************************************
+ 	 *                       !!!!!! 경       고 !!!!!!
+	 *
+ 	 * php8-1.0 버전부터는 모든 영역에서 register_globals 스타일의 코드를 사용하지 않습니다.
+	 *
+	 * 외부에서 입력하는 http 요청 파라미터가 그대로 전역변수로 처리되지 않고, 
+	 * $_GET, $_POST, $_REQUEST와 같이 php에서 지원하는 http 요청 처리 배열을 통하여
+	 * 필요한 파라미터만 입력받아서 처리하도록 되어 있습니다.
+	 *
+	 * php의 register_globals 설정을 On 하거나,
+	 * extract()와 같은 함수로 모든 외부 파라미터를 전역변수화 하는 행위는
+	 * 보안 상 매우 위험하며, 해킹 공격에 취약하기 때문에 사용하여서는 안됩니다.
+	 * 반드시 $_GET, $_POST, $_REQUEST를 이용하여 필요한 파라미터만 사용하시기 바랍니다.
+	 *
+	 * 마지막 수정일자 : 2024. 9. 20
+ 	 ******************************************************************************/
 
 	/*******************************************************************************
  	 * 에러 리포팅 설정과 register_globals_on일때 변수 재 정의
  	 ******************************************************************************/
  	@error_reporting(E_ALL & ~E_NOTICE);
+	ini_set('display_errors', '0');
 	
  	$ext_arr = array('PHP_SELF', '_ENV', '_GET', '_POST', '_FILES', '_SERVER', '_COOKIE', '_SESSION', '_REQUEST',
                   	'HTTP_ENV_VARS', 'HTTP_GET_VARS', 'HTTP_POST_VARS', 'HTTP_POST_FILES', 'HTTP_SERVER_VARS',
@@ -32,31 +46,28 @@
 	$filterxssval = array('name', 'email', 'homepage', 'subject', 'memo', 'keyword', 'user_id', 'jumin1', 'jumin2',
 					'birth_1', 'birth_2', 'birth_3', 'sitelink1', 'sitelink2', 'icq', 'aol', 'msn', 'hobby', 'job',
 					'home_address', 'home_tel', 'office_address', 'office_tel', 'handphone', 'comment');
- 	$ext_cnt = count($ext_arr);
- 	for($i=0; $i<$ext_cnt; $i++) {
- 	 	if (isset($_GET[$ext_arr[$i]]))  unset($_GET[$ext_arr[$i]]);
-     	if (isset($_POST[$ext_arr[$i]])) unset($_POST[$ext_arr[$i]]);
- 	}
+	foreach($ext_arr as $val) {
+ 	 	if (isset($_GET[$val]))  unset($_GET[$val]);
+     	if (isset($_POST[$val])) unset($_POST[$val]);
+		if (isset($_REQUEST[$val])) unset($_REQUEST[$val]);
+	}	
 	foreach($filterxssval as $val) {
-		if(in_array($val, array_keys($_GET))) $_GET[$val] = xss2($_GET[$val]);
-		if(in_array($val, array_keys($_POST))) $_POST[$val] = xss2($_POST[$val]);
+		if (in_array($val, array_keys($_GET))) $_GET[$val] = xss2($_GET[$val]);
+		if (in_array($val, array_keys($_POST))) $_POST[$val] = xss2($_POST[$val]);
+		if (in_array($val, array_keys($_REQUEST))) $_REQUEST[$val] = xss2($_REQUEST[$val]);
 	}
-	
- 	$_GET = array_map('Request_Var', $_GET);
- 	zb_gpc_extract($_GET);
- 	zb_gpc_extract($_POST);
- 	zb_gpc_extract($_COOKIE);
+
  	$PHP_SELF = $_SERVER['PHP_SELF'];
  	$HTTP_HOST = $_SERVER['HTTP_HOST'];
- 	if(isset($_SERVER['HTTP_REFERER'])) $HTTP_REFERER = $_SERVER['HTTP_REFERER']; else $HTTP_REFERER = "";
+ 	if(isset($_SERVER['HTTP_REFERER'])) $HTTP_REFERER = $_SERVER['HTTP_REFERER']; else $HTTP_REFERER = '';
  	$REMOTE_ADDR = $_SERVER['REMOTE_ADDR'];
  	$HTTP_USER_AGENT = $_SERVER['HTTP_USER_AGENT'];
  	$REQUEST_METHOD = $_SERVER['REQUEST_METHOD'];
  	$REQUEST_URI = $_SERVER['REQUEST_URI'];
 
 	$temp_filename=realpath(__FILE__);
-	if($temp_filename) $config_dir=str_replace("lib.php","",$temp_filename);
-	else $config_dir="";
+	if($temp_filename) $config_dir=str_replace('lib.php','',$temp_filename);
+	else $config_dir='';
 	$now_time = time();
 
 	/*******************************************************************************
@@ -68,26 +79,6 @@
 	unset($s_que);
 	unset($que);
 	unset($now_data);
-	if(isset($desc)) if(!in_array($desc,array('desc','asc'))) unset($desc);
-	if(isset($sn)) if(!in_array($sn,array('on','off'))) unset($sn);
-	if(isset($sn1)) if(!in_array($sn1,array('on','off'))) unset($sn1);
-	if(isset($ss)) if(!in_array($ss,array('on','off'))) unset($ss);
-	if(isset($sc)) if(!in_array($sc,array('on','off'))) unset($sc);
-	if(isset($page)) if(!is_numeric($page)) unset($page);
-	if(isset($divpage)) if(!is_numeric($divpage)) unset($divpage);
-	if(isset($category)) if(!is_numeric($category)) unset($category);
-	if(isset($no)) if(!is_numeric($no)) unset($no);
-	if(isset($c_no)) if(!is_numeric($c_no)) unset($c_no);
-	if(isset($page_num)) if(!is_numeric($page_num)) unset($page_num);
-	if(isset($notice)) if(!is_numeric($notice)) unset($notice);
-	if(isset($use_html)) if(!is_numeric($use_html)) unset($use_html);
-	if(isset($reply_mail)) if(!is_numeric($reply_mail)) unset($reply_mail);
-	if(isset($secret)) if(!is_numeric($secret)) unset($secret);
-	if(isset($selected)) if(!preg_match('/^[0-9;]+$/', $selected)) unset($selected);
-	if(isset($select_arrange)) {
-		$select_arrange = str_replace(array("'",'"','\\'),'',$select_arrange);
-		if(!in_array($select_arrange,array('headnum','subject','name','hit','vote','reg_date','download1','download2'))) unset($select_arrange);
-	}
 
 	/*******************************************************************************
  	 * include 되었는지를 검사
@@ -105,7 +96,7 @@
 	/*******************************************************************************
  	 * install 페이지가 아닌 경우
  	 ******************************************************************************/
-	if(strpos(strtolower($PHP_SELF),"install") === false &&file_exists($_zb_path."config.php")) {
+	if(strpos(strtolower($_SERVER['PHP_SELF']),"install") === false &&file_exists($_zb_path."config.php")) {
 
  	 	//세션 처리 (세션은 3일동안 유효하게 설정)
 		if(!is_dir($_zb_path.$_zbDefaultSetup['session_path'])) {
@@ -161,8 +152,8 @@
 			if(time()-intval($_SESSION['zb_logged_time'])>$_zbDefaultSetup['login_time']||$_SESSION['zb_logged_ip']!=$_SERVER['REMOTE_ADDR']) {
 
 				$_SESSION['zb_logged_no'] = '';
-			$_SESSION['zb_logged_ip'] = '';
-			$_SESSION['zb_logged_time'] = '';
+				$_SESSION['zb_logged_ip'] = '';
+				$_SESSION['zb_logged_time'] = '';
 				unset($_SESSION['zb_logged_no'],$_SESSION['zb_logged_ip'],$_SESSION['zb_logged_time']);
 				session_destroy();
 
@@ -206,11 +197,11 @@
 
 	
 	// 익스와 넷스케이프일때 처리
-	if(strpos($HTTP_USER_AGENT,"MSIE") !== false) $browser="1"; else $browser="0";
+	if(strpos($_SERVER['HTTP_USER_AGENT'],"MSIE") !== false) $browser="1"; else $browser="0";
 
 
 	// DB가 설정이 되었는지를 검사
-	if(!file_exists($config_dir."config.php")&&strpos(strtolower($PHP_SELF),"install") === false) {
+	if(!file_exists($config_dir."config.php")&&strpos(strtolower($_SERVER['PHP_SELF']),"install") === false) {
  		echo"<meta http-equiv=\"refresh\" content=\"0; url=install.php\">";
  		exit;
 	}
@@ -306,23 +297,24 @@
 			$query=zb_query("select * from $member_table where no ='".$_SESSION['zb_logged_no']."'");
 			$member=mysql_fetch_array($query);
 			if(mysql_num_rows($query) < 1) {
-			session_destroy();
-			unset($member,$_SESSION['zb_logged_no'],$_SESSION['zb_logged_ip'],$_SESSION['zb_logged_time'],$_SESSION['zb_hash']);
-			$member['level'] = 10;
-			} else {
-			$zb_hash_chk = md5($member['reg_m_date'].$member['user_id'].$member['no'].$_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT']);
-			
-			if(!isset($_SESSION['zb_hash'])) $_SESSION['zb_hash'] = "";
-			if($_SESSION['zb_hash'] != $zb_hash_chk)
-			{
 				session_destroy();
 				unset($member,$_SESSION['zb_logged_no'],$_SESSION['zb_logged_ip'],$_SESSION['zb_logged_time'],$_SESSION['zb_hash']);
 				$member['level'] = 10;
-			}
-		} 
-	} else $member['level'] = 10;
-	return $member;
-}
+			} else {
+				$zb_hash_chk = md5($member['reg_m_date'].$member['user_id'].$member['no'].$_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT']);
+				if(!isset($_SESSION['zb_hash'])) $_SESSION['zb_hash'] = '';
+				if($_SESSION['zb_hash'] != $zb_hash_chk)
+				{
+					session_destroy();
+					unset($member,$_SESSION['zb_logged_no'],$_SESSION['zb_logged_ip'],$_SESSION['zb_logged_time'],$_SESSION['zb_hash']);
+					$member['level'] = 10;
+				}
+			} 
+		} else {
+			$member['level'] = 10;
+		}
+		return $member;
+	}
 
 
 	function group_info($no) {
@@ -431,7 +423,7 @@
 	//  초기 헤더를 뿌려주는 부분;;;;
 	function head($body="",$scriptfile="") {
 
-		global $group, $setup, $dir,$member, $PHP_SELF, $id, $_head_executived, $width;
+		global $group, $setup, $dir, $member, $id, $_head_executived, $width;
 
 		if($_head_executived) return;
 		$_head_executived = true;
@@ -443,7 +435,7 @@
 			print "<!--\n".$license."\n-->\n";
 		}
 	
-		if(strpos(strtolower($PHP_SELF),"member_") === false && isset($setup)) $stylefile="skin/$setup[skinname]/style.css"; else $stylefile="style.css";
+		if(strpos(strtolower($_SERVER['PHP_SELF']),"member_") === false && isset($setup)) $stylefile="skin/$setup[skinname]/style.css"; else $stylefile="style.css";
 
 		if(isset($setup) && isset($setup['use_formmail'])) {
 			$f = fopen("script/script_zbLayer.php","r");
@@ -836,7 +828,7 @@
 
 	// 제로보드의 기본 설정 파일을 읽어오는 함수
 	function getDefaultSetup() {
-		global $_zb_path, $HTTP_HOST;
+		global $_zb_path;
 		$data = zReadFile($_zb_path."setup.php");
 		$data = str_replace("<?php /*","",$data);	
 		$data = str_replace("*/?>","",$data);	
@@ -851,8 +843,8 @@
 				$defaultSetup[$name]=$value;
 			}
 		}
-		if(!$defaultSetup['url']) $defaultSetup['url'] = $HTTP_HOST;
-		if(!$defaultSetup['sitename']) $defaultSetup['sitename'] = $HTTP_HOST;
+		if(!$defaultSetup['url']) $defaultSetup['url'] = $_SERVER['HTTP_HOST'];
+		if(!$defaultSetup['sitename']) $defaultSetup['sitename'] = $_SERVER['HTTP_HOST'];
 		if(!$defaultSetup['session_path']) $defaultSetup['session_path'] = "data/__zbSessionTMP";
 		if(!$defaultSetup['session_view_size']) $defaultSetup['session_view_size'] = 512;
 		if(!$defaultSetup['session_vote_size']) $defaultSetup['session_vote_size'] = 256;
@@ -1046,7 +1038,7 @@
 		$tar[] = "@";
 		if (!empty($is_admin) && isset($data['ismember']) && isset($member['no'])) { 
 			if ($is_admin && $data['ismember']!==$member['no']) { 
-				$src[] = "/(\<(embed|object|ruby|form|meta)[^\>]*)\>?(\<\/(embed|object|ruby|form|meta)\>)?/i";
+				$src[] = "/(\<(embed|object|ruby|form|meta|script)[^\>]*)\>?(\<\/(embed|object|ruby|form|meta|script)\>)?/i";
 				$tar[] = "<div style=\"border:1px solid #dcbba3;padding: 6px;background-color: #f9f2ee;color: #bf0000;line-height: 160%\">보안문제로 인하여 관리자 아이디로는 이 게시물에 사용된 embed 또는 object 태그를 볼 수 없습니다.<br />확인하시려면 관리자 권한이 없는 다른 아이디로 접속하십시오.</div>";
 			}
 		}
@@ -1110,7 +1102,7 @@
 
 
 	// 메일 보내는 함수
-	function zb_sendmail($type, $to, $to_name, $from, $from_name, $subject, $comment, $cc="", $bcc="") {
+	function zb_sendmail($type, $to, $to_name, $from, $from_name, $subject, $comment, $cc='', $bcc='') {
 		$recipient = "$to_name <$to>";
 
 		if($type==1) $comment = nl2br($comment);
@@ -1182,7 +1174,7 @@
 
 	// 지정된 파일이 Locking중인지 검사
 	function check_fileislocked($filename) {
-		$f=@fopen($filename,w);
+		$f=@fopen($filename,'w');
 		$count = 0;
 		$break = true;
 		while(!@flock($f,2)) {
@@ -1217,11 +1209,6 @@
         		return str_replace(array("%", '\\', "\0", "\n", "\r", "'", '"', "\x1a"), array ("\%", '\\\\', '\\0', '\\n', '\\r', "\\'", '\\"', '\\Z'), $param);
     		}
     		return $param;
-	}
-
-	function Request_Var($str) {
-		if(is_array($str)) return $str;
-		else return htmlspecialchars(str_replace(array("\r\n", "\r", "\0"), array("\n", "\n", ''), $str));
 	}
 	
 	// 패스워드 생성 함수
@@ -1280,20 +1267,6 @@
 		} else {
 			return false;
 		}
-	}
-	
-	function zb_gpc_extract($array) {
-		if(!is_array($array)) return false;
-		
-		$valid_variables = preg_replace("/^(GLOBALS|dir|_.*)$/i", '', array_keys($array));
-		$valid_variables = array_unique($valid_variables);
-	
-		foreach ( $valid_variables as $key ) {
-			if(strlen($key)===0) continue;
-			if(is_array($array[$key])) continue;
-			$GLOBALS[$key] = trim(strval($array[$key]));
-		}
-		return true;
 	}
 
 	function zb_script_conv($message_comment) {

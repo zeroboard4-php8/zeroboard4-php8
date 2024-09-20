@@ -13,6 +13,17 @@
 	if(!$member['no']) thisError("로그인후 사용하여주십시오");
 
 	if($member['is_admin']>3||$member['is_admin']<1) thisError("관리자페이지를 사용할수 있는 권한이 없습니다");
+	
+	$group_no = isset($_POST['group_no']) && is_numeric($_POST['group_no']) ? $_POST['group_no'] : null;
+	$cart = isset($_POST['cart']) ? $_POST['cart'] : null;
+	$s_que = isset($_POST['s_que']) ? $_POST['s_que'] : null;
+	$exec2 = isset($_POST['exec2']) ? $_POST['exec2'] : null;
+	$from = isset($_POST['from']) ? $_POST['from'] : null;
+	$name = isset($_POST['name']) ? $_POST['name'] : null;
+	$html = isset($_POST['html']) && is_numeric($_POST['html']) ? $_POST['html'] : null;
+	$subject = isset($_POST['subject']) ? $_POST['subject'] : null;
+	$comment = isset($_POST['comment']) ? $_POST['comment'] : null;
+	$sendnum = isset($_POST['sendnum']) && is_numeric($_POST['sendnum']) ? $_POST['sendnum'] : null;
 
 	if($s_comment) $comment = $s_comment;
 	else $s_comment = $comment;
@@ -35,7 +46,7 @@
 		$total_member_num=$temp[0];
 	}
 
-	if($cart) {
+	if(!empty($cart)) {
 		$temp = explode("||",$cart);
         for($i=0;$i<count($temp);$i++) $target_srls[] = (int)$temp[$i];
         $s_que = sprintf(' and ( no in (%s) )', "'".implode("','", $target_srls)."'");
@@ -66,7 +77,7 @@
 <center><b>메일링 발송</b></center><br>
 
 <table border=0 cellpadding=4 cellspacing=1 width=100% bgcolor=white height=30>
-<form action=<?=$PHP_SELF?> method=post>
+<form action=<?=$_SERVER['PHP_SELF']?> method=post>
 <tr>
 	<td>
 		전체 그룹 회원 수 : <?=number_format($total_member_num)?> 명<br>

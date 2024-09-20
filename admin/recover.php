@@ -8,6 +8,8 @@
     $member=member_info();
 
     if(!$member['no']||$member['is_admin']>1||$member['level']>1) Error("최고 관리자만이 사용할수 있습니다");
+	
+	$no = isset($_REQUEST['no']) && is_numeric($_REQUEST['no']) ? $_REQUEST['no'] : '';
 
     $board_info=mysql_fetch_array(zb_query("select * from $admin_table where no='$no'",$connect));
 
@@ -25,7 +27,7 @@
             @mkdir('../skin/'.$skinname.'/original', 0755, true);
             if (is_dir('../skin/'.$skinname.'/original')) {
                 foreach ($scanarr as $file) {
-                    if (preg_match("/(\.(php|php3|htm|html|txt))$/i", strtolower($file)) && filesize($file) > 0) {
+                    if (preg_match("/(\.(php|php3|htm|html|txt|css))$/i", strtolower($file)) && filesize($file) > 0) {
                         if (!file_exists(dirname($file)."/original/".basename($file))) {
                             @copy($file, dirname($file)."/original/".basename($file));
                         }
@@ -34,6 +36,9 @@
                         @fclose($f);
                         if (!is_utf8($temp)) {
                             $temp = iconv("EUC-KR", "UTF-8", $temp);
+                        }
+                        if (empty($temp)) {
+                            continue;
                         }
                         $temp = str_replace("<?php", "<?", $temp);
                         $temp = str_replace("<?php ", "<?", $temp);

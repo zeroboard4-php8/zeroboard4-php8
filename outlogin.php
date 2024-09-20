@@ -17,7 +17,7 @@
  *
  * 그런후 외부로그인 폼이나 로그인 상태를 표시하고 싶은곳에 다음과 같이 입력하세요
  *
- * <?print_outlogin("스킨이름","그룹번호","허용레벨");?>
+ * <?php print_outlogin("스킨이름","그룹번호","허용레벨");?>
  *
  *
  * 위에서 "/home/계정 아이디/public_html/제로보드 경로/" 라는 것은 제로보드의 절대 경로를 나타냅니다.
@@ -45,8 +45,8 @@
  *
  *******************************************************************************/
  if(realpath($_SERVER['SCRIPT_FILENAME']) == realpath(__FILE__)) exit;
-	global $member, $_head_php_excuted, $REQUEST_URI, $_zb_lib_included, $total_member_connect, $total_guest_connect;
-	global $a_member_join, $a_member_modify, $a_member_memo, $member_memo_icon, $memo_on_sound, $a_logout, $a_login, $id, $PHP_SELF, $_outlogin_include;
+	global $member, $_head_php_excuted, $_zb_lib_included, $total_member_connect, $total_guest_connect;
+	global $a_member_join, $a_member_modify, $a_member_memo, $member_memo_icon, $memo_on_sound, $a_logout, $a_login, $id, $_outlogin_include;
 
 	if (preg_match("/:\/\//i", $_zb_path) || preg_match("/\.\./i", $_zb_path)) $_zb_path = "./";
 
@@ -74,8 +74,8 @@
 
 	// 외부로그인 출력 함수
 	function print_outlogin($skinname = "default", $group_no = 1, $level = "10") {
-		global $member, $_head_php_excuted, $REQUEST_URI, $total_member_connect, $total_guest_connect, $_zb_path, $_zb_url;
-		global $a_member_join, $a_member_modify, $a_member_memo, $member_memo_icon, $memo_on_sound, $a_logout, $a_login, $id, $PHP_SELF;
+		global $member, $_head_php_excuted, $total_member_connect, $total_guest_connect, $_zb_path, $_zb_url;
+		global $a_member_join, $a_member_modify, $a_member_memo, $member_memo_icon, $memo_on_sound, $a_logout, $a_login, $id;
 
 		if($level < $member['level']) {
 ?>
@@ -88,7 +88,7 @@
 		}
 
 		// 회원 정보가 있는지 없는지를 체크해서 해당 스킨 파일을 읽음
-		if(!$member['no']) {
+		if(!isset($member['no'])) {
 
 			$f = fopen($_zb_path."script/outlogin_script.php","r");
 			$_outlogin_script = fread($f, filesize($_zb_path."script/outlogin_script.php"));
@@ -103,7 +103,7 @@
 			$help_img = $_zb_url."outlogin_skin/$skinname/images/i_help.gif";
 
 			$_outlogin_data = str_replace("[action]", $_zb_url."login_check.php",$_outlogin_data);
-			$s_url = $REQUEST_URI;
+			$s_url = $_SERVER['REQUEST_URI'];
 			if($id&&!eregi($id, $s_url)) {
 				if(eregi("\?",$s_url)) $s_url = $s_url . "&id=$id";
 				else $s_url = $s_url . "?id=$id";
@@ -148,6 +148,7 @@
 				$memo_on_sound_out .="<audio src=\"$memo_mp3\" controls autoplay hidden style=\"display:none;\"><embed src=\"$memo_mp3\" width=\"0\" height=\"0\" loop=\"false\" hidden=\"false\"></audio>";
 			} else {
 				$memo_on_image = "<img src=$memo_off_img border=0 align=absmiddle> ";
+				$memo_on_sound_out = '';
 			}
 
 			$_outlogin_data = str_replace("[memo]",$memo_on_image,$_outlogin_data);

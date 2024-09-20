@@ -81,8 +81,23 @@
   </td>
 
   <td><table border=0 background=<?=$dir?>/h_bg.gif cellspacing=0 cellpadding=0 width=100% height=7><tr>
+      <td align=center></td>
+      </tr></table>
+  </td>
+
+  <td><table border=0 background=<?=$dir?>/h_bg.gif cellspacing=0 cellpadding=0 width=100% height=7><tr>
       <td align=right width=25><img src=<?=$dir?>/h_right.gif border=0></a></td>
       </tr></table>
   </td>
 
 </tr>
+<tr align=center bgcolor=white>
+  <td nowrap><font color=F96FA6 style=font-family:Lfont><?=$a_no?>번호</a></td>
+  <?=$hide_cart_start?><td nowrap>&nbsp;&nbsp;<?=$a_cart?>선택</a>&nbsp;&nbsp;</td><?=$hide_cart_end?>
+  <td align=center style='word-break:break-all;'>&nbsp;<?=$a_subject?>제&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;목</a></td> 
+  <td nowrap>&nbsp;&nbsp;<?=$a_name?>이름</a>&nbsp;&nbsp;</div></td>
+  <td nowrap>&nbsp;&nbsp;<?=$a_date?>날짜</a>&nbsp;&nbsp;</td>
+  <td nowrap>&nbsp;&nbsp;<?=$a_hit?>조회</a>&nbsp;&nbsp;</td>
+  <td nowrap>&nbsp;<?=$a_vote?>추천</a>&nbsp;&nbsp;</td>
+</tr>
+<tr><td height=1 colspan=7 background=<?=$dir?>/dot.gif height=1></td></tr>

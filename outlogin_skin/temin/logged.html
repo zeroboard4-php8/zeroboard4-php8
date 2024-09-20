@@ -1,0 +1,84 @@
+<!-- 쪽지가 도착하면 새창 띄우기 --> 
+<script language=javascript> 
+var memo = '[memo]'; 
+memolength=memo.length-33; 
+if (memo.substring(memolength,memolength+2)=='on' ) { 
+window.open('/bbs/member_memo.php','member_memo','width=450,height=500,status=no,toolbar=no,resizable=yes,scrollbars=yes') 
+} 
+</script>
+<style>
+<!--
+td { font-family:굴림; font-size:9pt; }
+-->
+</style>
+<TABLE WIDTH=191 BORDER=0 CELLPADDING=0 CELLSPACING=0>
+	<TR>
+		<TD COLSPAN=8>
+			<IMG SRC="[dir]logged_01.gif" WIDTH=191 HEIGHT=33 ALT=""></TD>
+	</TR>
+	<TR>
+		<TD>
+			<IMG SRC="[dir]logged_02.gif" WIDTH=28 HEIGHT=24 ALT=""></TD>
+		<TD COLSPAN=6 valign="middle">
+                        <p align="center"><font style="font-family:굴림; font-size:9pt; color:#333333"><b>[name]</b></font>&nbsp;[admin]</p>
+</TD>
+		<TD>
+			<IMG SRC="[dir]logged_04.gif" WIDTH=64 HEIGHT=24 ALT=""></TD>
+	</TR>
+	<TR>
+		<TD>
+			<IMG SRC="[dir]logged_05.gif" WIDTH=28 HEIGHT=26 ALT=""></TD>
+		<TD COLSPAN=6 valign="middle">
+                        <p align="center"><font color="#FF9900"><span style="font-size:8pt;">[point]</span></font></p>
+</TD>
+		<TD>
+[logout]</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=2>
+			<IMG SRC="[dir]logged_08.gif" WIDTH=42 HEIGHT=29 ALT=""></TD>
+		<TD valign="middle">
+                        <p align="center"> <font face="Tahoma"><span style="font-size:8pt;">[total_member_connect]</span></font></p>
+</TD>
+		<TD valign="middle">
+			<IMG SRC="[dir]logged_10.gif" WIDTH=16 HEIGHT=29 ALT=""></TD>
+		<TD valign="middle">
+                        <p align="center"><font face="Tahoma"><span style="font-size:8pt;">[total_guest_connect] </span></font></p>
+</TD>
+		<TD COLSPAN=2 valign="middle">
+			<IMG SRC="[dir]logged_12.gif" WIDTH=21 HEIGHT=29 ALT=""></TD>
+		<TD valign="middle" background="[dir]logged_13.gif">
+                        <p align="center"><font style="font-family:tahoma; font-size:9pt; color:#333333"><b><font color="#D01C5A">[level]</font></b></font></p>
+</TD>
+	</TR>
+	<TR>
+		<TD COLSPAN=4>
+[info]</TD>
+		<TD COLSPAN=2>
+			<IMG SRC="[dir]logged_15.gif" WIDTH=37 HEIGHT=30 ALT=""></TD>
+		<TD COLSPAN=2>
+                        <p align="center">[memo]</p>
+</TD>
+	</TR>
+	<TR>
+		<TD>
+			<IMG SRC="images/spacer.gif" WIDTH=28 HEIGHT=1 ALT=""></TD>
+		<TD>
+			<IMG SRC="images/spacer.gif" WIDTH=14 HEIGHT=1 ALT=""></TD>
+		<TD>
+			<IMG SRC="images/spacer.gif" WIDTH=23 HEIGHT=1 ALT=""></TD>
+		<TD>
+			<IMG SRC="images/spacer.gif" WIDTH=16 HEIGHT=1 ALT=""></TD>
+		<TD>
+			<IMG SRC="images/spacer.gif" WIDTH=25 HEIGHT=1 ALT=""></TD>
+		<TD>
+			<IMG SRC="images/spacer.gif" WIDTH=12 HEIGHT=1 ALT=""></TD>
+		<TD>
+			<IMG SRC="images/spacer.gif" WIDTH=9 HEIGHT=1 ALT=""></TD>
+		<TD>
+			<IMG SRC="images/spacer.gif" WIDTH=64 HEIGHT=1 ALT=""></TD>
+	</TR>
+</TABLE>
+<!-- End ImageReady Slices -->
+</BODY>
+</HTML>

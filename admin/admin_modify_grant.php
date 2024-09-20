@@ -2,18 +2,19 @@
 	$group_data=mysql_fetch_array(zb_query("select * from $group_table where no='$group_no'"));
 
 	if($member['is_admin']>2&&!eregi($no.",",$member['board_name'])) error("사용 권한이 없습니다");
-
+	$no = isset($_REQUEST['no']) && is_numeric($_REQUEST['no']) ? $_REQUEST['no'] : '';
+	$page_num = isset($_REQUEST['page_num']) && is_numeric($_REQUEST['page_num']) ? $_REQUEST['page_num'] : 10;
 	$board_data=mysql_fetch_array(zb_query("select * from $admin_table where no='$no'")); 
 ?>
 <table border=0 cellspacing=1 cellpadding=0 width=100% bgcolor=#b0b0b0>
   <tr height=30><td bgcolor=#3d3d3d colspan=10><img src=images/admin_webboard.gif></td></tr>
 <Tr height=30><td bgcolor=white colspan=10 align=right style=font-family:Tahoma;font-size:8pt;>
 그룹 이름 : <b><?=$group_data['name']?></b> , 게시판 이름 : <a href=zboard.php?id=<?=$board_data['name']?> target=_blank><b><?=$board_data['name']?></a></b> &nbsp;&nbsp;&nbsp;
-    <input type=button value='게시판관리' class=input style=width=100px onclick=location.href="<?=$PHP_SELF?>?exec=view_board&group_no=<?=$group_no?>&exec2=modify&no=<?=$no?>&page=<?=$page?>&page_num=<?=$page_num?>">
-    <input type=button value='카테고리 관리' class=input style=width=100px onclick=location.href="<?=$PHP_SELF?>?exec=view_board&group_no=<?=$group_no?>&exec2=category&no=<?=$no?>&page=<?=$page?>&page_num=<?=$page_num?>">&nbsp;&nbsp;&nbsp;
+    <input type=button value='게시판관리' class=input style=width=100px onclick=location.href="<?=$_SERVER['PHP_SELF']?>?exec=view_board&group_no=<?=$group_no?>&exec2=modify&no=<?=$no?>&page=<?=$page?>&page_num=<?=$page_num?>">
+    <input type=button value='카테고리 관리' class=input style=width=100px onclick=location.href="<?=$_SERVER['PHP_SELF']?>?exec=view_board&group_no=<?=$group_no?>&exec2=category&no=<?=$no?>&page=<?=$page?>&page_num=<?=$page_num?>">&nbsp;&nbsp;&nbsp;
 </td></tr>
   <tr height=1><td bgcolor=#000000 style=padding:0px; colspan=10><img src=images/t.gif height=1></td></tr>
-<form method=post action=<?=$PHP_SELF?>>
+<form method=post action=<?=$_SERVER['PHP_SELF']?>>
 <input type=hidden name=exec value=<?=$exec?>>
 <input type=hidden name=group_no value=<?=$group_no?>>
 <input type=hidden name=exec2 value=modify_grant_ok>

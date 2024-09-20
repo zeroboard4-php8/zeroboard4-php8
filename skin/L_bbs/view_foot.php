@@ -60,6 +60,7 @@
     <?=$a_write?>글쓰기</a>
  </td>
  <td align=right style='font-family:Lfont'>
+    <?=$a_vote?>추천</a>
     <?=$a_reply?>답글</a>
     <?=$a_modify?>수정</a>
     <?=$a_delete?>삭제</a>

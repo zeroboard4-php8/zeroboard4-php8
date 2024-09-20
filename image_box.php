@@ -67,9 +67,9 @@
 
 // 입력된 이미지가 있으면 upload 시킴
 	if(isset($exec) && $exec=="upload") {
-		if(!eregi($HTTP_HOST,$HTTP_REFERER)) Error("정상적으로 업로드를 하여 주시기 바랍니다.","window.close");
-		if(!eregi("image_box.php",$HTTP_REFERER)) Error("정상적으로 업로드를 하여 주시기 바랍니다.","window.close");
-		if(getenv("REQUEST_METHOD") == 'GET' ) Error("정상적으로 업로드를 하여 주시기 바랍니다","window.close");
+		if(!eregi($_SERVER['HTTP_HOST'],$_SERVER['HTTP_REFERER'])) Error("정상적으로 업로드를 하여 주시기 바랍니다.","window.close");
+		if(!eregi("image_box.php",$_SERVER['HTTP_REFERER'])) Error("정상적으로 업로드를 하여 주시기 바랍니다.","window.close");
+		if($_SERVER['REQUEST_METHOD'] == 'GET' ) Error("정상적으로 업로드를 하여 주시기 바랍니다","window.close");
 
 		$num = (int)count($_FILES['upload']['name']);
 		for($i=0;$i<$num;$i++) {
@@ -99,14 +99,14 @@
 
 		}
 
-		movepage("$PHP_SELF?id=$id&image_page=$image_page");
+		movepage("$_SERVER['PHP_SELF']?id=$id&image_page=$image_page");
 		exit();
 	}
 
 // 삭제 명령 실행시
 	if(isset($exec) && $exec=="delete"&&strlen($no)&&$id) {
 		if(!z_unlink($path."/".$image_list[$no])) die("에러"); 
-		movepage("$PHP_SELF?id=$id&image_page=$image_page");
+		movepage("$_SERVER['PHP_SELF']?id=$id&image_page=$image_page");
 		exit();
 	}
 
@@ -177,7 +177,7 @@ function alignset(str) {
 
 <div align=center>
 
-<form method=post action="<?=$PHP_SELF?>" ENCTYPE="multipart/form-data" name=imageList>
+<form method=post action="<?=$_SERVER['PHP_SELF']?>" ENCTYPE="multipart/form-data" name=imageList>
 <input type=hidden name=exec value="upload">
 <input type=hidden name=page value="<?=$image_page?>">
 <input type=hidden name=id value="<?=$id?>">
@@ -322,7 +322,7 @@ function alignset(str) {
 				<td bgcolor=eeeeee height=20 align=center>
 					<img src=images/t.gif border=0 height=2><br>
 					<a href="javascript:void(window.open('<?=$path?>/<?=$image_list[$i]?>','imageBoxViewer','width=<?=$size[0]+20?>,height=<?=$size[1]+40?>,toolbars=no'))"><font color=555555 style=font-size:7pt;font-family:verdana>[<b>view</b>]</font></a>
-					<a href=<?=$PHP_SELF?>?id=<?=$id?>&exec=delete&no=<?=$i?>&image_page=<?=$image_page?> onclick="return confirm('삭제하시겠습니까?')"><font color=555555 style=font-size:7pt;font-family:verdana>[<b>del</b>]</font></a>
+					<a href=<?=$_SERVER['PHP_SELF']?>?id=<?=$id?>&exec=delete&no=<?=$i?>&image_page=<?=$image_page?> onclick="return confirm('삭제하시겠습니까?')"><font color=555555 style=font-size:7pt;font-family:verdana>[<b>del</b>]</font></a>
 					<img src=images/t.gif border=0 height=6><br>
 				</td>
 			</tr>
@@ -364,16 +364,16 @@ function alignset(str) {
 	</tr>
 	<tr>
 		<td align=center height=40>
-			<a href=<?=$PHP_SELF?>?id=<?=$id?>&image_page=1>[First]</a><?php
+			<a href=<?=$_SERVER['PHP_SELF']?>?id=<?=$id?>&image_page=1>[First]</a><?php
 	$startPageNum = $image_page - 5;
 	if($startPageNum<0) $startPageNum=1;
 	$endPageNum = $image_page + 5 ;
 	if($endPageNum>=$total_page) $endPageNum=$total_page;
 	for($i=$startPageNum;$i<=$endPageNum;$i++) {
 		if($i==$image_page) echo"&nbsp;<b>$i</b>&nbsp;";
-		else echo"<a href=$PHP_SELF?id=$id&image_page=$i>[$i]</a>";
+		else echo"<a href=$_SERVER['PHP_SELF']?id=$id&image_page=$i>[$i]</a>";
 	}
-?><a href=<?=$PHP_SELF?>?id=<?=$id?>&image_page=<?=$total_page?>>[Last]</a>
+?><a href=<?=$_SERVER['PHP_SELF']?>?id=<?=$id?>&image_page=<?=$total_page?>>[Last]</a>
 		</td>
 	</tr>
 	</table>

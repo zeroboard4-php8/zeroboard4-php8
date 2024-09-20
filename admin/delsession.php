@@ -12,7 +12,7 @@
 	if(!isset($member['no'])||$member['is_admin']>1||$member['level']>1) Error("최고 관리자만이 사용할수 있습니다");
 
 	// 세션 삭제
-	if(isset($exec)&&$exec=="delete") {
+	if(isset($_POST['exec'])&&$_POST['exec']==='delete') {
 		$i=0;
 		$path = "../".$_zbDefaultSetup['session_path'];
 		$directory = dir($path);
@@ -56,7 +56,7 @@
 <?php flush()?>
 
 	<div align=center>
-	<form name=sdc action=<?=$PHP_SELF?> method=post>
+	<form name=sdc action=<?=$_SERVER['PHP_SELF']?> method=post>
 	<input type=hidden name=exec value=delete>
 	<table border=0 cellspacing=1 cellpadding=4 width=300 bgcolor=bbbbbb>
 	<col width=40></col><col width=></col>

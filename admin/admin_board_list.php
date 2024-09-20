@@ -29,7 +29,7 @@
 
 	// 페이지 구하는 부분
 	$page=!empty($page) ? intval($page) : 1;
-	$page_num=!empty($page_num) ? intval($page_num) : 10;
+	$page_num = isset($_REQUEST['page_num']) && is_numeric($_REQUEST['page_num']) ? $_REQUEST['page_num'] : 10;
 	$start_num=($page-1)*$page_num;
 	$total_page=(int)(($total-1)/$page_num)+1;
 
@@ -70,17 +70,17 @@ echo"
 // 뽑아온 게시물 데이타를 화면에 출력
 while($data=mysql_fetch_array($result))
 {
- echo"
+ echo "
      <tr align=center height=23 bgcolor=#e0e0e0>
        <td style=font-family:Tahoma;font-size:7pt;>$number</td>
        <td style=font-family:Tahoma;font-size:8pt;><b>$data[name]</b></td>
        <td style=font-family:Tahoma;font-size:8pt;>$data[total_article]</td>
        <td style=font-family:Tahoma;font-size:8pt;><a href=zboard.php?id=$data[name] target=_blank>View</a></td>
-       <td style=font-family:Tahoma;font-size:8pt;><a href=$PHP_SELF?exec=view_board&group_no=$group_no&exec2=modify&no=$data[no]&page=$page&page_num=$page_num>Setup</a></td>
-       <td style=font-family:Tahoma;font-size:8pt;><a href=$PHP_SELF?exec=view_board&group_no=$group_no&exec2=grant&no=$data[no]&page=$page&page_num=$page_num>Setup</a></td>
-       <td style=font-family:Tahoma;font-size:8pt;><a href=$PHP_SELF?exec=view_board&group_no=$group_no&exec2=category&no=$data[no]&page=$page&page_num=$page_num>Setup</a></td>
+       <td style=font-family:Tahoma;font-size:8pt;><a href={$_SERVER['PHP_SELF']}?exec=view_board&group_no=$group_no&exec2=modify&no=$data[no]&page=$page&page_num=$page_num>Setup</a></td>
+       <td style=font-family:Tahoma;font-size:8pt;><a href={$_SERVER['PHP_SELF']}?exec=view_board&group_no=$group_no&exec2=grant&no=$data[no]&page=$page&page_num=$page_num>Setup</a></td>
+       <td style=font-family:Tahoma;font-size:8pt;><a href={$_SERVER['PHP_SELF']}?exec=view_board&group_no=$group_no&exec2=category&no=$data[no]&page=$page&page_num=$page_num>Setup</a></td>
        <td style=font-family:Tahoma;font-size:8pt;><a href=\"javascript:board_recover('$data[no]','$data[name]')\">정리</a></td>
-       <td style=font-family:Tahoma;font-size:8pt;><a href=$PHP_SELF?exec=del_board&group_no=$group_no&no=$data[no]&page=$page&page_num=$page_num>삭제</a></td>
+       <td style=font-family:Tahoma;font-size:8pt;><a href={$_SERVER['PHP_SELF']}?exec=del_board&group_no=$group_no&no=$data[no]&page=$page&page_num=$page_num>삭제</a></td>
      </tr>";
  // 가상 번호를 1씩 뺌
  $number--;
@@ -92,14 +92,14 @@ while($data=mysql_fetch_array($result))
 <div align=right>
 <!-- 각종 검색부분 -->
 <table border=0 cellspacing=0 cellpadding=3>
-<form method=post action=<?=$PHP_SELF?> name=search>
+<form method=post action=<?=$_SERVER['PHP_SELF']?> name=search>
 <input type=hidden name=page value=<?=$page?>>
 <input type=hidden name=exec value=<?=$exec?>>
 <input type=hidden name=group_no value=<?=$group_no?>>
 <Tr>
   <td><input type=text name=page_num value=<?=$page_num?> size=2></td>
   <td><input type=submit value='페이지당 갯수' style=border-color:#b0b0b0;background-color:#3d3d3d;color:#ffffff;font-size:8pt;font-family:Tahoma;height:20px;>&nbsp;&nbsp;</td>
-  <td><input type=button onclick=location.href="<?=$PHP_SELF?>?exec=view_board&exec2=add&page=<?=$page?>&page_num=<?=$page_num?>&group_no=<?=$group_no?>" style=border-color:#b0b0b0;background-color:#3d3d3d;color:#ffffff;font-size:8pt;font-family:Tahoma;height:20px; value=' 게시판 추가하기 '></td>
+  <td><input type=button onclick=location.href="<?=$_SERVER['PHP_SELF']?>?exec=view_board&exec2=add&page=<?=$page?>&page_num=<?=$page_num?>&group_no=<?=$group_no?>" style=border-color:#b0b0b0;background-color:#3d3d3d;color:#ffffff;font-size:8pt;font-family:Tahoma;height:20px; value=' 게시판 추가하기 '></td>
 </tr>
 </form>
 </table>
@@ -111,14 +111,14 @@ while($data=mysql_fetch_array($result))
 $show_page_num=10;
 $start_page=(int)(($page-1)/$show_page_num)*$show_page_num;
 $i=1;
-if($page>$show_page_num){$prev_page=$start_page-1;echo"<a href=$PHP_SELF?page=$prev_page&exec=view_board&page_num=$page_num&group_no=$group_no>[이전페이지]</a>";}
+if($page>$show_page_num){$prev_page=$start_page-1;echo"<a href={$_SERVER['PHP_SELF']}?page=$prev_page&exec=view_board&page_num=$page_num&group_no=$group_no>[이전페이지]</a>";}
 while($i+$start_page<=$total_page&&$i<=$show_page_num)
 {
  $move_page=$i+$start_page;
  if($page==$move_page)echo"<b>$move_page</b>";
- else echo"<a href=$PHP_SELF?page=$move_page&exec=view_board&page_num=$page_num&group_no=$group_no>[$move_page]</a>";
+ else echo"<a href={$_SERVER['PHP_SELF']}?page=$move_page&exec=view_board&page_num=$page_num&group_no=$group_no>[$move_page]</a>";
  $i++;
 }
-if($total_page>$move_page){$next_page=$move_page+1;echo"<a href=$PHP_SELF?page=$next_page&exec=view_board&page_num=$page_num&group_no=$group_no>[다음페이지]</a>";}
+if($total_page>$move_page){$next_page=$move_page+1;echo"<a href={$_SERVER['PHP_SELF']}?page=$next_page&exec=view_board&page_num=$page_num&group_no=$group_no>[다음페이지]</a>";}
 //페이지 나타내는 부분 끝
 ?>

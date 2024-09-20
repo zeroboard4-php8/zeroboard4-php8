@@ -1,7 +1,5 @@
 <?php
 	//set_time_limit(0); 
-    
-
     $del_que1 = $del_que2 = null;
 
 /***************************************************************************
@@ -14,10 +12,9 @@
  **************************************************************************/
 
 // 편법을 이용한 글쓰기 방지
-	$mode = $_POST['mode'];
-	if(strpos(strtolower($HTTP_REFERER),strtolower($HTTP_HOST)) === false) Error("정상적으로 글을 작성하여 주시기 바랍니다.");
-	if(getenv("REQUEST_METHOD") == 'GET' ) Error("정상적으로 글을 쓰시기 바랍니다","");
-	if(!$mode) $mode = "write";
+	if(strpos(strtolower($_SERVER['HTTP_REFERER']),strtolower($_SERVER['HTTP_HOST'])) === false) Error("정상적으로 글을 작성하여 주시기 바랍니다.");
+	if($_SERVER['REQUEST_METHOD'] === 'GET') Error("정상적으로 글을 쓰시기 바랍니다","");
+	$mode = isset($_POST['mode']) && in_array($_POST['mode'], array('write','modify','reply')) ? $_POST['mode'] : 'write';
 
 // 사용권한 체크
 	if($mode=="reply"&&$setup['grant_reply']<$member['level']&&!$is_admin) Error("사용권한이 없습니다","login.php?id=$id&page=$page&page_num=$page_num&category=$category&sn=$sn&ss=$ss&sc=$sc&keyword=$keyword&no=$no&file=zboard.php");
@@ -27,17 +24,27 @@
 
 // 각종 변수 검사;;
 	if(!isset($member['no'])) {
-		if(isblank($name)) Error("이름을 입력하셔야 합니다");
-		if(isblank($password)) Error("비밀번호를 입력하셔야 합니다");
+		$name = isset($_POST['name']) ? str_replace('ㅤ','',$_POST['name']) : null;
+		$password = isset($_POST['password']) ? str_replace('ㅤ','',$_POST['password']) : null;
+		if(isblank($name)) Error('이름을 입력하셔야 합니다');
+		if(isblank($password)) Error('비밀번호를 입력하셔야 합니다');
 		$member['is_admin'] = '0';
 	} else {
 		$password = $member['password'];
 	}
-
-	$subject = isset($subject) ? str_replace("ㅤ","",$subject) : '';
-	$memo = isset($memo) ? str_replace("ㅤ","",$memo) : '';
-	$name = isset($name) ? str_replace("ㅤ","",$name) : '';
 	
+	$email = isset($_POST['email']) ? $_POST['email'] : null;
+	$homepage = isset($_POST['homepage']) ? $_POST['homepage'] : null;
+	$category = isset($_POST['category']) && is_numeric($_POST['category']) ? $_POST['category'] : null;
+	$subject = isset($_POST['subject']) ? str_replace('ㅤ','',$_POST['subject']) : null;
+	$memo = isset($_POST['memo']) ? str_replace('ㅤ','',$_POST['memo']) : null;
+	$sitelink1 = isset($_POST['sitelink1']) ? str_replace('ㅤ','',$_POST['sitelink1']) : null;
+	$sitelink2 = isset($_POST['sitelink2']) ? str_replace('ㅤ','',$_POST['sitelink2']) : null;
+	$use_html = isset($_POST['use_html']) && in_array($_POST['use_html'], array('0','1')) ? $_POST['use_html'] : '0';
+	$reply_mail = isset($_POST['reply_mail']) && in_array($_POST['reply_mail'], array('0','1')) ? $_POST['reply_mail'] : '0';
+	$is_secret = isset($_POST['is_secret']) && in_array($_POST['is_secret'], array('0','1')) ? $_POST['is_secret'] : '0';
+	$del_file1 = isset($_POST['del_file1']) && in_array($_POST['del_file1'], array('0','1')) ? $_POST['del_file1'] : null;
+	$del_file2 = isset($_POST['del_file2']) && in_array($_POST['del_file2'], array('0','1')) ? $_POST['del_file2'] : null;
 
 	if(isblank($subject)) Error("제목을 입력하셔야 합니다");
 	if(isblank($memo)) Error("내용을 입력하셔야 합니다");
@@ -137,7 +144,7 @@
 	if(strpos($homepage,'http://') === false &&$homepage) $homepage="http://".$homepage;
 
 // 각종 변수 설정
-	$ip=$REMOTE_ADDR; // 아이피값 구함;;
+	$ip=$_SERVER['REMOTE_ADDR']; // 아이피값 구함;;
 	$reg_date=time(); // 현재의 시간구함;;
 
 	$x = isset($zx) ? $zx : '';
@@ -181,13 +188,13 @@
 /***************************************************************************
  * 업로드가 있을때
  **************************************************************************/
-	if(isset($_FILES["file1"])) {
+	if(isset($_FILES['file1'])) {
 		$file1 = $_FILES['file1']['tmp_name'];
 		$file1_name = $_FILES['file1']['name'];
 		$file1_size = $_FILES['file1']['size'];
 		$file1_type = $_FILES['file1']['type'];
 	}
-	if(isset($_FILES["file2"])) {
+	if(isset($_FILES['file2'])) {
 		$file2 = $_FILES['file2']['tmp_name'];
 		$file2_name = $_FILES['file2']['name'];
 		$file2_size = $_FILES['file2']['size'];
@@ -196,24 +203,24 @@
 
 	if(isset($file1_size)&&$file1_size>0&&$setup['use_pds']&&$file1) {
 
-		if(!is_uploaded_file($file1)) Error("정상적인 방법으로 업로드 해주세요");
-		if($file1_name==$file2_name) Error("같은 파일은 등록할수 없습니다");
+		if(!is_uploaded_file($file1)) Error('정상적인 방법으로 업로드 해주세요');
+		if($file1_name==$file2_name) Error('같은 파일은 등록할수 없습니다');
 		$file1_size=filesize($file1);
 
-		if($setup['max_upload_size']<$file1_size&&!$is_admin) error("첫번째 파일 업로드는 최고 ".GetFileSize($setup['max_upload_size'])." 까지 가능합니다");
+		if($setup['max_upload_size']<$file1_size&&!$is_admin) error('첫번째 파일 업로드는 최고 '.GetFileSize($setup['max_upload_size']).' 까지 가능합니다');
 
 		// 업로드 금지
 		if($file1_size>0) {
 			$s_file_name1=$file1_name;
 			$s_file_name1_org=$file1_name;
 			if (preg_match('/\.(php|php3|html|inc|phtm|htm|shtm|ztx|dot|asp|cgi|pl|htaccess|htpasswd)$/i', $s_file_name1)) {
-				error("Html, PHP 관련파일은 업로드할수 없습니다");
+				error('Html, PHP 관련파일은 업로드할수 없습니다');
 			}
 
 			//확장자 검사
 			if($setup["pds_ext1"]) {
 				$temp=str_replace(',','|', $setup["pds_ext1"]);
-				if(!preg_match("/\.($temp)$/i", $s_file_name1)) Error("첫번째 업로드는 $setup[pds_ext1] 확장자만 가능합니다");
+				if(!preg_match("/\.($temp)$/i", $s_file_name1)) Error('첫번째 업로드는 $setup[pds_ext1] 확장자만 가능합니다');
 			}
 
 			// 파일명을 암호화 저장.
@@ -225,27 +232,27 @@
 				@chmod("data/".$id,0706);
 			}
 
-				if(!move_uploaded_file($file1,"data/$id/".$s_file_name1_org)) Error("파일업로드가 제대로 되지 않았습니다");
+				if(!move_uploaded_file($file1,"data/$id/".$s_file_name1_org)) Error('파일업로드가 제대로 되지 않았습니다');
 				$file_name1="data/$id/".$s_file_name1_org;   
 				@chmod($file_name1,0706);
 		}
   	}
 
 	if(isset($file2_size)&&$file2_size>0&&$setup['use_pds']&&$file2) {
-		if(!is_uploaded_file($file2)) Error("정상적인 방법으로 업로드 해주세요");
+		if(!is_uploaded_file($file2)) Error('정상적인 방법으로 업로드 해주세요');
 		$file2_size=filesize($file2);
-		if($setup['max_upload_size']<$file2_size&&!$is_admin) error("파일 업로드는 최고 ".GetFileSize($setup['max_upload_size'])." 까지 가능합니다");
+		if($setup['max_upload_size']<$file2_size&&!$is_admin) error('파일 업로드는 최고 '.GetFileSize($setup['max_upload_size']).' 까지 가능합니다');
 		if($file2_size>0) {
 			$s_file_name2=$file2_name;
 			$s_file_name2_org=$file2_name;
 			if (preg_match('/\.(php|php3|html|inc|phtm|htm|shtm|ztx|dot|asp|cgi|pl|htaccess|htpasswd)$/i', $s_file_name2)) {
-				error("Html, PHP 관련파일은 업로드할수 없습니다");
+				error('Html, PHP 관련파일은 업로드할수 없습니다');
 			}
 
 			//확장자 검사
 			if($setup["pds_ext2"]) {
 				$temp=str_replace(',','|', $setup["pds_ext2"]);
-				if(!preg_match("/\.($temp)$/i", $s_file_name2)) Error("첫번째 업로드는 $setup[pds_ext2] 확장자만 가능합니다");
+				if(!preg_match("/\.($temp)$/i", $s_file_name2)) Error('첫번째 업로드는 $setup[pds_ext2] 확장자만 가능합니다');
 			}
 
 			// 파일명을 암호화 저장.
@@ -258,7 +265,7 @@
 			}
 
 			
-				if(!move_uploaded_file($file2,"data/$id/".$s_file_name2_org)) Error("파일업로드가 제대로 되지 않았습니다");
+				if(!move_uploaded_file($file2,"data/$id/".$s_file_name2_org)) Error('파일업로드가 제대로 되지 않았습니다');
 				$file_name2="data/$id/".$s_file_name2_org;              
 				@chmod($file_name2,0706);
 		}
@@ -269,10 +276,6 @@
  * 수정글일때
  **************************************************************************/
 	if($mode=="modify"&&isset($no)) {
-		if(!isset($use_html)) $use_html='0';
-		if(!isset($reply_mail)) $reply_mail='0';
-		if(!isset($is_secret)) $is_secret='0';
-		
 		if($s_data['ismember']) {
 			if(!$is_admin&&$member['level']>$setup['grant_delete']&&$s_data['ismember']!=$member['no']) Error("정상적인 방법으로 수정하세요");
 		}
@@ -397,6 +400,11 @@
 		}
 
 		$division=$s_data['division'];
+		if(!isset($file_name1)) $file_name1='';
+		if(!isset($file_name2)) $file_name2='';
+		if(!isset($s_file_name1)) $s_file_name1='';
+		if(!isset($s_file_name2)) $s_file_name2='';
+		if(!isset($des)) $des='';
 		plus_division($s_data['division']);
 		if(empty($member['no'])) $member['no'] = '0';
    
@@ -480,9 +488,6 @@
 		$father="0";
 		$division=add_division();
 
-		if(!isset($use_html)) $use_html='0';
-		if(!isset($reply_mail)) $reply_mail='0';
-		if(!isset($is_secret)) $is_secret='0';
 		if(!isset($file_name1)) $file_name1='';
 		if(!isset($file_name2)) $file_name2='';
 		if(!isset($s_file_name1)) $s_file_name1='';
