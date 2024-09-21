@@ -135,7 +135,7 @@
 	$office_tel=isset($office_tel) ? addslashes(del_html($office_tel)) : '';
 	$handphone=isset($handphone) ? addslashes(del_html($handphone)) : '';
 	$comment=isset($comment) ? addslashes(del_html($comment)) : '';
-	$birth=isset($birth_1) ? mktime(0,0,0,$birth_2,$birth_3,$birth_1) : '';
+	$birth=isset($birth_1) ? mktime(0,0,0,$birth_2,$birth_3,$birth_1) : '0';
 	if(strpos($homepage,'http://') === false &&$homepage) $homepage=addslashes(del_html("http://$homepage"));
 	$reg_date=time();
 	$job = isset($job) ? addslashes(del_html($job)) : '';

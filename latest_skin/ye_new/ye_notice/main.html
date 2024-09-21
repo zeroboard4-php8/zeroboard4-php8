@@ -1,0 +1,45 @@
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+<!-- 상단의 타이틀 -->
+<table border=0 width=100% cellspacing=0 cellpadding=0>
+     
+      <tr><td width=25 height=20><img src=[dir]bgl.gif border=0></td>
+      <td align=left  background="[dir]bgm.gif"  height=20><b>[title]</b></td><td width=25 height=20><img src=[dir]bgr.gif border=0></td></tr>
+</table>
+<!-- 최근글 목록이 나오는 부분 -->
+<table width="100%"  border="0" cellpadding="0" cellspacing="0">
+
+<tr><td width=100% height=3></td></tr>
+ <tr>
+
+   <td height="20" width="100%">&nbsp;<img src="[dir]arrow.gif">&nbsp;[notice_subject]&nbsp;&nbsp;[[notice_date]]</td>
+ </tr>
+  <tr><td height=1 bgcolor=#F9F9F9></td></tr>
+   
+ <tr>
+
+   <td bgcolor=#FFFFFF><div style="overflow-y:auto; overflow-x:hidden; width:100%; padding:3px">[notice_memo]</div></td>       
+ </tr>
+ 
+ <tr>
+    <td height="1" bgcolor=#F9F9F9></td>
+ </tr>
+   
+ <tr>
+   <td height="1" bgcolor=#FFFFFF></td>  
+ </tr>
+ 
+ <tr>
+   <td>
+       <table border=0 width=100% cellspacing=0 cellpadding=0>
+        [loop] 
+        <tr> 
+        <td height="18">&nbsp;<img src="[dir]arrow.gif" border=0 align=absmiddle>&nbsp;[subject]&nbsp;&nbsp;[[date]]&nbsp;&nbsp;<font color=#C0C0C0>[comment]</font></td>
+        </tr>
+        [/loop]
+<tr><td height="1" bgcolor=#F9F9F9></td>
+ </tr>	 
+      </table>
+      
+  </td>
+ </tr>
+ </table>

@@ -27,7 +27,7 @@
             @mkdir('../skin/'.$skinname.'/original', 0755, true);
             if (is_dir('../skin/'.$skinname.'/original')) {
                 foreach ($scanarr as $file) {
-                    if (preg_match("/(\.(php|php3|htm|html|txt|css))$/i", strtolower($file)) && filesize($file) > 0) {
+                    if (preg_match("/(\.(php|php3|htm|html|txt|css|js))$/i", strtolower($file)) && filesize($file) > 0) {
                         if (!file_exists(dirname($file)."/original/".basename($file))) {
                             @copy($file, dirname($file)."/original/".basename($file));
                         }

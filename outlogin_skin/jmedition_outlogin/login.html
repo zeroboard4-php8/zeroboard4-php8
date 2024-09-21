@@ -1,0 +1,46 @@
+<!--- 로그인 폼입니다 -->
+<style type="text/css">
+<!--
+
+body {font-family:굴림;font-size:9pt;line-height:160%;}
+td {font-family:굴림;font-size:9pt;line-height:160%;}
+a {font-family:굴림;color:darkbluefont-size:9pt;text-decoraion:none;}
+a:hover {font-family:굴림;color:gray;font-size:9pt;text-decoraion:none;}
+-->
+</style>
+<style><!--A:link {text-decoration:none;cursor:help}A:visited {text-decoration:none}A:active {text-decoration:none}A:hover 
+{color:#529CFF; text-decoration:none}--></style>
+<style type="TEXT/CSS">BODY {SCROLLBAR-FACE-COLOR: F8F8F8; 
+SCROLLBAR-SHADOW-COLOR: E9E8E8; SCROLLBAR-HIGHLIGHT-COLOR: #ffffff; SCROLLBAR-3DLIGHT-COLOR: E9E8E8; 
+SCROLLBAR-DARKSHADOW-COLOR: 979696; SCROLLBAR-TRACK-COLOR:Ffffff;SCROLLBAR-ARROW-COLOR: 
+AFAEAF}</style>
+<div align=center>
+<table cellpadding="0" cellspacing=1 border=0>
+
+<form name=zb_login method=post action="[action]" onsubmit="return zb_login_check_submit();">
+<input type=hidden name=s_url value="[s_url]">
+
+<tr>
+	<td align=right height="18">
+                    <p align="right">아이디&nbsp;</td>
+	<td height="18"> 
+                    <p><input type=text name=user_id value='' size=9 class=input style="font-family:돋움; font-size:9pt; color:rgb(0,102,255); background-color:rgb(239,239,239); border-width:1px; border-color:rgb(102,102,102); border-style:inset;"> </td>
+</tr>
+
+<tr>
+	<td align=right height="9">
+                    <p align="right">암호&nbsp;</td>
+	<td height="9"> 
+		<p><input type=password name=password value='' size=9 class=input style="font-family:돋움; font-size:9pt; color:rgb(0,102,255); background-color:rgb(239,239,239); border-width:1px; border-color:rgb(153,153,153); border-style:inset;"><input type=checkbox name=auto_login value=1 onclick=check_autologin() style="border-width:1px; border-color:rgb(204,204,204); border-style:none;">
+	</td>
+</tr>
+
+<tr>
+	<td align=center colspan=2 nowrap height="51">
+		<p style="line-height:130%; margin-top:0; margin-bottom:0;">[login] [lost_id]
+                    <p style="line-height:130%; margin-top:0; margin-bottom:0;">[member_join]<br>
+	</td>
+</tr>
+</table>
+
+</div>

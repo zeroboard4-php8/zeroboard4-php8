@@ -15,6 +15,7 @@
 	$group['header_url']="";
 	$group['footer_url']="";
 	$setup['skinname']="";
+	$exec = isset($_REQUEST['exec']) && in_array($_REQUEST['exec'], array('upload','delete')) ? $_REQUEST['exec'] : null;
 
 	if(!$member['no']) error("회원만 <br>사용가능합니다","window.close");
 	if($setup['grant_write']<$member['level']&&!$is_admin) Error("사용 권한이 없습니다","window.close");
@@ -99,14 +100,14 @@
 
 		}
 
-		movepage("$_SERVER['PHP_SELF']?id=$id&image_page=$image_page");
+		movepage("{$_SERVER['PHP_SELF']}?id=$id&image_page=$image_page");
 		exit();
 	}
 
 // 삭제 명령 실행시
 	if(isset($exec) && $exec=="delete"&&strlen($no)&&$id) {
 		if(!z_unlink($path."/".$image_list[$no])) die("에러"); 
-		movepage("$_SERVER['PHP_SELF']?id=$id&image_page=$image_page");
+		movepage("{$_SERVER['PHP_SELF']}?id=$id&image_page=$image_page");
 		exit();
 	}
 
@@ -371,7 +372,7 @@ function alignset(str) {
 	if($endPageNum>=$total_page) $endPageNum=$total_page;
 	for($i=$startPageNum;$i<=$endPageNum;$i++) {
 		if($i==$image_page) echo"&nbsp;<b>$i</b>&nbsp;";
-		else echo"<a href=$_SERVER['PHP_SELF']?id=$id&image_page=$i>[$i]</a>";
+		else echo"<a href={$_SERVER['PHP_SELF']}?id=$id&image_page=$i>[$i]</a>";
 	}
 ?><a href=<?=$_SERVER['PHP_SELF']?>?id=<?=$id?>&image_page=<?=$total_page?>>[Last]</a>
 		</td>

@@ -16,7 +16,7 @@
 
 	// 현재 버젼
 	$zb_version = "4.1 pl8";
-	$zb_php8_version = 'php8-1.0';
+	$zb_php8_version = 'php8-1.1';
 	/*******************************************************************************
  	 *                       !!!!!! 경       고 !!!!!!
 	 *
@@ -1235,7 +1235,7 @@
 			$rs = sprintf("%08x%08x", $nr & 0x7FFFFFFF, $nr2 & 0x7FFFFFFF);
 		} else {
 			$tmp0 = zb_query("SELECT password('$str')");
-			if (isset($tmp0)) {
+			if (!empty($tmp0)) {
 				$tmp1 = mysql_fetch_array($tmp0);
 				mysql_free_result($tmp0);
 				$rs = $tmp1[0];
@@ -1357,7 +1357,7 @@
 	function zb_error() {
 		global $connect, $is_admin;
 		if (empty($is_admin)&&(strpos($_SERVER['SCRIPT_NAME'], 'install')===false)&&(strpos($_SERVER['SCRIPT_NAME'], 'admin_setup.php')===false)) {
-			return 'DB 질의 중 오류가 발생했습니다.<br>관리자라면 로그인해서 해당 내용을 확인 할 수 있습니다.';
+			return 'DB 질의 중 오류가 발생했습니다<br>관리자라면 로그인해서 해당 내용을 확인 할 수 있습니다';
 		} elseif(!function_exists("mysql_error")) {
 			if (empty($connect)) {
 			    error("DB 접속시 에러가 발생했습니다");

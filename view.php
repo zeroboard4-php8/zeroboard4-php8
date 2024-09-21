@@ -76,7 +76,8 @@
 	}
 
 // 현재글의 HIT수를 올림;;
-	if(isset($_SESSION['zb_hit']) && strpos($_SESSION['zb_hit'],$setup['no']."_".$no) === false) {
+	if(!isset($_SESSION['zb_hit'])) $_SESSION['zb_hit']='';
+	if(strpos($_SESSION['zb_hit'],$setup['no']."_".$no) === false) {
 		$_dbTimeStart = getmicrotime();
 		zb_query("update $t_board"."_$id set hit=hit+1 where no='$no'");
 		$_dbTime += getmicrotime()-$_dbTimeStart;
