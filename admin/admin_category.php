@@ -1,4 +1,5 @@
 <?php
+  if(basename(__FILE__) == basename($_SERVER['PHP_SELF'])) exit;
   $group_data=mysql_fetch_array(zb_query("select * from $group_table where no='$group_no'"));
 
   if($member['is_admin']>2&&!eregi($no.",",$member['board_name'])) error("사용 권한이 없습니다");

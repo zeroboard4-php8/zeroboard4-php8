@@ -188,13 +188,13 @@
 /***************************************************************************
  * 업로드가 있을때
  **************************************************************************/
-	if(isset($_FILES['file1'])) {
+	if(!empty($_FILES['file1']['name'])) {
 		$file1 = $_FILES['file1']['tmp_name'];
 		$file1_name = $_FILES['file1']['name'];
 		$file1_size = $_FILES['file1']['size'];
 		$file1_type = $_FILES['file1']['type'];
 	}
-	if(isset($_FILES['file2'])) {
+	if(!empty($_FILES['file2']['name'])) {
 		$file2 = $_FILES['file2']['tmp_name'];
 		$file2_name = $_FILES['file2']['name'];
 		$file2_size = $_FILES['file2']['size'];

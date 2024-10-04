@@ -1,4 +1,5 @@
 <?php
+	if(basename(__FILE__) == basename($_SERVER['PHP_SELF'])) exit;
 	if(!isset($s_que)) $s_que='';
 	if(!empty($_POST['cart'])) {
 		$cart = $_POST['cart'];

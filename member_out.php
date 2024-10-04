@@ -14,7 +14,7 @@
 		$isold = false;
 		if(strlen($member['password'])<=16&&strlen(get_password("a"))>=41) $isold = true;
 		if($member['password'] !== get_password($_POST['password'], $isold)) {
-			error('올바른 비밀번호를 입력하십시오.');
+			error('비밀번호가 올바르지 않습니다');
 		}
 		// 멤버 정보 삭제
 		zb_query("delete from $member_table where no='$member[no]'") or error(zb_error());
@@ -90,11 +90,10 @@ window.close();
         <tr>
           <td colspan="5" bgcolor="#EBD9D9" align="center"><img src="images/t.gif" width="10" height="1"></td>
         </tr>
-  <tr height=28 align=right>
-     <td style=font-family:Tahoma;font-size:8pt;><b>Password 확인&nbsp;</td>
-     <td align=left>&nbsp;<input type=password name=password size=20 maxlength=20 style=border-color:#d8b3b3 class=input></td>
-  </tr> 
-        <tr>
+  <tr align=right height=28>
+     <td style=font-family:Tahoma;font-size:8pt; valign=top><table border=0 cellspacing=0 cellpadding=0 height=4><tr><td></td></tr></table><b>Password 입력&nbsp;</td>
+     <td align=left>&nbsp;<input type=password name=password size=20 maxlength=20 style=border-color:#d8b3b3 class=input> <br>* 본인확인을 위해 비밀번호를 다시 한번 입력하세요</td>
+  </tr>        <tr>
           <td colspan="5" bgcolor="#EBD9D9" align="center"><img src="images/t.gif" width="10" height="1"></td>
         </tr>
 <tr height=30 bgcolor=#ffffff>

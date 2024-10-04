@@ -1,3 +1,4 @@
+<?php if(basename(__FILE__) == basename($_SERVER['PHP_SELF'])) exit; ?>
 <script>
 function check_submit() {
 	if(!write.name.value) {

@@ -110,7 +110,7 @@ if(((init == "net")&&(browserVer >=3))||((init == "ie")&&(browserVer >= 4))) {
     }
     window.open("select_list_all.php?id=<?=$id?>&selected="+document.list.selected.value,"게시물정리","width=260,height=180,toolbars=no,resize=no,scrollbars=no");
   }
-  else {alert('정리할 게시물을 선택하여 주십시오');}
+  else {alert('정리할 게시물을 선택하여 주십시요');}
  }
 
  function category_change(obj) {

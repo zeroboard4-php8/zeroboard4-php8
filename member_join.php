@@ -28,7 +28,7 @@
 		$setup=get_table_attrib($id);
 
 		// 설정되지 않은 게시판일때 에러 표시
-		if(!$setup['name']) Error('생성되지 않은 게시판입니다.<br><br>게시판을 생성후 사용하십시오','window.close');
+		if(!$setup['name']) Error('생성되지 않은 게시판입니다.<br><br>게시판을 생성후 사용하십시요','window.close');
 
 		// 현재 게시판의 그룹의 설정 읽어 오기
 		$group=group_info($setup['group_no']);
@@ -84,7 +84,7 @@
 	}
 ?>
 
-  if(!write.user_id.value) {alert("아이디를 입력하여 주십시오.");write.user_id.focus(); return false;}
+  if(!write.user_id.value) {alert("아이디를 입력하여 주십시요.");write.user_id.focus(); return false;}
 
 <?php
 	if($_zbDefaultSetup['enable_hangul_id']=="false") {
@@ -120,8 +120,8 @@
 	}
 ?>
 
-  if(!write.password.value) {alert("비밀번호를 입력하여 주십시오.");write.password.focus(); return false;}
-  if(!write.password1.value) {alert("비밀번호 확인을 입력하여 주십시오.");write.password1.focus(); return false;}
+  if(!write.password.value) {alert("비밀번호를 입력하여 주십시요.");write.password.focus(); return false;}
+  if(!write.password1.value) {alert("비밀번호 확인을 입력하여 주십시요.");write.password1.focus(); return false;}
   if(write.password.value!=write.password1.value) {alert("패스워드가 일치하지 않습니다.");write.password.value="";write.password1.value=""; write.password.focus(); return false;}
   if(!write.name.value) { alert("이름을 입력하세요"); write.name.focus(); return false; }
 
@@ -147,12 +147,12 @@
         return false;
     }
 <?php } ?>
-  if(!write.email.value) {alert("E-Mail을 입력하여 주십시오.");write.email.focus(); return false;}
+  if(!write.email.value) {alert("E-Mail을 입력하여 주십시요.");write.email.focus(); return false;}
 
 <?php if($group['use_jumin']&&!$mode)
    { ?>
-   if(!write.jumin1.value) {alert("주민등록번호를 입력하여 주십시오");write.jumin1.focus(); return false;}
-   if(!write.jumin2.value) {alert("주민등록번호를 입력하여 주십시오");write.jumin2.focus(); return false;}
+   if(!write.jumin1.value) {alert("주민등록번호를 입력하여 주십시요");write.jumin1.focus(); return false;}
+   if(!write.jumin2.value) {alert("주민등록번호를 입력하여 주십시요");write.jumin2.focus(); return false;}
 <?php }?>
 
   return true;
@@ -162,7 +162,7 @@
   {
    if(!id)
    {
-    alert('아이디를 입력하여 주십시오');
+    alert('아이디를 입력하여 주십시요');
    }
    else
    {

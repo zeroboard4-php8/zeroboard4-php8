@@ -10,7 +10,7 @@
 	}
 
 	$member=member_info();
-	if(!$member['no']) thisError("로그인후 사용하여주십시오");
+	if(!$member['no']) thisError("로그인후 사용하여주십시요");
 
 	if($member['is_admin']>3||$member['is_admin']<1) thisError("관리자페이지를 사용할수 있는 권한이 없습니다");
 	
@@ -28,10 +28,10 @@
 	if($s_comment) $comment = $s_comment;
 	else $s_comment = $comment;
 
-	if(isblank($from)) thisError("보내는 이의 mail을 적어주십시오");
-	if(isblank($name)) thisError("보내시는 분의 이름을 적어주십시오");
-	if(isblank($subject)) thisError("제목을 적어주십시오");
-	if(isblank($comment)) thisError("내용을 적어주십시오");
+	if(isblank($from)) thisError("보내는 이의 mail을 적어주십시요");
+	if(isblank($name)) thisError("보내시는 분의 이름을 적어주십시요");
+	if(isblank($subject)) thisError("제목을 적어주십시요");
+	if(isblank($comment)) thisError("내용을 적어주십시요");
 
 	// 페이지 이동 할때 페이지를 구함
 	if(!$page) $page = 1; else $page++;

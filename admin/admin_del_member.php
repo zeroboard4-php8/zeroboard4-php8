@@ -1,4 +1,5 @@
 <?php
+    if(basename(__FILE__) == basename($_SERVER['PHP_SELF'])) exit;
     $no = isset($_REQUEST['no']) && is_numeric($_REQUEST['no']) ? $_REQUEST['no'] : '';
     if(isset($_POST['cart'])) {
 	    $data['name'] = "선택된";

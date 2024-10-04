@@ -1,12 +1,12 @@
 <script>
 	function zb_login_check_submit() {
 		if(!document.zb_login.user_id.value) {
-			alert("ID를 입력하여 주십시오");
+			alert("ID를 입력하여 주십시요");
 			document.zb_login.user_id.focus();
 			return false;
 		}
 		if(!document.zb_login.password.value) {
-			alert("Password를 입력하여 주십시오");
+			alert("Password를 입력하여 주십시요");
 			document.zb_login.password.focus();
 			return false;
 		}  

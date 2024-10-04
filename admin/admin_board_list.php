@@ -1,4 +1,5 @@
 <?php
+	if(basename(__FILE__) == basename($_SERVER['PHP_SELF'])) exit;
 	// 현재 그룹의 데이타를 구함
 	$group_data=mysql_fetch_array(zb_query("select * from $group_table where no='$group_no'"));
 

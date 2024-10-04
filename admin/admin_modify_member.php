@@ -1,4 +1,5 @@
 <?php
+  if(basename(__FILE__) == basename($_SERVER['PHP_SELF'])) exit;
   $no = isset($_REQUEST['no']) && is_numeric($_REQUEST['no']) ? $_REQUEST['no'] : '';
   $group_data=mysql_fetch_array(zb_query("select * from $group_table where no='$group_no'"));
 

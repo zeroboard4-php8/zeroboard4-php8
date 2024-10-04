@@ -2,7 +2,7 @@
 /***************************************************************************
  * 게시판 기본 기능 수정 페이지
  **************************************************************************/
-
+	if(basename(__FILE__) == basename($_SERVER['PHP_SELF'])) exit;
 	$group_data=mysql_fetch_array(zb_query("select * from $group_table where no='$group_no'"));
 
 	if($exec2=="add") $data=mysql_fetch_array(zb_query("select * from $admin_table where no='$no'"));
@@ -27,9 +27,9 @@
 <script>
  function check_submit()
  {
-  if(!write.table_width.value) {alert("게시판 가로크기을 입력하여 주십시오");write.table_width.focus();return false;}
-  if(!write.memo_num.value) {alert("목록수를 입력하여 주십시오");write.memo_num.focus();return false;}
-  if(!write.page_num.value) {alert("페이지수를 입력하여 주십시오");write.page_num.focus();return false;}
+  if(!write.table_width.value) {alert("게시판 가로크기을 입력하여 주십시요");write.table_width.focus();return false;}
+  if(!write.memo_num.value) {alert("목록수를 입력하여 주십시요");write.memo_num.focus();return false;}
+  if(!write.page_num.value) {alert("페이지수를 입력하여 주십시요");write.page_num.focus();return false;}
   return true;
  }
 </script>
@@ -104,7 +104,7 @@ function check2()
   <td align=right style=font-family:Tahoma;font-size:8pt;><b>스킨 형식 설정 &nbsp;</td>
   <td>&nbsp;&nbsp; 
 <?php unset($check);$check[$data['only_board']]="checked";?>
-       <input type=checkbox name=only_board value=1 <?php echo isset($check[1]) ? $check[1] : '' ?>> 게시판으로만 사용시 선택하여 주십시오. (스킨처리 속도가 줄어듭니다)<br>
+       <input type=checkbox name=only_board value=1 <?php echo isset($check[1]) ? $check[1] : '' ?>> 게시판으로만 사용시 선택하여 주십시요. (스킨처리 속도가 줄어듭니다)<br>
        &nbsp;&nbsp; <input type=button class=input onclick=check1() style=border-color:#b0b0b0;height=18px value="게시판 형태"> 내용이 목록에 나오지 않는 게시판 형태의 스킨
        <br>
        <img src=images/t.gif border=0 height=4><br>&nbsp;&nbsp;

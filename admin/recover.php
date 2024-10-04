@@ -21,6 +21,8 @@
     $scanarr = array();
     if (!is_dir('../skin/'.$skinname.'/')) {
         $skinstat = "스킨 디렉토리 접근 불가";
+	} elseif (in_array($skinname, array('DQuest_thumb_gray', 'DQuest_thumb_white', 'DQ_Revolution_Frontier_BBS', 'DQ_Revolution_Frontier_Gallery'))) {
+        $skinstat = "완료";
     } else {
         scanskindir('../skin/'.$skinname.'/');
         if (!is_dir('../skin/'.$skinname.'/original')) {

@@ -44,7 +44,7 @@
  * 외부로그인 모양을 바꾸시려면 outloing_skin 디렉토리 내의 README.TXT 파일을 꼭 읽어 주시기 바랍니다.
  *
  *******************************************************************************/
- if(realpath($_SERVER['SCRIPT_FILENAME']) == realpath(__FILE__)) exit;
+ if(basename(__FILE__) == basename($_SERVER['PHP_SELF'])) exit;
 	global $member, $_head_php_excuted, $_zb_lib_included, $total_member_connect, $total_guest_connect;
 	global $a_member_join, $a_member_modify, $a_member_memo, $member_memo_icon, $memo_on_sound, $a_logout, $a_login, $id, $_outlogin_include;
 

@@ -104,6 +104,9 @@
 				// 파일삭제
 				@z_unlink("./".$temp["file_name1"]);
 				@z_unlink("./".$temp["file_name2"]);
+				
+				//레볼루션
+                if(file_exists('./DQ_LIBS/include/list_all_01.php')) include "./DQ_LIBS/include/list_all_01.php";
 
 				// Divison 정리
 				minus_division($temp['division']);
@@ -147,7 +150,8 @@
 
 		for($i=0;$i<count($selected)-1;$i++) {
 			$s_data=mysql_fetch_array(zb_query("select * from $t_board"."_$id where no='$selected[$i]'"));
-
+			//레볼루션
+            $m_data = mysql_fetch_array(zb_query("select * from dq_revolution where zb_id='$id' and zb_no='$selected[$i]'"));
 			
 			// 답글이 없을때;; 
 			if($s_data['arrangenum']==0) {
@@ -235,12 +239,16 @@
 						$term_father=$data['no']-$no;
 					}
 
-					// Comment 정리
-					$comment_result=zb_query("select * from $t_comment"."_$id where parent='$data[no]' order by reg_date",$connect) or error(zb_error());
-					while($comment_data=mysql_fetch_array($comment_result)) {
-						$comment_data['memo']=addslashes($comment_data['memo']);
-						$comment_data['name']=addslashes($comment_data['name']);
-						zb_query("insert into $t_comment"."_$board_name (parent,ismember,name,password,memo,reg_date,ip) values ('$no','$comment_data[ismember]','$comment_data[name]','$comment_data[password]','$comment_data[memo]','$comment_data[reg_date]','$comment_data[ip]')") or error(zb_error());
+                    if(file_exists('./DQ_LIBS/include/list_all_03.php')) {
+						include './DQ_LIBS/include/list_all_03.php'; //레볼루션
+					} else {
+						// Comment 정리
+						$comment_result=zb_query("select * from $t_comment"."_$id where parent='$data[no]' order by reg_date",$connect) or error(zb_error());
+						while($comment_data=mysql_fetch_array($comment_result)) {
+							$comment_data['memo']=addslashes($comment_data['memo']);
+							$comment_data['name']=addslashes($comment_data['name']);
+							zb_query("insert into $t_comment"."_$board_name (parent,ismember,name,password,memo,reg_date,ip) values ('$no','$comment_data[ismember]','$comment_data[name]','$comment_data[password]','$comment_data[memo]','$comment_data[reg_date]','$comment_data[ip]')") or error(zb_error());
+						}
 					}
 
 					zb_query("update $t_category"."_$board_name set num=num+1 where no='$category'",$connect);

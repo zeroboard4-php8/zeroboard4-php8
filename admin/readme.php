@@ -1,4 +1,5 @@
 <?php
+	if(basename(__FILE__) == basename($_SERVER['PHP_SELF'])) exit;
 	$f = @fopen('lib.php','r');
 	$libfile = @fread($f,filesize('lib.php'));
 	@fclose($f);
@@ -86,7 +87,7 @@ function blink() {
 <b>제로보드 <?=$zb_version?> 관리자 페이지입니다.</b>
 공개형 무료 게시판 제로보드의 전체적인 관리를 할수 있는 관리자 페이지입니다.
 관리자 페이지에서는 그룹 추가, 설정, 게시판 관리, 회원관리를 할수 있습니다.
-다음은 간단한 설명입니다. (자세한 설명은 <a href=http://zeroboard.com target=_blank><b>http://zeroboard.com/CGI</b></a> 에서 확인하십시오)
+다음은 간단한 설명입니다. (자세한 설명은 <a href=http://zeroboard.com target=_blank><b>http://zeroboard.com/CGI</b></a> 에서 확인하십시요)
 </pre>
 <table border=0 cellspacing=1 cellpadding=5 bgcolor=444444 width=100%>
 <col width=100></col><col width=></col>

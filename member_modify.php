@@ -11,13 +11,13 @@
 		$setup=get_table_attrib($id);
 
 		// 설정되지 않은 게시판일때 에러 표시
-		if(!$setup['name']) Error("생성되지 않은 게시판입니다.<br><br>게시판을 생성후 사용하십시오","window.close");
+		if(!$setup['name']) Error("생성되지 않은 게시판입니다.<br><br>게시판을 생성후 사용하십시요","window.close");
 	}
 
 // 멤버 정보 구해오기;;; 멤버가 있을때
 	$member=member_info();
 
-	if(!$member['no']) Error("회원 정보가 존재하지 않습니다","window.close");
+	if(empty($member['no'])) Error("회원 정보가 존재하지 않습니다","window.close");
 
 	$member['name'] = isset($member['name']) ? stripslashes($member['name']) : '';
 	$member['job'] = isset($member['job']) ? stripslashes($member['job']) : '';
@@ -44,7 +44,7 @@
     $check[0]='';
 	$check[1]='checked';
 
-	$referer=$_SERVER['HTTP_REFERER'];
+	$referer=$HTTP_REFERER;
 
 	$setup['header']="";
 	$setup['footer']="";
@@ -118,7 +118,7 @@
 </script>
 <table border=0 cellspacing=1 cellpadding=0 width=540>
 <form name=write method=post action=member_modify_ok.php enctype=multipart/form-data onsubmit="return check_submit();">
-<input type=hidden name=one_page value="<?=$_SERVER['HTTP_REFERER']?>">
+<input type=hidden name=one_page value="<?=$HTTP_REFERER?>">
 <input type=hidden name=page value=<?=isset($page)?$page:''?>>
 <input type=hidden name=id value=<?=isset($id)?$id:''?>>
 <input type=hidden name=no value=<?=isset($no)?$no:''?>>

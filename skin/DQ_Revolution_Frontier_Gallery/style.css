@@ -1,0 +1,305 @@
+/* dummy file */
+.list_vspace {padding:5px 2px 5px 0px}
+.list_tspace {padding:0px}
+.small_han	 {font-family:dotum,arial; font-size:11px}
+
+.floatNaviArrow {
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	width:22px;
+	height:41px;
+	z-index:1;
+	display : none;
+}
+.taSizeBT {cursor:pointer;padding-top:3px;font-family:Fixedsys;font-size:11px}
+.vSpacer  {font-size:1px;height:5px;  clear:both}
+.vSpacer2 {font-size:1px;height:10px; clear:both}
+.vSpacer3 {font-size:1px;height:15px; clear:both}
+.hidden   { display : none }
+.no_grant {cursor:pointer}
+
+.descipt_counter { line-height:100% }
+
+#pic_top { clear:both }
+#swuBtnBrowse { padding:5px 0 5px 0 }
+#dq_textContents_memo a:link    { text-decoration:underline }
+#dq_textContents_memo a:hover   { text-decoration:underline }
+#dq_textContents_memo a:visited { text-decoration:underline }
+#dq_textContents_memo    { line-height:180% }
+#dq_textContents_memo *  { line-height:180% }
+#dq_textContents_memo p  { margin:1px }
+#dq_textContents_memo li { margin-bottom:10px }
+#dq_textContents_memo ol { margin-top:5px }
+#dq_textContents_memo ul { margin-top:5px; list-style:circle }
+#dq_textContents_comment a:link    { text-decoration:underline }
+#dq_textContents_comment a:hover   { text-decoration:underline }
+#dq_textContents_comment a:visited { text-decoration:underline }
+#dq_textContents_comment    { line-height:180% }
+#dq_textContents_comment *  { line-height:180% }
+#dq_textContents_comment p  { margin:1px }
+#dq_textContents_comment li { margin-bottom:10px }
+#dq_textContents_comment ol { margin-top:5px }
+#dq_textContents_comment ul { margin-top:5px; list-style:circle }
+form { display:inline }
+#swuCommentInputFrame { z-index:100 }
+
+#thumbNaviSelector {
+	position: absolute;
+	width:  10px;
+	height: 10px;
+	left: 10px;
+	top:  10px;
+	display:none;
+	border:4px solid #f0f0f0;
+	z-index:0;
+	filter  : alpha(opacity=40);
+	opacity : 0.4;
+}
+#thumbNaviSelector div { border:1px solid #303030 }
+
+.imageToolbox {
+	position: absolute;
+	width:  34px;
+	height: 34px;
+	left: 10px;
+	top:  10px;
+	display:none;
+	z-index:1;
+}
+.imageToolbox img {	cursor:pointer }
+
+#need_secretCode {
+	position: absolute;
+	padding-bottom: 10px;
+	width:  300px;
+	margin: 0 auto;
+	top:  200px;
+	z-index:1;
+	border:4px solid #000;
+	background-color:#e5e5e5;
+	color:#000;
+	line-height:140%;
+	display:none;
+	text-align:center;
+}
+#need_secretCode input { color:#000 }
+
+/* ------------ highslide css ------------- */
+
+.highslide {
+    cursor: url(plug-ins/highslide/graphics/zoomin.cur), pointer;
+    outline: none;
+}
+.highslide-active-anchor img {
+	visibility: hidden;
+}
+.highslide img {
+	border: 2px solid #525252;
+}
+.highslide:hover img {
+	border: 2px solid white;
+}
+
+.highslide-wrapper {
+	background: #101010;
+}
+.highslide-image-blur {
+}
+.highslide-image {
+	border: 0px solid white;
+}
+.highslide-caption {
+    display: none;
+    
+    border: 0px solid #4f4f4f;
+    border-top: none;
+    font-family: gulim, batang, Verdana, Helvetica;
+    font-size: 9pt;
+    padding: 5px;
+	color:#e0e0e0;
+    background-color: #282828;
+}
+.highslide-loading {
+    display: block;
+	color: black;
+	font-size: 8pt;
+	font-family: sans-serif;
+	font-weight: bold;
+    text-decoration: none;
+	padding: 2px;
+	border: 1px solid black;
+    background-color: white;
+    
+    padding-left: 22px;
+    background-image: url(plug-ins/highslide/graphics/loader.white.gif);
+    background-repeat: no-repeat;
+    background-position: 3px 1px;
+}
+
+a.highslide-credits,
+a.highslide-credits i {
+    padding: 2px;
+    color: silver;
+    text-decoration: none;
+	font-size: 10px;
+}
+a.highslide-credits:hover,
+a.highslide-credits:hover i {
+    color: white;
+    background-color: gray;
+}
+a.highslide-full-expand {
+	background: url(plug-ins/highslide/graphics/fullexpand.gif) no-repeat;
+	display: block;
+	margin: 0 10px 10px 0;
+	width: 34px;
+	height: 34px;
+}
+
+.highslide-dimming {
+	background: black;
+	position: absolute;
+}
+
+.highslide-overlay {
+	display: none;
+}
+
+.controlbar {	
+	background: url(plug-ins/highslide/graphics/controlbar4.gif);
+	width: 100px;
+	height: 34px;
+}
+.controlbar a {	
+	display: block;
+	float: left;
+	/*margin: 0px 0 0 4px;*/	
+	height: 27px;
+}
+.controlbar a:hover {
+	background-image: url(plug-ins/highslide/graphics/controlbar4-hover.gif);
+}
+.controlbar .previous {
+	width: 50px;
+}
+.controlbar .next {
+	width: 40px;
+	background-position: -50px 0;
+}
+
+.highslide-display-block {
+    display: block;
+}
+.highslide-display-none {
+    display: none;
+}
+
+/* Controls. See http://www.google.com/search?q=css+sprites */
+.highslide-controls {
+	width: 195px;
+	height: 40px;
+	background: url(plug-ins/highslide/graphics/controlbar-black-border.gif) 0 -90px no-repeat;
+	margin-right: 15px;
+	margin-bottom: 10px;
+	margin-top: 20px;
+}
+.highslide-controls ul {
+	position: relative;
+	left: 15px;
+	height: 40px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	background: url(plug-ins/highslide/graphics/controlbar-black-border.gif) right -90px no-repeat;
+}
+.highslide-controls li {
+	float: left;
+	padding: 5px 0;
+}
+.highslide-controls a {
+	background: url(plug-ins/highslide/graphics/controlbar-black-border.gif);
+	display: block;
+	float: left;
+	height: 30px;
+	width: 30px;
+	outline: none;
+}
+.highslide-controls a.disabled {
+	cursor: default;
+}
+.highslide-controls a span {
+	/* hide the text for these graphic buttons */
+	display: none;
+}
+.highslide-move a {
+	cursor: move;
+}
+
+.hidden-container {
+	display: none;
+}
+
+/* The CSS sprites for the controlbar */
+.highslide-controls .highslide-previous a {
+	background-position: 0 0;
+}
+.highslide-controls .highslide-previous a:hover {
+	background-position: 0 -30px;
+}
+.highslide-controls .highslide-previous a.disabled {
+	background-position: 0 -60px !important;
+}
+.highslide-controls .highslide-play a {
+	background-position: -30px 0;
+}
+.highslide-controls .highslide-play a:hover {
+	background-position: -30px -30px;
+}
+.highslide-controls .highslide-play a.disabled {
+	background-position: -30px -60px !important;
+}
+.highslide-controls .highslide-pause a {
+	background-position: -60px 0;
+}
+.highslide-controls .highslide-pause a:hover {
+	background-position: -60px -30px;
+}
+.highslide-controls .highslide-next a {
+	background-position: -90px 0;
+}
+.highslide-controls .highslide-next a:hover {
+	background-position: -90px -30px;
+}
+.highslide-controls .highslide-next a.disabled {
+	background-position: -90px -60px !important;
+}
+.highslide-controls .highslide-move a {
+	background-position: -120px 0;
+}
+.highslide-controls .highslide-move a:hover {
+	background-position: -120px -30px;
+}
+.highslide-controls .highslide-full-expand a {
+	background-position: -150px 0;
+}
+.highslide-controls .highslide-full-expand a:hover {
+	background-position: -150px -30px;
+}
+.highslide-controls .highslide-full-expand a.disabled {
+	background-position: -150px -60px !important;
+}
+.highslide-controls .highslide-close a {
+	background-position: -180px 0;
+}
+.highslide-controls .highslide-close a:hover {
+	background-position: -180px -30px;
+} 
+
+/* These must always be last */
+.highslide-display-block {
+    display: block;
+}
+.highslide-display-none {
+    display: none;
+}

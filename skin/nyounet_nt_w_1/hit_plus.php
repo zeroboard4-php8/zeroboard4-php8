@@ -41,7 +41,7 @@
   $dir="skin/".$setup['skinname'];
 
   // 홈페이지 클리시 hit+1 하여줌..
-  mysql_query("update $t_board"."_$id set hit=hit+1 where no='$no'");
+  zb_query("update $t_board"."_$id set hit=hit+1 where no='$no'");
 
   //////// MySQL 닫기 ///////////////////////////////////////////////
   if($connect) mysql_close($connect);

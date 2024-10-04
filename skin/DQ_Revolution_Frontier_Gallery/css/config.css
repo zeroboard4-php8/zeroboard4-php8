@@ -1,0 +1,51 @@
+BODY,TD,DIV,form,TEXTAREA,center,pre,blockquote {font-size:9pt;font-family:굴림;color:#404040}
+
+TD {line-height:120%;}
+
+select,option {font-size:9pt;font-family:u;color:#202020;background-color:#f5f5f5}
+
+A:link    {color:#000040;text-decoration:none}
+A:visited {color:#000040;text-decoration:none}
+A:active  {color:#000040;text-decoration:none}
+A:hover   {color:#000070;text-decoration:none}
+
+.textarea {border:1px solid #727272;font-size:9pt;background-color:#f9f9f9;padding:5px;line-height:160%}
+.input    {border:1px solid #727272;font-size:9pt;background-color:#f9f9f9;height:16px;padding-left:3px}
+.input2   {border:1px solid #727272;font-size:9pt;background-color:#f9f9f9;height:16px;padding-left:3px}
+.submit   {}
+.button   {}
+
+.line1 {background-color:#e0e0e0; padding:0}
+.line2 {background-color:#ebebeb; padding:0}
+.lined {background-color:#fafafa; border-top:1px solid #e0e0e0;height:1px;}
+.separator1 {background-color:#696969; padding:0}
+.separator2 {background-color:#656565; padding:0}
+
+.thumb_area_bg {background-color:#606060}
+.thumb_border  {border:1px solid #101010}
+
+.exif_bg {background-color:#606060;font-family:Georgia,tahoma,돋움,굴림;font-size:8pt}
+.exif_spacer {color:#707070;font-size:9pt;text-decoration:none}
+
+.info_bg {background-color:#ffffff;font-size:9pt}
+.han  {color:#404040;font-size:9pt;text-decoration:none}
+.han2 {color:#000000;font-size:9pt;text-decoration:none}
+.eng  {font-family:tahoma,굴림;color:#d0d0d0;font-size:8pt;text-decoration:none}
+
+.thumb_list_title {color:#d0d0d0;font-size:11px;text-decoration:none;font-family:굴림}
+.thumb_list_name  {color:#ffffff;font-size:11px;text-decoration:none;font-family:굴림}
+.thumb_list_cate  {color:#d0d0d0;font-size:11px;text-decoration:none;font-family:굴림}
+.thumb_list_eng   {color:#d0d0d0;font-size:11px;text-decoration:none;font-family:tahoma,굴림}
+.view_title  {color:#d5d5d5;font-size:12pt;font-weight:bold;text-decoration:none;font-family:굴림}
+.view_title2 {color:#d5d5d5;font-size:10pt;font-weight:bold;text-decoration:none;font-family:굴림}
+.view_name   {color:#ffffff;font-size:12px;text-decoration:none;font-family:굴림}
+.view_cate   {color:#e5e5e5;font-size:12px;text-decoration:none;font-family:굴림}
+.wArticle    {color:#d5d5d5;font-size:12pt;font-weight:bold;text-decoration:none;font-family:굴림}
+
+.descript {
+  font-size:11px;
+  font-family:dotum;
+  padding:3px 5px 0px 5px;
+  border:1px solid #b0b0d5;
+  background-color:#f5f5f5;
+}

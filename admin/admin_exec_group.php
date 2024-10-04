@@ -1,4 +1,5 @@
 <?php
+	if(basename(__FILE__) == basename($_SERVER['PHP_SELF'])) exit;
 	$name = isset($_POST['name']) ? $_POST['name'] : '';
 	$is_open = empty($_POST['is_open']) ? '0' : '1';
 	$use_join = empty($_POST['use_join']) ? '0' : '1';

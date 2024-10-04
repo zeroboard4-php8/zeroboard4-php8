@@ -1,4 +1,5 @@
 <?php  
+if(basename(__FILE__) == basename($_SERVER['PHP_SELF'])) exit;
 // 카테고리 수정 //////////////////////////////////////////////////////////////////////
 $no = isset($_REQUEST['no']) && is_numeric($_REQUEST['no']) ? $_REQUEST['no'] : '';
 $category_no = isset($_REQUEST['category_no']) && is_numeric($_REQUEST['category_no']) ? $_REQUEST['category_no'] : '';

@@ -1,4 +1,5 @@
 <?php
+  if(basename(__FILE__) == basename($_SERVER['PHP_SELF'])) exit;
   $no = isset($_REQUEST['no']) && is_numeric($_REQUEST['no']) ? $_REQUEST['no'] : '';
   $page_num = isset($_REQUEST['category_no']) && is_numeric($_REQUEST['category_no']) ? $_REQUEST['category_no'] : '';
   $data=mysql_fetch_array(zb_query("select * from $admin_table where no='$no'"));

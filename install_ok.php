@@ -39,8 +39,8 @@
 	else $send_memo_table_exist=1;
 
 // 파일로 DB 정보 저장
-	$file=@fopen("config.php","w") or Error("config.php 파일 생성 실패<br><br>디렉토리의 퍼미션을 707로 주십시오","");
-	@fwrite($file,"<?php /*\n$hostname\n$user_id\n$password\n$dbname\n*/ ?>\n") or Error("config.php 파일 생성 실패<br><br>디렉토리의 퍼미션을 707로 주십시오","");
+	$file=@fopen("config.php","w") or Error("config.php 파일 생성 실패<br><br>디렉토리의 퍼미션을 707로 주십시요","");
+	@fwrite($file,"<?php /*\n$hostname\n$user_id\n$password\n$dbname\n*/ ?>\n") or Error("config.php 파일 생성 실패<br><br>디렉토리의 퍼미션을 707로 주십시요","");
 	@fclose($file);
 	@mkdir("data",0707);
 	@mkdir("icon",0707);

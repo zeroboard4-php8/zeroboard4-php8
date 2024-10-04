@@ -1,5 +1,4 @@
 <?php
-
 	if(isset($_list_check_included)) return;
 	$_list_check_included = true;
 

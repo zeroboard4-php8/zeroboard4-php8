@@ -2,14 +2,14 @@
 /***************************************************************************
  * 여러번 호출시 에러 발생 금지
  **************************************************************************/
+	if(basename(__FILE__) == basename($_SERVER['PHP_SELF'])) exit;
 	if(isset($_head_php_excuted)) return;
 	$_head_php_excuted = true;
 
 /***************************************************************************
  * 기본 라이브러리 include 
  **************************************************************************/
-if(realpath($_SERVER['SCRIPT_FILENAME']) == realpath(__FILE__)) exit;
-// 라이브러리 함수 파일 include
+	// 라이브러리 함수 파일 include
 	//if(eregi(":\/\/",$_zb_path)||eregi("\.\.",$_zb_path)||eregi("^\/",$_zb_path)||eregi("data:;",$_zb_path)) $_zb_path ="./";
 	$_zb_path = str_replace('_head.php','',realpath(__FILE__));
 	include_once $_zb_path."lib.php";
@@ -40,6 +40,7 @@ if(realpath($_SERVER['SCRIPT_FILENAME']) == realpath(__FILE__)) exit;
 	$sn1 = isset($_REQUEST['sn1']) && in_array($_REQUEST['sn1'], array('on','off')) ? $_REQUEST['sn1'] : null;
 	$ss = isset($_REQUEST['ss']) && in_array($_REQUEST['ss'], array('on','off')) ? $_REQUEST['ss'] : null;
 	$sc = isset($_REQUEST['sc']) && in_array($_REQUEST['sc'], array('on','off')) ? $_REQUEST['sc'] : null;
+	$su = isset($_REQUEST['su']) && in_array($_REQUEST['su'], array('on','off')) ? $_REQUEST['su'] : null;
 	$page = isset($_REQUEST['page']) && is_numeric($_REQUEST['page']) ? $_REQUEST['page'] : null;
 	$divpage = isset($_REQUEST['divpage']) && is_numeric($_REQUEST['divpage']) ? $_REQUEST['divpage'] : null;
 	$category = isset($_REQUEST['category']) && is_numeric($_REQUEST['category']) ? $_REQUEST['category'] : null;
@@ -78,7 +79,7 @@ if(realpath($_SERVER['SCRIPT_FILENAME']) == realpath(__FILE__)) exit;
 		// 게시판 설정 읽어 오기
 		$_dbTimeStart = getmicrotime();
 		$setup = get_table_attrib($id); 
-		if(!$setup['name']) Error("생성되지 않은 게시판입니다.<br><br>게시판을 생성후 사용하십시오",""); // 설정되지 않은 게시판
+		if(!$setup['name']) Error("생성되지 않은 게시판입니다.<br><br>게시판을 생성후 사용하십시요",""); // 설정되지 않은 게시판
 
 		// 현재 게시판의 그룹의 설정 읽어 오기
 		if($_zboardis) $group=group_info($setup['group_no']);
@@ -123,6 +124,10 @@ if(realpath($_SERVER['SCRIPT_FILENAME']) == realpath(__FILE__)) exit;
 		} else {
 			$category="";
 		}
+
+        // 레볼루션을 사용중인 게시판인지 검사
+        $include_isRevolution = './DQ_LIBS/include/is_revolution.php';
+        if(file_exists($include_isRevolution)) require $include_isRevolution;
 
 		/////////////////////////////////////////////
 		// write.php가 아닐때 검색갯수 및 query 정리

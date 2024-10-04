@@ -20,9 +20,9 @@
 <script>
 function check_submit()
 {
- if(!lostid.email.value) {alert("E-Mail을 입력하여 주십시오"); lostid.email.focus(); return false; }
- if(!lostid.jumin1.value) {alert("주민등록번호를 입력하여 주십시오"); lostid.jumin1.focus(); return false; }
- if(!lostid.jumin2.value) {alert("주민등록번호를 입력하여 주십시오"); lostid.jumin2.focus(); return false; }
+ if(!lostid.email.value) {alert("E-Mail을 입력하여 주십시요"); lostid.email.focus(); return false; }
+ if(!lostid.jumin1.value) {alert("주민등록번호를 입력하여 주십시요"); lostid.jumin1.focus(); return false; }
+ if(!lostid.jumin2.value) {alert("주민등록번호를 입력하여 주십시요"); lostid.jumin2.focus(); return false; }
  return confirm("ID/Password를 E-Mail로 받아보시겠습니까?");
 }
 </script>

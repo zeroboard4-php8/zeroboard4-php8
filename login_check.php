@@ -15,8 +15,8 @@
         	$password = addslashes(zb_escape_string($password));
         }
 
-	if(empty($user_id)) Error("아이디를 입력하여 주십시오");
-	if(empty($password)) Error("비밀번호를 입력하여 주십시오");
+	if(empty($user_id)) Error("아이디를 입력하여 주십시요");
+	if(empty($password)) Error("비밀번호를 입력하여 주십시요");
 	
 	$id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
 	if(isset($id)) {

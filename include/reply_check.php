@@ -1,5 +1,5 @@
 <?php
-
+	if(basename(__FILE__) == basename($_SERVER['PHP_SELF'])) exit;
 // 검색어에 해당하는 글자를 빨간;; 색으로 바꾸어줌;;
 	if($keyword) {
 		if($sn=="on") $reply_data['name']=str_replace($keyword,"<font color=red>$keyword</font>",$reply_data['name']);

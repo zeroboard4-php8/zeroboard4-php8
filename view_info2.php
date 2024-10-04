@@ -23,15 +23,15 @@
 	$data['handphone'] = isset($data['handphone']) ? stripslashes($data['handphone']) : '';
 	$data['comment'] = isset($data['comment']) ? stripslashes($data['comment']) : '';
 
+// $data 가 없을때, 즉 탈퇴한 회원인경우 표시
+	if(empty($data['no'])) Error("탈퇴한 회원입니다", "window.close");
+
 	$temp_name = get_private_icon($data['no'], "2");
 	$i_name='';
 	if($temp_name) $i_name="<img src='$temp_name' border=0 align=absmiddle>";
 	$temp_name = get_private_icon($data['no'], "1");
 	if($temp_name) $i_name="<img src='$temp_name' border=0 align=absmiddle>&nbsp;".$i_name;
 	$i_name="&nbsp;".$i_name."&nbsp;";
-
-// $data 가 없을때, 즉 탈퇴한 회원인경우 표시
-	if(!$data['no']) Error("탈퇴한 회원입니다", "window.close");
 
 // 멤버정보 구하기
 	$member=member_info();
@@ -55,7 +55,7 @@ if($data['no']&&($data['openinfo']||$member['is_admin']==1)) {
     <td width="15"><img src="images/vi_topright.gif" height="50"></td>
   </tr>
 </table>
-<?php if($member['no']) { ?>
+<?php if(!empty($member['no'])) { ?>
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
   <tr>
  <td>&nbsp;&nbsp;&nbsp;<a href=view_info.php?member_no=<?=$member_no?>><img src=images/vi_B_sendmessage.gif border=0></a></td>

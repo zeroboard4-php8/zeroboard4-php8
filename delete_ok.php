@@ -28,7 +28,7 @@
   $setup=get_table_attrib($id);
 
   // 설정되지 않은 게시판일때 에러 표시
-  if(!$setup['name']) Error("생성되지 않은 게시판입니다.<br><br>게시판을 생성후 사용하십시오","");
+  if(!$setup['name']) Error("생성되지 않은 게시판입니다.<br><br>게시판을 생성후 사용하십시요","");
 
   // 현재 게시판의 그룹의 설정 읽어 오기
   $group=group_info($setup['group_no']);
@@ -58,6 +58,7 @@
 
   // 원본글을 가져옴
   $s_data=mysql_fetch_array(zb_query("select * from $t_board"."_$id where no='$no'"));
+  if(empty($s_data['no'])) Error("선택하신 게시물이 존재하지 않습니다");
   if(strlen($s_data['password'])<=16&&strlen(get_password("a"))>=41&&isset($_POST['password'])) $password=get_password($_POST['password'], true);
 
   // 회원일때를 확인;;
@@ -69,7 +70,7 @@
    }
    else
    {
-    if($s_data['ismember']!=$member['no']) Error("비밀번호를 입력하여 주십시오");
+    if($s_data['ismember']!=$member['no']) Error("비밀번호를 입력하여 주십시요");
    }
   }
 

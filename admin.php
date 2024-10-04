@@ -27,12 +27,12 @@
 <script>
 function check_submit() {
 	if(!write.user_id.value) {
-		alert("ID를 입력하여 주십시오");
+		alert("ID를 입력하여 주십시요");
 		write.user_id.focus();
 		return false;
 	}
 	if(!write.password.value) {
-		alert("Password를 입력하여 주십시오");
+		alert("Password를 입력하여 주십시요");
 		write.password.focus();
 		return false;
 	}

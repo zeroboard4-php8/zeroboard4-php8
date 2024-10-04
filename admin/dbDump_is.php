@@ -1,4 +1,5 @@
 <?php
+if(basename(__FILE__) == basename($_SERVER['PHP_SELF'])) exit;
 head(" bgcolor=444444 ");
 ?><table border=0 cellspacing=1 cellpadding=0 width=100% bgcolor=#b0b0b0>
   <tr height=30><td bgcolor=#3d3d3d colspan=2></td></tr>

@@ -10,8 +10,8 @@
 	$memo = isset($_POST['memo']) ? str_replace('ㅤ','',$_POST['memo']) : null;
 	$use_html = isset($_POST['use_html']) && in_array($_POST['use_html'], array('0','1')) ? $_POST['use_html'] : '0';
 
-	if(!isset($subject)) Error("제목을 입력하여 주십시오","window.close");
-	if(!isset($memo)) Error("내용을 입력하여 주십시오","window.close");
+	if(!isset($subject)) Error("제목을 입력하여 주십시요","window.close");
+	if(!isset($memo)) Error("내용을 입력하여 주십시요","window.close");
 	
 
 	$connect=dbconn();
@@ -21,7 +21,7 @@
 	$setup=get_table_attrib($id);
 
 // 설정되지 않은 게시판
-	if(!$setup['name']) Error("생성되지 않은 게시판입니다.<br><br>게시판을 생성후 사용하십시오","window.close()"); 
+	if(!$setup['name']) Error("생성되지 않은 게시판입니다.<br><br>게시판을 생성후 사용하십시요","window.close()"); 
 
 // 현재 게시판의 그룹의 설정 읽어 오기
 	$group=group_info($setup['group_no']);

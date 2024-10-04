@@ -15,7 +15,7 @@
   var myindex=document.write.category[1].selectedIndex;
   if (myindex<1)
   {
-   alert('카테고리를 선택하여 주십시오');
+   alert('카테고리를 선택하여 주십시요');
    return false;
   }
 <?php } ?>

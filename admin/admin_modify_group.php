@@ -1,4 +1,5 @@
 <?php
+  if(basename(__FILE__) == basename($_SERVER['PHP_SELF'])) exit;
   $data=mysql_fetch_array(zb_query("select * from $group_table where no='$group_no'"));
   $check_open[$data['is_open']]="checked";
   $check_join[$data['use_join']]="checked";

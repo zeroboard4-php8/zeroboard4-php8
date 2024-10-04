@@ -1,4 +1,5 @@
 <?php
+	if(basename(__FILE__) == basename($_SERVER['PHP_SELF'])) exit;
 	if(eregi(":\/\/",$dir)||eregi("\.\.",$dir)) $dir ="./";
 
 	if(!$data['vote']) $data['vote']=1;

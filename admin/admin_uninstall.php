@@ -1,4 +1,5 @@
 <?php
+	if(basename(__FILE__) == basename($_SERVER['PHP_SELF'])) exit;
 	if(isset($_POST['exec'])&&$_POST['exec']=="uninstall"&&$_POST['uninstall']=="ok"&&check_csrf_token()) {
 		if(empty($_POST['admin_passwd'])) Error("관리자 비밀번호를 입력해주세요.");
 		$isold = false;

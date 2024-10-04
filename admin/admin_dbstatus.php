@@ -1,3 +1,4 @@
+<?php if(basename(__FILE__) == basename($_SERVER['PHP_SELF'])) exit; ?>
 <table border=0 cellspacing=0 cellpadding=10 bgcolor=999999 width=100% height=100%>
 <form name=showdb>
 <tr>
@@ -30,17 +31,17 @@
 	$size = 0;
 	$num = 1;
 	while($dbData=mysql_fetch_array($result)) {
-		if(strpos($dbData['Name'], $member_table)!==false && intval($dbData['Rows'])<5000000){
+		if(strpos($dbData['Name'], $member_table)!==false && intval($dbData['Rows'])<8000000){
 			$password_type = mysql_fetch_array(zb_query("show columns from $dbData[Name] like 'password'",$connect));
 			if(strpos($password_type['Type'], '20')!==false) zb_query("alter table $dbData[Name] modify password char(41)",$connect);
 			$jumin_type = mysql_fetch_array(zb_query("show columns from $dbData[Name] like 'jumin'",$connect));
 			if(intval($jumin_type['Type'])<=20) zb_query("alter table $dbData[Name] modify jumin char(41)",$connect);
 		}
-		if(strpos($dbData['Name'], $t_board)!==false && strpos($dbData['Name'], $t_category)===false && intval($dbData['Rows'])<5000000){
+		if(strpos($dbData['Name'], $t_board)!==false && strpos($dbData['Name'], $t_category)===false && intval($dbData['Rows'])<8000000){
 			$password_type = mysql_fetch_array(zb_query("show columns from $dbData[Name] like 'password'",$connect));
 			if(strpos($password_type['Type'], '20')!==false) zb_query("alter table $dbData[Name] modify password char(41)",$connect);
 		}
-		if(strpos($dbData['Name'], $t_comment)!==false && intval($dbData['Rows'])<5000000){
+		if(strpos($dbData['Name'], $t_comment)!==false && intval($dbData['Rows'])<8000000){
 			$password_type = mysql_fetch_array(zb_query("show columns from $dbData[Name] like 'password'",$connect));
 			if(strpos($password_type['Type'], '20')!==false) zb_query("alter table $dbData[Name] modify password char(41)",$connect);
 		}

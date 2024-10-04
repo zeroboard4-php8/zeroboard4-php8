@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+ * FCKeditor - The text editor for internet
+ * Copyright (C) 2003-2004 Frederico Caldeira Knabben
+ * 
+ * Licensed under the terms of the GNU Lesser General Public License:
+ * 		http://www.opensource.org/licenses/lgpl-license.php
+ * 
+ * For further information visit:
+ * 		http://www.fckeditor.net/
+ * 
+ * File Name: fckstyles.xml
+ * 	This is the sample style definitions file. It makes the styles combo
+ * 	completely customizable.
+ * 	See FCKConfig.StylesXmlPath in the configuration file.
+ * 
+ * Version:  2.0 RC3
+ * Modified: 2005-02-09 13:51:09
+ * 
+ * File Authors:
+ * 		Frederico Caldeira Knabben (fredck@fckeditor.net)
+-->
+
+ <Styles>
+	<Style name="그림을 왼쪽으로 정렬" element="img">
+		<Attribute name="style" value="padding: 5px; margin-right: 5px" />
+		<Attribute name="align" value="left" />
+	</Style>
+	<Style name="그림을 오른쪽으로 정렬" element="img">
+		<Attribute name="style" value="padding: 5px; margin-left: 5px" />
+		<Attribute name="align" value="right" />
+	</Style>
+	<Style name="노란색 마커" element="font">
+		<Attribute name="style" value="BACKGROUND-COLOR: #ffff00" />
+		<Attribute name="color" value="#000000" />
+	</Style>
+	<Style name="초록색 마커" element="font">
+		<Attribute name="style" value="BACKGROUND-COLOR: #00ff00" />
+		<Attribute name="color" value="#000000" />
+	</Style>
+	<Style name="Code(div)" element="div">
+		<Attribute name="class" value="code" />
+	</Style>
+	<Style name="Code(code)" element="code" />
+	<Style name="P Tag" element="p" />
+	<Style name="Cited Work" element="cite" />
+	<Style name="Inline Quotation" element="q" />
+
+	<Style name="Language: RTL" element="span">
+		<Attribute name="dir" value="rtl" />
+	</Style>
+	<Style name="Language: LTR" element="span">
+		<Attribute name="dir" value="ltr" />
+	</Style>
+	<Style name="Language: RTL Strong" element="bdo">
+		<Attribute name="dir" value="rtl" />
+	</Style>
+	<Style name="Language: LTR Strong" element="bdo">
+		<Attribute name="dir" value="ltr" />
+	</Style>
+</Styles>

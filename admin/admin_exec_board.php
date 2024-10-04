@@ -2,6 +2,7 @@
 /***************************************************************************
  * 게시판 기능 설정 실행
  **************************************************************************/
+    if(basename(__FILE__) == basename($_SERVER['PHP_SELF'])) exit;
  	if(isset($_POST['exec2']) && !check_csrf_token()) Error('CSRF 토큰이 일치하지 않습니다.');
 
 // 게시판 수정
@@ -121,7 +122,7 @@
 		// 같은 이름의 게시판이 이미 생성되었는지를 검사
 		$result=zb_query("select count(*) from $admin_table where name='$name'",$connect) or Error(zb_error());
 		$temp=mysql_fetch_array($result);
-		if($temp[0]>0) Error("이미 등록되어 있는 게시판입니다.<br>다른 이름으로 생성하십시오","");
+		if($temp[0]>0) Error("이미 등록되어 있는 게시판입니다.<br>다른 이름으로 생성하십시요","");
 
 		// 관리자 테이블 생성
 		zb_query("insert into $admin_table 
@@ -199,7 +200,7 @@
 		$no = isset($_POST['no']) && is_numeric($_POST['no']) ? $_POST['no'] : '';
 		$name = isset($_POST['name']) ? addslashes($_POST['name']) : '';
 		$page_num = isset($_REQUEST['page_num']) && is_numeric($_REQUEST['page_num']) ? $_REQUEST['page_num'] : '10';
-		if(!$name) error("생성할 카테고리 이름을 입력하여 주십시오");
+		if(!$name) error("생성할 카테고리 이름을 입력하여 주십시요");
 		$table_data=mysql_fetch_array(zb_query("select name from $admin_table where no='$no'"));
 		$check=mysql_fetch_array(zb_query("select count(*) from $t_category"."_$table_data[name] where name='$name'"));
 		if($check[0]>0) Error("동일한 이름의 카테고리가 있습니다");
@@ -217,7 +218,7 @@
 		$name = isset($_POST['name']) ? addslashes($_POST['name']) : '';
 		$category_no = isset($_REQUEST['category_no']) && is_numeric($_REQUEST['category_no']) ? $_REQUEST['category_no'] : '';
 		$page_num = isset($_REQUEST['page_num']) && is_numeric($_REQUEST['page_num']) ? $_REQUEST['page_num'] : '10';
-		if(!$name) error("수정할 카테고리 이름을 입력하여 주십시오");
+		if(!$name) error("수정할 카테고리 이름을 입력하여 주십시요");
 		$table_data=mysql_fetch_array(zb_query("select name from $admin_table where no='$no'"));
 		zb_query("update $t_category"."_$table_data[name] set name='$name' where no='$category_no'",$connect);
 

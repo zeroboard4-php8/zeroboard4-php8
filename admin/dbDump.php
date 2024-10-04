@@ -1,4 +1,5 @@
 <?php
+	if(basename(__FILE__) == basename($_SERVER['PHP_SELF'])) exit;
 	function zbDB_getFields($tableName) {
 		global $connect;
 		$result = zb_query("show fields from $tableName",$connect) or die(zb_error());

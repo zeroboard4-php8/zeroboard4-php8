@@ -2,6 +2,7 @@
 /*********************************************************************
  * 회원 정보 변경에 대한 처리
  *********************************************************************/
+    if(basename(__FILE__) == basename($_SERVER['PHP_SELF'])) exit;
  	if(isset($_POST['exec2']) && !check_csrf_token()) Error('CSRF 토큰이 일치하지 않습니다.');
 
 	function del_member($no) {
@@ -162,6 +163,8 @@
 		$openinfo = isset($_POST['openinfo']) && in_array($_POST['openinfo'], array('0', '1')) ? $_POST['openinfo'] : null;
 		$comment = isset($_POST['comment']) ? $_POST['comment'] : '';
 		$maxdirsize = isset($_POST['maxdirsize']) && is_numeric($_POST['maxdirsize']) ? $_POST['maxdirsize'] : '100';
+		$delete_private_icon = empty($_POST['delete_private_icon']) ? '0' : '1';
+		$delete_private_name = empty($_POST['delete_private_name']) ? '0' : '1';
 		
 		if(isblank($name)) Error("이름을 입력하셔야 합니다");
 		if($password&&$password1&&$password!=$password1) Error("비밀번호가 일치하지 않습니다");
@@ -205,7 +208,7 @@
 			$picture_size = $_FILES['picture']['size'];
 		}
 		if(!empty($picture_name)) {
-			if(!is_uploaded_file($picture)) Error("정상적인 방법으로 업로드하여 주십시오");
+			if(!is_uploaded_file($picture)) Error("정상적인 방법으로 업로드하여 주십시요");
 			if(!eregi(".gif",$picture_name)&&!eregi(".jpg",$picture_name)&&!eregi(".png",$picture_name)) Error("사진은 gif, png 또는 jpg 파일을 올려주세요");
 			$size=GetImageSize($picture);
 			if($size[0]>200||$size[1]>200) Error("아이콘의 크기는 200*200이하여야 합니다");
@@ -231,7 +234,7 @@
 		}
 
 		// 이름앞에 붙는 아이콘 삭제시
-		if(isset($delete_private_icon)) @z_unlink("icon/private_icon/".$member_no.".gif");
+		if(!empty($delete_private_icon)) @z_unlink("icon/private_icon/".$member_no.".gif");
 
 		if(isset($_FILES['private_icon'])) {
 			$private_icon = $_FILES['private_icon']['tmp_name'];
@@ -246,7 +249,7 @@
 				@chmod("icon/private_icon",0707);
 			}
 
-			if(!is_uploaded_file($private_icon)) Error("정상적인 방법으로 업로드하여 주십시오");
+			if(!is_uploaded_file($private_icon)) Error("정상적인 방법으로 업로드하여 주십시요");
 			if(!eregi("\.gif",$private_icon_name)) Error("이름앞의 아이콘은 Gif 파일만 올리실수 있습니다");
 			@move_uploaded_file($private_icon, "icon/private_icon/".$member_no.".gif");
 			@chmod("icon/private_icon".$member_no.".gif",0707);
@@ -254,7 +257,7 @@
 		}
 
 		// 이름을 대신하는 아이콘 삭제시
-		if(isset($delete_private_name)) @z_unlink("icon/private_name/".$member_no.".gif");
+		if(!empty($delete_private_name)) @z_unlink("icon/private_name/".$member_no.".gif");
 
 		// 이름을 대신하는 아이콘 업로드시 처리
 		if(isset($_FILES['private_name'])) {
@@ -269,7 +272,7 @@
 				@chmod("icon/private_name",0707);
 			}
 
-			if(!is_uploaded_file($private_name)) Error("정상적인 방법으로 업로드하여 주십시오");
+			if(!is_uploaded_file($private_name)) Error("정상적인 방법으로 업로드하여 주십시요");
 			if(!eregi("\.gif",$private_name_name)) Error("이름아이콘은 Gif 파일만 올리실수 있습니다");
 			@move_uploaded_file($private_name, "icon/private_name/".$member_no.".gif");
 			@chmod("icon/private_name".$member_no.".gif",0707);

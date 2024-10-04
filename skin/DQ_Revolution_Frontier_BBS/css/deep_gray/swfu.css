@@ -1,0 +1,204 @@
+.swuThumbnailFrame{
+	width:100px;
+	float:left;
+}
+#swuThumbnails {
+	font-family: Arial, sans-serif;
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+#swuThumbnails li {
+	cursor: move;
+	float: left;
+	margin: 0;
+	padding: 0;
+	width: 100px;
+	border: 0px solid #000;
+}
+#swfuThumbnailFilename {
+    font-family:dotum,verdana;
+    font-size:8pt;
+}
+#download_guide {
+    margin-bottom:15px;
+    font-family:dotum,verdana;
+    font-size:8pt;
+}
+.swfuThumbnailTools {
+	position: absolute;
+	display:none;
+	background-color:#FFF;
+	width:80px;
+	z-index:99;
+	top:63px;
+	left:10px;
+}
+.swfuThumbnailTools SPAN { font-family:verdana; font-size:7pt; color:#202020; cursor:pointer }
+.swfuThumbnailTools SPAN:hover { color:#0000FF }
+#swuCommentInputFrame {
+	background-color:#dadada;
+	border:1px #505050 solid;
+    color:#303030;
+	position:absolute;
+	clear:both;
+	padding:8px;
+	width:487px;
+	display:none;
+}
+#swuCommentInputFrame textarea {
+    background-color:#efefef;
+    border:1px solid #d0d0d0;
+    color:#303030;
+    margin:5px 0 5px 0;
+    padding:5px;
+}
+#swuCommentInputFrame button {
+    background-color: #e5e5e5;
+    border:2px solid #c0c0c0;
+    color: #404040;
+    font-size:9pt;
+    font-family:gulim,tahoma;
+    padding:5px;
+}
+#swuCommentTitle{
+	float:left;
+    color:#404040;
+}
+
+#content {
+	padding-top:10px;
+	text-align: left;
+}
+
+.swfuBrowserButton {
+	padding:4px 0 2px 0;
+	margin:8px 0;
+    font-family:gulim, tahoma;
+    font-size:9pt;
+}
+#divStatus {
+	margin-left:5px;
+	font-size:11px;
+	font-family:dotum;
+	color:#505050;
+}
+/* -- Table Styles ------------------------------- */
+.progressWrapper {
+	width: 357px;
+	overflow: hidden;
+}
+#swuInfoContain {
+	clear:both;
+}
+#divFileProgressContainer {
+}
+.swuBtnThumbnail{
+	margin:0 5px 0 0;
+	padding:2px;
+	font-family:verdana;
+	font-size:7pt;
+	font-weight:bold;
+}
+.progressContainer {
+	margin: 5px;
+	padding: 4px;
+	border: solid 1px #202020;
+	background-color: #282828;
+	overflow: hidden;
+}
+/* Message */
+.message {
+	margin: 1em 0;
+	padding: 10px 20px;
+	border: solid 1px #202020;
+	background-color: #282828;
+	overflow: hidden;
+}
+/* Error */
+.red {
+	border: solid 1px #B50000;
+	background-color: #FFEBEB;
+}
+
+/* Current */
+.green {
+	border: solid 1px #202020;
+	background-color: #282828;
+}
+
+/* Complete */
+.blue {
+	border: solid 1px #202020;
+	background-color: #282828;
+}
+
+.progressName {
+	font-size: 8pt;
+	font-weight: 700;
+	color: #808080;
+	width: 323px;
+	height: 14px;
+	text-align: left;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.progressBarInProgress,
+.progressBarComplete,
+.progressBarError {
+	font-size: 0;
+	width: 0%;
+	height: 2px;
+	background-color: blue;
+	margin-top: 2px;
+}
+
+.progressBarComplete {
+	width: 100%;
+	background-color: green;
+	visibility: hidden;
+}
+
+.progressBarError {
+	width: 100%;
+	background-color: red;
+	visibility: hidden;
+}
+
+.progressBarStatus {
+	margin-top: 2px;
+	width: 337px;
+	font-size: 7pt;
+	font-family: Arial;
+	text-align: left;
+	white-space: nowrap;
+    color:#656565;
+}
+
+a.progressCancel {
+	font-size: 0;
+	display: block;
+	height: 14px;
+	width: 14px;
+	background-image: url(../../plug-ins/swfupload/images/cancelbutton.gif);
+	background-repeat: no-repeat;
+	background-position: -14px 0px;
+	float: right;
+}
+
+a.progressCancel:hover {
+	background-position: 0px 0px;
+}
+
+fieldset.flash {
+	width: 358px;
+	border:1px solid #454545;
+}
+
+legend {
+	font: 700 12px doutum, Arial, Helvetica, sans-serif;
+	padding: 0 5px;
+	margin: 0 10px;
+	color: #a0a0a0;
+}

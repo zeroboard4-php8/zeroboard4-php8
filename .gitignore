@@ -28,6 +28,13 @@ Temporary Items
 
 # End of https://www.toptal.com/developers/gitignore/api/macos
 
-config.php
+/config.php
+/revol_comment.php
+/revol_del_comment.php
+/revol_delete.php
+/revol_download.php
+/revol_getimg.php
+/revol_write_ok.php
 data/
 icon/
+DQ_LIBS/

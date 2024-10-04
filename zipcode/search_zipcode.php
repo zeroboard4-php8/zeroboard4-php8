@@ -33,7 +33,7 @@ function check_submit()
 <tr bgcolor=white>
   <td align=center height=100%>
   우편번호를 검색합니다.<br>
-  찾고자 하는 동의 이름을 입력하여 주십시오.<br>
+  찾고자 하는 동의 이름을 입력하여 주십시요.<br>
   ( 예: <b>대연동</b>    또는    <b>대연1동</b> )<br><br>
   <input type=text name=address value="" size=20 class=input><input type=submit value="Search" class=submit><input type=button value="Close" class=close onclick=window.close()>
 

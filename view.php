@@ -62,7 +62,7 @@
 				head();
 				$a_list="<a onfocus=blur() href='zboard.php?$href$sort'>";    
 				$a_view="<Zeroboard ";
-				$title="이 글은 비밀글입니다.<br>비밀번호를 입력하여 주십시오";
+				$title="이 글은 비밀글입니다.<br>비밀번호를 입력하여 주십시요";
 				$input_password="<input type=password name=password size=20 maxlength=20 class=input>";
 				if(preg_match("/(:\/\/|\.\.)/",$dir)) $dir="./";
 				include $dir."/ask_password.php";
@@ -89,7 +89,7 @@
 	}
 
 // 이전글 정리
-	if($data['prev_no']&&!$setup['use_alllist']) {
+	if($data['prev_no']&&!$setup['use_alllist']&&!empty($prev_data)) {
 		$prev_comment_num="[".$prev_data['total_comment']."]"; // 간단한 답글 수
 		if($prev_data['total_comment']==0) $prev_comment_num="";
 		$a_prev="<a onfocus=blur() href='".$target."?".$href.$sort."&no=$data[prev_no]'>";
@@ -137,7 +137,7 @@
 	}
 
 // 다음글 정리
-	if($data['next_no']&&!$setup['use_alllist']) {
+	if($data['next_no']&&!$setup['use_alllist']&&!empty($next_data)) {
 		$a_next="<a onfocus=blur() href='".$target."?".$href.$sort."&no=$data[next_no]'>";
 		$next_comment_num="[".$next_data['total_comment']."]"; // 간단한 답글 수
 		if($next_data['total_comment']==0) $next_comment_num="";

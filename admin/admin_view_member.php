@@ -2,7 +2,7 @@
 /**************************************************************************
  * 회원 목록 보는 페이지
  *************************************************************************/
-
+	if(basename(__FILE__) == basename($_SERVER['PHP_SELF'])) exit;
 // 전체 그룹수와 현재 그룹의 정보를 추출
 	$tmpResult = mysql_fetch_array(zb_query("select count(*) from $group_table"));
 	$total_group_num = $tmpResult[0];

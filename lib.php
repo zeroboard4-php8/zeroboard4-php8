@@ -8,7 +8,7 @@
  * by zero (zero@nzeo.com)
  *
  ******************************************************************************/
-	if(realpath($_SERVER['SCRIPT_FILENAME']) == realpath(__FILE__)) exit;
+	if(basename(__FILE__) == basename($_SERVER['PHP_SELF'])) exit;
 	require 'fixcloudflare.php';
 
 	// W3C P3P 규약설정
@@ -16,7 +16,7 @@
 
 	// 현재 버젼
 	$zb_version = "4.1 pl8";
-	$zb_php8_version = 'php8-1.1';
+	$zb_php8_version = 'php8-2.0';
 	/*******************************************************************************
  	 *                       !!!!!! 경       고 !!!!!!
 	 *
@@ -38,7 +38,7 @@
  	 * 에러 리포팅 설정과 register_globals_on일때 변수 재 정의
  	 ******************************************************************************/
  	@error_reporting(E_ALL & ~E_NOTICE);
-	ini_set('display_errors', '0');
+	ini_set('display_errors', '0'); // 주석 여부 확인
 	
  	$ext_arr = array('PHP_SELF', '_ENV', '_GET', '_POST', '_FILES', '_SERVER', '_COOKIE', '_SESSION', '_REQUEST',
                   	'HTTP_ENV_VARS', 'HTTP_GET_VARS', 'HTTP_POST_VARS', 'HTTP_POST_FILES', 'HTTP_SERVER_VARS',
@@ -334,7 +334,7 @@
 		if($_dbconn_is_included) return;
 		$_dbconn_is_included = true;
 
-		$f=@file($config_dir."config.php") or Error("config.php파일이 없습니다.<br>DB설정을 먼저 하십시오","install.php");
+		$f=@file($config_dir."config.php") or Error("config.php파일이 없습니다.<br>DB설정을 먼저 하십시요","install.php");
 
 		for($i=1;$i<=4;$i++) $f[$i]=trim(str_replace("\n","",$f[$i]));
 
@@ -675,7 +675,7 @@
 	function istable($str, $dbname='') {
 		global $config_dir;
 		if(!$dbname) {
-			$f=@file($config_dir."config.php") or Error("config.php파일이 없습니다.<br>DB설정을 먼저 하십시오","install.php");
+			$f=@file($config_dir."config.php") or Error("config.php파일이 없습니다.<br>DB설정을 먼저 하십시요","install.php");
 			for($i=1;$i<=4;$i++) $f[$i]=str_replace("\n","",$f[$i]);
 			$dbname=$f[4];
 		}
@@ -871,6 +871,7 @@
 		$temp=str_replace("\n","",$temp);
 		$temp=strip_tags($temp);
 		$temp=str_replace("&nbsp;","",$temp);
+		$temp=preg_replace("/\x{00A0}|&#x0*A0;?|&#0*160;?|\x{180E}|&#x0*180E;?|&#0*6158;?|\x{2000}|&#x0*2000;?|&#0*8192;?|\x{2001}|&#x0*2001;?|&#0*8193;?|\x{2002}|&#x0*2002;?|&#0*8194;?|&ensp;|\x{2003}|&#x0*2003;?|&#0*8195;?|&emsp;|\x{2004}|&#x0*2004;?|&#0*8196;?|\x{2005}|&#x0*2005;?|&#0*8197;?|\x{2006}|&#x0*2006;?|&#0*8198;?|\x{2007}|&#x0*2007;?|&#0*8199;?|\x{2008}|&#x0*2008;?|&#0*8200;?|\x{2009}|&#x0*2009;?|&#0*8201;?|&thinsp;|\x{200A}|&#x0*200A;?|&#0*8202;?|\x{200B}|&#x0*200B;?|&#0*8203;?|\x{202F}|&#x0*202F;?|&#0*8239;?|\x{205F}|&#x0*205F;?|&#0*8287;?|\x{3000}|&#x0*3000;?|&#0*12288;?|\x{FEFF}|&#x0*FEFF;?|&#0*65279;?|\x{0020}|&#x0*20;?|&#0*32;?|\x{0009}|&#x0*9;?|&#0*9;?|\x{000D}|&#x0*D;?|&#0*13;?|&nbsp|\x{200F}|&#x0*200F;?|&#0*8207;?|&rlm;/iu","",$temp);
 		$temp=str_replace(" ","",$temp);
 		if(preg_match("/[^[:space:]]/",$temp)) return 0;
 		return 1;
@@ -936,6 +937,7 @@
 
 	// HTML Tag를 제거하는 함수
 	function del_html( $str ) {
+		if(empty($str)) return '';
 		$str = str_replace( ">", "&gt;",$str );
 		$str = str_replace( "<", "&lt;",$str );
 		return $str;
@@ -1082,7 +1084,7 @@
 	// 페이지 이동 스크립트
 	function movepage($url) {
 		global $connect;
-		echo"<meta http-equiv=\"refresh\" content=\"0; url=$url\">";
+		echo "<meta http-equiv=\"refresh\" content=\"0; url=$url\">";
 		if(isset($connect)) mysql_close($connect);
 		exit;
 	}
@@ -1141,13 +1143,15 @@
 
 	// 파일을 삭제하는 함수
 	function z_unlink($filename) {
-		@chmod($filename,0777);
-		$handle = @unlink($filename);
-		if(@file_exists($filename)) {
-			@chmod($filename,0775);
-			$handle=@unlink($filename);
+		if(!is_array($filename) && file_exists($filename)){
+			@chmod($filename,0777);
+			$handle = @unlink($filename);
+			if(@file_exists($filename)) {
+				@chmod($filename,0775);
+				$handle=@unlink($filename);
+			}
+			return $handle;
 		}
-		return $handle;
 	}
 
 	// 지정된 파일의 내용을 읽어옴
@@ -1379,6 +1383,7 @@
 
 	if (!function_exists("eregi")) {
 		function eregi($pattern, $string, &$regs = array()) {
+			if(empty($string)) $string = '';
 			$pattern = str_replace("\\/", "/", $pattern);
 			$pattern = str_replace("/", "\\/", $pattern);
 			return preg_match("/" . $pattern . "/i", $string, $regs);
@@ -1477,6 +1482,15 @@
 			}
 		}
 	}
+	
+	if (!function_exists("mysql_fetch_row")) {
+		function mysql_fetch_row($result = null) {
+			try {
+			    return mysqli_fetch_row($result);
+			} catch (Exception $e) {
+			}
+		}
+	}
 
 	if (!function_exists("mysql_tablename")) {
 		function mysql_tablename($result, $i) {
@@ -1505,6 +1519,17 @@
 		function mysql_free_result($result) {
 			try {
 			    return mysqli_free_result($result);
+			} catch (Exception $e) {
+			}
+		}
+	}
+	
+	if (!function_exists("mysql_field_name")) {
+		function mysql_field_name($result, $field_offset=0) {
+			try {
+				if(empty($result)) return false;
+				$properties = mysqli_fetch_field_direct($result, $field_offset);
+			    return is_object($properties) ? $properties->name : false;
 			} catch (Exception $e) {
 			}
 		}
