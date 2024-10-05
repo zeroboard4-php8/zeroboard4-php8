@@ -1,0 +1,28 @@
+body, td, select, input, div, form, textarea, center, option, pre, p, blockquote, br {font-family:verdana; font-size:8pt; color:606060; line-height:160%;}
+
+a:link    {color:606060; text-decoration:none;}
+a:visited {color:606060; text-decoration:none;}
+a:active  {color:606060; text-decoration:none;}
+a:hover   {color:aaaaaa; text-decoration:none;}
+
+.input {border:1 solid #d7d7d7; background-color:transparent;}
+.input2 {background-color:transparent; border-bottom:1 solid #d7d7d7; border-left-width:0; border-right-width:0; border-top-width:0;}
+.button {border:0; background-color:transparent; height:21; font-family:verdana; font-size:7pt;}
+
+.ver7    {font-family:verdana; font-size:7pt;}
+.thm7  {font-family:tahoma; font-size:7pt;}
+.color {color:aaaaaa;}
+.color2 {font-family:tahoma; font-size:7pt; color:aaaaaa;}
+.color3 {border:1 solid #d7d7d7; background-color:eaeaea;}
+
+.line {background-color:#d7d7d7;}
+.line2 {background-color:transparent; border:1 solid #d7d7d7; border-bottom-width:0; border-left-width:0; border-right-width:1; border-top-width:0;}
+
+BODY {scrollbar-face-color:FFFFFF;
+           scrollbar-shadow-color:d7d7d7;
+           scrollbar-highlight-color:d7d7d7;
+           scrollbar-3dlight-color:FFFFFF;
+           scrollbar-darkshadow-color:FFFFFF;
+           scrollbar-base-color:FFFFFF;
+           scrollbar-arrow-color:606060;
+           scrollbar-track-color:FFFFFF;}

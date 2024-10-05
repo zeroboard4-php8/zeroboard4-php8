@@ -1,0 +1,36 @@
+A:link          {color: #666666; TEXT-decoration: none}
+A:visited       {color: #666666; TEXT-decoration: none}
+A:active        {color: #666666; TEXT-decoration: none}
+A:hover         {color: #ff6600; TEXT-decoration: none}
+
+body            {font-size:9pt; font-family:굴림,돋움; color:#666666; line-height:170%;}
+td              {font-size:9pt; font-family:굴림,돋움; color:#666666; line-height:170%;}
+select          {font-size:9pt; font-family:굴림,돋움; color:#666666; line-height:120%;}
+option          {font-size:9pt; font-family:굴림,돋움; color:#666666; line-height:150%;}
+input           {font-size:9pt; font-family:굴림,돋움; color:#666666; line-height:120%;}
+textarea        {font-size:9pt; font-family:굴림,돋움; color:#666666; line-height:170%;}
+
+.textarea       {background-color:#ffffff; border-color:#efefef; border-width:1px; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid; overflow:yes}
+.textarea_1     {background-color:#ffffff; border-color:#efefef; border-width:1px; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid; overflow:auto}
+.input          {border-color:#efefef; border-width:1px; border-style:solid solid solid solid;}
+.input-search   {background-color:#ffffff; border-color:#e7e7e7; font-family:tahoma,verdana; font-size:8pt; border-width:1px; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid; height:20px}
+.submit         {background-color:#f7f7f7; border-color:#e7e7e7; border-width:1px; border-top-style:solid; border-right-style:solid; border-bottom-style:solid; border-left-style:solid; cursor:hand; height:20px}
+.none           {font-size:1pt; font-family:verdana; line-height:1%;}
+.vd7-n          {font-size:7pt; font-family:tahoma; color:#777777}
+.vd8-n          {font-size:8pt; font-family:tahoma; color:#777777}
+.comment-no     {font-size:7pt; font-family:verdana; color:#a0a0a0; font-weight:normal; line-height:100%;}
+.comment-hd     {font-size:7pt; font-family:tahoma; color:#bcbbbc; font-weight:normal; line-height:150%;}
+.line           {background-color:#eeeeee; height:1;}
+.line1          {background-color:#e7e7e7; height:1;}
+.commant_font   {font-size:9pt; font-family:굴림,돋움; color:#999999;}
+
+.write_form_style {border-style:none;}
+
+BODY
+{scrollbar-face-color:#F7F7F7; 
+scrollbar-shadow-color:#999999;
+scrollbar-highlight-color: #FFFFFF;
+scrollbar-3dlight-color:#FFFFFF;
+scrollbar-darkshadow-color:#FFFFFF;
+scrollbar-track-color:#FFFFFF;
+scrollbar-arrow-color: #999999}

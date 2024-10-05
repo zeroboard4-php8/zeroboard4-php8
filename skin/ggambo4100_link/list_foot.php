@@ -7,7 +7,7 @@ function toggle(e) {
 </script>
 <?php 
 	if(!eregi("Zeroboard",$a_list)) $a_list = str_replace(">","><font class=list_eng>",$a_list)."&nbsp;";
-	if(!eregi("Zeroboard",$delete_all)) $a_delete_all = str_replace(">","><font class=list_eng>",$a_delete_all)."&nbsp;";
+	if(!eregi("Zeroboard",$a_delete_all)) $a_delete_all = str_replace(">","><font class=list_eng>",$a_delete_all)."&nbsp;";
 	if(!eregi("Zeroboard",$a_1_prev_page)) $a_1_prev_page = str_replace(">","><font class=list_eng>",$a_1_prev_page)."&nbsp;";
 	if(!eregi("Zeroboard",$a_1_next_page)) $a_1_next_page = str_replace(">","><font class=list_eng>",$a_1_next_page)."&nbsp;";
 	if(!eregi("Zeroboard",$a_write)) $a_write = str_replace(">","><font class=list_eng>",$a_write)."&nbsp;";

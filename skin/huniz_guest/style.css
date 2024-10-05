@@ -1,0 +1,27 @@
+body           {font-size:9pt; font-family:굴림; color:#777777; line-height:160%;}
+td             {font-size:9pt; font-family:굴림; color:#777777; line-height:160%;}
+select         {font-size:9pt; font-family:굴림; color:#777777; line-height:150%;}
+option         {font-size:9pt; font-family:굴림; color:#777777; line-height:150%;}
+input          {font-size:9pt; font-family:굴림; color:#777777; line-height:150%;}
+textarea       {font-size:9pt; font-family:굴림; color:#777777; line-height:160%;}
+img            {border:0;}
+
+A:link         {color: #777777; text-decoration: none;}
+A:visited      {color: #777777; text-decoration: none;}
+A:active       {color: #777777; text-decoration: none;}
+A:hover        {color: #000000; text-decoration: none;}
+
+.textarea      {border:solid 1 #efefef;background-color:#ffffff; width:350; height:100;overflow:auto;}
+.input         {border:solid 1 #efefef;background-color:#ffffff; height:18px}
+.button        {font-family:tahoma;font-size:7pt;color:#666666; border:solid 1 #f6f6f6;background-color:#ffffff;height:18px}
+.submit        {font-family:tahoma;font-size:8pt;background-color:#f7f7f7; border-width:1px; border-color:#e7e7e7; border-style:solid;}
+.thm8          {font-family:tahoma;font-size:8pt} 
+.thm7          {font-family:tahoma;font-size:7pt}
+
+body           {scrollbar-face-color:       #F7F7F7;
+                scrollbar-highlight-color:  #ffffff;
+                scrollbar-3dlight-color:    #FFFFFF;
+                scrollbar-shadow-color:     #999999;
+                scrollbar-darkshadow-color: #FFFFFF;
+                scrollbar-track-color:      #ffffff;
+                scrollbar-arrow-color:      #999999}

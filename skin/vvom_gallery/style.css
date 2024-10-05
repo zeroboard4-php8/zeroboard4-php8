@@ -1,0 +1,25 @@
+BODY,TD,SELECT,input,DIV,form,TEXTAREA,center,option,pre,blockquote {font-size:9pt; font-family:굴림,verdana,tahoma; color:black;line-height:160%}
+
+A:link    {color:black;text-decoration:none;}
+A:visited {color:black;text-decoration:none;}
+A:active  {color:black;text-decoration:none;}
+A:hover  {color:444444;text-decoration:underline}
+
+.head {border:solid 1 black;font-family:matchworks,verdana;font-size:9pt;color:black;background-color:white;height:19px}
+.textarea {border:solid 1;border-color:#F5F5F5;font-size:9pt;color:#333333;background-color:#FCFCFC; scrollbar-face-color: #FFFFFF; scrollbar-shadow-color: #FFFFFF; scrollbar-highlight-color: #FFFFFF; scrollbar-3dlight-color: #FFFFFF; scrollbar-darkshadow-color: #FFFFFF; scrollbar-track-color: #FFFFFF; scrollbar-arrow-color: #666666}
+.input {border:solid 1;border-color:#F5F5F5;font-family:돋움;font-size:9pt;color:#333333;background-color:#FCFCFC;height:19px}
+.input2{border:solid 0;font-family:굴림,verdana;font-size:9pt;color:black;background-color:white;height:16px}
+.submit {border:solid 1;font-family:굴림,verdana;font-size:9pt;color:white;background-color:black;height:19px}
+.submit_vvom {border:;border-color:;font-family:tahoma;font-size:7pt;color:#333333;background-color:#FFFFFF;height:19px}
+.vvom_submit {border:solid 1;border-color:#F5F5F5;font-family:tahoma;font-size:9pt;color:#333333;background-color:#FCFCFC;height:19px}
+.vvom_button {border:solid 1;border-color:#F5F5F5;font-size:9pt;color:#333333;background-color:#FCFCFC;height:19px}
+.input_vvom {border:0; background:url(dasom_img/dot.gif) repeat-x left bottom; background-color:transparent; line-height:110%;}
+
+
+.thm7pt {font-family:tahoma;font-size:7pt;font-color:#666666}
+.line1 {background-color:#F5F5F5; padding:0}
+.line2 {background-color:#E1E1E1; padding:0}
+.line3 {background-color:#E1E1E1; padding:0}
+
+
+.list_main {font-family:tahoma;color:#333333;font-size:8pt;text-decoration:none}

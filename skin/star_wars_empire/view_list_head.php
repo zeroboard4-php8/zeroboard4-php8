@@ -17,40 +17,53 @@
 <table border=0 cellspacing=0 cellpadding=0 width=100%>
 <tr align=center>
   <td>
-    <table border=0 height=18 cellspacing=0 cellpadding=0 width=50 background=<?=$dir?>/images/lh_bg.gif>
-       <tr><td align=center valign=top><img src=images/t.gif height=3 align=absmiddle></td></tr>
-    </table>
+   <table width=100% border=0 cellspacing=0 cellpadding=0>
+  <tr>
+    <td height=18 style=font-family:Matchworks,Tahoma;font-size:8pt;color:black align=center  background=<?=$dir?>/images/barbg.gif nowrap><img src=images/t.gif width=3>&nbsp;<font color=FFFFFF>no</a>&nbsp;</td><td width=3><img src=<?=$dir?>/images/barend.gif></td>
+  </tr>
+  </table>
   </td>
-<?=$hide_category_start?>
-  <td>
-    <table border=0 height=18 cellspacing=0 cellpadding=0 width=50 background=<?=$dir?>/images/lh_bg.gif>
-       <tr><td align=center valign=top><img src=images/t.gif height=3 align=absmiddle></td></tr>
-    </table>  
+   <td>
+       <table width=100% border=0 cellspacing=0 cellpadding=0>
+  <tr>
+    <td height=18 style=font-family:Matchworks,Tahoma;font-size:8pt; align=center background=<?=$dir?>/images/barbg.gif><img src=images/t.gif width=3>&nbsp;<font color=#FFFFFF>category</font></a>&nbsp;</td><td width=3><img src=<?=$dir?>/images/barend.gif></td>
+  </tr>
+</table>
   </td>
-<?=$hide_category_end?>
   <td width=100%>
-    <table border=0 height=18 cellspacing=0 cellpadding=0 width=100% background=<?=$dir?>/images/lh_bg.gif>
-       <tr><td align=center valign=top><img src=<?=$dir?>/images/lh_subject.gif border=0></td></tr>
-    </table>
+	<table width=100% border=0 cellspacing=0 cellpadding=0>
+	  <tr>
+        <td height=18 style=font-family:Matchworks,Tahoma;font-size:8pt; align=center background=<?=$dir?>/images/barbg.gif><img src=images/t.gif width=3>&nbsp;<font color=#FFFFFF>subject</font></a>&nbsp;</td><td width=3><img src=<?=$dir?>/images/barend.gif></td>
+	  </tr>
+	</table>
   </td>
+     <td>
+       <table width=100% border=0 cellspacing=0 cellpadding=0>
+  <tr>
+    <td height=18 style=font-family:Matchworks,Tahoma;font-size:8pt; align=center style='word-break:break-all;' background=<?=$dir?>/images/barbg.gif><img src=images/t.gif width=3>&nbsp;<font color=#FFFFFF>name</font></a>&nbsp;</td><td width=3><img src=<?=$dir?>/images/barend.gif></td>
+  </tr>
+</table>
+</td>
   <td>
-    <table border=0 height=18 cellspacing=0 cellpadding=0 width=90 background=<?=$dir?>/images/lh_bg.gif>
-       <tr><td align=center valign=top><img src=<?=$dir?>/images/lh_name.gif border=0></td></tr>
-    </table>
+       <table width=100% border=0 cellspacing=0 cellpadding=0>
+  <tr>
+    <td height=18 style=font-family:Matchworks,Tahoma;font-size:8pt; align=center background=<?=$dir?>/images/barbg.gif><img src=images/t.gif width=3>&nbsp;<font color=#FFFFFF>date</font></a>&nbsp;</td><td width=3><img src=<?=$dir?>/images/barend.gif></td>
+  </tr>
+</table>
   </td>
-  <td>
-    <table border=0 height=18 cellspacing=0 cellpadding=0 width=70 background=<?=$dir?>/images/lh_bg.gif>
-       <tr><td align=center valign=top><img src=<?=$dir?>/images/lh_date.gif border=0></td></tr>
-    </table>
+   <td>
+       <table width=100% border=0 cellspacing=0 cellpadding=0>
+  <tr>
+    <td height=18 style=font-family:Matchworks,Tahoma;font-size:8pt; align=center background=<?=$dir?>/images/barbg.gif><img src=images/t.gif width=3><font color=#FFFFFF>&nbsp;hit&nbsp; </font></a></td><td width=3><img src=<?=$dir?>/images/barend.gif></td>
+  </tr>
+</table>
   </td>
-  <td>
-    <table border=0 height=18 cellspacing=0 cellpadding=0 width=55 background=<?=$dir?>/images/lh_bg.gif>
-       <tr><td align=center valign=top><img src=<?=$dir?>/images/lh_read.gif border=0></td></tr>
-    </table>
+     <td>
+       <table width=100% border=0 cellspacing=0 cellpadding=0>
+  <tr>
+    <td height=18 style=font-family:Matchworks,Tahoma;font-size:8pt; align=center background=<?=$dir?>/images/barbg.gif><img src=images/t.gif width=3><font color=#FFFFFF>&nbsp;vote&nbsp;</font></a></td><td width=3><img src=<?=$dir?>/images/barend.gif></td>
+  </tr>
+</table>
   </td>
-  <td>
-    <table border=0 height=18 cellspacing=0 cellpadding=0 width=30 background=<?=$dir?>/images/lh_bg.gif>
-       <tr><td align=center valign=top><img src=<?=$dir?>/images/lh_vote.gif border=0></td></tr>
-    </table>
-  </td>
+</tr>
 </tr>

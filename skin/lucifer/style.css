@@ -1,0 +1,51 @@
+BODY,TD,input,DIV,form,TEXTAREA,center,option,pre,blockquote {font-size:9pt;color:cccccc;}
+
+select,option {font-size:9pt;font-family:tahoma;color:7f7f7f;background-color:000000}
+
+TD {line-height:120%}
+SELECT {font-size:9pt;color:cccccc;}
+
+body{
+ scrollbar-face-color:#000000;
+ scrollbar-highlight-color: #DDDDDD;
+ scrollbar-3dlight-color: #EEEEEE;
+ scrollbar-shadow-color: #CCCCCC;
+ scrollbar-darkshadow-color: #EEEEEE;
+ scrollbar-track-color: #EFEFEF;
+ scrollbar-arrow-color: #DDDDDD;
+}
+
+A:link    {color:cccccc;text-decoration:none;}
+A:visited {color:cccccc;text-decoration:none;}
+A:active  {color:cccccc;text-decoration:none;}
+A:hover  {color:aaaaaa;text-decoration:none;}
+a:hover {position:relative; top:1; left:1}
+
+.writetitle {border:solid 1;border-color:888888;background-color:transparent;}
+.writeform {border:solid 1;border-color:6C6C6C;background-color:transparent;}
+.writeform {border:solid 1;border-color:6C6C6C;background-color:transparent;}
+
+.input {border:solid 1;border-color:6C6C6C;background-color:transparent;height:17px}
+.input {border:solid 1;border-color:6C6C6C;background-color:transparent;height:17px}
+.input {border:solid 1;border-color:6C6C6C;background-color:transparent;height:17px}
+.textarea {border:solid 1;border-color:6C6C6C;background-color:transparent;width:100%;}
+
+.normal {font-size:9pt;background-color:transparent;}
+.small {font-size:9;ptbackground-color:transparent;}
+.comment {font-family:tahoma;font-size:6pt;background-color:transparent;}
+
+.header {background-color:transparent}
+.inbox {border:solid 1;border-color:333333;background-color:transparent;width:100%;height:20px;padding:0;spacing:0;}
+
+.listBox {font-size:9pt;border:solid 0;background-color:transparent;}
+.liner {background-color:transparent;}
+.footer {background-color:transparent;}
+
+.viewform {border:solid 1;border-color:999999;background-color:transparent}
+.viewform {border:solid 1;border-color:cccccc;background-color:transparent}
+.viewbox {border:0;background-color:transparent;}
+
+.search {border:solid 1;background-color:transparent;border-color:000000;height:17px;width:80px;color:666666;}
+
+.textarea {border:solid 1;border-color:6C6C6C;background-color:transparent;width:100%;}
+.submit {border:solid 1;border-color:000000;background-color:transparent;width:100%;height:100%}

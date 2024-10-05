@@ -74,7 +74,7 @@
 	$face_image=get_face($reply_data);
 
 // 바로 전에 본 글인 경우 번호를 아이콘으로 바꿈
-	if($no==$reply_data['no']) $number="<img src=$dir/arrow.gif border=0 align=absmiddle>"; elseif($number!="&nbsp;") $number=$roop_number;
+	if($no==$reply_data['no']) $number="<img src=$dir/arrow.gif border=0 align=absmiddle>"; elseif($number!="&nbsp;") $number=$loop_number;
 
 // 답글 버튼
 	if(($is_admin||$member['level']<=$setup['grant_reply'])&&$reply_data['headnum']>-2000000000&&$reply_data['headnum']!=-1) $a_reply="<a href=write.php?$href$sort&no=$reply_data[no]&mode=reply>"; else $a_reply="<Zeroboard";
