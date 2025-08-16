@@ -231,7 +231,7 @@ $board_table_main_schema = "
 
     memo text,
 
-    ip char(15),
+    ip char(100),
     password char(41),
     name char(20) not null,
     homepage char(255),
@@ -288,7 +288,7 @@ $board_comment_schema = "
     name char(20),
     password char(41),
     memo text,
-    ip char(15),
+    ip char(100),
     reg_date int(13),
 
     KEY parent (parent)
