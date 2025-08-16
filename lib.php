@@ -1238,14 +1238,7 @@
 			}
 			$rs = sprintf("%08x%08x", $nr & 0x7FFFFFFF, $nr2 & 0x7FFFFFFF);
 		} else {
-			$tmp0 = zb_query("SELECT password('$str')");
-			if (!empty($tmp0)) {
-				$tmp1 = mysql_fetch_array($tmp0);
-				mysql_free_result($tmp0);
-				$rs = $tmp1[0];
-			} else {
-				$rs = '*'.strtoupper(sha1(sha1($str, true)));
-			}
+			$rs = hash('sha3-512', $str);
 		}
 		return $rs;
 	}
